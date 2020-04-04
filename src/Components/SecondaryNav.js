@@ -73,28 +73,22 @@ const SecondaryNav = () => {
               >
                 Create New Program
               </Button>
-              <IconButton aria-label="listfilter" color="black">
+              <IconButton aria-label="listfilter" color="inherit">
                 <FilterList />
               </IconButton>
-              <IconButton aria-label="morevert" color="black">
+              <IconButton aria-label="morevert" color="inherit">
                 <MoreVert />
               </IconButton>
             </Box>
           </Grid>
-          <Grid xs={12} sm={12}>
+          <Grid item xs={12} sm={12}>
             <Box display="flex" justifyContent="flex-end" my={2}>
               <div className={classes.chipMargin}>
-                <Chip
-                  label="2020"
-                  onDelete={handleDelete}
-                  color="black"
-                  variant="outlined"
-                />
+                <Chip label="2020" onDelete={handleDelete} variant="outlined" />
               </div>
               <Chip
                 label="National Brands"
                 onDelete={handleDelete}
-                color="black"
                 variant="outlined"
               />
             </Box>
