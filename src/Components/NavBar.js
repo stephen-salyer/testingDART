@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-import ToolBar from '@material-ui/core/ToolBar';
+import ToolBar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -24,13 +24,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = () => {
-const classes = useStyles();
+  const classes = useStyles();
 
-  return(
+  return (
     <div className={classes.root}>
       <AppBar className={classes.appBarTheme} position="sticky">
         <ToolBar>
-          <IconButton className={classes.menuButton} edge="start" color="inherit" aria-label="menu">
+          <IconButton
+            className={classes.menuButton}
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+          >
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} varient="h6" color="inherit">
@@ -52,7 +57,7 @@ const classes = useStyles();
         </ToolBar>
       </AppBar>
     </div>
-  )
-}
+  );
+};
 
 export default NavBar;

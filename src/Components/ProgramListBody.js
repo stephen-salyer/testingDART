@@ -1,6 +1,10 @@
 import Card from '@material-ui/core/Card';
 import React from 'react';
-import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import {
+  makeStyles,
+  createMuiTheme,
+  ThemeProvider,
+} from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -21,12 +25,10 @@ const theme = createMuiTheme({
   },
 });
 
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
+const a11yProps = (index) => ({
+  id: `simple-tab-${index}`,
+  'aria-controls': `simple-tabpanel-${index}`,
+});
 
 const useStyles = makeStyles({
   root: {
@@ -44,17 +46,17 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
   content: {
-    paddingLeft: "0",
-    paddingRight: "0",
-    paddingTop: "0",
-    },
+    paddingLeft: '0',
+    paddingRight: '0',
+    paddingTop: '0',
+  },
   cardPadding: {
-    paddingBottom: "24px",
+    paddingBottom: '24px',
   },
 });
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+const TabPanel = (props) => {
+  const {children, value, index, ...other} = props;
 
   return (
     <Typography
@@ -68,7 +70,7 @@ function TabPanel(props) {
       {value === index && <Box p={3}>{children}</Box>}
     </Typography>
   );
-}
+};
 
 const ProgramListBody = () => {
   const classes = useStyles();
@@ -77,25 +79,27 @@ const ProgramListBody = () => {
     setValue(newValue);
   };
 
-  return(
+  return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="lg" className={classes.cardPadding}>
         <Card>
           <CardContent className={classes.content}>
-              <Tabs value={value}
-                    onChange={handleChange}
-                    indicatorColor="primary"
-                    textColor="primary"
-                    variant="fullWidth"
-                    position="sticky"
-                    aria-label="full width tabs example">
-                <Tab label="All (1197)" {...a11yProps(0)} />
-                <Tab label="Approved (4)" {...a11yProps(1)} />
-                <Tab label="Pending (98)" {...a11yProps(2)} />
-                <Tab label="Draft (887)" {...a11yProps(3)} />
-                <Tab label="Canceled (12)" {...a11yProps(4)} />
-                <Tab label="Back to Draft (12)" {...a11yProps(5)} />
-              </Tabs>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              variant="fullWidth"
+              position="sticky"
+              aria-label="full width tabs example"
+            >
+              <Tab label="All (1197)" {...a11yProps(0)} />
+              <Tab label="Approved (4)" {...a11yProps(1)} />
+              <Tab label="Pending (98)" {...a11yProps(2)} />
+              <Tab label="Draft (887)" {...a11yProps(3)} />
+              <Tab label="Canceled (12)" {...a11yProps(4)} />
+              <Tab label="Back to Draft (12)" {...a11yProps(5)} />
+            </Tabs>
             <TabPanel value={value} index={0}>
               <ProgramListItems />
               <div>
@@ -137,6 +141,6 @@ const ProgramListBody = () => {
       </Container>
     </ThemeProvider>
   );
-}
+};
 
 export default ProgramListBody;

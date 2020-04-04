@@ -4,14 +4,12 @@ import SecondaryNav from './Components/SecondaryNav';
 import ProgramListBody from './Components/ProgramListBody';
 import './App.css';
 
-function App() {
-  return (
-    <div>
-      <NavBar />
-      <SecondaryNav />
-      <ProgramListBody />
-    </div>
-  );
-}
+const App = () => (
+  <>
+    <NavBar />
+    <SecondaryNav />
+    <ProgramListBody />
+  </>
+);
 
 export default App;

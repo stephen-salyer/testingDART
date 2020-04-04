@@ -1,10 +1,14 @@
 import React from 'react';
-import { makeStyles, createMuiTheme, ThemeProvider  } from '@material-ui/core/styles';
+import {
+  makeStyles,
+  createMuiTheme,
+  ThemeProvider,
+} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import { FilterList, MoreVert } from '@material-ui/icons';
+import {FilterList, MoreVert} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Chip from '@material-ui/core/Chip';
@@ -45,23 +49,23 @@ const SecondaryNav = () => {
     console.info('You clicked the delete icon.');
   };
 
-  return(
+  return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="lg">
         <Grid
-        container
-        direction="row"
-        justify="space-evenly"
-        alignItems="center"
+          container
+          direction="row"
+          justify="space-evenly"
+          alignItems="center"
         >
           <Grid item xs={12} sm={6}>
-              <Typography variant="h3" color="primary" my={2}>
-                Program List
-              </Typography>
+            <Typography variant="h3" color="primary" my={2}>
+              Program List
+            </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Box display="flex" justifyContent="flex-end" my={2}>
-                <Button
+              <Button
                 variant="contained"
                 color="primary"
                 className={classes.button}
@@ -80,15 +84,25 @@ const SecondaryNav = () => {
           <Grid xs={12} sm={12}>
             <Box display="flex" justifyContent="flex-end" my={2}>
               <div className={classes.chipMargin}>
-              <Chip label="2020" onDelete={handleDelete} color="black" variant="outlined" />
+                <Chip
+                  label="2020"
+                  onDelete={handleDelete}
+                  color="black"
+                  variant="outlined"
+                />
               </div>
-              <Chip label="National Brands" onDelete={handleDelete} color="black" variant="outlined" />
+              <Chip
+                label="National Brands"
+                onDelete={handleDelete}
+                color="black"
+                variant="outlined"
+              />
             </Box>
           </Grid>
         </Grid>
       </Container>
     </ThemeProvider>
-  )
-}
+  );
+};
 
 export default SecondaryNav;
