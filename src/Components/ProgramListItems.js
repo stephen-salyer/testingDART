@@ -6,6 +6,8 @@ import Divider from '@material-ui/core/Divider';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import 'typeface-roboto';
 
 const ProgramListItems = () => (
   <List>
@@ -15,15 +17,16 @@ const ProgramListItems = () => (
           <ListItemText
             primary={2016 + n + ' Acceleron Loyalty'}
             secondary={
-              // There is an error in the browser about this, I don't think it wants you to have elements in here
-              <div>
-                <div>SDACCL • Version 1.1 • 09/01/2019 - 08/31/2020</div>
-                <div>
+              <React.Fragment>
+                <Typography variant="body1">
+                  SDACCL • Version 1.1 • 09/01/2019 - 08/31/2020
+                </Typography>
+                <Typography variant="body2">
                   TED: {(5e6 + n * 482759).toLocaleString()} USD • Type:
                   Activity Incentive • Payee: Dealer/Retail • Program
                   Communication Date: 01/01/2020
-                </div>
-              </div>
+                </Typography>
+              </React.Fragment>
             }
           />
           <ListItemSecondaryAction>
