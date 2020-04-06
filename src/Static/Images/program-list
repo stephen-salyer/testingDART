@@ -1,0 +1,50 @@
+
+    <!doctype html>
+    <html>
+        <head>
+            <script>window.APPLICATION_VERSION='2.6.271-0'</script>
+            <script>window.NODE_ENV='production'</script>
+            <title>Market Funding</title>
+            <link rel="stylesheet" type="text/css" href="//phoenix-tools.io/assets/cached/pd-platform-engineering/phoenix/navbar/latest/navbar.css">
+            <link rel="stylesheet" href="//phoenix-tools.io/assets/cached/pd-platform-engineering/velocity/styles/velocity.latest.bs3.css" />
+        </head>
+        <body>
+            <div id="nav"></div>
+            <div id="app"></div>
+            <script type="text/javascript" src="/market-funding/service-bindings"></script>
+        <script>
+        (function(){
+          var IsChrome = function(){
+            var isChromium = window.chrome,
+              winNav = window.navigator,
+              vendorName = winNav.vendor,
+              isOpera = winNav.userAgent.indexOf('OPR') > -1,
+              isIEedge = winNav.userAgent.indexOf('Edge') > -1,
+              isHeadlessChrome =winNav.userAgent.indexOf('HeadlessChrome') > -1,
+              isIOSChrome = winNav.userAgent.match('CriOS');
+
+            if (isIOSChrome || isHeadlessChrome) {
+              return true;
+            } else if (isChromium !== null && isChromium !== undefined && vendorName === 'Google Inc.' && !isOpera && !isIEedge) {
+              return true;
+            } else {
+              return false;
+            }
+          };
+
+          if(IsChrome()){
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.src = "/market-funding/scripts/bundle.js";
+            document.head.appendChild(s);
+
+          }else{
+            document.getElementById('app').innerHTML = "The D.A.R.T. Applications is not compatible with browsers other than Google Chrome.<br />"+
+            "•	Please use Google Chrome to access the application.<br />"+
+            "•	Copy the hyperlink: https://velocity.ag/market-funding and paste it in Chrome.<br />"+
+            "If you don’t have Google Chrome, you can <a href='https://www.google.com/chrome/browser/desktop/index.html'>download it here</a>.<br />";
+          }
+          })()
+        </script>
+        </body>
+    </html>

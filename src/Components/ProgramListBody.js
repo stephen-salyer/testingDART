@@ -4,6 +4,7 @@ import {
   makeStyles,
   createMuiTheme,
   ThemeProvider,
+  fade,
 } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -13,6 +14,10 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import ProgramListItems from './ProgramListItems';
 import Pagination from '@material-ui/lab/Pagination';
+import CardHeader from '@material-ui/core/CardHeader';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
+import Divider from '@material-ui/core/Divider';
 
 const theme = createMuiTheme({
   palette: {
@@ -53,6 +58,43 @@ const useStyles = makeStyles({
   cardPadding: {
     paddingBottom: '24px',
   },
+  search: {
+    display: 'flex',
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(1),
+      width: 'auto',
+    },
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputRoot: {
+    color: 'inherit',
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+    },
+  },
 });
 
 const TabPanel = (props) => {
@@ -84,6 +126,23 @@ const ProgramListBody = () => {
       <Container maxWidth="lg" className={classes.cardPadding}>
         <Card>
           <CardContent className={classes.content}>
+            <Box display="flex" justifyContent="space-between">
+              <CardHeader title="Programs"></CardHeader>
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  placeholder="Search…"
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                  inputProps={{'aria-label': 'search'}}
+                />
+              </div>
+            </Box>
+            <Divider />
             <Tabs
               value={value}
               onChange={handleChange}
