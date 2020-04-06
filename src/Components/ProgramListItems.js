@@ -8,6 +8,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import 'typeface-roboto';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles({
   root: {
@@ -17,12 +18,15 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
+    '&:hover': {
+      textDecoration: 'none',
+    },
   },
   listItemTertiary: {
     marginTop: '0',
     fontWeight: '400',
-    color: 'rgba(0, 0, 0, 0.55)',
-    fontSize: '0.85rem',
+    color: 'rgba(0, 0, 0, 0.54)',
+    fontSize: '0.875rem',
   },
   listItemTextNoMargin: {
     marginBottom: '0',
@@ -36,7 +40,12 @@ const ProgramListItems = () => {
     <List>
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
         <Fragment key={n}>
-          <ListItem className={classes.listItemCorrection} button>
+          <ListItem
+            component={Link}
+            to="/"
+            className={classes.listItemCorrection}
+            button
+          >
             <ListItemText
               className={classes.listItemTextNoMargin}
               primary={2016 + n + ' Acceleron Loyalty'}
