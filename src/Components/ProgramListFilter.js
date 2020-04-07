@@ -2,24 +2,45 @@ import React from 'react';
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import {FilterList} from '@material-ui/icons';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Typography from '@material-ui/core/Typography';
+import Chip from '@material-ui/core/Chip';
+import DoneIcon from '@material-ui/icons/Done';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  KeyboardDatePicker,
+  MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
+
+import 'date-fns';
+
 const useStyles = makeStyles({
+  root: {
+    width: '100%',
+  },
   list: {
-    width: 250,
+    width: 300,
   },
   fullList: {
     width: 'auto',
+  },
+  chipOrganize: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  chipPadding: {
+    marginRight: '8px',
+    marginBottom: '8px',
   },
 });
 
@@ -28,6 +49,22 @@ export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
     right: false,
   });
+
+  const handleDelete = () => {
+    console.info('You clicked the delete icon.');
+  };
+
+  const handleClick = () => {
+    console.info('You clicked the Chip.');
+  };
+
+  const [selectedDate, setSelectedDate] = React.useState(
+    new Date('2014-08-18T21:11:54')
+  );
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -47,33 +84,178 @@ export default function TemporaryDrawer() {
       })}
       role="presentation"
     >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <Box p={2}>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="demo-simple-select-outlined-label">
+            Search Members
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            label="Search Members"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>Bob Bobbert</MenuItem>
+            <MenuItem value={20}>Rob Robbert</MenuItem>
+            <MenuItem value={30}>Tob Tobbert</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <Box pb={2} pl={2} pr={2}>
+        <Typography variant="subtitle1">Years</Typography>
+        <Chip
+          onClick={handleClick}
+          className={classes.chipPadding}
+          label="2022"
+        />
+        <Chip
+          onClick={handleClick}
+          className={classes.chipPadding}
+          label="2021"
+        />
+        <Chip
+          onClick={handleClick}
+          className={classes.chipPadding}
+          label="2020"
+          onClick={handleClick}
+          onDelete={handleDelete}
+          deleteIcon={<DoneIcon />}
+        />
+        <Chip
+          onClick={handleClick}
+          className={classes.chipPadding}
+          label="2019"
+        />
+        <Chip
+          onClick={handleClick}
+          className={classes.chipPadding}
+          label="2018"
+        />
+        <Chip
+          onClick={handleClick}
+          className={classes.chipPadding}
+          label="2017"
+        />
+      </Box>
       <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Button
-        onClick={toggleDrawer(anchor, false)}
-        onKeyDown={toggleDrawer(anchor, false)}
-      >
-        Close Drawer
-      </Button>
+      <Box pb={2} pl={2} pr={2}>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="demo-simple-select-outlined-label">Region</InputLabel>
+          <Select
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            label="Search Members"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>North America</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <Box pb={2} pl={2} pr={2}>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="demo-simple-select-outlined-label">
+            Country
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            label="Search Members"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>US</MenuItem>
+            <MenuItem value={20}>Canada</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <Box pb={2} pl={2} pr={2}>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="demo-simple-select-outlined-label">
+            Business Category
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            label="Search Members"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>Channel</MenuItem>
+            <MenuItem value={20}>Climate</MenuItem>
+            <MenuItem value={30}>Crop Protection</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <Box pb={2} pl={2} pr={2}>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="demo-simple-select-outlined-label">
+            Product
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            label="Search Members"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>All</MenuItem>
+            <MenuItem value={20}>Acceleration</MenuItem>
+            <MenuItem value={30}>Acetanilide</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <Box pb={2} pl={2} pr={2}>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="demo-simple-select-outlined-label">Brand</InputLabel>
+          <Select
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            label="Search Members"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>All</MenuItem>
+            <MenuItem value={20}>Absolute</MenuItem>
+            <MenuItem value={30}>Absolute Maxx</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <Box pb={2} pl={2} pr={2}>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <KeyboardDatePicker
+            disableToolbar
+            variant="inline"
+            format="MM/dd/yyyy"
+            margin="normal"
+            id="date-picker-inline"
+            label="Date picker inline"
+            value={selectedDate}
+            onChange={handleDateChange}
+            KeyboardButtonProps={{
+              'aria-label': 'change date',
+            }}
+          />
+        </MuiPickersUtilsProvider>
+      </Box>
+      <Box p={2} display="flex" justifyContent="flex-end">
+        <Button pr={2}>clear</Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={toggleDrawer(anchor, false)}
+          onKeyDown={toggleDrawer(anchor, false)}
+        >
+          Apply Filters
+        </Button>
+      </Box>
     </div>
   );
 

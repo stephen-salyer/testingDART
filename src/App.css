@@ -2,11 +2,15 @@
   text-align: center;
 }
 
+.MuiFormControl-root {
+  width: 100%;
+}
+
 .MuiCardContent-root:last-child {
   padding-bottom: 8px!important;
 }
 
-.MuiBox-root {
+.MuiBox-root-519, .MuiBox-root-609, .MuiBox-root-615, .MuiBox-root-621, .MuiBox-root-627, .MuiBox-root-633 {
   padding: 0!important;
 }
 
