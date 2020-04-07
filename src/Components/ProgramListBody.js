@@ -12,7 +12,12 @@ import Container from '@material-ui/core/Container';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import ProgramListItems from './ProgramListItems';
+import ProgramListItemsAll from './ProgramListItemsAll';
+import ProgramListItemsApproved from './ProgramListItemsApproved';
+import ProgramListItemsPending from './ProgramListItemsPending';
+import ProgramListItemsDraft from './ProgramListItemsDraft';
+import ProgramListItemsCanceled from './ProgramListItemsCanceled';
+import ProgramListItemsBackToDraft from './ProgramListItemsBackToDraft';
 import Pagination from '@material-ui/lab/Pagination';
 import CardHeader from '@material-ui/core/CardHeader';
 import InputBase from '@material-ui/core/InputBase';
@@ -54,9 +59,11 @@ const useStyles = makeStyles({
     paddingLeft: '0',
     paddingRight: '0',
     paddingTop: '0',
+    paddingBottom: '8px',
+    minHeight: '960px',
   },
   cardPadding: {
-    paddingBottom: '24px',
+    paddingBottom: '8px',
   },
   search: {
     display: 'flex',
@@ -160,39 +167,39 @@ const ProgramListBody = () => {
               <Tab label="Back to Draft (12)" {...a11yProps(5)} />
             </Tabs>
             <TabPanel value={value} index={0}>
-              <ProgramListItems />
+              <ProgramListItemsAll />
               <div>
                 <Pagination count={10} color="secondary" />
               </div>
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <ProgramListItems />
+              <ProgramListItemsApproved />
               <div>
-                <Pagination count={10} color="secondary" />
+                <Pagination count={1} color="secondary" />
               </div>
             </TabPanel>
             <TabPanel value={value} index={2}>
-              <ProgramListItems />
+              <ProgramListItemsPending />
               <div>
                 <Pagination count={10} color="secondary" />
               </div>
             </TabPanel>
             <TabPanel value={value} index={3}>
-              <ProgramListItems />
+              <ProgramListItemsDraft />
               <div>
                 <Pagination count={10} color="secondary" />
               </div>
             </TabPanel>
             <TabPanel value={value} index={4}>
-              <ProgramListItems />
+              <ProgramListItemsCanceled />
               <div>
-                <Pagination count={10} color="secondary" />
+                <Pagination count={2} color="secondary" />
               </div>
             </TabPanel>
             <TabPanel value={value} index={5}>
-              <ProgramListItems />
+              <ProgramListItemsBackToDraft />
               <div>
-                <Pagination count={10} color="secondary" />
+                <Pagination count={2} color="secondary" />
               </div>
             </TabPanel>
           </CardContent>

@@ -8,11 +8,12 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import {FilterList, MoreVert} from '@material-ui/icons';
+import {MoreVert} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
+import ProgramListFilter from './ProgramListFilter';
 
 const theme = createMuiTheme({
   palette: {
@@ -73,9 +74,7 @@ const SecondaryNav = () => {
               >
                 Create New Program
               </Button>
-              <IconButton aria-label="listfilter" color="inherit">
-                <FilterList />
-              </IconButton>
+              <ProgramListFilter />
               <IconButton aria-label="morevert" color="inherit">
                 <MoreVert />
               </IconButton>

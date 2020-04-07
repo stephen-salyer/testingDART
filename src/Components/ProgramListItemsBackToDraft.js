@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ProgramListItems = () => {
+const ProgramListItemsBackToDraft = () => {
   const classes = useStyles();
 
   return (
@@ -48,15 +48,15 @@ const ProgramListItems = () => {
           >
             <ListItemText
               className={classes.listItemTextNoMargin}
-              primary={2016 + n + ' Acceleron Loyalty'}
-              secondary={'SDACCL • Version 1.1 • 09/01/2019 - 08/31/2020'}
+              primary={2020 + n + ' Coastal Seed and Trait Crop Switch Replant'}
+              secondary={'SDCLMSCN2 • Version 1.0 • 09/01/2019 - 08/31/2020'}
             />
             <ListItemText
               classes={{primary: classes.listItemTertiary}}
               primary={
                 'TED: ' +
                 (5e6 + n * 482759).toLocaleString() +
-                'USD • Type: Activity Incentive • Payee: Dealer/Retail • Program Communication Date: 01/01/2020'
+                'USD • Type: Activity Incentive • Payee: Dealer/Retail • Program Communication Date: 09/01/2020'
               }
             />
             <ListItemSecondaryAction>
@@ -72,4 +72,4 @@ const ProgramListItems = () => {
   );
 };
 
-export default ProgramListItems;
+export default ProgramListItemsBackToDraft;
