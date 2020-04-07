@@ -20,7 +20,7 @@ import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
-
+import CardHeader from '@material-ui/core/CardHeader';
 import 'date-fns';
 
 const useStyles = makeStyles({
@@ -84,7 +84,10 @@ export default function TemporaryDrawer() {
       })}
       role="presentation"
     >
-      <Box p={2}>
+      <Box>
+        <CardHeader title="Programs"></CardHeader>
+      </Box>
+      <Box pb={2} pl={2} pr={2} pt={0}>
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="demo-simple-select-outlined-label">
             Search Members
@@ -139,7 +142,6 @@ export default function TemporaryDrawer() {
           label="2017"
         />
       </Box>
-      <Divider />
       <Box pb={2} pl={2} pr={2}>
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="demo-simple-select-outlined-label">Region</InputLabel>
@@ -236,7 +238,7 @@ export default function TemporaryDrawer() {
             format="MM/dd/yyyy"
             margin="normal"
             id="date-picker-inline"
-            label="Date picker inline"
+            label="Communication Date"
             value={selectedDate}
             onChange={handleDateChange}
             KeyboardButtonProps={{
@@ -246,7 +248,9 @@ export default function TemporaryDrawer() {
         </MuiPickersUtilsProvider>
       </Box>
       <Box p={2} display="flex" justifyContent="flex-end">
-        <Button pr={2}>clear</Button>
+        <Box pr={1}>
+          <Button>clear</Button>
+        </Box>
         <Button
           variant="contained"
           color="primary"
