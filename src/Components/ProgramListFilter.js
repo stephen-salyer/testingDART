@@ -2,7 +2,6 @@ import React from 'react';
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import {FilterList} from '@material-ui/icons';
 import IconButton from '@material-ui/core/IconButton';
@@ -119,7 +118,6 @@ export default function TemporaryDrawer() {
           label="2021"
         />
         <Chip
-          onClick={handleClick}
           className={classes.chipPadding}
           label="2020"
           onClick={handleClick}

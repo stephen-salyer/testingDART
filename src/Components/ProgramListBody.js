@@ -102,6 +102,11 @@ const useStyles = makeStyles({
       width: '12ch',
     },
   },
+  tab: {
+    '& .MuiBox-root': {
+      padding: '0px',
+    },
+  },
 });
 
 const TabPanel = (props) => {
@@ -166,37 +171,37 @@ const ProgramListBody = () => {
               <Tab label="Canceled (12)" {...a11yProps(4)} />
               <Tab label="Back to Draft (12)" {...a11yProps(5)} />
             </Tabs>
-            <TabPanel value={value} index={0}>
+            <TabPanel value={value} index={0} classes={{root: classes.tab}}>
               <ProgramListItemsAll />
               <div>
                 <Pagination count={10} color="secondary" />
               </div>
             </TabPanel>
-            <TabPanel value={value} index={1}>
+            <TabPanel value={value} index={1} classes={{root: classes.tab}}>
               <ProgramListItemsApproved />
               <div>
                 <Pagination count={1} color="secondary" />
               </div>
             </TabPanel>
-            <TabPanel value={value} index={2}>
+            <TabPanel value={value} index={2} classes={{root: classes.tab}}>
               <ProgramListItemsPending />
               <div>
                 <Pagination count={10} color="secondary" />
               </div>
             </TabPanel>
-            <TabPanel value={value} index={3}>
+            <TabPanel value={value} index={3} classes={{root: classes.tab}}>
               <ProgramListItemsDraft />
               <div>
                 <Pagination count={10} color="secondary" />
               </div>
             </TabPanel>
-            <TabPanel value={value} index={4}>
+            <TabPanel value={value} index={4} classes={{root: classes.tab}}>
               <ProgramListItemsCanceled />
               <div>
                 <Pagination count={2} color="secondary" />
               </div>
             </TabPanel>
-            <TabPanel value={value} index={5}>
+            <TabPanel value={value} index={5} classes={{root: classes.tab}}>
               <ProgramListItemsBackToDraft />
               <div>
                 <Pagination count={2} color="secondary" />
