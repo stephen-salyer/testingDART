@@ -45,6 +45,9 @@ const useStyles = makeStyles({
   formControl: {
     width: '100%',
   },
+  colorChange: {
+    color: '#00000',
+  },
 });
 
 export default function TemporaryDrawer() {
@@ -281,7 +284,10 @@ export default function TemporaryDrawer() {
     <Box display="flex" alignItems="center">
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <IconButton onClick={toggleDrawer(anchor, true)} color="inherit">
+          <IconButton
+            onClick={toggleDrawer(anchor, true)}
+            className={classes.colorChange}
+          >
             <FilterList />
           </IconButton>
           <Drawer

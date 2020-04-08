@@ -14,6 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import ProgramListFilter from './ProgramListFilter';
+import {Link, withRouter} from 'react-router-dom';
 
 const theme = createMuiTheme({
   palette: {
@@ -40,6 +41,10 @@ const useStyles = makeStyles((theme) => ({
   },
   chipMargin: {
     marginRight: '8px',
+  },
+  linkNoDecoration: {
+    textDecoration: 'none',
+    color: 'inherit',
   },
 }));
 
@@ -75,15 +80,15 @@ const SecondaryNav = () => {
                 Create New Program
               </Button>
               <ProgramListFilter />
-              <a
+              <Link
                 href="../app.js"
                 rel="noopener noreferrer"
                 className={classes.linkNoDecoration}
               >
-                <IconButton aria-label="morevert" color="black">
+                <IconButton aria-label="morevert">
                   <MoreVert />
                 </IconButton>
-              </a>
+              </Link>
             </Box>
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -104,4 +109,4 @@ const SecondaryNav = () => {
   );
 };
 
-export default SecondaryNav;
+export default withRouter(SecondaryNav);

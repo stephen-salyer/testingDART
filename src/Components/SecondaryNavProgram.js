@@ -56,7 +56,7 @@ const SecondaryNavProgram = () => {
         >
           <Grid item xs={12} sm={6}>
             <Grid container>
-              <IconButton aria-label="morevert" color="inherit">
+              <IconButton aria-label="morevert" color="#000000">
                 <MoreVert />
               </IconButton>
             </Grid>

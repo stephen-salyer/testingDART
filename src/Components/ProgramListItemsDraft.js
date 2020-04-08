@@ -7,8 +7,8 @@ import Divider from '@material-ui/core/Divider';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
+import {Link, withRouter} from 'react-router-dom';
 import 'typeface-roboto';
-import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles({
   root: {
@@ -44,17 +44,12 @@ const ProgramListItemsDraft = () => {
     <List>
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
         <Fragment key={n}>
-          <a
+          <Link
             href="/Program.js"
             rel="noopener noreferrer"
             className={classes.linkNoDecoration}
           >
-            <ListItem
-              component={Link}
-              to="/"
-              className={classes.listItemCorrection}
-              button
-            >
+            <ListItem className={classes.listItemCorrection} button>
               <ListItemText
                 className={classes.listItemTextNoMargin}
                 primary={
@@ -76,7 +71,7 @@ const ProgramListItemsDraft = () => {
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
-          </a>
+          </Link>
           <Divider />
         </Fragment>
       ))}
@@ -84,4 +79,4 @@ const ProgramListItemsDraft = () => {
   );
 };
 
-export default ProgramListItemsDraft;
+export default withRouter(ProgramListItemsDraft);
