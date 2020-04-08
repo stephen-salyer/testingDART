@@ -11,7 +11,6 @@ import Icon from '@material-ui/core/Icon';
 import {MoreVert} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
-import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import ProgramListFilter from './ProgramListFilter';
 
@@ -43,12 +42,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SecondaryNav = () => {
+const SecondaryNavProgram = () => {
   const classes = useStyles();
-
-  const handleDelete = () => {
-    console.info('You clicked the delete icon.');
-  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -60,8 +55,13 @@ const SecondaryNav = () => {
           alignItems="center"
         >
           <Grid item xs={12} sm={6}>
+            <Grid container>
+              <IconButton aria-label="morevert" color="inherit">
+                <MoreVert />
+              </IconButton>
+            </Grid>
             <Typography variant="h3" color="primary" my={2}>
-              Program List
+              Program View CHANGE
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -75,27 +75,9 @@ const SecondaryNav = () => {
                 Create New Program
               </Button>
               <ProgramListFilter />
-              <a
-                href="../app.js"
-                rel="noopener noreferrer"
-                className={classes.linkNoDecoration}
-              >
-                <IconButton aria-label="morevert" color="black">
-                  <MoreVert />
-                </IconButton>
-              </a>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={12}>
-            <Box display="flex" justifyContent="flex-end" my={2}>
-              <div className={classes.chipMargin}>
-                <Chip label="2020" onDelete={handleDelete} variant="outlined" />
-              </div>
-              <Chip
-                label="National Brands"
-                onDelete={handleDelete}
-                variant="outlined"
-              />
+              <IconButton aria-label="morevert" color="black">
+                <MoreVert />
+              </IconButton>
             </Box>
           </Grid>
         </Grid>
@@ -104,4 +86,4 @@ const SecondaryNav = () => {
   );
 };
 
-export default SecondaryNav;
+export default SecondaryNavProgram;

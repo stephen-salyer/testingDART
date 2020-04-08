@@ -8,7 +8,6 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import 'typeface-roboto';
-import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles({
   root: {
@@ -31,6 +30,10 @@ const useStyles = makeStyles({
   listItemTextNoMargin: {
     marginBottom: '0',
   },
+  linkNoDecoration: {
+    textDecoration: 'none',
+    color: 'inherit',
+  },
 });
 
 const ProgramListItemsAll = () => {
@@ -40,31 +43,32 @@ const ProgramListItemsAll = () => {
     <List>
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
         <Fragment key={n}>
-          <ListItem
-            component={Link}
-            to="/"
-            className={classes.listItemCorrection}
-            button
+          <a
+            href="/Program.js"
+            rel="noopener noreferrer"
+            className={classes.linkNoDecoration}
           >
-            <ListItemText
-              className={classes.listItemTextNoMargin}
-              primary={2016 + n + ' Acceleron Loyalty'}
-              secondary={'SDACCL • Version 1.1 • 09/01/2019 - 08/31/2020'}
-            />
-            <ListItemText
-              classes={{primary: classes.listItemTertiary}}
-              primary={
-                'TED: ' +
-                (5e6 + n * 482759).toLocaleString() +
-                'USD • Type: Activity Incentive • Payee: Dealer/Retail • Program Communication Date: 01/01/2020'
-              }
-            />
-            <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="morevert">
-                <MoreVertIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
+            <ListItem button className={classes.listItemCorrection}>
+              <ListItemText
+                className={classes.listItemTextNoMargin}
+                primary={'Acceleron Loyalty'}
+                secondary={'SDACCL • Version 1.1 • 09/01/2019 - 08/31/2020'}
+              />
+              <ListItemText
+                classes={{primary: classes.listItemTertiary}}
+                primary={
+                  'TED: ' +
+                  (5e6 + n * 482759).toLocaleString() +
+                  'USD • Type: Activity Incentive • Payee: Dealer/Retail • Program Communication Date: 01/01/2020'
+                }
+              />
+              <ListItemSecondaryAction>
+                <IconButton edge="end" aria-label="morevert">
+                  <MoreVertIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          </a>
           <Divider />
         </Fragment>
       ))}

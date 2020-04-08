@@ -12,7 +12,7 @@ import Container from '@material-ui/core/Container';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import SecondaryNav from './SecondaryNav';
+import SecondaryNavProgram from './SecondaryNavProgram';
 import ProgramListItemsAll from './ProgramListItemsAll';
 import ProgramListItemsApproved from './ProgramListItemsApproved';
 import ProgramListItemsPending from './ProgramListItemsPending';
@@ -20,10 +20,6 @@ import ProgramListItemsDraft from './ProgramListItemsDraft';
 import ProgramListItemsCanceled from './ProgramListItemsCanceled';
 import ProgramListItemsBackToDraft from './ProgramListItemsBackToDraft';
 import Pagination from '@material-ui/lab/Pagination';
-import CardHeader from '@material-ui/core/CardHeader';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
-import Divider from '@material-ui/core/Divider';
 
 const theme = createMuiTheme({
   palette: {
@@ -36,11 +32,6 @@ const theme = createMuiTheme({
   },
 });
 
-const a11yProps = (index) => ({
-  id: `simple-tab-${index}`,
-  'aria-controls': `simple-tabpanel-${index}`,
-});
-
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -49,9 +40,6 @@ const useStyles = makeStyles({
     display: 'inline-block',
     margin: '0 2px',
     transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
   },
   pos: {
     marginBottom: 12,
@@ -81,15 +69,6 @@ const useStyles = makeStyles({
       width: 'auto',
     },
   },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   inputRoot: {
     color: 'inherit',
   },
@@ -110,6 +89,11 @@ const useStyles = makeStyles({
   },
 });
 
+const a11yProps = (index) => ({
+  id: `simple-tab-${index}`,
+  'aria-controls': `simple-tabpanel-${index}`,
+});
+
 const TabPanel = (props) => {
   const {children, value, index, ...other} = props;
 
@@ -127,7 +111,7 @@ const TabPanel = (props) => {
   );
 };
 
-const ProgramListBody = () => {
+const Program = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -136,27 +120,10 @@ const ProgramListBody = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <SecondaryNav />
+      <SecondaryNavProgram />
       <Container maxWidth="lg" className={classes.cardPadding}>
         <Card>
           <CardContent className={classes.content}>
-            <Box display="flex" justifyContent="space-between">
-              <CardHeader title="Programs"></CardHeader>
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
-                </div>
-                <InputBase
-                  placeholder="Search…"
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                  inputProps={{'aria-label': 'search'}}
-                />
-              </div>
-            </Box>
-            <Divider />
             <Tabs
               value={value}
               onChange={handleChange}
@@ -216,4 +183,4 @@ const ProgramListBody = () => {
   );
 };
 
-export default ProgramListBody;
+export default Program;

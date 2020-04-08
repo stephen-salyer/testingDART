@@ -10,10 +10,6 @@
   padding-bottom: 8px!important;
 }
 
-.MuiBox-root-519, .MuiBox-root-609, .MuiBox-root-615, .MuiBox-root-621, .MuiBox-root-627, .MuiBox-root-633 {
-  padding: 0!important;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

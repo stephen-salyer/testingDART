@@ -31,42 +31,52 @@ const useStyles = makeStyles({
   listItemTextNoMargin: {
     marginBottom: '0',
   },
+  linkNoDecoration: {
+    textDecoration: 'none',
+    color: 'inherit',
+  },
 });
 
-const ProgramListItemsPending = () => {
+const ProgramListItemsDraft = () => {
   const classes = useStyles();
 
   return (
     <List>
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
         <Fragment key={n}>
-          <ListItem
-            component={Link}
-            to="/"
-            className={classes.listItemCorrection}
-            button
+          <a
+            href="/Program.js"
+            rel="noopener noreferrer"
+            className={classes.linkNoDecoration}
           >
-            <ListItemText
-              className={classes.listItemTextNoMargin}
-              primary={
-                2020 + n + ' Inventory Management DEKALB Specialty Crops'
-              }
-              secondary={'INDKS • Version 1.0 • 09/01/2019 - 08/31/2020'}
-            />
-            <ListItemText
-              classes={{primary: classes.listItemTertiary}}
-              primary={
-                'TED: ' +
-                (5e6 + n * 482759).toLocaleString() +
-                'USD • Type: Activity Incentive • Payee: Dealer/Retail • Program Communication Date: 09/01/2020'
-              }
-            />
-            <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="morevert">
-                <MoreVertIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
+            <ListItem
+              component={Link}
+              to="/"
+              className={classes.listItemCorrection}
+              button
+            >
+              <ListItemText
+                className={classes.listItemTextNoMargin}
+                primary={
+                  'Bayer Downstream SeedGrowth and In-Furrow Replant Program'
+                }
+                secondary={'CHGIFR • Version 1.0 • 09/01/2019 - 08/31/2020'}
+              />
+              <ListItemText
+                classes={{primary: classes.listItemTertiary}}
+                primary={
+                  'TED: ' +
+                  (5e6 + n * 482759).toLocaleString() +
+                  'USD • Type: Activity Incentive • Payee: Farmer/Grower • Program Communication Date: 09/01/2020'
+                }
+              />
+              <ListItemSecondaryAction>
+                <IconButton edge="end" aria-label="morevert">
+                  <MoreVertIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          </a>
           <Divider />
         </Fragment>
       ))}
@@ -74,4 +84,4 @@ const ProgramListItemsPending = () => {
   );
 };
 
-export default ProgramListItemsPending;
+export default ProgramListItemsDraft;

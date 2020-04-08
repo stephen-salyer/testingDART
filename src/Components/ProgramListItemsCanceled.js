@@ -31,6 +31,10 @@ const useStyles = makeStyles({
   listItemTextNoMargin: {
     marginBottom: '0',
   },
+  linkNoDecoration: {
+    textDecoration: 'none',
+    color: 'inherit',
+  },
 });
 
 const ProgramListItemsCanceled = () => {
@@ -40,31 +44,37 @@ const ProgramListItemsCanceled = () => {
     <List>
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
         <Fragment key={n}>
-          <ListItem
-            component={Link}
-            to="/"
-            className={classes.listItemCorrection}
-            button
+          <a
+            href="/Program.js"
+            rel="noopener noreferrer"
+            className={classes.linkNoDecoration}
           >
-            <ListItemText
-              className={classes.listItemTextNoMargin}
-              primary={2020 + n + ' Bayer Plus Portfolio Rewards v2'}
-              secondary={'CHRRPL • Version 1.0 • 09/01/2019 - 08/31/2020'}
-            />
-            <ListItemText
-              classes={{primary: classes.listItemTertiary}}
-              primary={
-                'TED: ' +
-                (5e6 + n * 482759).toLocaleString() +
-                'USD • Type: Activity Incentive • Payee: Farmer/Grower • Program Communication Date: 06/01/2020'
-              }
-            />
-            <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="morevert">
-                <MoreVertIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
+            <ListItem
+              component={Link}
+              to="/"
+              className={classes.listItemCorrection}
+              button
+            >
+              <ListItemText
+                className={classes.listItemTextNoMargin}
+                primary={'Bayer Plus Portfolio Rewards v2'}
+                secondary={'CHRRPL • Version 1.0 • 09/01/2019 - 08/31/2020'}
+              />
+              <ListItemText
+                classes={{primary: classes.listItemTertiary}}
+                primary={
+                  'TED: ' +
+                  (5e6 + n * 482759).toLocaleString() +
+                  'USD • Type: Activity Incentive • Payee: Farmer/Grower • Program Communication Date: 06/01/2020'
+                }
+              />
+              <ListItemSecondaryAction>
+                <IconButton edge="end" aria-label="morevert">
+                  <MoreVertIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          </a>
           <Divider />
         </Fragment>
       ))}

@@ -14,6 +14,7 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 import DoneIcon from '@material-ui/icons/Done';
+import CloseIcon from '@material-ui/icons/Close';
 import DateFnsUtils from '@date-io/date-fns';
 import {
   KeyboardDatePicker,
@@ -40,6 +41,9 @@ const useStyles = makeStyles({
   chipPadding: {
     marginRight: '8px',
     marginBottom: '8px',
+  },
+  formControl: {
+    width: '100%',
   },
 });
 
@@ -83,14 +87,25 @@ export default function TemporaryDrawer() {
       })}
       role="presentation"
     >
-      <Box>
-        <CardHeader title="Programs"></CardHeader>
+      <Box
+        display="flex"
+        flecDirection="row"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <CardHeader title="Filter Programs"></CardHeader>
+        <Box p={1}>
+          <IconButton onClick={toggleDrawer(anchor, false)} color="inherit">
+            <CloseIcon />
+          </IconButton>
+        </Box>
       </Box>
       <Box pb={2} pl={2} pr={2} pt={0}>
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="demo-simple-select-outlined-label">
             Search Members
           </InputLabel>
+
           <Select
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
@@ -232,6 +247,7 @@ export default function TemporaryDrawer() {
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDatePicker
             disableToolbar
+            fullWidth={true}
             variant="inline"
             format="MM/dd/yyyy"
             margin="normal"
