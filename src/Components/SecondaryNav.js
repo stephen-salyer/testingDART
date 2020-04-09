@@ -81,7 +81,7 @@ const SecondaryNav = () => {
               </Button>
               <ProgramListFilter />
               <Link
-                href="../app.js"
+                to="../app.js"
                 rel="noopener noreferrer"
                 className={classes.linkNoDecoration}
               >

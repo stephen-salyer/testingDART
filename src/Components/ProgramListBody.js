@@ -1,11 +1,6 @@
 import Card from '@material-ui/core/Card';
 import React from 'react';
-import {
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider,
-  fade,
-} from '@material-ui/core/styles';
+import {makeStyles, fade} from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -25,23 +20,12 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import Divider from '@material-ui/core/Divider';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#142357',
-    },
-    secondary: {
-      main: '#f44336',
-    },
-  },
-});
-
 const a11yProps = (index) => ({
   id: `simple-tab-${index}`,
   'aria-controls': `simple-tabpanel-${index}`,
 });
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 275,
   },
@@ -103,12 +87,12 @@ const useStyles = makeStyles({
       width: '12ch',
     },
   },
-  tab: {
+  Tab: {
     '& .MuiBox-root': {
       padding: '0px',
     },
   },
-});
+}));
 
 const TabPanel = (props) => {
   const {children, value, index, ...other} = props;
@@ -122,7 +106,7 @@ const TabPanel = (props) => {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box p={3}>{children}</Box>}
+      {value === index && <Box>{children}</Box>}
     </Typography>
   );
 };
@@ -135,84 +119,82 @@ const ProgramListBody = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <Container maxWidth="lg" className={classes.cardPadding}>
       <SecondaryNav />
-      <Container maxWidth="lg" className={classes.cardPadding}>
-        <Card>
-          <CardContent className={classes.content}>
-            <Box display="flex" justifyContent="space-between">
-              <CardHeader title="Programs"></CardHeader>
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
-                </div>
-                <InputBase
-                  placeholder="Search…"
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                  inputProps={{'aria-label': 'search'}}
-                />
+      <Card>
+        <CardContent className={classes.content}>
+          <Box display="flex" justifyContent="space-between">
+            <CardHeader title="Programs"></CardHeader>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
               </div>
-            </Box>
-            <Divider />
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              indicatorColor="primary"
-              textColor="primary"
-              variant="fullWidth"
-              position="sticky"
-              aria-label="full width tabs example"
-            >
-              <Tab label="All (1197)" {...a11yProps(0)} />
-              <Tab label="Approved (4)" {...a11yProps(1)} />
-              <Tab label="Pending (98)" {...a11yProps(2)} />
-              <Tab label="Draft (887)" {...a11yProps(3)} />
-              <Tab label="Canceled (12)" {...a11yProps(4)} />
-              <Tab label="Back to Draft (12)" {...a11yProps(5)} />
-            </Tabs>
-            <TabPanel value={value} index={0} classes={{root: classes.tab}}>
-              <ProgramListItemsAll />
-              <div>
-                <Pagination count={10} color="secondary" />
-              </div>
-            </TabPanel>
-            <TabPanel value={value} index={1} classes={{root: classes.tab}}>
-              <ProgramListItemsApproved />
-              <div>
-                <Pagination count={1} color="secondary" />
-              </div>
-            </TabPanel>
-            <TabPanel value={value} index={2} classes={{root: classes.tab}}>
-              <ProgramListItemsPending />
-              <div>
-                <Pagination count={10} color="secondary" />
-              </div>
-            </TabPanel>
-            <TabPanel value={value} index={3} classes={{root: classes.tab}}>
-              <ProgramListItemsDraft />
-              <div>
-                <Pagination count={10} color="secondary" />
-              </div>
-            </TabPanel>
-            <TabPanel value={value} index={4} classes={{root: classes.tab}}>
-              <ProgramListItemsCanceled />
-              <div>
-                <Pagination count={2} color="secondary" />
-              </div>
-            </TabPanel>
-            <TabPanel value={value} index={5} classes={{root: classes.tab}}>
-              <ProgramListItemsBackToDraft />
-              <div>
-                <Pagination count={2} color="secondary" />
-              </div>
-            </TabPanel>
-          </CardContent>
-        </Card>
-      </Container>
-    </ThemeProvider>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{'aria-label': 'search'}}
+              />
+            </div>
+          </Box>
+          <Divider />
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            position="sticky"
+            aria-label="full width tabs example"
+          >
+            <Tab label="All (1197)" {...a11yProps(0)} />
+            <Tab label="Approved (4)" {...a11yProps(1)} />
+            <Tab label="Pending (98)" {...a11yProps(2)} />
+            <Tab label="Draft (887)" {...a11yProps(3)} />
+            <Tab label="Canceled (12)" {...a11yProps(4)} />
+            <Tab label="Back to Draft (12)" {...a11yProps(5)} />
+          </Tabs>
+          <TabPanel value={value} index={0} classes={{root: classes.tab}}>
+            <ProgramListItemsAll />
+            <div>
+              <Pagination count={10} color="secondary" />
+            </div>
+          </TabPanel>
+          <TabPanel value={value} index={1} classes={{root: classes.tab}}>
+            <ProgramListItemsApproved />
+            <div>
+              <Pagination count={1} color="secondary" />
+            </div>
+          </TabPanel>
+          <TabPanel value={value} index={2} classes={{root: classes.tab}}>
+            <ProgramListItemsPending />
+            <div>
+              <Pagination count={10} color="secondary" />
+            </div>
+          </TabPanel>
+          <TabPanel value={value} index={3} classes={{root: classes.tab}}>
+            <ProgramListItemsDraft />
+            <div>
+              <Pagination count={10} color="secondary" />
+            </div>
+          </TabPanel>
+          <TabPanel value={value} index={4} classes={{root: classes.tab}}>
+            <ProgramListItemsCanceled />
+            <div>
+              <Pagination count={2} color="secondary" />
+            </div>
+          </TabPanel>
+          <TabPanel value={value} index={5} classes={{root: classes.tab}}>
+            <ProgramListItemsBackToDraft />
+            <div>
+              <Pagination count={2} color="secondary" />
+            </div>
+          </TabPanel>
+        </CardContent>
+      </Card>
+    </Container>
   );
 };
 

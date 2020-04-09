@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
-import Routes from './routes';
+import React from 'react';
 import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
-import './App.css';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Program from './Components/Program';
+import ProgramListBody from './Components/ProgramListBody';
+import NavBar from './Components/NavBar';
 
 const theme = createMuiTheme({
   palette: {
@@ -14,16 +16,25 @@ const theme = createMuiTheme({
   },
 });
 
-class App extends Component {
-  render() {
-    return (
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <Router>
       <div>
-        <ThemeProvider theme={theme}>
-          <Routes />
-        </ThemeProvider>
+        <NavBar />
+        <Switch>
+          <Route path="/program-list">
+            <ProgramListBody />
+          </Route>
+          <Route path="/program/:id">
+            <Program />
+          </Route>
+          <Route path="/">
+            <h1>WHATEVERIWANT</h1>
+          </Route>
+        </Switch>
       </div>
-    );
-  }
-}
+    </Router>
+  </ThemeProvider>
+);
 
 export default App;

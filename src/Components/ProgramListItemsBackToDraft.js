@@ -45,7 +45,7 @@ const ProgramListItemsBackToDraft = () => {
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
         <Fragment key={n}>
           <Link
-            href="/Program.js"
+            to={'/program/' + n}
             rel="noopener noreferrer"
             className={classes.linkNoDecoration}
           >

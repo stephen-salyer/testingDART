@@ -31,7 +31,7 @@ const useStyles = makeStyles({
   listItemTextNoMargin: {
     marginBottom: '0',
   },
-  link: {
+  linkNoDecoration: {
     textDecoration: 'none',
     color: 'inherit',
   },
@@ -44,8 +44,12 @@ const ProgramListItemsAll = () => {
     <List>
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
         <Fragment key={n}>
-          <Link href="/Program.js" rel="noopener noreferrer">
-            <ListItem button className={classes.listItemCorrection}>
+          <Link
+            to={'/program/' + n}
+            rel="noopener noreferrer"
+            className={classes.linkNoDecoration}
+          >
+            <ListItem className={classes.listItemCorrection} button>
               <ListItemText
                 className={classes.listItemTextNoMargin}
                 primary={'Acceleron Loyalty'}

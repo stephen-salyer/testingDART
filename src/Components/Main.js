@@ -5,10 +5,8 @@ import '../App.css';
 
 const Main = () => (
   <>
-    return(
     <NavBar />
     <ProgramListBody />
-    );
   </>
 );
 

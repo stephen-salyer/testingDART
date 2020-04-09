@@ -92,7 +92,7 @@ export default function TemporaryDrawer() {
     >
       <Box
         display="flex"
-        flecDirection="row"
+        flexDirection="row"
         alignItems="center"
         justifyContent="space-between"
       >
@@ -113,6 +113,7 @@ export default function TemporaryDrawer() {
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
             label="Search Members"
+            value=""
           >
             <MenuItem value="">
               <em>None</em>
@@ -166,7 +167,7 @@ export default function TemporaryDrawer() {
             id="demo-simple-select-outlined"
             label="Search Members"
           >
-            <MenuItem value="">
+            <MenuItem>
               <em>None</em>
             </MenuItem>
             <MenuItem value={10}>North America</MenuItem>
@@ -183,7 +184,7 @@ export default function TemporaryDrawer() {
             id="demo-simple-select-outlined"
             label="Search Members"
           >
-            <MenuItem value="">
+            <MenuItem>
               <em>None</em>
             </MenuItem>
             <MenuItem value={10}>US</MenuItem>
@@ -201,7 +202,7 @@ export default function TemporaryDrawer() {
             id="demo-simple-select-outlined"
             label="Search Members"
           >
-            <MenuItem value="">
+            <MenuItem>
               <em>None</em>
             </MenuItem>
             <MenuItem value={10}>Channel</MenuItem>
@@ -220,7 +221,7 @@ export default function TemporaryDrawer() {
             id="demo-simple-select-outlined"
             label="Search Members"
           >
-            <MenuItem value="">
+            <MenuItem>
               <em>None</em>
             </MenuItem>
             <MenuItem value={10}>All</MenuItem>
@@ -237,7 +238,7 @@ export default function TemporaryDrawer() {
             id="demo-simple-select-outlined"
             label="Search Members"
           >
-            <MenuItem value="">
+            <MenuItem>
               <em>None</em>
             </MenuItem>
             <MenuItem value={10}>All</MenuItem>
@@ -282,23 +283,19 @@ export default function TemporaryDrawer() {
 
   return (
     <Box display="flex" alignItems="center">
-      {['right'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <IconButton
-            onClick={toggleDrawer(anchor, true)}
-            className={classes.colorChange}
-          >
-            <FilterList />
-          </IconButton>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
+      <IconButton
+        onClick={toggleDrawer('right', true)}
+        className={classes.colorChange}
+      >
+        <FilterList />
+      </IconButton>
+      <Drawer
+        anchor={'right'}
+        open={state.right}
+        onClose={toggleDrawer('right', false)}
+      >
+        {list('right')}
+      </Drawer>
     </Box>
   );
 }

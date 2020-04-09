@@ -8,7 +8,7 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import {MoreVert} from '@material-ui/icons';
+import {ArrowBack, MoreVert} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -56,12 +56,12 @@ const SecondaryNavProgram = () => {
         >
           <Grid item xs={12} sm={6}>
             <Grid container>
-              <IconButton aria-label="morevert" color="#000000">
-                <MoreVert />
+              <IconButton aria-label="arrow-back" color="default">
+                <ArrowBack />
               </IconButton>
             </Grid>
             <Typography variant="h3" color="primary" my={2}>
-              Program View CHANGE
+              Program View
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -75,7 +75,7 @@ const SecondaryNavProgram = () => {
                 Create New Program
               </Button>
               <ProgramListFilter />
-              <IconButton aria-label="morevert" color="black">
+              <IconButton aria-label="morevert" color="default">
                 <MoreVert />
               </IconButton>
             </Box>

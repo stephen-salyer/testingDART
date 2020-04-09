@@ -2,10 +2,6 @@
   width: 100%;
 }
 
-.MuiCardContent-root:last-child {
-  padding-bottom: 8px!important;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
