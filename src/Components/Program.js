@@ -12,13 +12,15 @@ import Container from '@material-ui/core/Container';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import SecondaryNavProgram from './SecondaryNavProgram';
-import ProgramListItemsAll from './ProgramListItemsAll';
+import Overview from './Overview';
 import ProgramListItemsApproved from './ProgramListItemsApproved';
 import ProgramListItemsPending from './ProgramListItemsPending';
 import ProgramListItemsDraft from './ProgramListItemsDraft';
 import ProgramListItemsCanceled from './ProgramListItemsCanceled';
 import ProgramListItemsBackToDraft from './ProgramListItemsBackToDraft';
 import Pagination from '@material-ui/lab/Pagination';
+import {Warning} from '@material-ui/icons';
+import {Box} from '@material-ui/core';
 
 const theme = createMuiTheme({
   palette: {
@@ -81,12 +83,21 @@ const useStyles = makeStyles({
       width: '12ch',
     },
   },
+  overrides: {
+    MuiTab: {
+      wrapper: {
+        flexDirection: 'row',
+      },
+    },
+  },
 });
 
-const a11yProps = (index) => ({
-  id: `simple-tab-${index}`,
-  'aria-controls': `simple-tabpanel-${index}`,
-});
+function a11yProps(index) {
+  return {
+    id: `scrollable-auto-tab-${index}`,
+    'aria-controls': `scrollable-auto-tabpanel-${index}`,
+  };
+}
 
 const TabPanel = (props) => {
   const {children, value, index, ...other} = props;
@@ -100,7 +111,7 @@ const TabPanel = (props) => {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <div>{children}</div>}
+      {value === index && <Box p={3}>{children}</Box>}
     </Typography>
   );
 };
@@ -123,19 +134,29 @@ const Program = () => {
               onChange={handleChange}
               indicatorColor="primary"
               textColor="primary"
-              variant="fullWidth"
-              position="sticky"
+              variant="scrollable"
+              scrollButtons="auto"
               aria-label="full width tabs example"
             >
-              <Tab label="All (1197)" {...a11yProps(0)} />
-              <Tab label="Approved (4)" {...a11yProps(1)} />
-              <Tab label="Pending (98)" {...a11yProps(2)} />
-              <Tab label="Draft (887)" {...a11yProps(3)} />
-              <Tab label="Canceled (12)" {...a11yProps(4)} />
-              <Tab label="Back to Draft (12)" {...a11yProps(5)} />
+              <Tab
+                label={
+                  <div>
+                    <Warning style={{verticalAlign: 'middle'}} /> Overview
+                  </div>
+                }
+                {...a11yProps(0)}
+              />
+              <Tab label="Scopes" {...a11yProps(1)} />
+              <Tab label="Marketing" {...a11yProps(2)} />
+              <Tab label="Operations" {...a11yProps(3)} />
+              <Tab label="Owners" {...a11yProps(4)} />
+              <Tab label="Finance" {...a11yProps(5)} />
+              <Tab label="Approvers" {...a11yProps(6)} />
+              <Tab label="Components" {...a11yProps(7)} />
+              <Tab label="Attached Files" {...a11yProps(8)} />
             </Tabs>
             <TabPanel value={value} index={0}>
-              <ProgramListItemsAll />
+              <Overview />
               <div>
                 <Pagination count={10} color="secondary" />
               </div>
@@ -165,6 +186,24 @@ const Program = () => {
               </div>
             </TabPanel>
             <TabPanel value={value} index={5}>
+              <ProgramListItemsBackToDraft />
+              <div>
+                <Pagination count={2} color="secondary" />
+              </div>
+            </TabPanel>
+            <TabPanel value={value} index={6}>
+              <ProgramListItemsBackToDraft />
+              <div>
+                <Pagination count={2} color="secondary" />
+              </div>
+            </TabPanel>
+            <TabPanel value={value} index={7}>
+              <ProgramListItemsBackToDraft />
+              <div>
+                <Pagination count={2} color="secondary" />
+              </div>
+            </TabPanel>
+            <TabPanel value={value} index={8}>
               <ProgramListItemsBackToDraft />
               <div>
                 <Pagination count={2} color="secondary" />

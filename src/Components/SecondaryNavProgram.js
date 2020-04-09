@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider,
-} from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -12,18 +8,7 @@ import {ArrowBack, MoreVert} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import ProgramListFilter from './ProgramListFilter';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#142357',
-    },
-    secondary: {
-      main: '#f44336',
-    },
-  },
-});
+import {FormControl, InputLabel, Select, MenuItem} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,52 +22,85 @@ const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
   },
-  chipMargin: {
-    marginRight: '8px',
+  containerPadding: {
+    padding: '16px 24px 24px 24px',
+  },
+  typographyPadding: {
+    padding: '8px 0 0 0',
+  },
+  formControl: {
+    minWidth: 120,
   },
 }));
 
 const SecondaryNavProgram = () => {
   const classes = useStyles();
+  const [age, setAge] = React.useState(10);
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container maxWidth="lg">
-        <Grid
-          container
-          direction="row"
-          justify="space-evenly"
-          alignItems="center"
-        >
-          <Grid item xs={12} sm={6}>
-            <Grid container>
-              <IconButton aria-label="arrow-back" color="default">
+    <Container maxWidth="lg" className={classes.containerPadding}>
+      <Grid container direction="row" justify="space-evenly">
+        <Grid item xs={12} sm={6}>
+          <Grid container>
+            <Box display="flex" flexDirection="row" alignItems="center">
+              <IconButton
+                aria-label="arrow-back"
+                color="default"
+                href="/program-list"
+              >
                 <ArrowBack />
               </IconButton>
-            </Grid>
-            <Typography variant="h3" color="primary" my={2}>
-              Program View
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Box display="flex" justifyContent="flex-end" my={2}>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                endIcon={<Icon>add</Icon>}
-              >
-                Create New Program
-              </Button>
-              <ProgramListFilter />
-              <IconButton aria-label="morevert" color="default">
-                <MoreVert />
-              </IconButton>
+              <Typography>Programs</Typography>
             </Box>
           </Grid>
+          <Typography variant="h3" color="primary">
+            Program View
+          </Typography>
+          <Typography className={classes.typographyPadding}>
+            An_Extremely Long Program Name 123123123123123 (Draft)
+          </Typography>
         </Grid>
-      </Container>
-    </ThemeProvider>
+        <Grid item xs={12} sm={6}>
+          <Box display="flex" justifyContent="flex-end">
+            <FormControl
+              variant="outlined"
+              className={classes.formControl}
+              margin="dense"
+            >
+              <InputLabel htmlFor="outlined-age-native-simple">
+                Version
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-autowidth-label"
+                id="demo-simple-select-autowidth"
+                defaultValue={10}
+                onChange={handleChange}
+                value={age}
+              >
+                <MenuItem value={10}>1.1</MenuItem>
+                <MenuItem value={20}>1.2</MenuItem>
+                <MenuItem value={30}>1.3</MenuItem>
+              </Select>
+            </FormControl>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              endIcon={<Icon>add</Icon>}
+            >
+              Route For Approval
+            </Button>
+            <IconButton aria-label="morevert" color="default">
+              <MoreVert />
+            </IconButton>
+          </Box>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

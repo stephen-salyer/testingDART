@@ -55,6 +55,10 @@ export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
     right: false,
   });
+  const [age, setAge] = React.useState('');
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
 
   const handleDelete = () => {
     console.info('You clicked the delete icon.');
@@ -113,7 +117,8 @@ export default function TemporaryDrawer() {
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
             label="Search Members"
-            value=""
+            value={age}
+            onChange={handleChange}
           >
             <MenuItem value="">
               <em>None</em>
@@ -166,6 +171,8 @@ export default function TemporaryDrawer() {
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
             label="Search Members"
+            value={age}
+            onChange={handleChange}
           >
             <MenuItem>
               <em>None</em>
@@ -183,8 +190,10 @@ export default function TemporaryDrawer() {
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
             label="Search Members"
+            value={age}
+            onChange={handleChange}
           >
-            <MenuItem>
+            <MenuItem value="">
               <em>None</em>
             </MenuItem>
             <MenuItem value={10}>US</MenuItem>
@@ -201,8 +210,10 @@ export default function TemporaryDrawer() {
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
             label="Search Members"
+            value={age}
+            onChange={handleChange}
           >
-            <MenuItem>
+            <MenuItem value="">
               <em>None</em>
             </MenuItem>
             <MenuItem value={10}>Channel</MenuItem>
@@ -220,8 +231,10 @@ export default function TemporaryDrawer() {
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
             label="Search Members"
+            value={age}
+            onChange={handleChange}
           >
-            <MenuItem>
+            <MenuItem value="">
               <em>None</em>
             </MenuItem>
             <MenuItem value={10}>All</MenuItem>
@@ -237,8 +250,10 @@ export default function TemporaryDrawer() {
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
             label="Search Members"
+            value={age}
+            onChange={handleChange}
           >
-            <MenuItem>
+            <MenuItem value="">
               <em>None</em>
             </MenuItem>
             <MenuItem value={10}>All</MenuItem>

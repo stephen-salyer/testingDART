@@ -46,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     color: 'inherit',
   },
+  containerPadding: {
+    padding: '16px 0 0 0',
+  },
 }));
 
 const SecondaryNav = () => {
@@ -57,20 +60,19 @@ const SecondaryNav = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="lg">
-        <Grid
-          container
-          direction="row"
-          justify="space-evenly"
-          alignItems="center"
-        >
+      <Container
+        maxWidth="lg"
+        disableGutters={true}
+        className={classes.containerPadding}
+      >
+        <Grid container direction="row" justify="space-evenly">
           <Grid item xs={12} sm={6}>
-            <Typography variant="h3" color="primary" my={2}>
+            <Typography variant="h3" color="primary">
               Program List
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Box display="flex" justifyContent="flex-end" my={2}>
+            <Box display="flex" justifyContent="flex-end">
               <Button
                 variant="contained"
                 color="primary"
