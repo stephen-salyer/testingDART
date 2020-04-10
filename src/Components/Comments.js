@@ -9,6 +9,7 @@ import SendIcon from '@material-ui/icons/Send';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import CardHeader from '@material-ui/core/CardHeader';
+import SubdirectoryArrowRightIcon from '@material-ui/icons/SubdirectoryArrowRight';
 import {TextField, InputAdornment} from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -94,13 +95,14 @@ export default function Comments() {
         />
       </Box>
       <Box pl={2} pr={2} display="flex" justifyContent="space-between">
-        <Typography variant="subtitle2">Evan Kommenter</Typography>
-        <Typography variant="caption">01/01/20 @1:11PM</Typography>
+        <Box display="flex" flexDirection="column">
+          <Typography variant="subtitle2">Evan Kommenter</Typography>
+        </Box>
+        <Box mt={0} pl={2} pr={2}>
+          <Typography variant="caption">01/01/20 @1:11PM</Typography>
+        </Box>
       </Box>
-      <Box mt={-0.5} pb={1} pl={2} pr={2}>
-        <Typography variant="caption">Tower ABC-123</Typography>
-      </Box>
-      <Box mt={0} pb={2} pl={2} pr={2}>
+      <Box pb={2} pl={2} pr={2} pt={0}>
         <Typography variant="caption">
           This is a comment that is not real. It takes up space. Its a happy
           little comment.
@@ -121,6 +123,80 @@ export default function Comments() {
             ),
           }}
         />
+      </Box>
+      <Box pb={2} pl={2} pr={2} display="flex" flexDirection="row">
+        <SubdirectoryArrowRightIcon />
+        <Box
+          pl={2}
+          pr={2}
+          display="flex"
+          flexDirection="column"
+          justifyContent="space-between"
+          width="100%"
+        >
+          <Box
+            display="flex"
+            flexDirection="row"
+            width="100%"
+            justifyContent="space-between"
+          >
+            <Box pr={1} pl={1}>
+              <Typography variant="subtitle2">Amy Replaer</Typography>
+            </Box>
+            <Box
+              pr={1}
+              display="flex"
+              flexDirection="column"
+              justifyContent="space-between"
+            >
+              <Typography variant="caption">01/01/20</Typography>
+              <Typography variant="caption">@1:11PM</Typography>
+            </Box>
+          </Box>
+          <Box pb={2} pt={0}>
+            <Typography variant="caption">
+              This is a reply that is not real. It takes up space. Its a happy
+              little reply.
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+      <Box pb={2} pl={2} pr={2} display="flex" flexDirection="row">
+        <SubdirectoryArrowRightIcon />
+        <Box
+          pl={2}
+          pr={2}
+          display="flex"
+          flexDirection="column"
+          justifyContent="space-between"
+          width="100%"
+        >
+          <Box
+            display="flex"
+            flexDirection="row"
+            width="100%"
+            justifyContent="space-between"
+          >
+            <Box pr={1} pl={1}>
+              <Typography variant="subtitle2">Marvin Hanns</Typography>
+            </Box>
+            <Box
+              pr={1}
+              display="flex"
+              flexDirection="column"
+              justifyContent="space-between"
+            >
+              <Typography variant="caption">01/01/20</Typography>
+              <Typography variant="caption">@1:11PM</Typography>
+            </Box>
+          </Box>
+          <Box pb={2} pt={0}>
+            <Typography variant="caption">
+              This is a reply that is not real. It takes up space. Its a happy
+              little reply.
+            </Typography>
+          </Box>
+        </Box>
       </Box>
     </div>
   );
