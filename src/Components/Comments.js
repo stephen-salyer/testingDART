@@ -124,7 +124,7 @@ export default function Comments() {
           }}
         />
       </Box>
-      <Box pb={2} pl={2} pr={2} display="flex" flexDirection="row">
+      <Box pb={2} pl={2} display="flex" flexDirection="row">
         <SubdirectoryArrowRightIcon />
         <Box
           pl={2}
@@ -140,20 +140,15 @@ export default function Comments() {
             width="100%"
             justifyContent="space-between"
           >
-            <Box pr={1} pl={1}>
+            <Box pr={1}>
               <Typography variant="subtitle2">Amy Replaer</Typography>
             </Box>
-            <Box
-              pr={1}
-              display="flex"
-              flexDirection="column"
-              justifyContent="space-between"
-            >
+            <Box pl={1}>
               <Typography variant="caption">01/01/20</Typography>
               <Typography variant="caption">@1:11PM</Typography>
             </Box>
           </Box>
-          <Box pb={2} pt={0}>
+          <Box pb={2}>
             <Typography variant="caption">
               This is a reply that is not real. It takes up space. Its a happy
               little reply.
@@ -161,7 +156,7 @@ export default function Comments() {
           </Box>
         </Box>
       </Box>
-      <Box pb={2} pl={2} pr={2} display="flex" flexDirection="row">
+      <Box pb={2} pl={2} display="flex" flexDirection="row">
         <SubdirectoryArrowRightIcon />
         <Box
           pl={2}
@@ -177,15 +172,10 @@ export default function Comments() {
             width="100%"
             justifyContent="space-between"
           >
-            <Box pr={1} pl={1}>
+            <Box pr={1}>
               <Typography variant="subtitle2">Marvin Hanns</Typography>
             </Box>
-            <Box
-              pr={1}
-              display="flex"
-              flexDirection="column"
-              justifyContent="space-between"
-            >
+            <Box pl={1}>
               <Typography variant="caption">01/01/20</Typography>
               <Typography variant="caption">@1:11PM</Typography>
             </Box>
