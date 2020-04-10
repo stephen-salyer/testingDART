@@ -18,7 +18,7 @@ import ProgramListItemsPending from './ProgramListItemsPending';
 import ProgramListItemsDraft from './ProgramListItemsDraft';
 import ProgramListItemsCanceled from './ProgramListItemsCanceled';
 import ProgramListItemsBackToDraft from './ProgramListItemsBackToDraft';
-import Pagination from '@material-ui/lab/Pagination';
+import Comments from './Comments';
 import {Warning} from '@material-ui/icons';
 import {Box} from '@material-ui/core';
 
@@ -50,7 +50,7 @@ const useStyles = makeStyles({
     paddingRight: '0',
     paddingTop: '0',
     paddingBottom: '8px',
-    minHeight: '960px',
+    minHeight: '68vh',
   },
   cardPadding: {
     paddingBottom: '8px',
@@ -157,61 +157,37 @@ const Program = () => {
             </Tabs>
             <TabPanel value={value} index={0}>
               <Overview />
-              <div>
-                <Pagination count={10} color="secondary" />
-              </div>
             </TabPanel>
             <TabPanel value={value} index={1}>
               <ProgramListItemsApproved />
-              <div>
-                <Pagination count={1} color="secondary" />
-              </div>
             </TabPanel>
             <TabPanel value={value} index={2}>
               <ProgramListItemsPending />
-              <div>
-                <Pagination count={10} color="secondary" />
-              </div>
             </TabPanel>
             <TabPanel value={value} index={3}>
               <ProgramListItemsDraft />
-              <div>
-                <Pagination count={10} color="secondary" />
-              </div>
             </TabPanel>
             <TabPanel value={value} index={4}>
               <ProgramListItemsCanceled />
-              <div>
-                <Pagination count={2} color="secondary" />
-              </div>
             </TabPanel>
             <TabPanel value={value} index={5}>
               <ProgramListItemsBackToDraft />
-              <div>
-                <Pagination count={2} color="secondary" />
-              </div>
             </TabPanel>
             <TabPanel value={value} index={6}>
               <ProgramListItemsBackToDraft />
-              <div>
-                <Pagination count={2} color="secondary" />
-              </div>
             </TabPanel>
             <TabPanel value={value} index={7}>
               <ProgramListItemsBackToDraft />
-              <div>
-                <Pagination count={2} color="secondary" />
-              </div>
             </TabPanel>
             <TabPanel value={value} index={8}>
               <ProgramListItemsBackToDraft />
-              <div>
-                <Pagination count={2} color="secondary" />
-              </div>
             </TabPanel>
           </CardContent>
         </Card>
       </Container>
+      <Box display="flex" justifyContent="flex-end">
+        <Comments />
+      </Box>
     </ThemeProvider>
   );
 };
