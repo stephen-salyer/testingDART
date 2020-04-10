@@ -101,10 +101,26 @@ export default function Comments() {
         <Typography variant="caption">Tower ABC-123</Typography>
       </Box>
       <Box mt={0} pb={2} pl={2} pr={2}>
-        <Typography variant="caption" lineHeight="8px">
+        <Typography variant="caption">
           This is a comment that is not real. It takes up space. Its a happy
           little comment.
         </Typography>
+      </Box>
+      <Box pb={2} pl={2} pr={2} pt={0}>
+        <TextField
+          className={(classes.margin, classes.formControl)}
+          id="input-with-icon-textfield"
+          label="Reply"
+          variant="outlined"
+          multiline
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <SendIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
       </Box>
     </div>
   );

@@ -55,10 +55,6 @@ export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
     right: false,
   });
-  const [age, setAge] = React.useState('');
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
 
   const handleDelete = () => {
     console.info('You clicked the delete icon.');
@@ -114,11 +110,9 @@ export default function TemporaryDrawer() {
           </InputLabel>
 
           <Select
-            labelId="demo-simple-select-outlined-label"
+            defaultValue=""
             id="demo-simple-select-outlined"
             label="Search Members"
-            value={age}
-            onChange={handleChange}
           >
             <MenuItem value="">
               <em>None</em>
@@ -168,11 +162,9 @@ export default function TemporaryDrawer() {
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="demo-simple-select-outlined-label">Region</InputLabel>
           <Select
-            labelId="demo-simple-select-outlined-label"
+            defaultValue=""
             id="demo-simple-select-outlined"
-            label="Search Members"
-            value={age}
-            onChange={handleChange}
+            label="Region"
           >
             <MenuItem>
               <em>None</em>
@@ -187,11 +179,9 @@ export default function TemporaryDrawer() {
             Country
           </InputLabel>
           <Select
-            labelId="demo-simple-select-outlined-label"
+            defaultValue=""
             id="demo-simple-select-outlined"
-            label="Search Members"
-            value={age}
-            onChange={handleChange}
+            label="Country"
           >
             <MenuItem value="">
               <em>None</em>
@@ -207,11 +197,9 @@ export default function TemporaryDrawer() {
             Business Category
           </InputLabel>
           <Select
-            labelId="demo-simple-select-outlined-label"
+            defaultValue=""
             id="demo-simple-select-outlined"
-            label="Search Members"
-            value={age}
-            onChange={handleChange}
+            label="Business Category"
           >
             <MenuItem value="">
               <em>None</em>
@@ -228,11 +216,9 @@ export default function TemporaryDrawer() {
             Product
           </InputLabel>
           <Select
-            labelId="demo-simple-select-outlined-label"
+            defaultValue=""
             id="demo-simple-select-outlined"
-            label="Search Members"
-            value={age}
-            onChange={handleChange}
+            label="Product"
           >
             <MenuItem value="">
               <em>None</em>
@@ -247,11 +233,9 @@ export default function TemporaryDrawer() {
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="demo-simple-select-outlined-label">Brand</InputLabel>
           <Select
-            labelId="demo-simple-select-outlined-label"
+            defaultValue=""
             id="demo-simple-select-outlined"
-            label="Search Members"
-            value={age}
-            onChange={handleChange}
+            label="Brand"
           >
             <MenuItem value="">
               <em>None</em>

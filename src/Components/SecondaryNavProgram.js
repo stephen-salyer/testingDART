@@ -35,11 +35,6 @@ const useStyles = makeStyles((theme) => ({
 
 const SecondaryNavProgram = () => {
   const classes = useStyles();
-  const [age, setAge] = React.useState(10);
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
 
   return (
     <Container maxWidth="lg" className={classes.containerPadding}>
@@ -70,16 +65,15 @@ const SecondaryNavProgram = () => {
               variant="outlined"
               className={classes.formControl}
               margin="dense"
+              label="Version"
             >
               <InputLabel htmlFor="outlined-age-native-simple">
                 Version
               </InputLabel>
               <Select
-                labelId="demo-simple-select-autowidth-label"
-                id="demo-simple-select-autowidth"
-                defaultValue={10}
-                onChange={handleChange}
-                value={age}
+                defaultValue=""
+                id="demo-simple-select-outlined"
+                label="Version"
               >
                 <MenuItem value={10}>1.1</MenuItem>
                 <MenuItem value={20}>1.2</MenuItem>
