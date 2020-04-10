@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Program from './Components/Program';
 import ProgramListBody from './Components/ProgramListBody';
 import NavBar from './Components/NavBar';
+import Start from './Components/Start';
 
 const theme = createMuiTheme({
   palette: {
@@ -29,7 +30,7 @@ const App = () => (
             <Program />
           </Route>
           <Route path="/">
-            <h1>WHATEVERIWANT</h1>
+            <Start />
           </Route>
         </Switch>
       </div>
