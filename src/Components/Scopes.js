@@ -197,7 +197,9 @@ export default function CustomizedExpansionPanels() {
           aria-controls="panel2d-content"
           id="panel2d-header"
         >
-          <Typography>Collapsible Group Item #2</Typography>
+          <Typography>
+            North America • US • Crop Protection • Glyphosate • Roundup
+          </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.root}>
@@ -278,12 +280,12 @@ export default function CustomizedExpansionPanels() {
                   <Select
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
-                    defaultValue={10}
+                    defaultValue={30}
                     label="Brand"
                   >
                     <MenuItem value={10}>All</MenuItem>
                     <MenuItem value={20}>Asgrow</MenuItem>
-                    <MenuItem value={30}>BioAg</MenuItem>
+                    <MenuItem value={30}>Roundup</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -304,7 +306,9 @@ export default function CustomizedExpansionPanels() {
           aria-controls="panel3d-content"
           id="panel3d-header"
         >
-          <Typography>Collapsible Group Item #3</Typography>
+          <Typography>
+            North America • US • Crop Protection • Glyphosate • Degree Xtra
+          </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.root}>
@@ -372,7 +376,7 @@ export default function CustomizedExpansionPanels() {
                     label="Product"
                   >
                     <MenuItem value={10}>All</MenuItem>
-                    <MenuItem value={20}>Glyphosate</MenuItem>
+                    <MenuItem value={20}>Acetanilide</MenuItem>
                     <MenuItem value={30}>Other</MenuItem>
                   </Select>
                 </FormControl>
@@ -385,12 +389,121 @@ export default function CustomizedExpansionPanels() {
                   <Select
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
-                    defaultValue={10}
+                    defaultValue={30}
                     label="Brand"
                   >
                     <MenuItem value={10}>All</MenuItem>
                     <MenuItem value={20}>Asgrow</MenuItem>
-                    <MenuItem value={30}>BioAg</MenuItem>
+                    <MenuItem value={30}>Degree Xtra</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </div>
+        </ExpansionPanelDetails>
+        <Box pl={3} pr={3}>
+          <DeleteScopeModal />
+        </Box>
+      </ExpansionPanel>
+      <ExpansionPanel
+        square
+        expanded={expanded === 'panel4'}
+        onChange={handleChange('panel4')}
+      >
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel4d-content"
+          id="panel4d-header"
+        >
+          <Typography>
+            North America • US • Crop Protection • Dicamba • Roundup Xtend
+          </Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <div className={classes.root}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={6}>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Region
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    defaultValue={20}
+                    label="Region"
+                  >
+                    <MenuItem value={10}>Australia</MenuItem>
+                    <MenuItem value={20}>North America</MenuItem>
+                    <MenuItem value={30}>South America</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Country
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    defaultValue={30}
+                    label="Country"
+                  >
+                    <MenuItem value={10}>Canada</MenuItem>
+                    <MenuItem value={20}>Brazil</MenuItem>
+                    <MenuItem value={30}>United States of America</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Business Category
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    defaultValue={20}
+                    label="Business Category"
+                  >
+                    <MenuItem value={10}>all</MenuItem>
+                    <MenuItem value={20}>Crop Protection</MenuItem>
+                    <MenuItem value={30}>Pasture</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Product
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    defaultValue={30}
+                    label="Product"
+                  >
+                    <MenuItem value={10}>All</MenuItem>
+                    <MenuItem value={20}>Acetanilide</MenuItem>
+                    <MenuItem value={30}>Dicamba</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Brand
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    defaultValue={30}
+                    label="Brand"
+                  >
+                    <MenuItem value={10}>All</MenuItem>
+                    <MenuItem value={20}>Asgrow</MenuItem>
+                    <MenuItem value={30}>Roundup Xtend</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>

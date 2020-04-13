@@ -26,8 +26,15 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   button: {
+    maxWidth: '98px',
+  },
+  modalButton: {
     marginTop: '8px',
     maxWidth: '98px',
+  },
+  padding: {
+    padding: '4px 0 0 0',
+    margin: '0 0 12px 0',
   },
 }));
 
@@ -80,10 +87,14 @@ export default function DeleteScopeModal() {
             <Typography variant="h5" gutterBottom id="transition-modal-title">
               Are you sure you want to delete this scope?
             </Typography>
-            <Typography variant="subtitle" gutterBottom>
+            <Typography variant="subtitle1" gutterBottom>
               North America • US • Crop Protection • Glyphosate • All
             </Typography>
-            <Typography variant="caption" gutterBottom>
+            <Typography
+              variant="caption"
+              gutterBottom
+              className={classes.padding}
+            >
               (The above text is placeholder)
             </Typography>
             <ThemeProvider theme={theme}>
@@ -91,7 +102,7 @@ export default function DeleteScopeModal() {
                 variant="contained"
                 color="primary"
                 onClick={handleClose}
-                className={classes.button}
+                className={classes.modalButton}
                 startIcon={<DeleteIcon />}
               >
                 Delete
