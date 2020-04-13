@@ -13,14 +13,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import SecondaryNavProgram from './SecondaryNavProgram';
 import Overview from './Overview';
-import ProgramListItemsApproved from './ProgramListItemsApproved';
-import ProgramListItemsPending from './ProgramListItemsPending';
-import ProgramListItemsDraft from './ProgramListItemsDraft';
-import ProgramListItemsCanceled from './ProgramListItemsCanceled';
-import ProgramListItemsBackToDraft from './ProgramListItemsBackToDraft';
 import Comments from './Comments';
 import {Warning} from '@material-ui/icons';
 import {Box} from '@material-ui/core';
+import Scopes from './Scopes';
 
 const theme = createMuiTheme({
   palette: {
@@ -111,7 +107,7 @@ const TabPanel = (props) => {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box p={3}>{children}</Box>}
+      {value === index && <Box>{children}</Box>}
     </Typography>
   );
 };
@@ -156,31 +152,47 @@ const Program = () => {
               <Tab label="Attached Files" {...a11yProps(8)} />
             </Tabs>
             <TabPanel value={value} index={0}>
-              <Overview />
+              <Box p={3}>
+                <Overview />
+              </Box>
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <ProgramListItemsApproved />
+              <Scopes />
             </TabPanel>
             <TabPanel value={value} index={2}>
-              <ProgramListItemsPending />
+              <Box p={3}>
+                <Overview />
+              </Box>
             </TabPanel>
             <TabPanel value={value} index={3}>
-              <ProgramListItemsDraft />
+              <Box p={3}>
+                <Overview />
+              </Box>
             </TabPanel>
             <TabPanel value={value} index={4}>
-              <ProgramListItemsCanceled />
+              <Box p={3}>
+                <Overview />
+              </Box>
             </TabPanel>
             <TabPanel value={value} index={5}>
-              <ProgramListItemsBackToDraft />
+              <Box p={3}>
+                <Overview />
+              </Box>
             </TabPanel>
             <TabPanel value={value} index={6}>
-              <ProgramListItemsBackToDraft />
+              <Box p={3}>
+                <Overview />
+              </Box>
             </TabPanel>
             <TabPanel value={value} index={7}>
-              <ProgramListItemsBackToDraft />
+              <Box p={3}>
+                <Overview />
+              </Box>
             </TabPanel>
             <TabPanel value={value} index={8}>
-              <ProgramListItemsBackToDraft />
+              <Box p={3}>
+                <Overview />
+              </Box>
             </TabPanel>
           </CardContent>
         </Card>

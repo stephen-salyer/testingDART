@@ -66,12 +66,12 @@ const SecondaryNav = () => {
         className={classes.containerPadding}
       >
         <Grid container direction="row" justify="space-evenly">
-          <Grid item xs={12} sm={6}>
+          <Grid item={true} xs={12} sm={6}>
             <Typography variant="h3" color="primary">
               Program List
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item={true} xs={12} sm={6}>
             <Box display="flex" justifyContent="flex-end">
               <Button
                 variant="contained"
@@ -93,7 +93,7 @@ const SecondaryNav = () => {
               </Link>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={12}>
+          <Grid item={true} xs={12} sm={12}>
             <Box display="flex" justifyContent="flex-end" my={2}>
               <div className={classes.chipMargin}>
                 <Chip label="2020" onDelete={handleDelete} variant="outlined" />

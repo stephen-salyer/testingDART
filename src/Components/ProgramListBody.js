@@ -87,11 +87,6 @@ const useStyles = makeStyles((theme) => ({
       width: '12ch',
     },
   },
-  Tab: {
-    '& .MuiBox-root': {
-      padding: '0px',
-    },
-  },
 }));
 
 const TabPanel = (props) => {
@@ -156,37 +151,37 @@ const ProgramListBody = () => {
             <Tab label="Canceled (12)" {...a11yProps(4)} />
             <Tab label="Back to Draft (12)" {...a11yProps(5)} />
           </Tabs>
-          <TabPanel value={value} index={0} classes={{root: classes.tab}}>
+          <TabPanel value={value} index={0}>
             <ProgramListItemsAll />
             <div>
               <Pagination count={10} color="secondary" />
             </div>
           </TabPanel>
-          <TabPanel value={value} index={1} classes={{root: classes.tab}}>
+          <TabPanel value={value} index={1}>
             <ProgramListItemsApproved />
             <div>
               <Pagination count={1} color="secondary" />
             </div>
           </TabPanel>
-          <TabPanel value={value} index={2} classes={{root: classes.tab}}>
+          <TabPanel value={value} index={2}>
             <ProgramListItemsPending />
             <div>
               <Pagination count={10} color="secondary" />
             </div>
           </TabPanel>
-          <TabPanel value={value} index={3} classes={{root: classes.tab}}>
+          <TabPanel value={value} index={3}>
             <ProgramListItemsDraft />
             <div>
               <Pagination count={10} color="secondary" />
             </div>
           </TabPanel>
-          <TabPanel value={value} index={4} classes={{root: classes.tab}}>
+          <TabPanel value={value} index={4}>
             <ProgramListItemsCanceled />
             <div>
               <Pagination count={2} color="secondary" />
             </div>
           </TabPanel>
-          <TabPanel value={value} index={5} classes={{root: classes.tab}}>
+          <TabPanel value={value} index={5}>
             <ProgramListItemsBackToDraft />
             <div>
               <Pagination count={2} color="secondary" />
