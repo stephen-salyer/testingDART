@@ -11,6 +11,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import CardHeader from '@material-ui/core/CardHeader';
 import SubdirectoryArrowRightIcon from '@material-ui/icons/SubdirectoryArrowRight';
 import {TextField, InputAdornment} from '@material-ui/core';
+import Comment from '@material-ui/icons/Comment';
 
 const useStyles = makeStyles({
   root: {
@@ -201,8 +202,9 @@ export default function Comments() {
         onClick={toggleDrawer('right', true)}
         variant="contained"
         color="primary"
+        endIcon={<Comment />}
       >
-        Comments
+        (3) Comments
       </Button>
       <Drawer
         anchor={'right'}

@@ -8,8 +8,11 @@ import {
   ThemeProvider,
   createMuiTheme,
   Typography,
+  Box,
+  IconButton,
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import CloseIcon from '@material-ui/icons/Close';
 import {red} from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,9 +24,11 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    padding: theme.spacing(3),
     display: 'flex',
     flexDirection: 'column',
+    outline: 0,
+    minWidth: '40vw',
   },
   button: {
     maxWidth: '98px',
@@ -60,7 +65,7 @@ export default function DeleteScopeModal() {
     <div>
       <ThemeProvider theme={theme}>
         <Button
-          variant="contained"
+          variant="outlined"
           color="primary"
           onClick={handleOpen}
           className={classes.button}
@@ -84,9 +89,18 @@ export default function DeleteScopeModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <Typography variant="h5" gutterBottom id="transition-modal-title">
-              Are you sure you want to delete this scope?
-            </Typography>
+            <Box display="flex" justifyContent="space-between">
+              <Typography
+                variant="h5"
+                id="transition-modal-title"
+                style={{margin: '10px 0'}}
+              >
+                Are you sure you want to delete this scope?
+              </Typography>
+              <IconButton onClick={handleClose} color="inherit">
+                <CloseIcon />
+              </IconButton>
+            </Box>
             <Typography variant="subtitle1" gutterBottom>
               North America • US • Crop Protection • Glyphosate • All
             </Typography>
@@ -97,17 +111,19 @@ export default function DeleteScopeModal() {
             >
               (The above text is placeholder)
             </Typography>
-            <ThemeProvider theme={theme}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleClose}
-                className={classes.modalButton}
-                startIcon={<DeleteIcon />}
-              >
-                Delete
-              </Button>
-            </ThemeProvider>
+            <Box display="flex" justifyContent="space-between">
+              <ThemeProvider theme={theme}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleClose}
+                  className={classes.modalButton}
+                  startIcon={<DeleteIcon />}
+                >
+                  Delete
+                </Button>
+              </ThemeProvider>
+            </Box>
           </div>
         </Fade>
       </Modal>

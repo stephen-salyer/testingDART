@@ -1,5 +1,5 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import {makeStyles, withStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {FormControl, InputLabel, Select, MenuItem} from '@material-ui/core';
+import InputBase from '@material-ui/core/InputBase';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,6 +33,21 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 120,
   },
 }));
+
+const BootstrapInput = withStyles((theme) => ({
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    backgroundColor: theme.palette.background.paper,
+    border: '0',
+    fontSize: 16,
+    padding: '10px 26px 10px 12px',
+    '&:focus': {
+      borderColor: '#000000',
+      boxShadow: '0',
+    },
+  },
+}))(InputBase);
 
 const SecondaryNavProgram = () => {
   const classes = useStyles();
@@ -71,9 +87,10 @@ const SecondaryNavProgram = () => {
                 Version
               </InputLabel>
               <Select
-                defaultValue=""
+                defaultValue="30"
                 id="demo-simple-select-outlined"
                 label="Version"
+                input={<BootstrapInput />}
               >
                 <MenuItem value={10}>1.1</MenuItem>
                 <MenuItem value={20}>1.2</MenuItem>

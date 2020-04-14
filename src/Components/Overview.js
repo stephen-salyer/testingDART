@@ -100,7 +100,7 @@ export default function FullWidthGrid() {
             <KeyboardDatePicker
               disableToolbar
               fullWidth={true}
-              variant="inline"
+              variant="outlined"
               format="MM/dd/yyyy"
               margin="normal"
               label="Communication Date"
