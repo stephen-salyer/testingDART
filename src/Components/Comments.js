@@ -99,7 +99,7 @@ export default function Comments() {
         <Box display="flex" flexDirection="column">
           <Typography variant="subtitle2">Evan Kommenter</Typography>
         </Box>
-        <Box mt={0} pl={2} pr={2}>
+        <Box mt={0} pl={2}>
           <Typography variant="caption">01/01/20 @1:11PM</Typography>
         </Box>
       </Box>

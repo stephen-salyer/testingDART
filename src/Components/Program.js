@@ -18,6 +18,8 @@ import {Warning} from '@material-ui/icons';
 import {Box} from '@material-ui/core';
 import Scopes from './Scopes';
 import Marketing from './Marketing';
+import Operations from './Operations';
+import Owners from './Owners';
 
 const theme = createMuiTheme({
   palette: {
@@ -167,12 +169,12 @@ const Program = () => {
             </TabPanel>
             <TabPanel value={value} index={3}>
               <Box p={3}>
-                <Overview />
+                <Operations />
               </Box>
             </TabPanel>
             <TabPanel value={value} index={4}>
               <Box p={3}>
-                <Overview />
+                <Owners />
               </Box>
             </TabPanel>
             <TabPanel value={value} index={5}>
