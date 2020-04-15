@@ -7,14 +7,11 @@ import {
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import {MoreVert} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
-import ProgramListFilter from './ProgramListFilter';
-import {Link, withRouter} from 'react-router-dom';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import {TextField} from '@material-ui/core';
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 const theme = createMuiTheme({
   palette: {
@@ -51,12 +48,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const Members = [
+  {title: 'Justice Madden'},
+  {title: 'Alberto Shepard'},
+  {title: 'Anahi Mayo'},
+  {title: 'Mohamed Ferrell'},
+  {title: 'Jaylin Mcneil'},
+  {title: 'Caden Sosa'},
+  {title: 'Monica Carroll'},
+  {title: 'Leia Roach'},
+  {title: 'Kayden Jordan'},
+  {title: 'Billy Lester'},
+  {title: 'Kinsley Christian'},
+];
+
 const MemberList = () => {
   const classes = useStyles();
-
-  const handleDelete = () => {
-    console.info('You clicked the delete icon.');
-  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -71,39 +78,43 @@ const MemberList = () => {
               Member List
             </Typography>
           </Grid>
-          <Grid item={true} xs={12} sm={6}>
-            <Box display="flex" justifyContent="flex-end">
+          <Grid item={true} xs={12} sm={2}>
+            <Box display="flex" justifyContent="flex-end" flexWrap="wrap">
+              <Autocomplete
+                id="combo-box-demo"
+                options={Members}
+                getOptionLabel={(option) => option.title}
+                style={{width: '100%'}}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Search Members"
+                    variant="outlined"
+                  />
+                )}
+              />
+            </Box>
+          </Grid>
+          <Grid item={true} xs={12} sm={4}>
+            <Box display="flex">
               <Button
-                variant="contained"
                 color="primary"
                 className={classes.button}
-                endIcon={<Icon>add</Icon>}
+                endIcon={<GetAppIcon />}
               >
-                Create New Program
+                Export Scope
               </Button>
-              <ProgramListFilter />
-              <Link
-                to="../app.js"
-                rel="noopener noreferrer"
-                className={classes.linkNoDecoration}
+              <Button
+                color="primary"
+                className={classes.button}
+                endIcon={<GetAppIcon />}
               >
-                <IconButton aria-label="morevert">
-                  <MoreVert />
-                </IconButton>
-              </Link>
+                Export To Excel
+              </Button>
             </Box>
           </Grid>
           <Grid item={true} xs={12} sm={12}>
-            <Box display="flex" justifyContent="flex-end" my={2}>
-              <div className={classes.chipMargin}>
-                <Chip label="2020" onDelete={handleDelete} variant="outlined" />
-              </div>
-              <Chip
-                label="National Brands"
-                onDelete={handleDelete}
-                variant="outlined"
-              />
-            </Box>
+            <Box display="flex" justifyContent="flex-end" my={2}></Box>
           </Grid>
         </Grid>
       </Container>
@@ -111,4 +122,4 @@ const MemberList = () => {
   );
 };
 
-export default withRouter(MemberList);
+export default MemberList;

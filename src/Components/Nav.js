@@ -36,11 +36,8 @@ const Nav = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <Box display="flex" alignItems="center">
-      <IconButton onClick={() => setOpen(true)} className={classes.colorChange}>
-        <Menu />
-      </IconButton>
-
+    <>
+      <Menu onClick={() => setOpen(true)} className={classes.colorChange} />
       <Drawer anchor="left" open={isOpen} onClose={() => setOpen(false)}>
         <Box display="flex" justifyContent="flex-end">
           <IconButton onClick={() => setOpen(false)} color="inherit">
@@ -60,7 +57,7 @@ const Nav = () => {
           </List>
         </div>
       </Drawer>
-    </Box>
+    </>
   );
 };
 
