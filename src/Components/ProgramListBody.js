@@ -37,14 +37,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: 14,
   },
-  pos: {
-    marginBottom: 12,
-  },
   content: {
-    paddingLeft: '0',
-    paddingRight: '0',
-    paddingTop: '0',
-    paddingBottom: '8px',
+    padding: '0',
+    margin: '0 0 -16px 0',
     minHeight: '960px',
   },
   cardPadding: {

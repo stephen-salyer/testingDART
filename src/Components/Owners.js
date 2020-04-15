@@ -149,11 +149,11 @@ export default function CustomizedSelects() {
                 <ListItem>
                   <FormControlLabel
                     style={{margin: '0 16px 0 0'}}
-                    value={<Typography variant="caption">Done</Typography>}
+                    value={<Typography variant="caption">Not Done</Typography>}
                     control={<Switch color="primary" />}
                     checked={state.checkedA}
                     onChange={handleChangeToggle}
-                    label={<Typography variant="caption">Done</Typography>}
+                    label={<Typography variant="caption">Not Done</Typography>}
                     labelPlacement="top"
                   />
                   <ListItemText primary="Last Name" secondary="First Name" />

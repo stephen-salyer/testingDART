@@ -4,7 +4,6 @@ import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import ListIcon from '@material-ui/icons/List';
 import EmailIcon from '@material-ui/icons/Email';
@@ -12,19 +11,21 @@ import HelpIcon from '@material-ui/icons/Help';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import Velocity from './Velocity-Logo.js';
+import Nav from './Nav';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    margin: theme.spacing(0),
   },
   title: {
     flexGrow: 1,
   },
   appBarBackground: {
     backgroundColor: '#142357',
+    paddingLeft: '0',
   },
   dividerColor: {
     backgroundColor: '#FFFFFF',
@@ -45,7 +46,7 @@ const NavBar = () => {
             color="inherit"
             aria-label="menu"
           >
-            <MenuIcon />
+            <Nav />
           </IconButton>
           <IconButton>
             <Velocity />

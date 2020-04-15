@@ -49,10 +49,7 @@ const useStyles = makeStyles({
     paddingRight: '0',
     paddingTop: '0',
     paddingBottom: '8px',
-    minHeight: '68vh',
-  },
-  cardPadding: {
-    paddingBottom: '8px',
+    minHeight: '67vh',
   },
   search: {
     display: 'flex',

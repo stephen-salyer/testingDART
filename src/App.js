@@ -1,10 +1,15 @@
 import React from 'react';
 import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import Program from './Components/Program';
 import ProgramListBody from './Components/ProgramListBody';
 import NavBar from './Components/NavBar';
-import Start from './Components/Start';
+import MemberList from './Components/MemberList';
 
 const theme = createMuiTheme({
   palette: {
@@ -29,8 +34,11 @@ const App = () => (
           <Route path="/program/:id">
             <Program />
           </Route>
-          <Route path="/">
-            <Start />
+          <Route path="/member-list">
+            <MemberList />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/program-list" />
           </Route>
         </Switch>
       </div>

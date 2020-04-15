@@ -46,7 +46,7 @@ const useStyles = makeStyles({
     width: '100%',
   },
   colorChange: {
-    color: '#00000',
+    color: '#000000',
   },
 });
 
