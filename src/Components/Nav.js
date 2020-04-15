@@ -59,6 +59,13 @@ const Nav = () => {
     setState({...state, [anchor]: open});
   };
 
+  const links = [
+    {label: 'Program List', href: '/program-list'},
+    {label: 'Tower Review', href: '/tower-review'},
+    {label: 'Member List', href: '/member-list'},
+    {label: 'View Reports', href: '/reports'},
+  ];
+
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
@@ -78,51 +85,18 @@ const Nav = () => {
         </IconButton>
       </Box>
       <List component="nav" aria-label="main mailbox folders">
-        <Link
-          href="/program-list"
-          rel="noopener noreferrer"
-          className={classes.linkNoDecoration}
-        >
-          <ListItem button>
-            <ListItemText primary="Program List" />
-          </ListItem>
-        </Link>
-        <Link
-          href="/program-list"
-          rel="noopener noreferrer"
-          className={classes.linkNoDecoration}
-        >
-          <ListItem button>
-            <ListItemText primary="Tower Review" />
-          </ListItem>
-        </Link>
-        <Link
-          href="/member-list"
-          rel="noopener noreferrer"
-          className={classes.linkNoDecoration}
-        >
-          <ListItem button>
-            <ListItemText primary="Member List" />
-          </ListItem>
-        </Link>
-        <Link
-          href="/program-list"
-          rel="noopener noreferrer"
-          className={classes.linkNoDecoration}
-        >
-          <ListItem button>
-            <ListItemText primary="View Reports" />
-          </ListItem>
-        </Link>
-        <Link
-          href="/program-list"
-          rel="noopener noreferrer"
-          className={classes.linkNoDecoration}
-        >
-          <ListItem button>
-            <ListItemText primary="Ping Page" />
-          </ListItem>
-        </Link>
+        {links.map(({label, href}) => (
+          <Link
+            href={href}
+            rel="noopener noreferrer"
+            className={classes.linkNoDecoration}
+            key={label}
+          >
+            <ListItem button>
+              <ListItemText primary={label} />
+            </ListItem>
+          </Link>
+        ))}
       </List>
     </div>
   );
