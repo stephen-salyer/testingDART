@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import {TextField} from '@material-ui/core';
+import {TextField, Card, CardHeader, Divider} from '@material-ui/core';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
 const theme = createMuiTheme({
@@ -28,11 +28,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
   button: {
     margin: theme.spacing(1),
   },
@@ -44,7 +39,10 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
   },
   containerPadding: {
-    padding: '16px 0 0 0',
+    padding: '24px 0 0 0',
+  },
+  relatedContentPadding: {
+    padding: '0 0 0 8px',
   },
 }));
 
@@ -113,8 +111,44 @@ const MemberList = () => {
               </Button>
             </Box>
           </Grid>
-          <Grid item={true} xs={12} sm={12}>
-            <Box display="flex" justifyContent="flex-end" my={2}></Box>
+          <Grid container style={{margin: '24px 0 0 0'}}>
+            <Grid item={true} xs={12} sm={12}>
+              <Box display="flex" alignItems="baseline">
+                <Typography variant="h5">Raul Abrego</Typography>
+                <Typography
+                  variant="subtitle1"
+                  className={classes.relatedContentPadding}
+                >
+                  (RRABRE)
+                </Typography>
+              </Box>
+              <Grid item={true} xs={12} sm={12}>
+                C&C Specialist
+              </Grid>
+              <Grid item={true} xs={12} sm={12}>
+                Security Groups: D-A-R-T Edit, Dart Edit NA
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid container style={{margin: '24px 0 0 0'}}>
+            <Grid item={true} xs={12} sm={4}>
+              <Card>
+                <CardHeader
+                  titleTypographyProps={{variant: 'h6'}}
+                  title="User Details"
+                ></CardHeader>
+                <Divider />
+                <Box p={2}>
+                  <TextField
+                    id="outlined-basic"
+                    label="DOA"
+                    defaultValue="222,222,255"
+                    variant="outlined"
+                    fullWidth={true}
+                  />
+                </Box>
+              </Card>
+            </Grid>
           </Grid>
         </Grid>
       </Container>
