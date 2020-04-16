@@ -49,17 +49,9 @@ const theme = createMuiTheme({
   },
 });
 
-export default function DeleteScopeModal() {
+export default function DeleteScopeModal({onDelete}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   return (
     <div>
@@ -67,7 +59,7 @@ export default function DeleteScopeModal() {
         <Button
           variant="outlined"
           color="primary"
-          onClick={handleOpen}
+          onClick={() => setOpen(true)}
           className={classes.button}
           startIcon={<DeleteIcon />}
         >
@@ -80,7 +72,7 @@ export default function DeleteScopeModal() {
         aria-describedby="transition-modal-description"
         className={classes.modal}
         open={open}
-        onClose={handleClose}
+        onClose={() => setOpen(false)}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -97,7 +89,7 @@ export default function DeleteScopeModal() {
               >
                 Are you sure you want to delete this scope?
               </Typography>
-              <IconButton onClick={handleClose} color="inherit">
+              <IconButton onClick={() => setOpen(false)} color="inherit">
                 <CloseIcon />
               </IconButton>
             </Box>
@@ -116,7 +108,10 @@ export default function DeleteScopeModal() {
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={handleClose}
+                  onClick={() => {
+                    setOpen(false);
+                    onDelete();
+                  }}
                   className={classes.modalButton}
                   startIcon={<DeleteIcon />}
                 >
