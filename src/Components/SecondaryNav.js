@@ -7,8 +7,7 @@ import {
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import {MoreVert} from '@material-ui/icons';
+import {MoreVert, Add} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Chip from '@material-ui/core/Chip';
@@ -77,7 +76,7 @@ const SecondaryNav = () => {
                 variant="contained"
                 color="primary"
                 className={classes.button}
-                endIcon={<Icon>add</Icon>}
+                endIcon={<Add />}
               >
                 Create New Program
               </Button>
