@@ -63,7 +63,7 @@ export default function TransitionsModal() {
               <IconButton
                 onClick={handleClose}
                 color="inherit"
-                style={{height: '48px'}}
+                style={{height: '48px', margin: '0 -16px 0 0'}}
               >
                 <CloseIcon />
               </IconButton>

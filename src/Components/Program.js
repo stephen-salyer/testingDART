@@ -1,11 +1,6 @@
 import Card from '@material-ui/core/Card';
 import React from 'react';
-import {
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider,
-  fade,
-} from '@material-ui/core/styles';
+import {makeStyles, fade} from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -14,25 +9,13 @@ import Tab from '@material-ui/core/Tab';
 import SecondaryNavProgram from './SecondaryNavProgram';
 import Overview from './Overview';
 import Comments from './Comments';
-import {Warning} from '@material-ui/icons';
-import {Box} from '@material-ui/core';
+import {Box, Badge} from '@material-ui/core';
 import Scopes from './Scopes';
 import Marketing from './Marketing';
 import Operations from './Operations';
 import Owners from './Owners';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#142357',
-    },
-    secondary: {
-      main: '#f44336',
-    },
-  },
-});
-
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 275,
   },
@@ -86,12 +69,12 @@ const useStyles = makeStyles({
       },
     },
   },
-});
+}));
 
 function a11yProps(index) {
   return {
-    id: `scrollable-auto-tab-${index}`,
-    'aria-controls': `scrollable-auto-tabpanel-${index}`,
+    id: `full-width-tab-${index}`,
+    'aria-controls': `full-width-tabpanel-${index}`,
   };
 }
 
@@ -103,8 +86,8 @@ const TabPanel = (props) => {
       component="div"
       role="tabpanel"
       hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
       {value === index && <Box>{children}</Box>}
@@ -120,7 +103,7 @@ const Program = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <SecondaryNavProgram />
       <Container maxWidth="lg" className={classes.cardPadding}>
         <Card>
@@ -137,7 +120,9 @@ const Program = () => {
               <Tab
                 label={
                   <div>
-                    <Warning style={{verticalAlign: 'middle'}} /> Overview
+                    <Badge color="secondary" variant="dot">
+                      Overview
+                    </Badge>
                   </div>
                 }
                 {...a11yProps(0)}
@@ -200,7 +185,7 @@ const Program = () => {
       <Box display="flex" justifyContent="flex-end">
         <Comments />
       </Box>
-    </ThemeProvider>
+    </>
   );
 };
 

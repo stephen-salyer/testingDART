@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
   containerPadding: {
-    padding: '16px 24px 24px 24px',
+    padding: '32px 24px',
   },
   typographyPadding: {
     padding: '8px 0 0 0',
@@ -101,7 +101,7 @@ const SecondaryNavProgram = () => {
               variant="contained"
               color="primary"
               className={classes.button}
-              endIcon={<Icon>add</Icon>}
+              endIcon={<Icon>send</Icon>}
             >
               Route For Approval
             </Button>

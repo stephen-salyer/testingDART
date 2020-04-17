@@ -57,7 +57,6 @@ export default function DeleteScopeModal({onDelete}) {
     <div>
       <ThemeProvider theme={theme}>
         <Button
-          variant="outlined"
           color="primary"
           onClick={() => setOpen(true)}
           className={classes.button}
@@ -95,13 +94,6 @@ export default function DeleteScopeModal({onDelete}) {
             </Box>
             <Typography variant="subtitle1" gutterBottom>
               North America • US • Crop Protection • Glyphosate • All
-            </Typography>
-            <Typography
-              variant="caption"
-              gutterBottom
-              className={classes.padding}
-            >
-              (The above text is placeholder)
             </Typography>
             <Box display="flex" justifyContent="space-between">
               <ThemeProvider theme={theme}>

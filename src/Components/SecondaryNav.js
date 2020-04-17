@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider,
-} from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -14,17 +10,6 @@ import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import ProgramListFilter from './ProgramListFilter';
 import {Link, withRouter} from 'react-router-dom';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#142357',
-    },
-    secondary: {
-      main: '#f44336',
-    },
-  },
-});
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
   },
   containerPadding: {
-    padding: '16px 0 0 0',
+    padding: '32px 0 0 0',
   },
 }));
 
@@ -58,55 +43,53 @@ const SecondaryNav = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container
-        maxWidth="lg"
-        disableGutters={true}
-        className={classes.containerPadding}
-      >
-        <Grid container direction="row" justify="space-evenly">
-          <Grid item={true} xs={12} sm={6}>
-            <Typography variant="h3" color="primary">
-              Program List
-            </Typography>
-          </Grid>
-          <Grid item={true} xs={12} sm={6}>
-            <Box display="flex" justifyContent="flex-end">
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                endIcon={<Add />}
-              >
-                Create New Program
-              </Button>
-              <ProgramListFilter />
-              <Link
-                to="../app.js"
-                rel="noopener noreferrer"
-                className={classes.linkNoDecoration}
-              >
-                <IconButton aria-label="morevert">
-                  <MoreVert />
-                </IconButton>
-              </Link>
-            </Box>
-          </Grid>
-          <Grid item={true} xs={12} sm={12}>
-            <Box display="flex" justifyContent="flex-end" my={2}>
-              <div className={classes.chipMargin}>
-                <Chip label="2020" onDelete={handleDelete} variant="outlined" />
-              </div>
-              <Chip
-                label="National Brands"
-                onDelete={handleDelete}
-                variant="outlined"
-              />
-            </Box>
-          </Grid>
+    <Container
+      maxWidth="lg"
+      disableGutters={true}
+      className={classes.containerPadding}
+    >
+      <Grid container>
+        <Grid item={true} sm={12} md={6}>
+          <Typography variant="h3" color="primary">
+            Program List
+          </Typography>
         </Grid>
-      </Container>
-    </ThemeProvider>
+        <Grid item={true} sm={12} md={6}>
+          <Box display="flex" justifyContent="flex-end">
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              endIcon={<Add />}
+            >
+              Create New Program
+            </Button>
+            <ProgramListFilter />
+            <Link
+              to="../app.js"
+              rel="noopener noreferrer"
+              className={classes.linkNoDecoration}
+            >
+              <IconButton aria-label="morevert">
+                <MoreVert />
+              </IconButton>
+            </Link>
+          </Box>
+        </Grid>
+        <Grid item={true} sm={12} md={12}>
+          <Box display="flex" justifyContent="flex-end" my={2}>
+            <div className={classes.chipMargin}>
+              <Chip label="2020" onDelete={handleDelete} variant="outlined" />
+            </div>
+            <Chip
+              label="National Brands"
+              onDelete={handleDelete}
+              variant="outlined"
+            />
+          </Box>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

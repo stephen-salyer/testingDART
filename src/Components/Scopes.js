@@ -13,6 +13,7 @@ import {
   Select,
   MenuItem,
   Box,
+  Divider,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -186,12 +187,12 @@ export default function CustomizedExpansionPanels() {
           </Grid>
         </div>
       </ExpansionPanelDetails>
-
-      <Box pl={3} pr={3}>
+      <Box p={'0 24px 8px 24px'} display="flex" justifyContent="flex-end">
         <DeleteScopeModal
           onDelete={() => setScopes(scopes.filter((el) => el !== scope))}
         />
       </Box>
+      <Divider />
     </ExpansionPanel>
   ));
 }

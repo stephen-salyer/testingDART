@@ -51,7 +51,7 @@ export default function FullWidthGrid() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={8}>
+        <Grid item xs={12} sm={8}>
           <TextField
             error
             label="Program Name"
