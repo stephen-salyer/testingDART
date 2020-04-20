@@ -24,7 +24,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const names = [
+const marketingNames = [
+  'Oliver Hansen',
+  'Van Henry',
+  'April Tucker',
+  'Ralph Hubbard',
+  'Omar Alexander',
+  'Carlos Abbott',
+  'Miriam Wagner',
+  'Bradley Wilkerson',
+  'Virginia Andrews',
+  'Kelly Snyder',
+];
+
+const OperationNames = [
+  'Oliver Hansen',
+  'Van Henry',
+  'April Tucker',
+  'Ralph Hubbard',
+  'Omar Alexander',
+  'Carlos Abbott',
+  'Miriam Wagner',
+  'Bradley Wilkerson',
+  'Virginia Andrews',
+  'Kelly Snyder',
+];
+
+const FinanceNames = [
   'Oliver Hansen',
   'Van Henry',
   'April Tucker',
@@ -86,7 +112,7 @@ export default function CustomizedSelects() {
               MenuProps={MenuProps}
               renderValue={(selected) => selected.join(', ')}
             >
-              {names.map((name) => (
+              {marketingNames.map((name) => (
                 <MenuItem key={name} value={name}>
                   <Checkbox checked={personName.indexOf(name) > -1} />
                   <ListItemText primary={name} />
@@ -135,7 +161,7 @@ export default function CustomizedSelects() {
               MenuProps={MenuProps}
               renderValue={(selected) => selected.join(', ')}
             >
-              {names.map((name) => (
+              {OperationNames.map((name) => (
                 <MenuItem key={name} value={name}>
                   <Checkbox checked={personName.indexOf(name) > -1} />
                   <ListItemText primary={name} />
@@ -186,7 +212,7 @@ export default function CustomizedSelects() {
               MenuProps={MenuProps}
               renderValue={(selected) => selected.join(', ')}
             >
-              {names.map((name) => (
+              {FinanceNames.map((name) => (
                 <MenuItem key={name} value={name}>
                   <Checkbox checked={personName.indexOf(name) > -1} />
                   <ListItemText primary={name} />
