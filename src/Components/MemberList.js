@@ -459,7 +459,17 @@ const MemberList = () => {
                     title="Scope Builder"
                   ></CardHeader>
                   <div className={classes.toolBarEnd}>
-                    <SearchBar />
+                    <Box
+                      display="flex"
+                      justifyContent="space-between"
+                      alignItems="center"
+                      pr={1}
+                    >
+                      <SearchBar />
+                      <IconButton color="primary" style={{height: '48px'}}>
+                        <AddIcon />
+                      </IconButton>
+                    </Box>
                   </div>
                 </Toolbar>
                 <Divider />
@@ -508,11 +518,7 @@ const MemberList = () => {
                     <Divider />
                   </ExpansionPanel>
                 ))}
-                <Box pt={1} pb={1} display="flex" justifyContent="center">
-                  <Button color="primary" endIcon={<AddIcon />}>
-                    Add New scope
-                  </Button>
-                </Box>
+                <Box pt={1} pb={1} display="flex" justifyContent="center"></Box>
               </Card>
             </Grid>
           </Grid>
