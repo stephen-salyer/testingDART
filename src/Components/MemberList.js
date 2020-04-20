@@ -264,7 +264,7 @@ const MemberList = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="lg" className={classes.containerPadding}>
-        <Grid container spacing={3} direction="row">
+        <Grid container spacing={1} direction="row">
           <Toolbar
             disableGutters={true}
             style={{
