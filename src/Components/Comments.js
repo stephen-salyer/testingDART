@@ -204,7 +204,7 @@ export default function Comments() {
         color="primary"
         endIcon={<Comment />}
       >
-        (3) Comments
+        (1) Comment
       </Button>
       <Drawer
         anchor={'right'}
