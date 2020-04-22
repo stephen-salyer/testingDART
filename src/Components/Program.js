@@ -15,6 +15,7 @@ import Marketing from './Marketing';
 import Operations from './Operations';
 import Owners from './Owners';
 import Finance from './Finance';
+import Approvers from './Approvers';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -167,7 +168,7 @@ const Program = () => {
             </TabPanel>
             <TabPanel value={value} index={6}>
               <Box p={3}>
-                <Overview />
+                <Approvers />
               </Box>
             </TabPanel>
             <TabPanel value={value} index={7}>

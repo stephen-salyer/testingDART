@@ -50,11 +50,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Finance() {
   const classes = useStyles();
-  const [age, setAge] = React.useState(10);
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
 
   return (
     <div className={classes.root}>
@@ -68,7 +63,6 @@ export default function Finance() {
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               defaultValue={10}
-              onChange={handleChange}
               label="Funding Source"
             >
               <MenuItem value={10}>Credit / Rebill</MenuItem>
@@ -86,7 +80,6 @@ export default function Finance() {
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               defaultValue={10}
-              onChange={handleChange}
               label="Market Funding Category"
             >
               <MenuItem value={10}>Grower Incentive</MenuItem>
@@ -104,7 +97,6 @@ export default function Finance() {
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               defaultValue={10}
-              onChange={handleChange}
               label="Liability Classification"
             >
               <MenuItem value={10}>Accured Market Funding</MenuItem>
@@ -190,7 +182,6 @@ export default function Finance() {
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               defaultValue={10}
-              onChange={handleChange}
               label="Currency"
             >
               <MenuItem value={10}>Currency 1</MenuItem>
@@ -210,7 +201,7 @@ export default function Finance() {
               className={classes.formControlRadio}
             >
               <FormLabel>
-                <Typography lineHeight="5px">
+                <Typography>
                   Does program require consumption-based accrual methodology?
                 </Typography>
               </FormLabel>
@@ -373,7 +364,7 @@ export default function Finance() {
               className={classes.formControlRadio}
             >
               <FormLabel>
-                <Typography lineHeight="5px">
+                <Typography>
                   Does The Program Offer Free Rebate or Rebate of Any Kind?
                 </Typography>
               </FormLabel>
@@ -558,7 +549,7 @@ export default function Finance() {
               className={classes.formControlRadio}
             >
               <FormLabel>
-                <Typography lineHeight="5px">
+                <Typography>
                   Could this program alone or in combination with other programs
                   result in a product being sold below cost?
                 </Typography>
@@ -590,7 +581,7 @@ export default function Finance() {
               className={classes.formControlRadio}
             >
               <FormLabel>
-                <Typography lineHeight="5px">
+                <Typography>
                   Does nondiscretionary program provide different
                   opportunities/incentives to similarly situated customers who
                   might compete against each other in using/reselling that
