@@ -1,23 +1,22 @@
 import React, {Fragment} from 'react';
 import Grid from '@material-ui/core/Grid';
 import {
-  FormControl,
   Box,
   FormControlLabel,
-  InputLabel,
-  Select,
-  MenuItem,
   Checkbox,
   ListItemText,
   List,
   ListItemSecondaryAction,
   IconButton,
+  TextField,
 } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import {marketingNames} from './Owners';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +37,20 @@ const useStyles = makeStyles((theme) => ({
   listItemTextNoMargin: {
     marginBottom: '0',
   },
+  tabs: {
+    minWidth: '150px',
+  },
 }));
+
+const tabStuff = [
+  {label: 'wave 1'},
+  {label: 'wave 2'},
+  {label: 'wave 3'},
+  {label: 'wave 4'},
+  {label: 'wave 5'},
+  {label: 'wave 6'},
+  {label: 'wave 7'},
+];
 
 function TabPanel(props) {
   const {children, value, index, ...other} = props;
@@ -58,29 +70,12 @@ function TabPanel(props) {
   );
 }
 
-const OperationNames = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-];
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
+// const tabInfomation = [
+//   {
+//     value: 'value',
+//     index: ['1', '2', '3', '4', '5', '6'],
+//   },
+// ];
 
 function a11yProps(index) {
   return {
@@ -92,15 +87,11 @@ function a11yProps(index) {
 export default function Approvers() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const [personName, setPersonName] = React.useState([]);
+  // const [tabInfo, setTab] = React.useState(tabsInformation);
 
   const [state, setState] = React.useState({
     checkedB: false,
   });
-
-  const handleChangeName = (event) => {
-    setPersonName(event.target.value);
-  };
 
   const handleChangeCheckbox = (event) => {
     setState({...state, [event.target.name]: event.target.checked});
@@ -141,104 +132,75 @@ export default function Approvers() {
               indicator: classes.indicator,
             }}
           >
-            <Tab label="Wave 1" {...a11yProps(0)} />
-            <Tab label="Wave 2" {...a11yProps(1)} />
-            <Tab label="Wave 3" {...a11yProps(2)} />
-            <Tab label="Wave 4" {...a11yProps(3)} />
-            <Tab label="Wave 5" {...a11yProps(4)} />
-            <Tab label="Wave 6" {...a11yProps(5)} />
-            <Tab label="Wave 7" {...a11yProps(6)} />
+            {tabStuff.map(({label}, i) => (
+              <Tab label={label} key={label} {...a11yProps(i)} />
+            ))}
           </Tabs>
-          <TabPanel value={value} index={0}>
-            <Grid container>
-              <Grid item sm={12} md={6}>
-                <FormControl
-                  variant="outlined"
-                  fullWidth={true}
-                  className={classes.formControl}
-                >
-                  <InputLabel id="demo-simple-select-outlined-label">
-                    Add Approver
-                  </InputLabel>
-                  <Select
-                    multiple
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    value={personName}
-                    onChange={handleChangeName}
-                    label="Add Approver"
-                    MenuProps={MenuProps}
-                    renderValue={(selected) => selected.join(', ')}
-                  >
-                    {OperationNames.map((name) => (
-                      <MenuItem key={name} value={name}>
-                        <Checkbox checked={personName.indexOf(name) > -1} />
-                        <ListItemText primary={name} />
-                      </MenuItem>
+          {tabStuff.map(({label}, i) => (
+            <TabPanel value={value} key={label} index={i}>
+              <Grid container>
+                <Grid item sm={12} md={6}>
+                  <Autocomplete
+                    freeSolo
+                    options={marketingNames.map((n) => ({title: n}))}
+                    getOptionLabel={(option) => option.title}
+                    style={{width: '100%'}}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="Add Approver"
+                        variant="outlined"
+                      />
+                    )}
+                  />
+                  <Box maxHeight="360px" overflow="scroll">
+                    {[1, 2, 3, 4, 5, 6].map((n) => (
+                      <Fragment key={n}>
+                        <List>
+                          <ListItemText
+                            className={classes.listItemTextNoMargin}
+                            primary={
+                              <Typography
+                                variant="overline"
+                                style={{lineHeight: '0px'}}
+                              >
+                                Not Started
+                              </Typography>
+                            }
+                            secondary={
+                              <Typography variant="subtitle1">
+                                First Name Last Name
+                              </Typography>
+                            }
+                          />
+                          <ListItemText
+                            classes={{primary: classes.listItemTertiary}}
+                            primary={
+                              'Wave 1 • External Reporting • $1,000,000 • 1 Year'
+                            }
+                          />
+                          <ListItemSecondaryAction>
+                            <IconButton edge="end" aria-label="delete">
+                              <RemoveCircleIcon />
+                            </IconButton>
+                          </ListItemSecondaryAction>
+                        </List>
+                      </Fragment>
                     ))}
-                  </Select>
-                </FormControl>
-                <Box maxHeight="360px" overflow="scroll">
-                  {[1, 2, 3, 4, 5, 6].map((n) => (
-                    <Fragment key={n}>
-                      <List>
-                        <ListItemText
-                          className={classes.listItemTextNoMargin}
-                          primary={
-                            <Typography
-                              variant="overline"
-                              style={{lineHeight: '0px'}}
-                            >
-                              Not Started
-                            </Typography>
-                          }
-                          secondary={
-                            <Typography variant="subtitle1">
-                              First Name Last Name
-                            </Typography>
-                          }
-                        />
-                        <ListItemText
-                          classes={{primary: classes.listItemTertiary}}
-                          primary={
-                            'Wave 1 • External Reporting • $1,000,000 • 1 Year'
-                          }
-                        />
-                        <ListItemSecondaryAction>
-                          <IconButton edge="end" aria-label="delete">
-                            <RemoveCircleIcon />
-                          </IconButton>
-                        </ListItemSecondaryAction>
-                      </List>
-                    </Fragment>
-                  ))}
-                </Box>
+                  </Box>
+                </Grid>
+                <Grid item sm={12} md={6}>
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <Typography>Pie Here</Typography>
+                  </Box>
+                </Grid>
               </Grid>
-              <Grid item sm={12} md={6}>
-                <Box display="flex" alignItems="center" justifyContent="center">
-                  <Typography>Pie Here</Typography>
-                </Box>
-              </Grid>
-            </Grid>
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            Item Two
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            Item Three
-          </TabPanel>
-          <TabPanel value={value} index={3}>
-            Item Four
-          </TabPanel>
-          <TabPanel value={value} index={4}>
-            Item Five
-          </TabPanel>
-          <TabPanel value={value} index={5}>
-            Item Six
-          </TabPanel>
-          <TabPanel value={value} index={6}>
-            Item Seven
-          </TabPanel>
+            </TabPanel>
+          ))}
         </div>
       </Grid>
     </>

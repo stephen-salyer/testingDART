@@ -16,6 +16,8 @@ import {
   Switch,
   List,
   Typography,
+  Box,
+  Divider,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -24,33 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const marketingNames = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-];
-
-const OperationNames = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-];
-
-const FinanceNames = [
+export const marketingNames = [
   'Oliver Hansen',
   'Van Henry',
   'April Tucker',
@@ -93,56 +69,73 @@ export default function CustomizedSelects() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={4}>
-          <FormControl
-            variant="outlined"
-            fullWidth={true}
-            className={classes.formControl}
-          >
-            <InputLabel id="demo-simple-select-outlined-label">
-              Add Marketing Owner
-            </InputLabel>
-            <Select
-              multiple
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              value={personName}
-              onChange={handleChange}
-              label="Add Marketing Owner"
-              MenuProps={MenuProps}
-              renderValue={(selected) => selected.join(', ')}
+        {[1, 2, 3].map((n) => (
+          <Grid item xs={4} key={n}>
+            <FormControl
+              variant="outlined"
+              fullWidth={true}
+              className={classes.formControl}
             >
-              {marketingNames.map((name) => (
-                <MenuItem key={name} value={name}>
-                  <Checkbox checked={personName.indexOf(name) > -1} />
-                  <ListItemText primary={name} />
-                </MenuItem>
+              <InputLabel id="demo-simple-select-outlined-label">
+                Add Marketing Owner
+              </InputLabel>
+              <Select
+                multiple
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                value={personName}
+                onChange={handleChange}
+                label="Add Marketing Owner"
+                MenuProps={MenuProps}
+                renderValue={(selected) => selected.join(', ')}
+              >
+                {marketingNames.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    <Checkbox checked={personName.includes(name)} />
+                    <ListItemText primary={name} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <Box style={{maxHeight: '520px', overflow: 'scroll'}}>
+              {marketingNames.map((n) => (
+                <Fragment key={n}>
+                  <List>
+                    <ListItem>
+                      <FormControlLabel
+                        style={{margin: '0 16px 0 0'}}
+                        value={
+                          <Typography variant="caption">Not Done</Typography>
+                        }
+                        control={<Switch color="primary" />}
+                        label={
+                          <Typography variant="caption">Not Done</Typography>
+                        }
+                        labelPlacement="top"
+                      />
+                      <ListItemText
+                        primary={n.split(' ')[1]}
+                        secondary={n.split(' ')[0]}
+                      />
+                      <ListItemSecondaryAction>
+                        <IconButton edge="end" aria-label="delete">
+                          <RemoveCircleIcon />
+                        </IconButton>
+                      </ListItemSecondaryAction>
+                    </ListItem>
+                    <Divider />
+                  </List>
+                </Fragment>
               ))}
-            </Select>
-          </FormControl>
-          {[1, 2, 3].map((n) => (
-            <Fragment key={n}>
-              <List>
-                <ListItem>
-                  <FormControlLabel
-                    style={{margin: '0 16px 0 0'}}
-                    value={<Typography variant="caption">Not Done</Typography>}
-                    control={<Switch color="primary" />}
-                    label={<Typography variant="caption">Not Done</Typography>}
-                    labelPlacement="top"
-                  />
-                  <ListItemText primary="Last Name" secondary="First Name" />
-                  <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete">
-                      <RemoveCircleIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </ListItem>
-              </List>
-            </Fragment>
-          ))}
-        </Grid>
-        <Grid item xs={4}>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
+    </div>
+  );
+}
+{
+  /* <Grid item xs={4}>
           <FormControl
             variant="outlined"
             fullWidth={true}
@@ -161,7 +154,7 @@ export default function CustomizedSelects() {
               MenuProps={MenuProps}
               renderValue={(selected) => selected.join(', ')}
             >
-              {OperationNames.map((name) => (
+              {marketingNames.map((name) => (
                 <MenuItem key={name} value={name}>
                   <Checkbox checked={personName.indexOf(name) > -1} />
                   <ListItemText primary={name} />
@@ -212,7 +205,7 @@ export default function CustomizedSelects() {
               MenuProps={MenuProps}
               renderValue={(selected) => selected.join(', ')}
             >
-              {FinanceNames.map((name) => (
+              {marketingNames.map((name) => (
                 <MenuItem key={name} value={name}>
                   <Checkbox checked={personName.indexOf(name) > -1} />
                   <ListItemText primary={name} />
@@ -245,4 +238,5 @@ export default function CustomizedSelects() {
       </Grid>
     </div>
   );
+} */
 }
