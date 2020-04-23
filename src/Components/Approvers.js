@@ -16,7 +16,6 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import {marketingNames} from './Owners';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,6 +40,19 @@ const useStyles = makeStyles((theme) => ({
     minWidth: '150px',
   },
 }));
+
+const marketingNames = [
+  'Oliver Hansen',
+  'Van Henry',
+  'April Tucker',
+  'Ralph Hubbard',
+  'Omar Alexander',
+  'Carlos Abbott',
+  'Miriam Wagner',
+  'Bradley Wilkerson',
+  'Virginia Andrews',
+  'Kelly Snyder',
+];
 
 const tabStuff = [
   {label: 'wave 1'},
@@ -69,13 +81,6 @@ function TabPanel(props) {
     </Typography>
   );
 }
-
-// const tabInfomation = [
-//   {
-//     value: 'value',
-//     index: ['1', '2', '3', '4', '5', '6'],
-//   },
-// ];
 
 function a11yProps(index) {
   return {

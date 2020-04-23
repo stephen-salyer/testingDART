@@ -26,17 +26,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const marketingNames = [
+const marketingNames = [
   'Oliver Hansen',
   'Van Henry',
   'April Tucker',
   'Ralph Hubbard',
   'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
+];
+
+const selects = [
+  'Add Marketing Owner',
+  'Add Operations Owner',
+  'Add Finance Owner',
 ];
 
 const ITEM_HEIGHT = 48;
@@ -58,185 +59,73 @@ export default function CustomizedSelects() {
     setPersonName(event.target.value);
   };
 
-  const [state, setState] = React.useState({
-    checkedA: true,
-  });
-
-  const handleChangeToggle = (event) => {
-    setState({...state, [event.target.name]: event.target.checked});
-  };
-
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        {[1, 2, 3].map((n) => (
-          <Grid item xs={4} key={n}>
-            <FormControl
-              variant="outlined"
-              fullWidth={true}
-              className={classes.formControl}
-            >
-              <InputLabel id="demo-simple-select-outlined-label">
-                Add Marketing Owner
-              </InputLabel>
-              <Select
-                multiple
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={personName}
-                onChange={handleChange}
-                label="Add Marketing Owner"
-                MenuProps={MenuProps}
-                renderValue={(selected) => selected.join(', ')}
+        <>
+          {selects.map((selects) => (
+            <Grid item xs={4} key={selects}>
+              <FormControl
+                variant="outlined"
+                fullWidth={true}
+                className={classes.formControl}
               >
-                {marketingNames.map((name) => (
-                  <MenuItem key={name} value={name}>
-                    <Checkbox checked={personName.includes(name)} />
-                    <ListItemText primary={name} />
-                  </MenuItem>
+                <InputLabel id="demo-simple-select-outlined-label">
+                  {selects}
+                </InputLabel>
+                <Select
+                  multiple
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={personName}
+                  onChange={handleChange}
+                  label={selects}
+                  MenuProps={MenuProps}
+                  renderValue={(selected) => selected.join(', ')}
+                >
+                  {marketingNames.map((name) => (
+                    <MenuItem key={name} value={name}>
+                      <Checkbox checked={personName.includes(name)} />
+                      <ListItemText primary={name} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <Box style={{maxHeight: '520px', overflow: 'scroll'}}>
+                {marketingNames.map((n) => (
+                  <Fragment key={n}>
+                    <List>
+                      <ListItem>
+                        <FormControlLabel
+                          style={{margin: '0 16px 0 0'}}
+                          value={
+                            <Typography variant="caption">Not Done</Typography>
+                          }
+                          control={<Switch color="primary" />}
+                          label={
+                            <Typography variant="caption">Not Done</Typography>
+                          }
+                          labelPlacement="top"
+                        />
+                        <ListItemText
+                          primary={n.split(' ')[1]}
+                          secondary={n.split(' ')[0]}
+                        />
+                        <ListItemSecondaryAction>
+                          <IconButton edge="end" aria-label="delete">
+                            <RemoveCircleIcon />
+                          </IconButton>
+                        </ListItemSecondaryAction>
+                      </ListItem>
+                      <Divider />
+                    </List>
+                  </Fragment>
                 ))}
-              </Select>
-            </FormControl>
-            <Box style={{maxHeight: '520px', overflow: 'scroll'}}>
-              {marketingNames.map((n) => (
-                <Fragment key={n}>
-                  <List>
-                    <ListItem>
-                      <FormControlLabel
-                        style={{margin: '0 16px 0 0'}}
-                        value={
-                          <Typography variant="caption">Not Done</Typography>
-                        }
-                        control={<Switch color="primary" />}
-                        label={
-                          <Typography variant="caption">Not Done</Typography>
-                        }
-                        labelPlacement="top"
-                      />
-                      <ListItemText
-                        primary={n.split(' ')[1]}
-                        secondary={n.split(' ')[0]}
-                      />
-                      <ListItemSecondaryAction>
-                        <IconButton edge="end" aria-label="delete">
-                          <RemoveCircleIcon />
-                        </IconButton>
-                      </ListItemSecondaryAction>
-                    </ListItem>
-                    <Divider />
-                  </List>
-                </Fragment>
-              ))}
-            </Box>
-          </Grid>
-        ))}
+              </Box>
+            </Grid>
+          ))}
+        </>
       </Grid>
     </div>
   );
-}
-{
-  /* <Grid item xs={4}>
-          <FormControl
-            variant="outlined"
-            fullWidth={true}
-            className={classes.formControl}
-          >
-            <InputLabel id="demo-simple-select-outlined-label">
-              Add Operations Owner
-            </InputLabel>
-            <Select
-              multiple
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              value={personName}
-              onChange={handleChange}
-              label="Add Marketing Owner"
-              MenuProps={MenuProps}
-              renderValue={(selected) => selected.join(', ')}
-            >
-              {marketingNames.map((name) => (
-                <MenuItem key={name} value={name}>
-                  <Checkbox checked={personName.indexOf(name) > -1} />
-                  <ListItemText primary={name} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          {[1, 2, 3].map((n) => (
-            <Fragment key={n}>
-              <List>
-                <ListItem>
-                  <FormControlLabel
-                    style={{margin: '0 16px 0 0'}}
-                    value={<Typography variant="caption">Not Done</Typography>}
-                    control={<Switch color="primary" />}
-                    checked={state.checkedA}
-                    onChange={handleChangeToggle}
-                    label={<Typography variant="caption">Not Done</Typography>}
-                    labelPlacement="top"
-                  />
-                  <ListItemText primary="Last Name" secondary="First Name" />
-                  <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete">
-                      <RemoveCircleIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </ListItem>
-              </List>
-            </Fragment>
-          ))}
-        </Grid>
-        <Grid item xs={4}>
-          <FormControl
-            variant="outlined"
-            fullWidth={true}
-            className={classes.formControl}
-          >
-            <InputLabel id="demo-simple-select-outlined-label">
-              Add Finance Owner
-            </InputLabel>
-            <Select
-              multiple
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              value={personName}
-              onChange={handleChange}
-              label="Add Marketing Owner"
-              MenuProps={MenuProps}
-              renderValue={(selected) => selected.join(', ')}
-            >
-              {marketingNames.map((name) => (
-                <MenuItem key={name} value={name}>
-                  <Checkbox checked={personName.indexOf(name) > -1} />
-                  <ListItemText primary={name} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          {[1, 2, 3].map((n) => (
-            <Fragment key={n}>
-              <List>
-                <ListItem>
-                  <FormControlLabel
-                    style={{margin: '0 16px 0 0'}}
-                    value={<Typography variant="caption">Not Done</Typography>}
-                    control={<Switch color="primary" />}
-                    label={<Typography variant="caption">Not Done</Typography>}
-                    labelPlacement="top"
-                  />
-                  <ListItemText primary="Last Name" secondary="First Name" />
-                  <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete">
-                      <RemoveCircleIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </ListItem>
-              </List>
-            </Fragment>
-          ))}
-        </Grid>
-      </Grid>
-    </div>
-  );
-} */
 }

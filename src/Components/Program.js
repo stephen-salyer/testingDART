@@ -16,6 +16,7 @@ import Operations from './Operations';
 import Owners from './Owners';
 import Finance from './Finance';
 import Approvers from './Approvers';
+import Components from './Components';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -173,7 +174,7 @@ const Program = () => {
             </TabPanel>
             <TabPanel value={value} index={7}>
               <Box p={3}>
-                <Overview />
+                <Components />
               </Box>
             </TabPanel>
             <TabPanel value={value} index={8}>
