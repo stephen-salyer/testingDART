@@ -4,23 +4,26 @@ import {
   Box,
   ListItemText,
   List,
-  ListItemSecondaryAction,
   IconButton,
   CardHeader,
   Divider,
+  Button,
 } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ComponentInformation from './ComponentInformation';
+import {Add} from '@material-ui/icons';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
-    paddingTop: '16px',
   },
   indicator: {
     backgroundColor: '#142357',
@@ -35,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '0',
   },
   tabs: {
-    minWidth: '250px',
+    minWidth: '200px',
   },
   MuiTab: {
     wrapper: {
@@ -44,7 +47,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const components = ['Canola', 'Corn', 'Soybean', 'Alfalfa', 'Crop Here'];
+export const componentsInfo = [
+  {
+    comp: 'Canola',
+    ted: '$1,234,345',
+  },
+  {
+    comp: 'Corn',
+    ted: '$1,432,345',
+  },
+  {
+    comp: 'Soybean',
+    ted: '$6,232,348',
+  },
+  {
+    comp: 'Alfalfa',
+    ted: '$3,444,335',
+  },
+  {
+    comp: 'Crop Here',
+    ted: '$2,222,777',
+  },
+];
 
 function TabPanel(props) {
   const {children, value, index, ...other} = props;
@@ -87,18 +111,16 @@ export default function Components() {
               indicator: classes.indicator,
             }}
           >
-            {components.map((components) => (
+            {componentsInfo.map(({comp, ted}, i) => (
               <Tab
                 style={{textAlign: 'left'}}
-                key={components}
+                key={i}
                 label={
                   <List style={{minWidth: '100%'}}>
                     <ListItemText
                       className={classes.listItemTextNoMargin}
                       primary={
-                        <Typography variant="subtitle1">
-                          {components}
-                        </Typography>
+                        <Typography variant="subtitle1">{comp}</Typography>
                       }
                       secondary={
                         <Typography
@@ -109,33 +131,58 @@ export default function Components() {
                             fontSize: '0.875rem',
                           }}
                         >
-                          {'TED: ' +
-                            (
-                              5e6 +
-                              Math.floor(Math.random() * 10) * 482759
-                            ).toLocaleString()}
+                          TED: {ted}
                         </Typography>
                       }
                     />
-                    <ListItemSecondaryAction>
-                      <IconButton edge="end" aria-label="delete">
-                        <MoreVertIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
                   </List>
                 }
               />
             ))}
+            <Button endIcon={<Add />}>Add Component</Button>
           </Tabs>
-          {components.map(({component}, i) => (
-            <TabPanel value={value} key={component} index={i}>
+          {componentsInfo.map(({comp}, i) => (
+            <TabPanel value={value} key={comp} index={i}>
               <Grid container>
                 <Grid item xs={12}>
-                  <CardHeader
-                    titleTypographyProps={{variant: 'h6'}}
-                    title={'Component - ' + {component}}
-                  />
+                  <Box
+                    display="flex"
+                    justifyContent="space-between"
+                    alignItems="center"
+                  >
+                    <CardHeader
+                      title={
+                        <>
+                          <Box display="flex" alignItems="center">
+                            <Typography variant="h5">
+                              Component - {comp}
+                            </Typography>
+                            <IconButton component="span">
+                              <EditIcon />
+                            </IconButton>
+                          </Box>
+                        </>
+                      }
+                    />
+                    <Box>
+                      <IconButton
+                        color="primary"
+                        aria-label="upload picture"
+                        component="span"
+                      >
+                        <FileCopyIcon />
+                      </IconButton>
+                      <IconButton
+                        color="secondary"
+                        aria-label="Delete"
+                        component="span"
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </Box>
+                  </Box>
                   <Divider />
+                  <ComponentInformation />
                 </Grid>
               </Grid>
             </TabPanel>

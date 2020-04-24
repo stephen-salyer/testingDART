@@ -252,11 +252,18 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item xs={12}>
-          <CardHeader
-            titleTypographyProps={{variant: 'h6'}}
-            title="Global Accounting and Legal Review"
-          />
+        <Grid item xs={12} style={{padding: '0'}}>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <CardHeader
+              titleTypographyProps={{variant: 'h6'}}
+              title="Global Accounting and Legal Review"
+            />
+            <InfoModal />
+          </Box>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
           <TextField
@@ -301,233 +308,194 @@ export default function Finance() {
           />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex">
-            <Box mt={-1}>
-              <InfoModal />
-            </Box>
-            <FormControl
-              component="fieldset"
-              className={classes.formControlRadio}
-            >
-              <FormLabel>Multi-Year Earning Criteria?</FormLabel>
-              <RadioGroup aria-label="quiz" name="quiz">
-                <Box display="flex">
-                  <FormControlLabel
-                    value="best"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="worst"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </Box>
-              </RadioGroup>
-            </FormControl>
-          </Box>
+          <FormControl
+            component="fieldset"
+            className={classes.formControlRadio}
+          >
+            <FormLabel>Multi-Year Earning Criteria?</FormLabel>
+            <RadioGroup aria-label="quiz" name="quiz">
+              <Box display="flex">
+                <FormControlLabel
+                  value="best"
+                  control={<Radio />}
+                  label="Yes"
+                />
+                <FormControlLabel
+                  value="worst"
+                  control={<Radio />}
+                  label="No"
+                />
+              </Box>
+            </RadioGroup>
+          </FormControl>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex">
-            <Box mt={-1}>
-              <InfoModal />
-            </Box>
-            <FormControl
-              component="fieldset"
-              className={classes.formControlRadio}
-            >
-              <FormLabel>New or Signifigantly Changed Program?</FormLabel>
-              <RadioGroup aria-label="quiz" name="quiz">
-                <Box display="flex">
-                  <FormControlLabel
-                    value="best"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="worst"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </Box>
-              </RadioGroup>
-            </FormControl>
-          </Box>
+          <FormControl
+            component="fieldset"
+            className={classes.formControlRadio}
+          >
+            <FormLabel>New or Signifigantly Changed Program?</FormLabel>
+            <RadioGroup aria-label="quiz" name="quiz">
+              <Box display="flex">
+                <FormControlLabel
+                  value="best"
+                  control={<Radio />}
+                  label="Yes"
+                />
+                <FormControlLabel
+                  value="worst"
+                  control={<Radio />}
+                  label="No"
+                />
+              </Box>
+            </RadioGroup>
+          </FormControl>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex">
-            <Box mt={-1}>
-              <InfoModal />
-            </Box>
-            <FormControl
-              component="fieldset"
-              className={classes.formControlRadio}
-            >
-              <FormLabel>
-                <Typography>
-                  Does The Program Offer Free Rebate or Rebate of Any Kind?
-                </Typography>
-              </FormLabel>
-              <RadioGroup aria-label="quiz" name="quiz">
-                <Box display="flex">
-                  <FormControlLabel
-                    value="best"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="worst"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </Box>
-              </RadioGroup>
-            </FormControl>
-          </Box>
+          <FormControl
+            component="fieldset"
+            className={classes.formControlRadio}
+          >
+            <FormLabel>
+              <Typography>
+                Does The Program Offer Free Rebate or Rebate of Any Kind?
+              </Typography>
+            </FormLabel>
+            <RadioGroup aria-label="quiz" name="quiz">
+              <Box display="flex">
+                <FormControlLabel
+                  value="best"
+                  control={<Radio />}
+                  label="Yes"
+                />
+                <FormControlLabel
+                  value="worst"
+                  control={<Radio />}
+                  label="No"
+                />
+              </Box>
+            </RadioGroup>
+          </FormControl>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex">
-            <Box mt={-1}>
-              <InfoModal />
-            </Box>
-            <FormControl
-              component="fieldset"
-              className={classes.formControlRadio}
-            >
-              <FormLabel>Intigrated Acre?</FormLabel>
-              <RadioGroup aria-label="quiz" name="quiz">
-                <Box display="flex">
-                  <FormControlLabel
-                    value="best"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="worst"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </Box>
-              </RadioGroup>
-            </FormControl>
-          </Box>
+          <FormControl
+            component="fieldset"
+            className={classes.formControlRadio}
+          >
+            <FormLabel>Intigrated Acre?</FormLabel>
+            <RadioGroup aria-label="quiz" name="quiz">
+              <Box display="flex">
+                <FormControlLabel
+                  value="best"
+                  control={<Radio />}
+                  label="Yes"
+                />
+                <FormControlLabel
+                  value="worst"
+                  control={<Radio />}
+                  label="No"
+                />
+              </Box>
+            </RadioGroup>
+          </FormControl>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex">
-            <Box mt={-1}>
-              <InfoModal />
-            </Box>
-            <FormControl
-              component="fieldset"
-              className={classes.formControlRadio}
-            >
-              <FormLabel>Payment with Prepayment Terms?</FormLabel>
-              <RadioGroup aria-label="quiz" name="quiz">
-                <Box display="flex">
-                  <FormControlLabel
-                    value="best"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="worst"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </Box>
-              </RadioGroup>
-            </FormControl>
-          </Box>
+          <FormControl
+            component="fieldset"
+            className={classes.formControlRadio}
+          >
+            <FormLabel>Payment with Prepayment Terms?</FormLabel>
+            <RadioGroup aria-label="quiz" name="quiz">
+              <Box display="flex">
+                <FormControlLabel
+                  value="best"
+                  control={<Radio />}
+                  label="Yes"
+                />
+                <FormControlLabel
+                  value="worst"
+                  control={<Radio />}
+                  label="No"
+                />
+              </Box>
+            </RadioGroup>
+          </FormControl>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex">
-            <Box mt={-1}>
-              <InfoModal />
-            </Box>
-            <FormControl
-              component="fieldset"
-              className={classes.formControlRadio}
-            >
-              <FormLabel>External Reporting Required?</FormLabel>
-              <RadioGroup aria-label="quiz" name="quiz">
-                <Box display="flex">
-                  <FormControlLabel
-                    value="best"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="worst"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </Box>
-              </RadioGroup>
-            </FormControl>
-          </Box>
+          <FormControl
+            component="fieldset"
+            className={classes.formControlRadio}
+          >
+            <FormLabel>External Reporting Required?</FormLabel>
+            <RadioGroup aria-label="quiz" name="quiz">
+              <Box display="flex">
+                <FormControlLabel
+                  value="best"
+                  control={<Radio />}
+                  label="Yes"
+                />
+                <FormControlLabel
+                  value="worst"
+                  control={<Radio />}
+                  label="No"
+                />
+              </Box>
+            </RadioGroup>
+          </FormControl>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex" alignItems="start">
-            <InfoModal />
-            <ListItemText
-              primary={
-                <Typography variant="body1">
-                  Does this program allow customers a refund/credit if the price
-                  of the product is reduced within a specified period of time
-                  after the date of original sale? Due to the revenue accounting
-                  impacts, Global ACC BP approval is required for all Price
-                  Protection programs.
-                </Typography>
-              }
-              secondary={
-                <Typography variant="subtitle1" style={{paddingTop: '8px'}}>
-                  No
-                </Typography>
-              }
-            />
-          </Box>
+          <ListItemText
+            primary={
+              <Typography variant="body1">
+                Does this program allow customers a refund/credit if the price
+                of the product is reduced within a specified period of time
+                after the date of original sale? Due to the revenue accounting
+                impacts, Global ACC BP approval is required for all Price
+                Protection programs.
+              </Typography>
+            }
+            secondary={
+              <Typography variant="subtitle1" style={{paddingTop: '8px'}}>
+                No
+              </Typography>
+            }
+          />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex" alignItems="start">
-            <InfoModal />
-            <ListItemText
-              primary={
-                <Typography variant="body1">
-                  Does this program allow customers a refund/credit if the price
-                  of the product is reduced within a specified period of time
-                  after the date of original sale? Due to the revenue accounting
-                  impacts, Global ACC BP approval is required for all Price
-                  Protection programs.
-                </Typography>
-              }
-              secondary={
-                <Typography variant="subtitle1" style={{paddingTop: '8px'}}>
-                  No
-                </Typography>
-              }
-            />
-          </Box>
+          <ListItemText
+            primary={
+              <Typography variant="body1">
+                Does this program allow customers a refund/credit if the price
+                of the product is reduced within a specified period of time
+                after the date of original sale? Due to the revenue accounting
+                impacts, Global ACC BP approval is required for all Price
+                Protection programs.
+              </Typography>
+            }
+            secondary={
+              <Typography variant="subtitle1" style={{paddingTop: '8px'}}>
+                No
+              </Typography>
+            }
+          />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex" alignItems="start">
-            <InfoModal />
-            <ListItemText
-              primary={
-                <Typography variant="body1">
-                  Does this program allow customers a refund/credit if the price
-                  of the product is reduced within a specified period of time
-                  after the date of original sale? Due to the revenue accounting
-                  impacts, Global ACC BP approval is required for all Price
-                  Protection programs.
-                </Typography>
-              }
-              secondary={
-                <Typography variant="subtitle1" style={{paddingTop: '8px'}}>
-                  No
-                </Typography>
-              }
-            />
-          </Box>
+          <ListItemText
+            primary={
+              <Typography variant="body1">
+                Does this program allow customers a refund/credit if the price
+                of the product is reduced within a specified period of time
+                after the date of original sale? Due to the revenue accounting
+                impacts, Global ACC BP approval is required for all Price
+                Protection programs.
+              </Typography>
+            }
+            secondary={
+              <Typography variant="subtitle1" style={{paddingTop: '8px'}}>
+                No
+              </Typography>
+            }
+          />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
           <TextField
@@ -540,121 +508,102 @@ export default function Finance() {
           />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex">
-            <Box mt={-1}>
-              <InfoModal />
-            </Box>
-            <FormControl
-              component="fieldset"
-              className={classes.formControlRadio}
-            >
-              <FormLabel>
-                <Typography>
-                  Could this program alone or in combination with other programs
-                  result in a product being sold below cost?
-                </Typography>
-              </FormLabel>
-              <RadioGroup aria-label="quiz" name="quiz">
-                <Box display="flex">
-                  <FormControlLabel
-                    value="best"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="worst"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </Box>
-              </RadioGroup>
-            </FormControl>
-          </Box>
+          <FormControl
+            component="fieldset"
+            className={classes.formControlRadio}
+          >
+            <FormLabel>
+              <Typography>
+                Could this program alone or in combination with other programs
+                result in a product being sold below cost?
+              </Typography>
+            </FormLabel>
+            <RadioGroup aria-label="quiz" name="quiz">
+              <Box display="flex">
+                <FormControlLabel
+                  value="best"
+                  control={<Radio />}
+                  label="Yes"
+                />
+                <FormControlLabel
+                  value="worst"
+                  control={<Radio />}
+                  label="No"
+                />
+              </Box>
+            </RadioGroup>
+          </FormControl>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex">
-            <Box mt={-1}>
-              <InfoModal />
-            </Box>
-            <FormControl
-              component="fieldset"
-              className={classes.formControlRadio}
-            >
-              <FormLabel>
-                <Typography>
-                  Does nondiscretionary program provide different
-                  opportunities/incentives to similarly situated customers who
-                  might compete against each other in using/reselling that
-                  product?
-                </Typography>
-              </FormLabel>
-              <RadioGroup aria-label="quiz" name="quiz">
-                <Box display="flex">
-                  <FormControlLabel
-                    value="best"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="worst"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </Box>
-              </RadioGroup>
-            </FormControl>
-          </Box>
+          <FormControl
+            component="fieldset"
+            className={classes.formControlRadio}
+          >
+            <FormLabel>
+              <Typography>
+                Does nondiscretionary program provide different
+                opportunities/incentives to similarly situated customers who
+                might compete against each other in using/reselling that
+                product?
+              </Typography>
+            </FormLabel>
+            <RadioGroup aria-label="quiz" name="quiz">
+              <Box display="flex">
+                <FormControlLabel
+                  value="best"
+                  control={<Radio />}
+                  label="Yes"
+                />
+                <FormControlLabel
+                  value="worst"
+                  control={<Radio />}
+                  label="No"
+                />
+              </Box>
+            </RadioGroup>
+          </FormControl>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex" alignItems="start">
-            <InfoModal />
-            <ListItemText
-              primary={
-                <Typography variant="body1">
-                  Does the program combine the purchase or use of multiple
-                  products to qualify for the incentive?
-                </Typography>
-              }
-              secondary={
-                <Typography variant="subtitle1" style={{paddingTop: '8px'}}>
-                  No
-                </Typography>
-              }
-            />
-          </Box>
+          <ListItemText
+            primary={
+              <Typography variant="body1">
+                Does the program combine the purchase or use of multiple
+                products to qualify for the incentive?
+              </Typography>
+            }
+            secondary={
+              <Typography variant="subtitle1" style={{paddingTop: '8px'}}>
+                No
+              </Typography>
+            }
+          />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex" alignItems="start">
-            <InfoModal />
-            <ListItemText
-              primary={
-                <Typography variant="body1">
-                  Does the program require exclusivity or loyalty to one or more
-                  of our products or brands?
-                </Typography>
-              }
-              secondary={
-                <Typography variant="subtitle1" style={{paddingTop: '8px'}}>
-                  No
-                </Typography>
-              }
-            />
-          </Box>
+          <ListItemText
+            primary={
+              <Typography variant="body1">
+                Does the program require exclusivity or loyalty to one or more
+                of our products or brands?
+              </Typography>
+            }
+            secondary={
+              <Typography variant="subtitle1" style={{paddingTop: '8px'}}>
+                No
+              </Typography>
+            }
+          />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Box display="flex" alignItems="start">
-            <InfoModal />
-            <ListItemText
-              primary={
-                <Typography variant="body1">Legal Approval Required</Typography>
-              }
-              secondary={
-                <Typography variant="subtitle1" style={{paddingTop: '8px'}}>
-                  No
-                </Typography>
-              }
-            />
-          </Box>
+          <ListItemText
+            primary={
+              <Typography variant="body1">Legal Approval Required</Typography>
+            }
+            secondary={
+              <Typography variant="subtitle1" style={{paddingTop: '8px'}}>
+                No
+              </Typography>
+            }
+          />
         </Grid>
       </Grid>
     </div>

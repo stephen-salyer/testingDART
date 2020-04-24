@@ -42,7 +42,7 @@ const useStyles = makeStyles({
     minHeight: '960px',
   },
   cardPadding: {
-    paddingBottom: '8px',
+    padding: '32px 0',
   },
 });
 

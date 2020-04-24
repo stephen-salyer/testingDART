@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '0',
   },
   tabs: {
-    minWidth: '150px',
+    minWidth: '200px',
   },
 }));
 
@@ -92,7 +92,6 @@ function a11yProps(index) {
 export default function Approvers() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  // const [tabInfo, setTab] = React.useState(tabsInformation);
 
   const [state, setState] = React.useState({
     checkedB: false,

@@ -49,7 +49,7 @@ const Nav = () => {
           <List component="nav" aria-label="main mailbox folders">
             {links.map(({label, to}) => (
               <Link to={to} className={classes.linkNoDecoration} key={label}>
-                <ListItem button>
+                <ListItem button onClick={() => setOpen(false)}>
                   <ListItemText primary={label} />
                 </ListItem>
               </Link>

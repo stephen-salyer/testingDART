@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
   },
   containerPadding: {
-    paddingTop: '32px',
+    padding: '32px 0',
   },
   relatedContentPadding: {
     padding: '0 0 0 8px',
@@ -409,9 +409,14 @@ const MemberList = () => {
                   </IconButton>
                 </Box>
                 <Divider />
-                <Box>
+                <Box
+                  style={{
+                    maxHeight: '300px',
+                    overflow: 'scroll',
+                  }}
+                >
                   <List disablePadding={true}>
-                    {[1, 2].map((n) => (
+                    {[1, 2, 3].map((n) => (
                       <Fragment key={n}>
                         <ListItem className={classes.listItemCorrection}>
                           <ListItemText
@@ -452,7 +457,7 @@ const MemberList = () => {
           </Grid>
           <Grid container item={true} xs={12} md={8}>
             <Grid item={true} md={12}>
-              <Card style={{height: '767px'}}>
+              <Card style={{height: '802px'}}>
                 <Toolbar className={classes.toolBarEnd} disableGutters={true}>
                   <CardHeader
                     titleTypographyProps={{variant: 'h6'}}
