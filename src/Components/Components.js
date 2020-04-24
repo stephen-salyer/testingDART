@@ -15,8 +15,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import ComponentInformation from './ComponentInformation';
 import {Add} from '@material-ui/icons';
-import FileCopyIcon from '@material-ui/icons/FileCopy';
-import DeleteIcon from '@material-ui/icons/Delete';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme) => ({
@@ -165,19 +164,8 @@ export default function Components() {
                       }
                     />
                     <Box>
-                      <IconButton
-                        color="primary"
-                        aria-label="upload picture"
-                        component="span"
-                      >
-                        <FileCopyIcon />
-                      </IconButton>
-                      <IconButton
-                        color="secondary"
-                        aria-label="Delete"
-                        component="span"
-                      >
-                        <DeleteIcon />
+                      <IconButton aria-label="More" component="span">
+                        <MoreVertIcon />
                       </IconButton>
                     </Box>
                   </Box>
