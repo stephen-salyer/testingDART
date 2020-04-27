@@ -24,9 +24,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
   },
-  indicator: {
-    backgroundColor: '#142357',
-  },
   listItemTertiary: {
     marginTop: '0',
     fontWeight: '400',
@@ -37,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '0',
   },
   tabs: {
-    minWidth: '200px',
+    minWidth: '250px',
   },
   MuiTab: {
     wrapper: {
@@ -105,17 +102,15 @@ export default function Components() {
             value={value}
             onChange={handleChange}
             aria-label="Vertical tabs example"
+            indicatorColor={'primary'}
             className={classes.tabs}
-            classes={{
-              indicator: classes.indicator,
-            }}
           >
             {componentsInfo.map(({comp, ted}, i) => (
               <Tab
                 style={{textAlign: 'left'}}
                 key={i}
                 label={
-                  <List style={{minWidth: '100%'}}>
+                  <List style={{width: '100%'}}>
                     <ListItemText
                       className={classes.listItemTextNoMargin}
                       primary={

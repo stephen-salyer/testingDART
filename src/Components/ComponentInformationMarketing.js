@@ -14,6 +14,7 @@ import {
   FormControlLabel,
   Radio,
   InputAdornment,
+  Typography,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -110,6 +111,27 @@ export default function ComponentInformationMarketing() {
               </Box>
             </RadioGroup>
           </FormControl>
+        </Grid>
+        <Grid item xs={12} sm={6} md={6}>
+          <Typography variant="subtitle1">Treatment</Typography>
+          <Box display="flex" pt={2}>
+            <Box pr={1} width="100%">
+              <TextField
+                label="Go To Market Partners"
+                defaultValue="43%"
+                variant="outlined"
+                fullWidth
+              />
+            </Box>
+            <Box pl={1} width="100%">
+              <TextField
+                label="Grower"
+                defaultValue="57%"
+                variant="outlined"
+                fullWidth
+              />
+            </Box>
+          </Box>
         </Grid>
       </Grid>
     </div>
