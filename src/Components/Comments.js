@@ -2,7 +2,6 @@ import React from 'react';
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import SendIcon from '@material-ui/icons/Send';
@@ -10,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import CardHeader from '@material-ui/core/CardHeader';
 import SubdirectoryArrowRightIcon from '@material-ui/icons/SubdirectoryArrowRight';
-import {TextField, InputAdornment} from '@material-ui/core';
+import {TextField, InputAdornment, Fab, Badge} from '@material-ui/core';
 import Comment from '@material-ui/icons/Comment';
 
 const useStyles = makeStyles({
@@ -198,14 +197,17 @@ export default function Comments() {
       alignItems="center"
       className={classes.CommentsButtonMargin}
     >
-      <Button
-        onClick={toggleDrawer('right', true)}
-        variant="contained"
-        color="primary"
-        endIcon={<Comment />}
-      >
-        (1) Comment
-      </Button>
+      <Badge badgeContent={1} overlap="circle" color="error">
+        <Fab
+          size="large"
+          color="secondary"
+          aria-label="Comment"
+          className={classes.margin}
+          onClick={toggleDrawer('right', true)}
+        >
+          <Comment />
+        </Fab>
+      </Badge>
       <Drawer
         anchor={'right'}
         open={state.right}

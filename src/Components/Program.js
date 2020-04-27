@@ -123,7 +123,7 @@ const Program = () => {
               <Tab
                 label={
                   <div>
-                    <Badge color="secondary" variant="dot">
+                    <Badge color="error" variant="dot">
                       Overview
                     </Badge>
                   </div>
