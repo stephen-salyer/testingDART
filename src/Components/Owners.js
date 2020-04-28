@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import OwnersToggle from './OwnersToggle';
 import {
   Grid,
   Checkbox,
@@ -12,10 +13,7 @@ import {
   ListItem,
   ListItemSecondaryAction,
   IconButton,
-  FormControlLabel,
-  Switch,
   List,
-  Typography,
   Box,
   Divider,
 } from '@material-ui/core';
@@ -96,17 +94,7 @@ export default function CustomizedSelects() {
                   <Fragment key={n}>
                     <List>
                       <ListItem>
-                        <FormControlLabel
-                          style={{margin: '0 16px 0 0'}}
-                          value={
-                            <Typography variant="caption">Not Done</Typography>
-                          }
-                          control={<Switch color="primary" />}
-                          label={
-                            <Typography variant="caption">Not Done</Typography>
-                          }
-                          labelPlacement="top"
-                        />
+                        <OwnersToggle />
                         <ListItemText
                           primary={n.split(' ')[1]}
                           secondary={n.split(' ')[0]}

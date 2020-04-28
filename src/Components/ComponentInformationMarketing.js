@@ -16,9 +16,12 @@ import {
   Divider,
   CardHeader,
   Checkbox,
+  ListItemText,
+  CircularProgress,
 } from '@material-ui/core';
 import GeographyEligibilityCountry from './GeographyEligibilityCountry';
 import GeographyEligibilityState from './GeographyEligibilityState';
+import GeographyEligibilityCounty from './GeographyEligibilityCounty';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,9 +69,6 @@ export default function ComponentInformationMarketing() {
     <div className={classes.root}>
       <Box
         style={{
-          overflowX: 'hidden',
-          overflowY: 'scroll',
-          maxHeight: '41vh',
           paddingTop: '8px',
         }}
       >
@@ -218,19 +218,20 @@ export default function ComponentInformationMarketing() {
             <FormControl multiple fullWidth variant="outlined">
               <InputLabel>Country</InputLabel>
               <Select label="Country">
-                <Box pl={2}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={state.checkedB}
-                        onChange={handleChange}
-                        name="checkedB"
-                        color="primary"
-                        value={10}
-                      />
-                    }
-                    label="United States of America"
-                  />
+                <Box
+                  pt={8}
+                  pb={8}
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <CircularProgress color="secondary" />
+                  <Box p={3}>
+                    <Typography>
+                      Grab some coffee. Its gonna be a minute...
+                    </Typography>
+                  </Box>
                 </Box>
                 {/* <MenuItem value={10}>United States of America</MenuItem> */}
               </Select>
@@ -260,6 +261,35 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
             <GeographyEligibilityState />
+          </Grid>
+          <Grid item sm={12} md={6}>
+            <FormControl multiple fullWidth variant="outlined">
+              <InputLabel>Counties / Disctricts / Ect.</InputLabel>
+              <Select label="Counties / Disctricts / Ect.">
+                {[1, 2, 3, 4, 5, 6].map((n) => (
+                  <Box pl={2} key={n}>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={state.checkedB}
+                          onChange={handleChange}
+                          name="checkedB"
+                          color="primary"
+                          value={10}
+                        />
+                      }
+                      label={
+                        <ListItemText
+                          primary="County Name"
+                          secondary="Country Name • State Name"
+                        />
+                      }
+                    />
+                  </Box>
+                ))}
+              </Select>
+            </FormControl>
+            <GeographyEligibilityCounty />
           </Grid>
         </Grid>
       </Box>

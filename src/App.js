@@ -14,13 +14,10 @@ import MemberList from './Components/MemberList';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#142357',
-    },
-    secondary: {
       main: '#0164C4',
     },
-    danger: {
-      main: '#f44336',
+    secondary: {
+      main: '#142357',
     },
   },
 });

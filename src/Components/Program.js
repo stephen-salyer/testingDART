@@ -74,13 +74,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function a11yProps(index) {
-  return {
-    id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
-  };
-}
-
 const TabPanel = (props) => {
   const {children, value, index, ...other} = props;
 
@@ -116,11 +109,10 @@ const Program = () => {
               onChange={handleChange}
               indicatorColor="primary"
               textColor="primary"
-              variant="scrollable"
               scrollButtons="auto"
-              aria-label="full width tabs example"
             >
               <Tab
+                style={{minWidth: '10%'}}
                 label={
                   <div>
                     <Badge color="error" variant="dot">
@@ -128,16 +120,15 @@ const Program = () => {
                     </Badge>
                   </div>
                 }
-                {...a11yProps(0)}
               />
-              <Tab label="Scopes" {...a11yProps(1)} />
-              <Tab label="Marketing" {...a11yProps(2)} />
-              <Tab label="Operations" {...a11yProps(3)} />
-              <Tab label="Owners" {...a11yProps(4)} />
-              <Tab label="Finance" {...a11yProps(5)} />
-              <Tab label="Approvers" {...a11yProps(6)} />
-              <Tab label="Components" {...a11yProps(7)} />
-              <Tab label="Attached Files" {...a11yProps(8)} />
+              <Tab style={{minWidth: '10.1%'}} label="Scopes" />
+              <Tab style={{minWidth: '11.1%'}} label="Marketing" />
+              <Tab style={{minWidth: '11.1%'}} label="Operations" />
+              <Tab style={{minWidth: '10.1%'}} label="Owners" />
+              <Tab style={{minWidth: '11.1%'}} label="Finance" />
+              <Tab style={{minWidth: '12.1%'}} label="Approvers" />
+              <Tab style={{minWidth: '12.1%'}} label="Components" />
+              <Tab style={{minWidth: '12.2%'}} label="Attached Files" />
             </Tabs>
             <TabPanel value={value} index={0}>
               <Box p={3}>

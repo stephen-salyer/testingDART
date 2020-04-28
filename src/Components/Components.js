@@ -97,6 +97,7 @@ export default function Components() {
       <Grid container>
         <div className={classes.root}>
           <Tabs
+            style={{position: 'sticky', top: '0'}}
             orientation="vertical"
             variant="scrollable"
             value={value}

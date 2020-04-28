@@ -55,7 +55,7 @@ const SecondaryNav = () => {
           </Typography>
         </Grid>
         <Grid item={true} sm={12} md={6}>
-          <Box display="flex" justifyContent="flex-end">
+          <Box display="flex" justifyContent="flex-end" alignItems="center">
             <Button
               variant="contained"
               color="primary"
