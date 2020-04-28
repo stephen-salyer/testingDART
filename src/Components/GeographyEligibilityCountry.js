@@ -58,7 +58,7 @@ export default function GeographyEligibilityCountry() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Box style={{maxHeight: '260px', overflow: 'scroll'}}>
+        <Box style={{maxHeight: '255px', overflow: 'scroll'}}>
           <List>
             <Box p={1}>
               <ListItemText primary="United States of America" />

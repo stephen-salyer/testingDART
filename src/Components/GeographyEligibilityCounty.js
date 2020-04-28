@@ -61,21 +61,19 @@ export default function GeographyEligibilityState() {
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          <Box style={{maxHeight: '260px', overflow: 'scroll'}}>
+          <Box style={{height: '255px', overflow: 'scroll'}}>
             {[1, 2, 3].map((n) => (
               <>
                 <List key={n}>
-                  <Box p={1}>
-                    <ListItemText
-                      primary="County Name Here"
-                      secondary="State Name Here"
-                    />
-                    <ListItemSecondaryAction>
-                      <IconButton edge="end" aria-label="delete">
-                        <RemoveCircleIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </Box>
+                  <ListItemText
+                    primary="State Name Here"
+                    secondary="Country Name Here"
+                  />
+                  <ListItemSecondaryAction>
+                    <IconButton edge="end" aria-label="delete">
+                      <RemoveCircleIcon />
+                    </IconButton>
+                  </ListItemSecondaryAction>
                 </List>
                 <Divider />
               </>
@@ -83,7 +81,7 @@ export default function GeographyEligibilityState() {
           </Box>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Box style={{maxHeight: '260px', overflow: 'scroll'}}>
+          <Box style={{height: '255px', overflow: 'scroll'}}>
             {[
               1,
               2,
@@ -137,14 +135,15 @@ export default function GeographyEligibilityState() {
             ].map((n) => (
               <>
                 <List key={n}>
-                  <Box p={1}>
-                    <ListItemText primary="County Name Here" />
-                    <ListItemSecondaryAction>
-                      <IconButton edge="end" aria-label="delete">
-                        <RemoveCircleIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </Box>
+                  <ListItemText
+                    primary="State Name Here"
+                    secondary="Country Name Here"
+                  />
+                  <ListItemSecondaryAction>
+                    <IconButton edge="end" aria-label="delete">
+                      <RemoveCircleIcon />
+                    </IconButton>
+                  </ListItemSecondaryAction>
                 </List>
                 <Divider />
               </>

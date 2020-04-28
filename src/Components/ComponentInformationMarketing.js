@@ -188,7 +188,11 @@ export default function ComponentInformationMarketing() {
               <InputLabel id="demo-simple-select-outlined-label">
                 Sub-Country Commercial Area
               </InputLabel>
-              <Select disabled label="Season" defaultValue={10}>
+              <Select
+                disabled
+                label="Sub-Country Commercial Area"
+                defaultValue={10}
+              >
                 <MenuItem value={10}>N/A</MenuItem>
               </Select>
             </FormControl>
