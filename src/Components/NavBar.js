@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   appBarBackground: {
-    backgroundColor: '#142357',
+    backgroundColor: 'primary',
     paddingLeft: '0',
   },
   dividerColor: {

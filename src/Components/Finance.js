@@ -18,6 +18,7 @@ import {
   CardHeader,
   ListItemText,
   Typography,
+  Divider,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -259,11 +260,12 @@ export default function Finance() {
             alignItems="center"
           >
             <CardHeader
-              titleTypographyProps={{variant: 'h6'}}
+              titleTypographyProps={{variant: 'h5'}}
               title="Global Accounting and Legal Review"
             />
             <InfoModal />
           </Box>
+          <Divider />
         </Grid>
         <Grid item sm={12} md={6}>
           <TextField
@@ -465,11 +467,11 @@ export default function Finance() {
           <ListItemText
             primary={
               <Typography variant="body1">
-                Does this program allow customers a refund/credit if the price
-                of the product is reduced within a specified period of time
-                after the date of original sale? Due to the revenue accounting
-                impacts, Global ACC BP approval is required for all Price
-                Protection programs.
+                Does the program provide customers a credit/rebill for the
+                purpose of extending the due date for product that they have not
+                sold within a specified period of time? Due to the potential
+                revenue accounting impacts, Global ACC BP approval is required
+                for all credit/rebill programs.
               </Typography>
             }
             secondary={
@@ -483,11 +485,10 @@ export default function Finance() {
           <ListItemText
             primary={
               <Typography variant="body1">
-                Does this program allow customers a refund/credit if the price
-                of the product is reduced within a specified period of time
-                after the date of original sale? Due to the revenue accounting
-                impacts, Global ACC BP approval is required for all Price
-                Protection programs.
+                Dealer Return Fee Program. Does the program subject the dealer
+                to a handling fee per unit when product returns exceed a defined
+                threshold and/or a credit when product returns remain below a
+                defined threshold?
               </Typography>
             }
             secondary={

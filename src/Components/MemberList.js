@@ -1,10 +1,5 @@
 import React, {Fragment} from 'react';
-import {
-  withStyles,
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider,
-} from '@material-ui/core/styles';
+import {withStyles, makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -41,17 +36,6 @@ import PublishIcon from '@material-ui/icons/Publish';
 import RemoveIcon from '@material-ui/icons/RemoveCircle';
 import DeleteScopeModal from './DeleteScopeModal';
 import SearchBar from './SearchBar';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#142357',
-    },
-    secondary: {
-      main: '#f44336',
-    },
-  },
-});
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -140,7 +124,7 @@ const ExpansionPanel = withStyles({
   expanded: {},
 })(MuiExpansionPanel);
 
-const Members = [
+export const Members = [
   {title: 'Justice Madden'},
   {title: 'Alberto Shepard'},
   {title: 'Anahi Mayo'},
@@ -262,274 +246,272 @@ const MemberList = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container maxWidth="lg" className={classes.containerPadding}>
-        <Grid container spacing={1} direction="row">
-          <Toolbar
-            disableGutters={true}
-            style={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Typography variant="h3" color="primary" edge="start">
-              Member List
+    <Container maxWidth="lg" className={classes.containerPadding}>
+      <Grid container spacing={1} direction="row">
+        <Toolbar
+          disableGutters={true}
+          style={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Typography variant="h3" color="primary" edge="start">
+            Member List
+          </Typography>
+          <Box display="flex" justifyContent="flex-end">
+            <Box width="300px">
+              <Autocomplete
+                options={Members}
+                getOptionLabel={(option) => option.title}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Search Members"
+                    variant="outlined"
+                  />
+                )}
+              />
+            </Box>
+            <Button
+              color="primary"
+              className={classes.button}
+              endIcon={<GetAppIcon />}
+              edge="end"
+            >
+              Export Scope
+            </Button>
+            <Button
+              color="primary"
+              className={classes.button}
+              endIcon={<GetAppIcon />}
+              edge="end"
+            >
+              Export To Excel
+            </Button>
+          </Box>
+        </Toolbar>
+      </Grid>
+      <Grid container style={{margin: '24px 0 0 0'}}>
+        <Grid item={true} xs={12} md={12}>
+          <Box display="flex" alignItems="baseline">
+            <Typography variant="h5">Raul Abrego</Typography>
+            <Typography
+              variant="subtitle1"
+              className={classes.relatedContentPadding}
+            >
+              (RRABRE)
             </Typography>
-            <Box display="flex" justifyContent="flex-end">
-              <Box width="300px">
+          </Box>
+          <Grid item={true} xs={12} md={12}>
+            C&C Specialist
+          </Grid>
+          <Grid item={true} xs={12} md={12}>
+            Security Groups: D-A-R-T Edit, Dart Edit NA
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid container spacing={3} style={{marginTop: '24px'}}>
+        <Grid container item xs={12} md={4}>
+          <Grid item={true} xs={12} md={12}>
+            <Card>
+              <CardHeader
+                titleTypographyProps={{variant: 'h6'}}
+                title="User Details"
+              ></CardHeader>
+              <Divider />
+              <Box pt={2} pr={2} pl={2}>
+                <TextField
+                  label="DOA"
+                  defaultValue="222,222,255"
+                  variant="outlined"
+                  fullWidth={true}
+                />
+              </Box>
+              <Box pt={2} pr={2} pl={2}>
+                <TextField
+                  label="DOA Length in Years"
+                  defaultValue="1"
+                  variant="outlined"
+                  fullWidth={true}
+                />
+              </Box>
+              <Box pt={2} pr={2} pl={2}>
+                <FormControl
+                  component="fieldset"
+                  className={classes.formControlRadio}
+                >
+                  <FormLabel component="legend">
+                    Program Classification Access
+                  </FormLabel>
+                  <RadioGroup aria-label="quiz" name="quiz">
+                    <FormControlLabel
+                      value="best"
+                      control={<Radio />}
+                      label="All Agreements"
+                    />
+                    <FormControlLabel
+                      value="worst"
+                      control={<Radio />}
+                      label="Non-Strategic Agreement"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </Box>
+              <Box p={2}>
                 <Autocomplete
-                  options={Members}
+                  freeSolo
+                  options={Department}
                   getOptionLabel={(option) => option.title}
+                  style={{width: '100%'}}
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      label="Search Members"
+                      label="Department"
                       variant="outlined"
                     />
                   )}
                 />
               </Box>
-              <Button
-                color="primary"
-                className={classes.button}
-                endIcon={<GetAppIcon />}
-                edge="end"
-              >
-                Export Scope
-              </Button>
-              <Button
-                color="primary"
-                className={classes.button}
-                endIcon={<GetAppIcon />}
-                edge="end"
-              >
-                Export To Excel
-              </Button>
-            </Box>
-          </Toolbar>
-        </Grid>
-        <Grid container style={{margin: '24px 0 0 0'}}>
-          <Grid item={true} xs={12} md={12}>
-            <Box display="flex" alignItems="baseline">
-              <Typography variant="h5">Raul Abrego</Typography>
-              <Typography
-                variant="subtitle1"
-                className={classes.relatedContentPadding}
-              >
-                (RRABRE)
-              </Typography>
-            </Box>
-            <Grid item={true} xs={12} md={12}>
-              C&C Specialist
-            </Grid>
-            <Grid item={true} xs={12} md={12}>
-              Security Groups: D-A-R-T Edit, Dart Edit NA
-            </Grid>
+            </Card>
           </Grid>
-        </Grid>
-        <Grid container spacing={3} style={{marginTop: '24px'}}>
-          <Grid container item xs={12} md={4}>
-            <Grid item={true} xs={12} md={12}>
-              <Card>
+          <Grid item={true} xs={12} md={12} style={{paddingTop: '24px'}}>
+            <Card>
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+                pr={1}
+              >
                 <CardHeader
                   titleTypographyProps={{variant: 'h6'}}
-                  title="User Details"
+                  title="Attachments"
                 ></CardHeader>
-                <Divider />
-                <Box pt={2} pr={2} pl={2}>
-                  <TextField
-                    label="DOA"
-                    defaultValue="222,222,255"
-                    variant="outlined"
-                    fullWidth={true}
-                  />
-                </Box>
-                <Box pt={2} pr={2} pl={2}>
-                  <TextField
-                    label="DOA Length in Years"
-                    defaultValue="1"
-                    variant="outlined"
-                    fullWidth={true}
-                  />
-                </Box>
-                <Box pt={2} pr={2} pl={2}>
-                  <FormControl
-                    component="fieldset"
-                    className={classes.formControlRadio}
-                  >
-                    <FormLabel component="legend">
-                      Program Classification Access
-                    </FormLabel>
-                    <RadioGroup aria-label="quiz" name="quiz">
-                      <FormControlLabel
-                        value="best"
-                        control={<Radio />}
-                        label="All Agreements"
-                      />
-                      <FormControlLabel
-                        value="worst"
-                        control={<Radio />}
-                        label="Non-Strategic Agreement"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Box>
-                <Box p={2}>
-                  <Autocomplete
-                    freeSolo
-                    options={Department}
-                    getOptionLabel={(option) => option.title}
-                    style={{width: '100%'}}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Department"
-                        variant="outlined"
-                      />
-                    )}
-                  />
-                </Box>
-              </Card>
-            </Grid>
-            <Grid item={true} xs={12} md={12} style={{paddingTop: '24px'}}>
-              <Card>
-                <Box
-                  display="flex"
-                  justifyContent="space-between"
-                  alignItems="center"
-                  pr={1}
-                >
-                  <CardHeader
-                    titleTypographyProps={{variant: 'h6'}}
-                    title="Attachments"
-                  ></CardHeader>
-                  <IconButton color="primary" style={{height: '48px'}}>
-                    <PublishIcon />
-                  </IconButton>
-                </Box>
-                <Divider />
-                <Box
-                  style={{
-                    maxHeight: '300px',
-                    overflow: 'scroll',
-                  }}
-                >
-                  <List disablePadding={true}>
-                    {[1, 2, 3].map((n) => (
-                      <Fragment key={n}>
-                        <ListItem className={classes.listItemCorrection}>
-                          <ListItemText
-                            className={classes.listItemTextNoMargin}
-                            primary={
-                              <Typography variant="overline">
-                                Bill Attacher • 01/01/22
-                              </Typography>
-                            }
-                            secondary={
-                              <Typography variant="body1">
-                                This-File-Name-Could-Be-Very-Long-Possibly-Even-60-Characters.doc
-                              </Typography>
-                            }
-                          />
-                          <ListItemText
-                            classes={{primary: classes.listItemTertiary}}
-                            primary={
-                              <Typography variant="caption">
-                                I uploaded this file so that it can be seen by
-                                others
-                              </Typography>
-                            }
-                          />
-                          <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label="morevert">
-                              <RemoveIcon />
-                            </IconButton>
-                          </ListItemSecondaryAction>
-                        </ListItem>
-                        <Divider />
-                      </Fragment>
-                    ))}
-                  </List>
-                </Box>
-              </Card>
-            </Grid>
-          </Grid>
-          <Grid container item={true} xs={12} md={8}>
-            <Grid item={true} md={12}>
-              <Card style={{height: '802px'}}>
-                <Toolbar className={classes.toolBarEnd} disableGutters={true}>
-                  <CardHeader
-                    titleTypographyProps={{variant: 'h6'}}
-                    title="Scope Builder"
-                  ></CardHeader>
-                  <div className={classes.toolBarEnd}>
-                    <Box
-                      display="flex"
-                      justifyContent="space-between"
-                      alignItems="center"
-                      pr={1}
-                    >
-                      <SearchBar />
-                      <IconButton color="primary" style={{height: '48px'}}>
-                        <AddIcon />
-                      </IconButton>
-                    </Box>
-                  </div>
-                </Toolbar>
-                <Divider />
-                {scopes.map((scope) => (
-                  <ExpansionPanel
-                    key={scope.id}
-                    square
-                    expanded={expanded === 'panel' + scope.id}
-                    onChange={handleChange('panel' + scope.id)}
-                  >
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                      <Typography>{scopeLabel(scope)}</Typography>
-                    </ExpansionPanelSummary>
-
-                    <ExpansionPanelDetails>
-                      <div className={classes.root}>
-                        <Grid container spacing={3}>
-                          {inputs.map(({label, options, size, key}, i) => (
-                            <Grid key={i} item xs={12} md={size}>
-                              <FormControl
-                                variant="outlined"
-                                className={classes.formControl}
-                              >
-                                <InputLabel>{label}</InputLabel>
-                                <Select defaultValue={scope[key]} label={label}>
-                                  {makeMenuItems(options)}
-                                </Select>
-                              </FormControl>
-                            </Grid>
-                          ))}
-                        </Grid>
-                      </div>
-                    </ExpansionPanelDetails>
-
-                    <Box
-                      p={'0 24px 8px 24px'}
-                      display="flex"
-                      justifyContent="flex-end"
-                    >
-                      <DeleteScopeModal
-                        onDelete={() =>
-                          setScopes(scopes.filter((el) => el !== scope))
-                        }
-                      />
-                    </Box>
-                    <Divider />
-                  </ExpansionPanel>
-                ))}
-                <Box pt={1} pb={1} display="flex" justifyContent="center"></Box>
-              </Card>
-            </Grid>
+                <IconButton color="primary" style={{height: '48px'}}>
+                  <PublishIcon />
+                </IconButton>
+              </Box>
+              <Divider />
+              <Box
+                style={{
+                  maxHeight: '300px',
+                  overflow: 'scroll',
+                }}
+              >
+                <List disablePadding={true}>
+                  {[1, 2, 3].map((n) => (
+                    <Fragment key={n}>
+                      <ListItem className={classes.listItemCorrection}>
+                        <ListItemText
+                          className={classes.listItemTextNoMargin}
+                          primary={
+                            <Typography variant="overline">
+                              Bill Attacher • 01/01/22
+                            </Typography>
+                          }
+                          secondary={
+                            <Typography variant="body1">
+                              This-File-Name-Could-Be-Very-Long-Possibly-Even-60-Characters.doc
+                            </Typography>
+                          }
+                        />
+                        <ListItemText
+                          classes={{primary: classes.listItemTertiary}}
+                          primary={
+                            <Typography variant="caption">
+                              I uploaded this file so that it can be seen by
+                              others
+                            </Typography>
+                          }
+                        />
+                        <ListItemSecondaryAction>
+                          <IconButton edge="end" aria-label="morevert">
+                            <RemoveIcon />
+                          </IconButton>
+                        </ListItemSecondaryAction>
+                      </ListItem>
+                      <Divider />
+                    </Fragment>
+                  ))}
+                </List>
+              </Box>
+            </Card>
           </Grid>
         </Grid>
-      </Container>
-    </ThemeProvider>
+        <Grid container item={true} xs={12} md={8}>
+          <Grid item={true} md={12}>
+            <Card style={{height: '802px'}}>
+              <Toolbar className={classes.toolBarEnd} disableGutters={true}>
+                <CardHeader
+                  titleTypographyProps={{variant: 'h6'}}
+                  title="Scope Builder"
+                ></CardHeader>
+                <div className={classes.toolBarEnd}>
+                  <Box
+                    display="flex"
+                    justifyContent="space-between"
+                    alignItems="center"
+                    pr={1}
+                  >
+                    <SearchBar />
+                    <IconButton color="primary" style={{height: '48px'}}>
+                      <AddIcon />
+                    </IconButton>
+                  </Box>
+                </div>
+              </Toolbar>
+              <Divider />
+              {scopes.map((scope) => (
+                <ExpansionPanel
+                  key={scope.id}
+                  square
+                  expanded={expanded === 'panel' + scope.id}
+                  onChange={handleChange('panel' + scope.id)}
+                >
+                  <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                    <Typography>{scopeLabel(scope)}</Typography>
+                  </ExpansionPanelSummary>
+
+                  <ExpansionPanelDetails>
+                    <div className={classes.root}>
+                      <Grid container spacing={3}>
+                        {inputs.map(({label, options, size, key}, i) => (
+                          <Grid key={i} item xs={12} md={size}>
+                            <FormControl
+                              variant="outlined"
+                              className={classes.formControl}
+                            >
+                              <InputLabel>{label}</InputLabel>
+                              <Select defaultValue={scope[key]} label={label}>
+                                {makeMenuItems(options)}
+                              </Select>
+                            </FormControl>
+                          </Grid>
+                        ))}
+                      </Grid>
+                    </div>
+                  </ExpansionPanelDetails>
+
+                  <Box
+                    p={'0 24px 8px 24px'}
+                    display="flex"
+                    justifyContent="flex-end"
+                  >
+                    <DeleteScopeModal
+                      onDelete={() =>
+                        setScopes(scopes.filter((el) => el !== scope))
+                      }
+                    />
+                  </Box>
+                  <Divider />
+                </ExpansionPanel>
+              ))}
+              <Box pt={1} pb={1} display="flex" justifyContent="center"></Box>
+            </Card>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 
