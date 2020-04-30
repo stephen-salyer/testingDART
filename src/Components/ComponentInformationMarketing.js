@@ -16,6 +16,7 @@ import {
 } from '@material-ui/core';
 import GeographyEligibility from './GeographyEligibility/GeographyEligibility';
 import CustomerEligibility from './CustomerEligibility/CustomerEligibility';
+import ProductEligibility from './ProductEligibility/ProductEligibility';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -182,6 +183,7 @@ export default function ComponentInformationMarketing() {
           </Grid>
           <GeographyEligibility />
           <CustomerEligibility />
+          <ProductEligibility />
         </Grid>
       </Box>
     </div>

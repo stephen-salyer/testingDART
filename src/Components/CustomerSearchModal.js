@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import {RemoveCircle, Add} from '@material-ui/icons';
+import {RemoveCircle, Add, Search} from '@material-ui/icons';
 import {
   Button,
   Typography,
@@ -44,30 +44,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const customers = [
-  {name: 'Oliver Hansen', sapId: '12345'},
-  {name: 'Van Henry', sapId: '12345'},
-  {name: 'April Tucker', sapId: '12345'},
-  {name: 'Ralph Hubbard', sapId: '12345'},
-  {name: 'Omar Alexander', sapId: '12345'},
-  {name: 'Minh Amato', sapId: '12345'},
-  {name: 'Janean Delosh', sapId: '12345'},
-  {name: 'Cory Waddington', sapId: '12345'},
-  {name: 'Humberto Kiley', sapId: '12345'},
-  {name: 'Maisha Parson', sapId: '12345'},
-];
-
-const Members = [
-  {title: 'Justice Madden'},
-  {title: 'Alberto Shepard'},
-  {title: 'Anahi Mayo'},
-  {title: 'Mohamed Ferrell'},
-  {title: 'Jaylin Mcneil'},
-  {title: 'Caden Sosa'},
-  {title: 'Monica Carroll'},
-  {title: 'Leia Roach'},
-  {title: 'Kayden Jordan'},
-  {title: 'Billy Lester'},
-  {title: 'Kinsley Christian'},
+  {name: 'Oliver Hansen', sapId: '00012345'},
+  {name: 'Van Henry', sapId: '00012345'},
+  {name: 'April Tucker', sapId: '00012345'},
+  {name: 'Ralph Hubbard', sapId: '00012345'},
+  {name: 'Omar Alexander', sapId: '00012345'},
+  {name: 'Minh Amato', sapId: '00012345'},
+  {name: 'Janean Delosh', sapId: '00012345'},
+  {name: 'Cory Waddington', sapId: '00012345'},
+  {name: 'Humberto Kiley', sapId: '00012345'},
+  {name: 'Maisha Parson', sapId: '00012345'},
 ];
 
 export default function CustomerSearchModal() {
@@ -89,6 +75,7 @@ export default function CustomerSearchModal() {
         <Button
           color="primary"
           variant="outlined"
+          endIcon={<Search />}
           onClick={() => setOpen(true)}
         >
           Search Customers
@@ -129,7 +116,7 @@ export default function CustomerSearchModal() {
                 md={7}
                 style={{borderRight: '1px solid rgba(0, 0, 0, 0.12)'}}
               >
-                <Box ml={2} mr={2} mt={1} mb={1}>
+                <Box ml={3} mr={3} mt={1} mb={1}>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -143,20 +130,28 @@ export default function CustomerSearchModal() {
                   />
                 </Box>
                 <Divider />
-                <List style={{maxHeight: '393px', overflow: 'scroll'}}>
+                <List
+                  style={{maxHeight: '393px', overflow: 'scroll', padding: 0}}
+                >
                   {customers.map(({name, sapId}, i) => (
                     <Box key={i}>
                       <ListItem>
                         <FormControlLabel
-                          control={<Checkbox color="primary" name="checkedC" />}
+                          control={
+                            <Box pl={1} pr={0} pt={0} pb={0}>
+                              <Checkbox color="primary" name="checkedC" />
+                            </Box>
+                          }
                           label={
                             <ListItemText primary={sapId} secondary={name} />
                           }
                         />
                         <ListItemSecondaryAction>
-                          <IconButton edge="end" aria-label="delete">
-                            <RemoveCircle />
-                          </IconButton>
+                          <Box pl={0} pr={1} pt={0} pb={0}>
+                            <IconButton edge="end" aria-label="delete">
+                              <RemoveCircle />
+                            </IconButton>
+                          </Box>
                         </ListItemSecondaryAction>
                       </ListItem>
                       <Divider />
@@ -165,9 +160,9 @@ export default function CustomerSearchModal() {
                 </List>
               </Grid>
               <Grid item md={5}>
-                <Box p={2}>
+                <Box p={3}>
                   <Autocomplete
-                    options={Members}
+                    options={customers} // THIS DOESNT WORK
                     getOptionLabel={(option) => option.title}
                     renderInput={(params) => (
                       <TextField

@@ -45,9 +45,6 @@ const useStyles = makeStyles({
   formControl: {
     width: '100%',
   },
-  colorChange: {
-    color: '#000000',
-  },
 });
 
 export default function TemporaryDrawer() {
@@ -282,10 +279,7 @@ export default function TemporaryDrawer() {
 
   return (
     <Box display="flex" alignItems="center">
-      <IconButton
-        onClick={toggleDrawer('right', true)}
-        className={classes.colorChange}
-      >
+      <IconButton onClick={toggleDrawer('right', true)}>
         <FilterList />
       </IconButton>
       <Drawer

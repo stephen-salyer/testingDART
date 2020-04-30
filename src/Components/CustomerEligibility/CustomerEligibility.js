@@ -20,17 +20,17 @@ import {
 } from '@material-ui/core';
 import CustomerSearchModal from '../CustomerSearchModal';
 
-export const customers = [
-  {name: 'Oliver Hansen', sapId: '12345'},
-  {name: 'Van Henry', sapId: '12345'},
-  {name: 'April Tucker', sapId: '12345'},
-  {name: 'Ralph Hubbard', sapId: '12345'},
-  {name: 'Omar Alexander', sapId: '12345'},
-  {name: 'Minh Amato', sapId: '12345'},
-  {name: 'Janean Delosh', sapId: '12345'},
-  {name: 'Cory Waddington', sapId: '12345'},
-  {name: 'Humberto Kiley', sapId: '12345'},
-  {name: 'Maisha Parson', sapId: '12345'},
+const customers = [
+  {name: 'Oliver Hansen', sapId: '00012345'},
+  {name: 'Van Henry', sapId: '00012345'},
+  {name: 'April Tucker', sapId: '00012345'},
+  {name: 'Ralph Hubbard', sapId: '00012345'},
+  {name: 'Omar Alexander', sapId: '00012345'},
+  {name: 'Minh Amato', sapId: '00012345'},
+  {name: 'Janean Delosh', sapId: '00012345'},
+  {name: 'Cory Waddington', sapId: '00012345'},
+  {name: 'Humberto Kiley', sapId: '00012345'},
+  {name: 'Maisha Parson', sapId: '00012345'},
 ];
 
 export default function CustomerEligibility() {
@@ -48,7 +48,7 @@ export default function CustomerEligibility() {
           title="Customer Eligibility"
         />
       </Grid>
-      <Grid item sm={12} md={4}>
+      <Grid item md={12} lg={4}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Which Customers</InputLabel>
           <Select label="Which Customers" defaultValue={20}>
@@ -58,7 +58,7 @@ export default function CustomerEligibility() {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item sm={12} md={4}>
+      <Grid item md={12} lg={4}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Account Classification</InputLabel>
           <Select label="Account Classification" defaultValue={20}>
@@ -68,7 +68,7 @@ export default function CustomerEligibility() {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item sm={12} md={4}>
+      <Grid item md={12} lg={4}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Segment</InputLabel>
           <Select label="Segment" defaultValue={20}>
@@ -82,6 +82,7 @@ export default function CustomerEligibility() {
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Box>
             <CardHeader
+              style={{opacity: '0.85'}}
               titleTypographyProps={{variant: 'h6'}}
               title="Global Accounting and Legal Review"
             />
@@ -103,7 +104,7 @@ export default function CustomerEligibility() {
         </Box>
         <Divider />
         <Box style={{maxHeight: '520px', overflow: 'scroll'}}>
-          <List>
+          <List style={{padding: 0}}>
             {customers.map(({name, sapId}, i) => (
               <Fragment key={i}>
                 <ListItem>
