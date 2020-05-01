@@ -18,7 +18,7 @@ import {
   ListItemSecondaryAction,
   IconButton,
 } from '@material-ui/core';
-import CustomerSearchModal from '../CustomerSearchModal';
+import ProductSearchModal from '../ProductSearchModal';
 
 const products = [
   {
@@ -136,7 +136,7 @@ export default function ProductEligibility() {
             <CardHeader
               style={{opacity: '0.85'}}
               titleTypographyProps={{variant: 'h6'}}
-              title="Commercial Products"
+              title="Products"
             />
           </Box>
           <RadioGroup value={value} onChange={handleChange}>
@@ -192,7 +192,7 @@ export default function ProductEligibility() {
             )}
           </List>
         </Box>
-        <CustomerSearchModal />
+        <ProductSearchModal />
       </Grid>
     </>
   );

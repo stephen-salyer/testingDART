@@ -101,7 +101,7 @@ const Program = () => {
   return (
     <>
       <SecondaryNavProgram />
-      <Container maxWidth="lg" className={classes.cardPadding}>
+      <Container maxWidth="lg">
         <Card>
           <CardContent className={classes.content}>
             <Tabs

@@ -38,7 +38,7 @@ const NavBar = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar className={classes.appBarTheme} position="sticky">
+      <AppBar className={classes.appBarTheme} position="fixed">
         <ToolBar className={classes.appBarBackground}>
           <IconButton
             className={classes.menuButton}

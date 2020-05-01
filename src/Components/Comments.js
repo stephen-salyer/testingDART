@@ -17,7 +17,8 @@ const useStyles = makeStyles({
     width: '100%',
   },
   list: {
-    width: 300,
+    width: '20vw',
+    minWidth: '320px',
   },
   fullList: {
     width: 'auto',

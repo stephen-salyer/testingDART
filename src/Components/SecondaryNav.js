@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
   },
   containerPadding: {
-    padding: '0 0 32px 0',
+    padding: '88px 0 32px 0',
   },
 }));
 

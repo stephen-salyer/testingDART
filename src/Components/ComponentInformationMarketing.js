@@ -13,7 +13,11 @@ import {
   FormControlLabel,
   Radio,
   Typography,
+  CardHeader,
+  Divider,
+  IconButton,
 } from '@material-ui/core';
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import GeographyEligibility from './GeographyEligibility/GeographyEligibility';
 import CustomerEligibility from './CustomerEligibility/CustomerEligibility';
 import ProductEligibility from './ProductEligibility/ProductEligibility';
@@ -184,6 +188,143 @@ export default function ComponentInformationMarketing() {
           <GeographyEligibility />
           <CustomerEligibility />
           <ProductEligibility />
+          <Grid item xs={12}>
+            <CardHeader
+              titleTypographyProps={{variant: 'h6'}}
+              title="Calculations Applied to Eligible Sales"
+            />
+          </Grid>
+          <Grid item sm={12} md={6}>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel id="demo-simple-select-outlined-label">
+                Component Teir Rate
+              </InputLabel>
+              <Select label="Component Teir Rate" defaultValue={10}>
+                <MenuItem value={10}>Date</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item sm={12} md={6}>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel id="demo-simple-select-outlined-label">
+                Rate
+              </InputLabel>
+              <Select label="Rate" defaultValue={10}>
+                <MenuItem value={10}>FOC Discount</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subtitle1">Tier Rates</Typography>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel id="demo-simple-select-outlined-label">
+                Type
+              </InputLabel>
+              <Select label="Type" defaultValue={10}>
+                <MenuItem value={10}>Product</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel id="demo-simple-select-outlined-label">
+                Product
+              </InputLabel>
+              <Select label="Product" defaultValue={10}>
+                <MenuItem value={10}>Corn</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              label="Incentive"
+              defaultValue="25"
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Min / Max Volume"
+              defaultValue="24 / 10,000"
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Estimated Impact"
+              defaultValue="0.25%"
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Box pb={1}>
+              <Divider />
+            </Box>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          spacing={3}
+          display="flex"
+          flexDirection="row"
+          wrap="nowrap"
+        >
+          <Grid container item spacing={3}>
+            <Grid item xs={12} sm={4}>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Type
+                </InputLabel>
+                <Select label="Type" defaultValue={10}>
+                  <MenuItem value={10}>Product</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Product
+                </InputLabel>
+                <Select label="Product" defaultValue={10}>
+                  <MenuItem value={10}>Corn</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <TextField
+                label="Incentive"
+                defaultValue="25"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Min / Max Volume"
+                defaultValue="24 / 10,000"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Estimated Impact"
+                defaultValue="0.25%"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+          </Grid>
+          <Grid container item sm={1} alignItems="center">
+            <IconButton>
+              <RemoveCircleIcon />
+            </IconButton>
+          </Grid>
         </Grid>
       </Box>
     </div>

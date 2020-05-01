@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
   containerPadding: {
-    padding: '32px 24px',
+    padding: '88px 24px 32px 24px',
   },
   typographyPadding: {
     padding: '8px 0 0 0',

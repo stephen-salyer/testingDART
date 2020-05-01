@@ -84,7 +84,7 @@ export default function CustomerEligibility() {
             <CardHeader
               style={{opacity: '0.85'}}
               titleTypographyProps={{variant: 'h6'}}
-              title="Global Accounting and Legal Review"
+              title="Customers"
             />
           </Box>
           <RadioGroup value={value} onChange={handleChange}>
