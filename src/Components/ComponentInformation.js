@@ -7,6 +7,8 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import ComponentInformationMarketing from './ComponentInformationMarketing';
+import ComponentInformationFinance from './ComponentInformationFinance';
+import ComponentInformationOperations from './ComponentInformationOperations';
 
 function TabPanel(props) {
   const {children, value, index, ...other} = props;
@@ -65,7 +67,6 @@ export default function ComponentInformation() {
           value={value}
           onChange={handleChange}
           indicatorColor="primary"
-          textColor="primary"
           variant="fullWidth"
           aria-label="full width tabs example"
         >
@@ -78,10 +79,10 @@ export default function ComponentInformation() {
         <ComponentInformationMarketing />
       </TabPanel>
       <TabPanel value={value} index={1} dir={theme.direction}>
-        Item Two
+        <ComponentInformationFinance />
       </TabPanel>
       <TabPanel value={value} index={2} dir={theme.direction}>
-        Item Three
+        <ComponentInformationOperations />
       </TabPanel>
     </div>
   );

@@ -102,7 +102,7 @@ export default function Components() {
             value={value}
             onChange={handleChange}
             aria-label="Vertical tabs example"
-            indicatorColor={'primary'}
+            indicatorColor="primary"
             className={classes.tabs}
           >
             {componentsInfo.map(({comp, ted}, i) => (

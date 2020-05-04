@@ -19,6 +19,7 @@ import {
   ListItemText,
   Typography,
   Divider,
+  Checkbox,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -49,26 +50,67 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
+const names = [
+  'Credit/Rebill (extend payment terms – no expense)',
+  'Discretionary Programs',
+  'Distribution Compensation',
+  'Grower Incentives',
+  'Guarantee/Performance Claims',
+  'Key Account/Strategic Agreements',
+  'Licensee/Multiplier Programs',
+  'Non-Standard Cost',
+  'Payment Incentives',
+  'Returns & Allowances',
+  'SG&A (ex: Dealer Compensation)',
+];
+
 export default function Finance() {
   const classes = useStyles();
+  const [personName, setPersonName] = React.useState([]);
+
+  const handleChange = (event) => {
+    setPersonName(event.target.value);
+  };
 
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item sm={12} md={6}>
-          <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">
+          <FormControl
+            variant="outlined"
+            fullWidth={true}
+            className={classes.formControl}
+          >
+            <InputLabel id="demo-mutiple-checkbox-label">
               Funding Source
             </InputLabel>
             <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              defaultValue={10}
+              labelId="demo-mutiple-checkbox-label"
+              id="demo-mutiple-checkbox"
+              multiple
+              value={personName}
+              onChange={handleChange}
               label="Funding Source"
+              renderValue={(selected) => selected.join(', ')}
+              MenuProps={MenuProps}
             >
-              <MenuItem value={10}>Credit / Rebill</MenuItem>
-              <MenuItem value={20}>Discretionary Programs</MenuItem>
-              <MenuItem value={30}>Distribution Compensation</MenuItem>
+              {names.map((name) => (
+                <MenuItem key={name} value={name}>
+                  <Checkbox checked={personName.indexOf(name) > -1} />
+                  <ListItemText primary={name} />
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Grid>
@@ -193,35 +235,30 @@ export default function Finance() {
         </Grid>
 
         <Grid item sm={12} md={6}>
-          <Box display="flex">
-            <Box mt={-1}>
-              <InfoModal />
-            </Box>
-            <FormControl
-              component="fieldset"
-              className={classes.formControlRadio}
-            >
-              <FormLabel>
-                <Typography>
-                  Does program require consumption-based accrual methodology?
-                </Typography>
-              </FormLabel>
-              <RadioGroup aria-label="quiz" name="quiz">
-                <Box display="flex">
-                  <FormControlLabel
-                    value="best"
-                    control={<Radio />}
-                    label="Required"
-                  />
-                  <FormControlLabel
-                    value="worst"
-                    control={<Radio />}
-                    label="Not Required"
-                  />
-                </Box>
-              </RadioGroup>
-            </FormControl>
-          </Box>
+          <FormControl
+            component="fieldset"
+            className={classes.formControlRadio}
+          >
+            <FormLabel>
+              <Typography>
+                Does program require consumption-based accrual methodology?
+              </Typography>
+            </FormLabel>
+            <RadioGroup aria-label="quiz" name="quiz">
+              <Box display="flex">
+                <FormControlLabel
+                  value="best"
+                  control={<Radio />}
+                  label="Required"
+                />
+                <FormControlLabel
+                  value="worst"
+                  control={<Radio />}
+                  label="Not Required"
+                />
+              </Box>
+            </RadioGroup>
+          </FormControl>
         </Grid>
         <Grid item sm={12} md={6}>
           <TextField

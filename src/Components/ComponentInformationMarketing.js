@@ -16,11 +16,13 @@ import {
   CardHeader,
   Divider,
   IconButton,
+  Button,
 } from '@material-ui/core';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import GeographyEligibility from './GeographyEligibility/GeographyEligibility';
 import CustomerEligibility from './CustomerEligibility/CustomerEligibility';
 import ProductEligibility from './ProductEligibility/ProductEligibility';
+import {Add} from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -217,7 +219,7 @@ export default function ComponentInformationMarketing() {
           <Grid item xs={12}>
             <Typography variant="subtitle1">Tier Rates</Typography>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item sm={12} md={4}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Type
@@ -227,7 +229,7 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item sm={12} md={4}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Product
@@ -237,7 +239,7 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item sm={12} md={4}>
             <TextField
               label="Incentive"
               defaultValue="25"
@@ -245,7 +247,7 @@ export default function ComponentInformationMarketing() {
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item sm={12} md={6}>
             <TextField
               label="Min / Max Volume"
               defaultValue="24 / 10,000"
@@ -253,7 +255,7 @@ export default function ComponentInformationMarketing() {
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item sm={12} md={6}>
             <TextField
               label="Estimated Impact"
               defaultValue="0.25%"
@@ -275,7 +277,7 @@ export default function ComponentInformationMarketing() {
           wrap="nowrap"
         >
           <Grid container item spacing={3}>
-            <Grid item xs={12} sm={4}>
+            <Grid item sm={12} md={4}>
               <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel id="demo-simple-select-outlined-label">
                   Type
@@ -285,7 +287,7 @@ export default function ComponentInformationMarketing() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item sm={12} md={4}>
               <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel id="demo-simple-select-outlined-label">
                   Product
@@ -295,7 +297,7 @@ export default function ComponentInformationMarketing() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item sm={12} md={4}>
               <TextField
                 label="Incentive"
                 defaultValue="25"
@@ -303,7 +305,7 @@ export default function ComponentInformationMarketing() {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item sm={12} md={6}>
               <TextField
                 label="Min / Max Volume"
                 defaultValue="24 / 10,000"
@@ -311,7 +313,7 @@ export default function ComponentInformationMarketing() {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item sm={12} md={6}>
               <TextField
                 label="Estimated Impact"
                 defaultValue="0.25%"
@@ -324,6 +326,18 @@ export default function ComponentInformationMarketing() {
             <IconButton>
               <RemoveCircleIcon />
             </IconButton>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Button
+              variant="outlined"
+              color="primary"
+              className={classes.button}
+              endIcon={<Add />}
+            >
+              Add Additional Tier Rates
+            </Button>
           </Grid>
         </Grid>
       </Box>

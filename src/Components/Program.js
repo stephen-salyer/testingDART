@@ -17,6 +17,7 @@ import Owners from './Owners';
 import Finance from './Finance';
 import Approvers from './Approvers';
 import Components from './Components';
+import AttachedFiles from './AttachedFiles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,11 +32,11 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 12,
   },
   content: {
-    paddingLeft: '0',
-    paddingRight: '0',
-    paddingTop: '0',
-    paddingBottom: '8px',
+    padding: '0',
     minHeight: '67vh',
+    '&:last-child': {
+      paddingBottom: 0,
+    },
   },
   search: {
     display: 'flex',
@@ -101,7 +102,7 @@ const Program = () => {
   return (
     <>
       <SecondaryNavProgram />
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" style={{paddingBottom: '24px'}}>
         <Card>
           <CardContent className={classes.content}>
             <Tabs
@@ -170,7 +171,7 @@ const Program = () => {
             </TabPanel>
             <TabPanel value={value} index={8}>
               <Box p={3}>
-                <Overview />
+                <AttachedFiles />
               </Box>
             </TabPanel>
           </CardContent>
