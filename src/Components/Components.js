@@ -8,6 +8,8 @@ import {
   CardHeader,
   Divider,
   Button,
+  Menu,
+  MenuItem,
 } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -17,6 +19,7 @@ import ComponentInformation from './ComponentInformation';
 import {Add} from '@material-ui/icons';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteComponentModal from './DeleteComponentModal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,6 +95,16 @@ export default function Components() {
     setValue(newValue);
   };
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <>
       <Grid container>
@@ -159,9 +172,25 @@ export default function Components() {
                       }
                     />
                     <Box>
-                      <IconButton aria-label="More" component="span">
+                      <IconButton
+                        onClick={handleClick}
+                        aria-label="More"
+                        component="span"
+                      >
                         <MoreVertIcon />
                       </IconButton>
+                      <Menu
+                        id="simple-menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                      >
+                        <MenuItem onClick={handleClose}>Copy</MenuItem>
+                        <MenuItem onClick={handleClose}>
+                          <DeleteComponentModal />
+                        </MenuItem>
+                      </Menu>
                     </Box>
                   </Box>
                   <Divider />

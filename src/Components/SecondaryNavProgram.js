@@ -8,8 +8,15 @@ import {ArrowBack, MoreVert} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {FormControl, InputLabel, Select, MenuItem} from '@material-ui/core';
+import {
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Menu,
+} from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
+import ProgramCancelModal from './ProgramCancelModal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,6 +58,16 @@ const BootstrapInput = withStyles((theme) => ({
 
 const SecondaryNavProgram = () => {
   const classes = useStyles();
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <Container maxWidth="lg" className={classes.containerPadding}>
@@ -105,9 +122,27 @@ const SecondaryNavProgram = () => {
             >
               Route For Approval
             </Button>
-            <IconButton aria-label="morevert" color="default">
+            <IconButton
+              onClick={handleClick}
+              aria-label="More"
+              component="span"
+            >
               <MoreVert />
             </IconButton>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Copy Program</MenuItem>
+              <MenuItem onClick={handleClose}>View Program Changes</MenuItem>
+              <MenuItem onClick={handleClose}>Printable View</MenuItem>
+              <MenuItem onClick={handleClose}>
+                <ProgramCancelModal />
+              </MenuItem>
+            </Menu>
           </Box>
         </Grid>
       </Grid>

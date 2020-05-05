@@ -15,6 +15,7 @@ import {
   Box,
   Divider,
 } from '@material-ui/core';
+import ScopeSnackbar from './ScopeSnackbar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -188,9 +189,12 @@ export default function CustomizedExpansionPanels() {
         </div>
       </ExpansionPanelDetails>
       <Box p={'0 24px 8px 24px'} display="flex" justifyContent="flex-end">
-        <DeleteScopeModal
-          onDelete={() => setScopes(scopes.filter((el) => el !== scope))}
-        />
+        <Box pr={1}>
+          <DeleteScopeModal
+            onDelete={() => setScopes(scopes.filter((el) => el !== scope))}
+          />
+        </Box>
+        <ScopeSnackbar />
       </Box>
       <Divider />
     </ExpansionPanel>

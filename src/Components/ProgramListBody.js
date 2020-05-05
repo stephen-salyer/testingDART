@@ -39,7 +39,7 @@ const useStyles = makeStyles({
   content: {
     padding: '0',
     margin: '0 0 -16px 0',
-    minHeight: '960px',
+    minHeight: '67vh',
   },
   cardPadding: {
     padding: '0 0 32px 0',
@@ -58,7 +58,18 @@ const TabPanel = (props) => {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box>{children}</Box>}
+      {value === index && (
+        <Box
+          style={{
+            minHeight: '55vh',
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexDirection: 'column',
+          }}
+        >
+          {children}
+        </Box>
+      )}
     </Typography>
   );
 };
