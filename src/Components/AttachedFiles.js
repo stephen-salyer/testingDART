@@ -13,7 +13,7 @@ import {
 import {makeStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
-import {Add} from '@material-ui/icons';
+import {Publish} from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -84,8 +84,8 @@ export default function AttachedFiles() {
           ))}
           <Box pt={3}>
             <Grid item sm={12}>
-              <Button color="primary" variant="outlined" endIcon={<Add />}>
-                Add Financial P&L
+              <Button color="primary" variant="outlined" endIcon={<Publish />}>
+                Upload Attachment
               </Button>
             </Grid>
           </Box>

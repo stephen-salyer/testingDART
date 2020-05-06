@@ -160,9 +160,7 @@ const Program = () => {
               </Box>
             </TabPanel>
             <TabPanel value={value} index={6}>
-              <Box p={3}>
-                <Approvers />
-              </Box>
+              <Approvers />
             </TabPanel>
             <TabPanel value={value} index={7}>
               <Box p={3}>

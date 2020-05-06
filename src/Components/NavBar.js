@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarBackground: {
     backgroundColor: 'primary',
-    paddingLeft: '0',
   },
   dividerColor: {
     backgroundColor: '#FFFFFF',

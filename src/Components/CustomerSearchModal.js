@@ -146,6 +146,7 @@ export default function ProductSearchModal() {
                             <Box pl={1} pr={0} pt={0} pb={0}>
                               <Checkbox
                                 checked={state.checkedC}
+                                onChange={handleChange}
                                 color="primary"
                                 name="checkedC"
                               />

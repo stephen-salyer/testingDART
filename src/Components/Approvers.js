@@ -119,6 +119,12 @@ const inputs = [
   },
 ];
 
+const accordians = [
+  {
+    title: ['GLobal Accounting', 'Non-DOA', 'DOA'],
+  },
+];
+
 const marketingNames = [
   'Oliver Hansen • External Reporting • $1,000,000 • 1 Year',
   'Van Henry • External Reporting • $1,000,000 • 1 Year',

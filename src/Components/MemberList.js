@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
   },
   containerPadding: {
-    padding: '88px 0 32px 0',
+    padding: '112px 0 32px 0',
   },
   relatedContentPadding: {
     padding: '0 0 0 8px',
@@ -445,7 +445,7 @@ const MemberList = () => {
                 <CardHeader
                   titleTypographyProps={{variant: 'h6'}}
                   title="Scope Builder"
-                ></CardHeader>
+                />
                 <div className={classes.toolBarEnd}>
                   <Box
                     display="flex"

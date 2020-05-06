@@ -60,7 +60,6 @@ export default function DeleteScopeModal({onDelete}) {
           color="primary"
           onClick={() => setOpen(true)}
           className={classes.button}
-          startIcon={<DeleteIcon />}
         >
           Delete
         </Button>
