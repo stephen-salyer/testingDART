@@ -3,13 +3,11 @@ import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import {} from '@material-ui/pickers';
-import InfoModal from './InfoModal';
 import {
   FormControl,
   InputLabel,
   Select,
   MenuItem,
-  InputAdornment,
   FormLabel,
   RadioGroup,
   FormControlLabel,
@@ -60,11 +58,6 @@ export default function Marketing() {
               id="demo-simple-select-outlined"
               label="Reason For Strategic Intent"
               defaultValue={30}
-              startAdornment={
-                <InputAdornment position="start">
-                  <InfoModal />
-                </InputAdornment>
-              }
             >
               <MenuItem value={10}>Select an option</MenuItem>
               <MenuItem value={20}>Advocacy / Brand Image</MenuItem>

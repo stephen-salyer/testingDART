@@ -28,6 +28,7 @@ const links = [
   {label: 'Program List', to: '/program-list'},
   {label: 'Tower Review', to: '/tower-review'},
   {label: 'Member List', to: '/member-list'},
+  {label: 'Approval Status', to: '/approval-status'},
   {label: 'View Reports', to: '/reports'},
 ];
 

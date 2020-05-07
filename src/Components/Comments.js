@@ -9,10 +9,10 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import CardHeader from '@material-ui/core/CardHeader';
 import SubdirectoryArrowRightIcon from '@material-ui/icons/SubdirectoryArrowRight';
-import {TextField, InputAdornment, Fab, Badge} from '@material-ui/core';
+import {TextField, InputAdornment, Fab} from '@material-ui/core';
 import Comment from '@material-ui/icons/Comment';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
   },
@@ -40,7 +40,16 @@ const useStyles = makeStyles({
     bottom: '24px',
     right: '24px',
   },
-});
+  extendedIcon: {
+    marginLeft: '8px',
+  },
+  fab: {
+    position: 'fixed',
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
+    margin: theme.spacing(1),
+  },
+}));
 
 export default function Comments() {
   const classes = useStyles();
@@ -193,22 +202,19 @@ export default function Comments() {
   );
 
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-      className={classes.CommentsButtonMargin}
-    >
-      <Badge badgeContent={1} overlap="circle" color="error">
+    <>
+      <Box className={classes.fab}>
         <Fab
           size="large"
           color="secondary"
           aria-label="Comment"
-          className={classes.margin}
+          variant="extended"
           onClick={toggleDrawer('right', true)}
         >
-          <Comment />
+          comments
+          <Comment className={classes.extendedIcon} />
         </Fab>
-      </Badge>
+      </Box>
       <Drawer
         anchor={'right'}
         open={state.right}
@@ -216,6 +222,6 @@ export default function Comments() {
       >
         {list('right')}
       </Drawer>
-    </Box>
+    </>
   );
 }

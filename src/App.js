@@ -10,6 +10,7 @@ import Program from './Components/Program';
 import ProgramListBody from './Components/ProgramListBody';
 import NavBar from './Components/NavBar';
 import MemberList from './Components/MemberList';
+import ApprovalStatus from './Components/ApprovalStatus';
 
 const theme = createMuiTheme({
   palette: {
@@ -39,6 +40,9 @@ const App = () => (
           </Route>
           <Route exact path="/">
             <Redirect to="/program-list" />
+          </Route>
+          <Route exact path="/approval-status">
+            <ApprovalStatus />
           </Route>
         </Switch>
       </div>

@@ -2,14 +2,10 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import {MoreVert, Add} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
 import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import ProgramListFilter from './ProgramListFilter';
-import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SecondaryNav = () => {
+const ApprovalStatusNav = () => {
   const classes = useStyles();
 
   const handleDelete = () => {
@@ -51,29 +47,12 @@ const SecondaryNav = () => {
       <Grid container>
         <Grid item={true} sm={12} md={6}>
           <Typography variant="h3" color="primary">
-            Program List
+            Approval Status
           </Typography>
         </Grid>
         <Grid item={true} sm={12} md={6}>
           <Box display="flex" justifyContent="flex-end" alignItems="center">
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              endIcon={<Add />}
-            >
-              Create New Program
-            </Button>
             <ProgramListFilter />
-            <Link
-              to="../app.js"
-              rel="noopener noreferrer"
-              className={classes.linkNoDecoration}
-            >
-              <IconButton aria-label="morevert">
-                <MoreVert />
-              </IconButton>
-            </Link>
           </Box>
         </Grid>
         <Grid item={true} sm={12} md={12}>
@@ -93,4 +72,4 @@ const SecondaryNav = () => {
   );
 };
 
-export default SecondaryNav;
+export default ApprovalStatusNav;
