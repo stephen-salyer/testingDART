@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     lineHeight: 0.8,
   },
   firstname: {
-    lineHeight: 0.5,
+    lineHeight: 2.6,
   },
 });
 
@@ -141,6 +141,7 @@ const ApprovalStatusDraft = () => {
                         </Box>
                         <Box display="flex" flexDirection="column">
                           <ListItemText
+                            style={{margin: '0'}}
                             primary={
                               <Typography
                                 className={classes.department}
