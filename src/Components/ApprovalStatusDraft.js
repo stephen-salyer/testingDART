@@ -45,23 +45,67 @@ const useStyles = makeStyles({
   },
 });
 
+const programs = [
+  {
+    title: '2017 APEX & RT MESA Herbicide Program USA',
+    programId: 'APIRFP',
+    pulledBack: '3 Times',
+  },
+  {
+    title: '2017 Acetanilide Dicamba Incentive Offer US',
+    programId: 'CHSAIO',
+    pulledBack: '5 Times',
+  },
+  {title: '2017 Action Pact-Canada', programId: 'R1712', pulledBack: '1 Time'},
+  {
+    title: '2017 Crop Protection AMF-Canada',
+    programId: 'D1707',
+    pulledBack: '7 Times',
+  },
+  {
+    title: '2017 Crop Protection Channel Development Resource US',
+    programId: 'CHLCRC2',
+    pulledBack: '30 Times',
+  },
+];
+
+const people = [
+  {name: 'Oliver Hansen', department: 'Finance', progress: 'Done'},
+  {name: 'Van Henry', department: 'Finance', progress: 'Not Done'},
+  {name: 'April Tucker', department: 'Legal', progress: 'Done'},
+  {name: 'Ralph Hubbard', department: 'Marketing', progress: 'Done'},
+  {name: 'Omar Alexander', department: 'Marketing', progress: 'Approved'},
+  {name: 'Stefan Peters', department: 'Operations', progress: 'Not Done'},
+  {name: 'Mark Oberman', department: 'Operations', progress: '5 Weeks Pending'},
+];
+
 const ApprovalStatusDraft = () => {
   const classes = useStyles();
 
   return (
     <List>
-      {[1, 2, 3, 4, 5].map((n) => (
-        <Fragment key={n}>
+      {programs.map(({title, programId, pulledBack}, i) => (
+        <Fragment key={i}>
           <Link
-            to={'/program/' + n}
+            to={'/program/:id'}
             rel="noopener noreferrer"
             className={classes.linkNoDecoration}
           >
             <ListItem className={classes.listItemCorrection} button>
               <ListItemText
                 className={classes.listItemTextNoMargin}
-                primary={'SDACCL • Acceleron Loyalty'}
-                secondary={'Pulled Back: 5 Times'}
+                primary={
+                  <>
+                    <Typography>
+                      {programId} • {title}
+                    </Typography>
+                  </>
+                }
+                secondary={
+                  <>
+                    <Typography>Pulled Back: {pulledBack}</Typography>
+                  </>
+                }
               />
               <ListItemSecondaryAction>
                 <Link
@@ -77,55 +121,63 @@ const ApprovalStatusDraft = () => {
           <Divider />
           <Container maxWidth="large">
             <Grid container spacing={3}>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-                <Grid item key={n} xs={12} md={6} lg={4}>
+              {people.map(({name, department, progress}, i) => (
+                <Grid item key={i} xs={12} md={6} lg={4}>
                   <Box>
-                    <Fragment key={n}>
-                      <List>
-                        <ListItem>
-                          <Box pr={2}>
-                            <Typography variant="overline">DONE</Typography>
-                          </Box>
-                          <Box display="flex" flexDirection="column">
-                            <ListItemText
-                              primary={
-                                <Typography
-                                  className={classes.department}
-                                  variant="overline"
-                                >
-                                  Marketing
-                                </Typography>
-                              }
-                              secondary={
-                                <Typography
-                                  className={classes.lastname}
-                                  variant="subtitle1"
-                                >
-                                  Average Last Name Length
-                                </Typography>
-                              }
-                            />
-                            <ListItemText
-                              style={{margin: '0'}}
-                              primary={
-                                <Typography
-                                  className={classes.firstname}
-                                  variant="caption"
-                                >
-                                  Average First Name Length
-                                </Typography>
-                              }
-                            />
-                          </Box>
-                          <ListItemSecondaryAction>
-                            <Button edge="end" aria-label="delete">
-                              EMAIL
-                            </Button>
-                          </ListItemSecondaryAction>
-                        </ListItem>
-                        <Divider />
-                      </List>
-                    </Fragment>
+                    <List>
+                      <ListItem>
+                        <Box
+                          style={{width: '72px'}}
+                          display="flex"
+                          justifyContent="center"
+                          pr={2}
+                        >
+                          <Typography
+                            style={{lineHeight: '1.7'}}
+                            variant="overline"
+                          >
+                            {progress}
+                          </Typography>
+                        </Box>
+                        <Box display="flex" flexDirection="column">
+                          <ListItemText
+                            primary={
+                              <Typography
+                                className={classes.department}
+                                variant="overline"
+                              >
+                                {department}
+                              </Typography>
+                            }
+                            secondary={
+                              <Typography
+                                className={classes.lastname}
+                                variant="subtitle1"
+                              >
+                                {name.split(' ')[1]}
+                              </Typography>
+                            }
+                          />
+                          <ListItemText
+                            style={{margin: '0'}}
+                            primary={
+                              <Typography
+                                className={classes.firstname}
+                                variant="caption"
+                              >
+                                {name.split(' ')[0]}
+                              </Typography>
+                            }
+                          />
+                        </Box>
+                        <ListItemSecondaryAction>
+                          <Button edge="end" aria-label="delete">
+                            EMAIL
+                          </Button>
+                        </ListItemSecondaryAction>
+                      </ListItem>
+                      <Divider />
+                    </List>
                   </Box>
                 </Grid>
               ))}

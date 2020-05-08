@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   },
   tabPanel: {
     overflow: 'scroll',
-    maxHeight: '55vh',
+    maxHeight: '52vh',
   },
 });
 
