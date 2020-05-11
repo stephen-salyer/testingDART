@@ -13,6 +13,8 @@ import Divider from '@material-ui/core/Divider';
 import SearchBar from './SearchBar';
 import ApprovalStatusNav from './ApprovalStatusNav';
 import ApprovalStatusDraft from './ApprovalStatusDraft';
+import ApprovalStatusChart from './ApprovalStatusChart';
+import {Grid} from '@material-ui/core';
 
 const a11yProps = (index) => ({
   id: `simple-tab-${index}`,
@@ -79,6 +81,23 @@ const ApprovalStatus = () => {
   return (
     <Container maxWidth="lg" style={{paddingBottom: '24px'}}>
       <ApprovalStatusNav />
+      <Grid container>
+        <Grid item md={12} lg={6}>
+          <Card>
+            <CardHeader title="Status of Programs"></CardHeader>
+            <Divider />
+            <Box
+              p={3}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <ApprovalStatusChart />
+            </Box>
+          </Card>
+        </Grid>
+        <Grid item md={12} lg={6}></Grid>
+      </Grid>
       <Card disablePadding>
         <CardContent className={classes.content}>
           <Box display="flex" justifyContent="space-between">
