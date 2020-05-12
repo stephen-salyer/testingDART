@@ -11,7 +11,16 @@ const data = {
       hoverBackgroundColor: ['#75CBB6', '#018ECD', '#DCEDC8', '#F7D000'],
     },
   ],
-  text: '23%',
+  options: {
+    responsive: true,
+    legend: {
+      position: 'bottom',
+      labels: {
+        boxWidth: 20,
+        padding: 20,
+      },
+    },
+  },
 };
 
 class ApprovalStatusChart extends React.Component {
