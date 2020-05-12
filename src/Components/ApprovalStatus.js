@@ -14,7 +14,7 @@ import SearchBar from './SearchBar';
 import ApprovalStatusNav from './ApprovalStatusNav';
 import ApprovalStatusDraft from './ApprovalStatusDraft';
 import ApprovalStatusChart from './ApprovalStatusChart';
-import {Grid} from '@material-ui/core';
+import {Grid, ListItem, ListItemText} from '@material-ui/core';
 
 const a11yProps = (index) => ({
   id: `simple-tab-${index}`,
@@ -42,6 +42,45 @@ const useStyles = makeStyles({
     maxHeight: '52vh',
   },
 });
+
+const kpi = [
+  {
+    title: 'Program Creation to Approval Submission (Days)',
+    count: '3.4 | 3.2',
+    desktopSize: 12,
+    tabletSize: 12,
+  },
+  {
+    title: 'Total Approvers',
+    count: '8 | 7.2',
+    desktopSize: 4,
+    tabletSize: 12,
+  },
+  {
+    title: 'Non-DOA',
+    count: '6 | 5.5',
+    desktopSize: 4,
+    tabletSize: 12,
+  },
+  {
+    title: 'DOA',
+    count: '7 | 7.6',
+    desktopSize: 4,
+    tabletSize: 12,
+  },
+  {
+    title: 'Initial Submission to Final Approval (Weeks)',
+    count: '5.3 | 3.8',
+    desktopSize: 12,
+    tabletSize: 12,
+  },
+  {
+    title: 'DOA Approvers at / above TED by Department (Weeks)',
+    count: '5.3 | 3.8',
+    desktopSize: 12,
+    tabletSize: 12,
+  },
+];
 
 const TabPanel = (props) => {
   const {children, value, index, ...other} = props;
@@ -81,10 +120,13 @@ const ApprovalStatus = () => {
   return (
     <Container maxWidth="lg" style={{paddingBottom: '24px'}}>
       <ApprovalStatusNav />
-      <Grid container>
+      <Grid container spacing={3}>
         <Grid item md={12} lg={6}>
-          <Card>
-            <CardHeader title="Status of Programs"></CardHeader>
+          <Card style={{minHeight: 360, maxHeight: 360}}>
+            <CardHeader
+              style={{padding: '28px 16px'}}
+              title="Status of Programs"
+            ></CardHeader>
             <Divider />
             <Box
               p={3}
@@ -96,70 +138,100 @@ const ApprovalStatus = () => {
             </Box>
           </Card>
         </Grid>
-        <Grid item md={12} lg={6}></Grid>
+        <Grid item md={12} lg={6}>
+          <Card>
+            <CardHeader
+              title="Approver Comparison"
+              subheader="2019 | 2020"
+            ></CardHeader>
+            <Divider />
+            <Box style={{maxHeight: 271, overflow: 'scroll'}}>
+              <Grid container spacing={3}>
+                {kpi.map(({title, count, desktopSize, tabletSize}, i) => (
+                  <>
+                    <Grid
+                      item
+                      sm={tabletSize}
+                      lg={desktopSize}
+                      key={i}
+                      style={{marginBottom: '-24px'}}
+                    >
+                      <ListItem>
+                        <ListItemText primary={title} secondary={count} />
+                      </ListItem>
+                      <Divider />
+                    </Grid>
+                  </>
+                ))}
+              </Grid>
+            </Box>
+          </Card>
+        </Grid>
+        <Grid item cs={12}>
+          <Card disablePadding>
+            <CardContent className={classes.content}>
+              <Box display="flex" justifyContent="space-between">
+                <CardHeader title="Programs"></CardHeader>
+                <SearchBar />
+              </Box>
+              <Divider />
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                variant="fullWidth"
+                aria-label="full width tabs example"
+              >
+                <Tab label="Draft (887)" {...a11yProps(0)} />
+                <Tab label="Pulled Back (12)" {...a11yProps(1)} />
+                <Tab label="Pending (98)" {...a11yProps(2)} />
+                <Tab label="Approved (4)" {...a11yProps(3)} />
+              </Tabs>
+              <TabPanel value={value} index={0}>
+                <Box className={classes.tabPanel}>
+                  <ApprovalStatusDraft />
+                </Box>
+                <Pagination
+                  style={{paddingTop: '16px', marginBottom: '-8px'}}
+                  count={10}
+                  color="secondary"
+                />
+              </TabPanel>
+              <TabPanel value={value} index={1}>
+                <Box className={classes.tabPanel}>
+                  <ApprovalStatusDraft />
+                </Box>
+                <Pagination
+                  style={{paddingTop: '16px', marginBottom: '-8px'}}
+                  count={10}
+                  color="secondary"
+                />
+              </TabPanel>
+              <TabPanel value={value} index={2}>
+                <Box className={classes.tabPanel}>
+                  <ApprovalStatusDraft />
+                </Box>
+                <Pagination
+                  style={{paddingTop: '16px', marginBottom: '-8px'}}
+                  count={10}
+                  color="secondary"
+                />
+              </TabPanel>
+              <TabPanel value={value} index={3}>
+                <Box className={classes.tabPanel}>
+                  <ApprovalStatusDraft />
+                </Box>
+                <Pagination
+                  style={{paddingTop: '16px', marginBottom: '-8px'}}
+                  count={10}
+                  color="secondary"
+                />
+              </TabPanel>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
-      <Card disablePadding>
-        <CardContent className={classes.content}>
-          <Box display="flex" justifyContent="space-between">
-            <CardHeader title="Programs"></CardHeader>
-            <SearchBar />
-          </Box>
-          <Divider />
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            variant="fullWidth"
-            aria-label="full width tabs example"
-          >
-            <Tab label="Draft (887)" {...a11yProps(0)} />
-            <Tab label="Pulled Back (12)" {...a11yProps(1)} />
-            <Tab label="Pending (98)" {...a11yProps(2)} />
-            <Tab label="Approved (4)" {...a11yProps(3)} />
-          </Tabs>
-          <TabPanel value={value} index={0}>
-            <Box className={classes.tabPanel}>
-              <ApprovalStatusDraft />
-            </Box>
-            <Pagination
-              style={{paddingTop: '16px', marginBottom: '-8px'}}
-              count={10}
-              color="secondary"
-            />
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            <Box className={classes.tabPanel}>
-              <ApprovalStatusDraft />
-            </Box>
-            <Pagination
-              style={{paddingTop: '16px', marginBottom: '-8px'}}
-              count={10}
-              color="secondary"
-            />
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            <Box className={classes.tabPanel}>
-              <ApprovalStatusDraft />
-            </Box>
-            <Pagination
-              style={{paddingTop: '16px', marginBottom: '-8px'}}
-              count={10}
-              color="secondary"
-            />
-          </TabPanel>
-          <TabPanel value={value} index={3}>
-            <Box className={classes.tabPanel}>
-              <ApprovalStatusDraft />
-            </Box>
-            <Pagination
-              style={{paddingTop: '16px', marginBottom: '-8px'}}
-              count={10}
-              color="secondary"
-            />
-          </TabPanel>
-        </CardContent>
-      </Card>
     </Container>
   );
 };

@@ -20,6 +20,7 @@ const useStyles = makeStyles({
     '&:hover': {
       textDecoration: 'none',
     },
+    marginTop: '16px',
   },
   listItemTertiary: {
     marginTop: '0',
@@ -83,7 +84,7 @@ const ApprovalStatusDraft = () => {
   const classes = useStyles();
 
   return (
-    <List>
+    <List style={{marginTop: '-24px'}}>
       {programs.map(({title, programId, pulledBack}, i) => (
         <Fragment key={i}>
           <Link
@@ -122,7 +123,14 @@ const ApprovalStatusDraft = () => {
           <Container maxWidth="large">
             <Grid container spacing={3}>
               {people.map(({name, department, progress}, i) => (
-                <Grid item key={i} xs={12} md={6} lg={4}>
+                <Grid
+                  item
+                  key={i}
+                  xs={12}
+                  md={6}
+                  lg={4}
+                  style={{marginBottom: '-24px'}}
+                >
                   <Box>
                     <List>
                       <ListItem>
