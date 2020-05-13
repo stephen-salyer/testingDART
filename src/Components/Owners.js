@@ -89,10 +89,12 @@ export default function CustomizedSelects() {
                   ))}
                 </Select>
               </FormControl>
-              <Box style={{maxHeight: '520px', overflow: 'scroll'}}>
+              <Box
+                style={{maxHeight: '520px', overflow: 'scroll', paddingTop: 8}}
+              >
                 {marketingNames.map((n) => (
                   <Fragment key={n}>
-                    <List>
+                    <List style={{marginTop: '-8px'}}>
                       <ListItem>
                         <OwnersToggle />
                         <ListItemText

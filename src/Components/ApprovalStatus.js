@@ -141,7 +141,7 @@ const ApprovalStatus = () => {
         <Grid item md={12} lg={6}>
           <Card>
             <CardHeader
-              title="Approver Comparison"
+              title="Approver KPIs"
               subheader="2019 | 2020"
             ></CardHeader>
             <Divider />
