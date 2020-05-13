@@ -39,7 +39,7 @@ const useStyles = makeStyles({
   },
   tabPanel: {
     overflow: 'scroll',
-    maxHeight: '52vh',
+    maxHeight: '55vh',
   },
 });
 
@@ -121,7 +121,7 @@ const ApprovalStatus = () => {
     <Container maxWidth="lg" style={{paddingBottom: '24px'}}>
       <ApprovalStatusNav />
       <Grid container spacing={3}>
-        <Grid item md={12} lg={6}>
+        <Grid item xs={12} md={6} lg={6}>
           <Card style={{minHeight: 360, maxHeight: 360}}>
             <CardHeader
               style={{padding: '28px 16px'}}
@@ -138,7 +138,7 @@ const ApprovalStatus = () => {
             </Box>
           </Card>
         </Grid>
-        <Grid item md={12} lg={6}>
+        <Grid item xs={12} md={6} lg={6}>
           <Card>
             <CardHeader
               title="Approver KPIs"

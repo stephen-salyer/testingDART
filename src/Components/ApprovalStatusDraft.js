@@ -120,7 +120,7 @@ const ApprovalStatusDraft = () => {
             </ListItem>
           </Link>
           <Divider />
-          <Container maxWidth="large">
+          <Container maxWidth="lg">
             <Grid container spacing={3}>
               {people.map(({name, department, progress}, i) => (
                 <Grid

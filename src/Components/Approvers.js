@@ -1,223 +1,301 @@
 import React from 'react';
-import {withStyles, makeStyles} from '@material-ui/core/styles';
-import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
-import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Grid from '@material-ui/core/Grid';
 import {
-  Grid,
   Box,
-  Divider,
-  TextField,
-  List,
   ListItemText,
+  List,
+  CardHeader,
+  Divider,
+  FormControlLabel,
+  Switch,
+  TextField,
   ListItemSecondaryAction,
   IconButton,
-  Container,
+  Menu,
+  MenuItem,
 } from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import {RemoveCircle} from '@material-ui/icons';
-import DeleteWaveModal from './DeleteWaveModal';
-import ApproverSnackbar from './ApproverSnackbar';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ApproverChart from './ApproverChart';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  formControl: {
-    margin: 0,
-    fullWidth: true,
     display: 'flex',
-    wrap: 'nowrap',
   },
-}));
-
-const ExpansionPanel = withStyles({
-  root: {
-    boxShadow: 'none',
-    '&:not(:last-child)': {
-      borderBottom: 0,
-    },
-    '&$expanded': {
-      margin: 'auto',
-    },
+  listItemTertiary: {
+    marginTop: '0',
+    fontWeight: '400',
+    color: 'rgba(0, 0, 0, 0.54)',
+    fontSize: '0.875rem',
   },
-  expanded: {},
-})(MuiExpansionPanel);
-
-const ExpansionPanelSummary = withStyles({
-  root: {
-    borderBottom: '1px solid rgba(0, 0, 0, .125)',
-    marginBottom: -1,
-    minHeight: 64,
-    '&$expanded': {
-      minHeight: 72,
+  listItemTextNoMargin: {
+    marginBottom: '0',
+  },
+  tabs: {
+    minWidth: '250px',
+  },
+  MuiTab: {
+    wrapper: {
+      alignItems: 'start',
     },
   },
-  content: {
-    '&$expanded': {
-      margin: '12px 0',
-    },
-  },
-  expanded: {},
-})(MuiExpansionPanelSummary);
+});
 
-const ExpansionPanelDetails = withStyles((theme) => ({
-  root: {
-    padding: theme.spacing(3),
-  },
-}))(MuiExpansionPanelDetails);
+const Members = [
+  {title: 'Justice Madden'},
+  {title: 'Alberto Shepard'},
+  {title: 'Anahi Mayo'},
+  {title: 'Mohamed Ferrell'},
+  {title: 'Jaylin Mcneil'},
+  {title: 'Caden Sosa'},
+  {title: 'Monica Carroll'},
+  {title: 'Leia Roach'},
+  {title: 'Kayden Jordan'},
+  {title: 'Billy Lester'},
+  {title: 'Kinsley Christian'},
+];
 
-const scopeData = [
+export const approvers = [
   {
-    id: 1,
+    progress: 'Started',
+    name: 'Justice Madden',
     wave: 'Wave 1',
-    approvers: '(9) Approvers',
-    notStarted: '(3) Not Started',
+    ted: '$1,000,000,000',
+    year: '1 Year',
   },
   {
-    id: 2,
+    progress: 'Not Started',
+    name: 'Alberto Shepard',
+    wave: 'Wave 1',
+    ted: '$1,789,000,000',
+    year: '1 Year',
+  },
+  {
+    progress: 'Started',
+    name: 'Anahi Mayo',
     wave: 'Wave 2',
-    approvers: '(6) Approvers',
-    notStarted: '(1) Not Started',
+    ted: '$1,456,000,000',
+    year: '2 Year',
   },
   {
-    id: 3,
-    wave: 'Wave 3',
-    approvers: '(3) Approvers',
-    notStarted: '(2) Not Started',
-  },
-  {
-    id: 4,
-    wave: 'Wave 4',
-    approvers: '(4) Approvers',
-    notStarted: '(9) Not Started',
+    progress: 'Started',
+    name: 'Mohamed Ferrell',
+    wave: 'Wave 2',
+    ted: '$1,000,387,000',
+    year: '1 Year',
   },
 ];
 
-const inputs = [
+export const approverCategories = [
   {
-    key: 'wave',
-    label: 'Wave',
-    options: ['1', '2', '3', '4'],
+    category: 'Global Accounting',
   },
   {
-    key: 'approvers',
-    label: 'Approvers',
-    options: ['(9)', '(6)', '(3)', '(4)'],
+    category: 'Non-DOA',
   },
   {
-    key: 'notStarted',
-    label: 'Not Started',
-    options: ['(3)', '(1)', '(2)', '(9)'],
+    category: 'DOA',
   },
 ];
 
-const marketingNames = [
-  'Oliver Hansen • External Reporting • $1,000,000 • 1 Year',
-  'Van Henry • External Reporting • $1,000,000 • 1 Year',
-  'April Tucker • External Reporting • $1,000,000 • 1 Year',
-  'Ralph Hubbard • External Reporting • $1,000,000 • 1 Year',
-  'Omar Alexander • External Reporting • $1,000,000 • 1 Year',
-  'Carlos Abbott • External Reporting • $1,000,000 • 1 Year',
-  'Miriam Wagner • External Reporting • $1,000,000 • 1 Year',
-  'Bradley Wilkerson • External Reporting • $1,000,000 • 1 Year',
-  'Virginia Andrews • External Reporting • $1,000,000 • 1 Year',
-  'Kelly Snyder • External Reporting • $1,000,000 • 1 Year',
-];
+function TabPanel(props) {
+  const {children, value, index, ...other} = props;
 
-const scopeLabel = (scope) => inputs.map(({key}) => scope[key]).join(' • ');
+  return (
+    <Typography
+      component="div"
+      role="tabpanel"
+      style={{width: '100%'}}
+      hidden={value !== index}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box pl={3}>{children}</Box>}
+    </Typography>
+  );
+}
 
 export default function Approvers() {
-  const [scopes] = React.useState(scopeData);
-  const [expanded, setExpanded] = React.useState('');
   const classes = useStyles();
+  const [value, setValue] = React.useState(0);
 
-  const handleChange = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const [state, setState] = React.useState({
+    checkedA: true,
+    checkedB: true,
+  });
+
+  const handleChangeSwitch = (event) => {
+    setState({...state, [event.target.name]: event.target.checked});
+  };
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
     <>
-      {scopes.map((scope) => (
-        <ExpansionPanel
-          key={scope.id}
-          square
-          expanded={expanded === 'panel' + scope.id}
-          onChange={handleChange('panel' + scope.id)}
-        >
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>{scopeLabel(scope)}</Typography>
-          </ExpansionPanelSummary>
-
-          <ExpansionPanelDetails>
-            <Container maxWidth="md">
-              <Grid item container xs={12} spacing={3}>
+      <Grid container>
+        <Grid item xs={12}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.checkedB}
+                onChange={handleChangeSwitch}
+                name="checkedB"
+                color="primary"
+              />
+            }
+            label="Route Emails By Wave"
+          />
+        </Grid>
+        <div className={classes.root}>
+          <Tabs
+            orientation="vertical"
+            variant="scrollable"
+            value={value}
+            onChange={handleChange}
+            aria-label="Vertical tabs example"
+            indicatorColor="primary"
+            className={classes.tabs}
+          >
+            {approverCategories.map(({category}, i) => (
+              <Tab
+                style={{textAlign: 'left'}}
+                key={i}
+                label={
+                  <List style={{width: '100%'}}>
+                    <ListItemText
+                      className={classes.listItemTextNoMargin}
+                      primary={
+                        <Typography variant="subtitle1">{category}</Typography>
+                      }
+                    />
+                  </List>
+                }
+              />
+            ))}
+          </Tabs>
+          {approverCategories.map(({category}, i) => (
+            <TabPanel value={value} key={category} index={i}>
+              <Grid container spacing={3}>
                 <Grid item xs={12}>
+                  <Box
+                    display="flex"
+                    justifyContent="space-between"
+                    alignItems="center"
+                  >
+                    <CardHeader
+                      title={
+                        <>
+                          <Box display="flex" alignItems="center">
+                            <Typography variant="h5">{category}</Typography>
+                          </Box>
+                        </>
+                      }
+                    />
+                  </Box>
+                  <Divider />
+                </Grid>
+                <Grid item xs={6}>
                   <Autocomplete
-                    freeSolo
-                    options={marketingNames.map((n) => ({title: n}))}
+                    options={Members}
                     getOptionLabel={(option) => option.title}
-                    style={{width: '100%'}}
                     renderInput={(params) => (
                       <TextField
                         {...params}
-                        label="Add Approver"
+                        label="Search Members"
                         variant="outlined"
                       />
                     )}
                   />
+                  <Box style={{maxHeight: '365px', overflow: 'scroll'}}>
+                    {approvers.map(({progress, name, wave, ted, year}, i) => (
+                      <>
+                        <List key={i}>
+                          <ListItemText
+                            className={classes.listItemTextNoMargin}
+                            primary={
+                              <Typography
+                                variant="overline"
+                                style={{lineHeight: '0px'}}
+                              >
+                                {progress}
+                              </Typography>
+                            }
+                            secondary={
+                              <Typography variant="subtitle1">
+                                {name}
+                              </Typography>
+                            }
+                          />
+                          <ListItemText
+                            classes={{primary: classes.listItemTertiary}}
+                            primary={[wave, ted, year].join(' • ')}
+                          />
+                          <ListItemSecondaryAction>
+                            <IconButton
+                              onClick={handleClick}
+                              aria-label="More"
+                              component="span"
+                              edge="end"
+                            >
+                              <MoreVertIcon />
+                            </IconButton>
+                          </ListItemSecondaryAction>
+                        </List>
+
+                        <Divider />
+                      </>
+                    ))}
+                    <Menu
+                      id="simple-menu"
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={Boolean(anchorEl)}
+                      onClose={handleClose}
+                    >
+                      <MenuItem onClick={handleClose}>Edit</MenuItem>
+                      <MenuItem onClick={handleClose}>Remove Approver</MenuItem>
+                    </Menu>
+                  </Box>
                 </Grid>
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
-                  <Grid item key={n} xs={12} md={6}>
-                    <List>
-                      <ListItemText
-                        className={classes.listItemTextNoMargin}
-                        primary={
-                          <Typography
-                            variant="overline"
-                            style={{lineHeight: '0px'}}
-                          >
-                            Not Started
-                          </Typography>
-                        }
-                        secondary={
-                          <Typography variant="subtitle1">
-                            This is a long first and last name
-                          </Typography>
-                        }
-                      />
-                      <ListItemText
-                        classes={{primary: classes.listItemTertiary}}
-                        primary={'External Reporting • $1,000,000 • 1 Year'}
-                      />
-                      <ListItemSecondaryAction>
-                        <IconButton edge="end" aria-label="delete">
-                          <RemoveCircle />
-                        </IconButton>
-                      </ListItemSecondaryAction>
-                    </List>
-                    <Divider />
-                  </Grid>
-                ))}
+                <Grid item xs={6}>
+                  <CardHeader
+                    style={{paddingTop: 7}}
+                    title={
+                      <>
+                        <Box display="flex" alignItems="center">
+                          <Typography variant="h6">Stats Here?</Typography>
+                        </Box>
+                      </>
+                    }
+                  />
+                  <Divider />
+                  <Box pt={1}>
+                    <ApproverChart />
+                  </Box>
+                </Grid>
               </Grid>
-            </Container>
-          </ExpansionPanelDetails>
-          <Box p={'0 24px 8px 24px'} display="flex" justifyContent="flex-end">
-            <Box pr={1}>
-              <DeleteWaveModal />
-            </Box>
-            <ApproverSnackbar />
-          </Box>
-          <Divider />
-        </ExpansionPanel>
-      ))}
+            </TabPanel>
+          ))}
+        </div>
+      </Grid>
     </>
   );
 }
