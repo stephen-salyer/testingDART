@@ -122,7 +122,7 @@ const ApprovalStatus = () => {
       <ApprovalStatusNav />
       <Grid container spacing={3}>
         <Grid item xs={12} md={6} lg={6}>
-          <Card style={{minHeight: 360, maxHeight: 360}}>
+          <Card style={{maxHeight: 360}}>
             <CardHeader
               style={{padding: '28px 16px'}}
               title="Status of Programs"
@@ -139,18 +139,19 @@ const ApprovalStatus = () => {
           </Card>
         </Grid>
         <Grid item xs={12} md={6} lg={6}>
-          <Card>
+          <Card style={{maxHeight: 360}}>
             <CardHeader
-              title="Approver KPIs"
+              title="Approver KPIs Avg."
               subheader="2019 | 2020"
             ></CardHeader>
             <Divider />
-            <Box style={{maxHeight: 271, overflow: 'scroll'}}>
+            <Box style={{maxHeight: 260, overflow: 'scroll'}}>
               <Grid container spacing={3}>
                 {kpi.map(({title, count, desktopSize, tabletSize}, i) => (
                   <>
                     <Grid
                       item
+                      xs={tabletSize}
                       sm={tabletSize}
                       lg={desktopSize}
                       key={i}

@@ -73,18 +73,48 @@ const programs = [
 const people = [
   {name: 'Oliver Hansen', department: 'Finance', progress: 'Done'},
   {name: 'Van Henry', department: 'Finance', progress: 'Not Done'},
-  {name: 'April Tucker', department: 'Legal', progress: 'Done'},
+  {
+    name: 'April Tucker',
+    department: 'Legal',
+    progress: 'Done',
+  },
   {name: 'Ralph Hubbard', department: 'Marketing', progress: 'Done'},
   {name: 'Omar Alexander', department: 'Marketing', progress: 'Approved'},
   {name: 'Stefan Peters', department: 'Operations', progress: 'Not Done'},
   {name: 'Mark Oberman', department: 'Operations', progress: '5 Weeks Pending'},
+  {
+    name: 'Nicolas Ezequiel Fernandez Zapiola',
+    department: 'Marketing',
+    progress: 'Done',
+  },
+  {
+    name: 'Juan Ernesto Albino Ramirez Martinez',
+    department: 'Marketing',
+    progress: 'Approved',
+  },
+  {
+    name: 'Prekki Srinivasa Sudhakar',
+    department: 'Marketing',
+    progress: 'Approved',
+  },
+  {
+    name: 'Wimonphan Tangmanvitayasak',
+    department: 'Marketing',
+    progress: 'Approved',
+  },
 ];
+
+// window.onload = function wrapNameHeight() {
+//   if ('#nameDiv'.height() > 50) {
+//     document.getElementById('nameDiv').style.bottom = '55px';
+//   }
+// };
 
 const ApprovalStatusDraft = () => {
   const classes = useStyles();
 
   return (
-    <List style={{marginTop: '-24px'}}>
+    <List>
       {programs.map(({title, programId, pulledBack}, i) => (
         <Fragment key={i}>
           <Link
@@ -123,72 +153,72 @@ const ApprovalStatusDraft = () => {
           <Container maxWidth="lg">
             <Grid container spacing={3}>
               {people.map(({name, department, progress}, i) => (
-                <Grid
-                  item
-                  key={i}
-                  xs={12}
-                  md={6}
-                  lg={4}
-                  style={{marginBottom: '-24px'}}
-                >
-                  <Box>
-                    <List>
-                      <ListItem>
-                        <Box
-                          style={{width: '72px'}}
-                          display="flex"
-                          justifyContent="center"
-                          pr={2}
-                        >
-                          <Typography
-                            style={{lineHeight: '1.7'}}
-                            variant="overline"
+                <>
+                  <Grid item key={i} xs={12} md={6} lg={4}>
+                    <Box
+                      display="flex"
+                      flexGrow="1"
+                      flexDirection="column"
+                      style={{height: '100%'}}
+                    >
+                      <List style={{height: '100%'}}>
+                        <ListItem style={{height: '100%'}}>
+                          <Box
+                            style={{width: '72px', height: '100%'}}
+                            display="flex"
+                            alignItems="center"
+                            justifyContent="center"
+                            pr={2}
                           >
-                            {progress}
-                          </Typography>
-                        </Box>
-                        <Box display="flex" flexDirection="column">
-                          <ListItemText
-                            style={{margin: '0'}}
-                            primary={
-                              <Typography
-                                className={classes.department}
-                                variant="overline"
-                              >
-                                {department}
-                              </Typography>
-                            }
-                            secondary={
-                              <Typography
-                                className={classes.lastname}
-                                variant="subtitle1"
-                              >
-                                {name.split(' ')[1]}
-                              </Typography>
-                            }
-                          />
-                          <ListItemText
-                            style={{margin: '0'}}
-                            primary={
-                              <Typography
-                                className={classes.firstname}
-                                variant="caption"
-                              >
-                                {name.split(' ')[0]}
-                              </Typography>
-                            }
-                          />
-                        </Box>
-                        <ListItemSecondaryAction>
-                          <Button edge="end" aria-label="delete">
-                            EMAIL
-                          </Button>
-                        </ListItemSecondaryAction>
-                      </ListItem>
-                      <Divider />
-                    </List>
-                  </Box>
-                </Grid>
+                            <Typography
+                              style={{lineHeight: '1.7'}}
+                              variant="overline"
+                            >
+                              {progress}
+                            </Typography>
+                          </Box>
+                          <Box
+                            display="flex"
+                            flexDirection="column"
+                            style={{height: '100%'}}
+                          >
+                            <ListItemText
+                              style={{margin: '0'}}
+                              primary={
+                                <Typography
+                                  className={classes.department}
+                                  variant="overline"
+                                >
+                                  {department}
+                                </Typography>
+                              }
+                              secondary={
+                                <Typography
+                                  id="nameDiv"
+                                  style={{
+                                    paddingBottom: '8px',
+                                    width: '185px',
+                                  }}
+                                  variant="subtitle1"
+                                >
+                                  {name}
+                                </Typography>
+                              }
+                            />
+                          </Box>
+                          <Box style={{height: '100%'}}>
+                            <ListItemSecondaryAction>
+                              <Button edge="end" aria-label="delete">
+                                EMAIL
+                              </Button>
+                            </ListItemSecondaryAction>
+                          </Box>
+                        </ListItem>
+                      </List>
+                    </Box>
+                    <Divider />
+                  </Grid>
+                </>
               ))}
             </Grid>
           </Container>
