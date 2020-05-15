@@ -43,7 +43,8 @@ export default function GeographyEligibility() {
           <Select label="Which Geographies" defaultValue={20}>
             <MenuItem value={10}>All Geographies</MenuItem>
             <MenuItem value={20}>Some Geographies</MenuItem>
-            <MenuItem value={30}>Other</MenuItem>
+            <MenuItem value={30}>Some Sales Regions</MenuItem>
+            <MenuItem value={40}>Other</MenuItem>
           </Select>
         </FormControl>
       </Grid>
