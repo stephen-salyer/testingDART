@@ -3,24 +3,16 @@ import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import {Add, Search} from '@material-ui/icons';
+import {Add} from '@material-ui/icons';
 import {
   Button,
   Typography,
   Box,
-  IconButton,
-  Grid,
   CardHeader,
   Divider,
-  FormControlLabel,
-  Checkbox,
-  ListItemText,
-  ListItem,
-  List,
-  TextField,
+  Grid,
 } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import ProductEligibilityMaterialModalTabs from './ProductEligibility/ProductEligibilityMaterialModalTabs';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -34,111 +26,39 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     outline: 0,
-    minWidth: '600px',
+    minWidth: '900px',
+    minHeight: '90vh',
+    maxHeight: '90vh',
   },
   modalButton: {
     marginTop: '8px',
     maxWidth: '98px',
   },
+  materialButtonLabel: {
+    textTransform: 'none',
+  },
 }));
 
-const products = [
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD657',
-    brand: 'Stewart',
-    traitCode: 'NS5031NFSF',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-];
-
-export default function CustomerSearchModal() {
+export default function ProductSearchModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [state, setState] = React.useState({
-    checkedA: false,
-  });
-  const handleChange = (event) => {
-    setState({...state, [event.target.name]: event.target.checked});
-  };
 
   return (
     <div>
-      <Box style={{padding: '8px 16px'}}>
-        <Button
-          color="primary"
-          variant="outlined"
-          endIcon={<Search />}
-          onClick={() => setOpen(true)}
-        >
-          Search Products
-        </Button>
-      </Box>
+      <Button
+        color="rgba(0, 0, 0, 0.87)"
+        fullWidth
+        className={classes.materialButtonLabel}
+        size="medium"
+        style={{height: 56, justifyContent: 'space-between'}}
+        variant="outlined"
+        onClick={() => setOpen(true)}
+      >
+        <Typography variant="body1" style={{color: 'rgba(0, 0, 0, 0.54)'}}>
+          Add Materials
+        </Typography>
+        <Add style={{color: 'rgba(0, 0, 0, 0.54)'}} />
+      </Button>
       <Modal
         disableBackdropClick
         disableEnforceFocus
@@ -158,103 +78,30 @@ export default function CustomerSearchModal() {
             <CardHeader
               title={
                 <>
-                  <Box
-                    pl={1}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="space-between"
-                  >
+                  <Box display="flex" alignItems="center">
                     <Typography variant="h5">Search Products</Typography>
-                    <IconButton component="span" onClick={() => setOpen(false)}>
-                      <CloseIcon />
-                    </IconButton>
                   </Box>
                 </>
               }
             />
             <Divider />
+            <ProductEligibilityMaterialModalTabs />
 
             <Grid container>
-              <Grid
-                item
-                md={7}
-                style={{borderRight: '1px solid rgba(0, 0, 0, 0.12)'}}
-              >
-                <Box ml={3} mr={3} mt={1} mb={1}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={state.checkedB}
-                        onChange={handleChange}
-                        name="checkedB"
-                        color="primary"
-                      />
-                    }
-                    label="Select All"
-                  />
-                </Box>
+              <Grid item xs={12}>
                 <Divider />
-                <List
-                  style={{maxHeight: '393px', overflow: 'scroll', padding: 0}}
-                >
-                  {products.map(
-                    (
-                      {
-                        productName,
-                        traitCode,
-                        brand,
-                        relativeMaturity,
-                        lifeCycle,
-                        launchYear,
-                      },
-                      i
-                    ) => (
-                      <Box key={i}>
-                        <ListItem>
-                          <FormControlLabel
-                            control={
-                              <Box pl={1} pr={0} pt={0} pb={0}>
-                                <Checkbox color="primary" name="checkedC" />
-                              </Box>
-                            }
-                            label={
-                              <ListItemText
-                                primary={[productName, brand].join(' • ')}
-                                secondary={[
-                                  traitCode,
-                                  relativeMaturity,
-                                  lifeCycle,
-                                  launchYear,
-                                ].join(' • ')}
-                              />
-                            }
-                          />
-                        </ListItem>
-                        <Divider />
-                      </Box>
-                    )
-                  )}
-                </List>
               </Grid>
-              <Grid item md={5}>
-                <Box p={3}>
-                  <Autocomplete
-                    options={products} // THIS DOESNT WORK
-                    getOptionLabel={(option) => option.title}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Search Name / SAP ID"
-                        variant="outlined"
-                      />
-                    )}
-                  />
+              <Grid item xs={12} style={{padding: '8px 16px'}}>
+                <Box display="flex" justifyContent="flex-end">
+                  <Button color="primary">Cancel</Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => setOpen(false)}
+                  >
+                    Done
+                  </Button>
                 </Box>
-              </Grid>
-              <Grid item style={{padding: '8px 16px'}}>
-                <Button variant="contained" color="primary" endIcon={<Add />}>
-                  add (5) Customers To List
-                </Button>
               </Grid>
             </Grid>
           </div>

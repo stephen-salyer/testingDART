@@ -66,7 +66,6 @@ export default function GeographyEligibility() {
                 </Typography>
               </Box>
             </Box>
-            {/* <MenuItem value={10}>United States of America</MenuItem> */}
           </Select>
         </FormControl>
         <GeographyEligibilityCountry />

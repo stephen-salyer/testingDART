@@ -1,105 +1,32 @@
-import React, {Fragment} from 'react';
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import React from 'react';
 import {
-  Divider,
   CardHeader,
+  Checkbox,
+  CircularProgress,
   Grid,
   FormControl,
   InputLabel,
   Select,
   MenuItem,
   Box,
+  Typography,
   FormControlLabel,
-  RadioGroup,
-  Radio,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemSecondaryAction,
-  IconButton,
 } from '@material-ui/core';
+import ProductEligibilityProduct from './ProductEligibilityProduct';
+import ProductEligibilityBrands from './ProductEligibilityBrands';
+import ProductEligibilityMaterials from './ProductEligibilityMaterials';
 import ProductSearchModal from '../ProductSearchModal';
 
-const products = [
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD657',
-    brand: 'Stewart',
-    traitCode: 'NS5031NFSF',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-  {
-    productName: 'OODD859',
-    brand: 'Stewart',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
-  },
-];
-
 export default function ProductEligibility() {
-  const [value, setValue] = React.useState('Include');
+  const [state, setState] = React.useState({
+    checkedA: true,
+    checkedB: true,
+    checkedF: true,
+    checkedG: true,
+  });
 
   const handleChange = (event) => {
-    setValue(event.target.value);
+    setState({...state, [event.target.name]: event.target.checked});
   };
 
   return (
@@ -110,7 +37,7 @@ export default function ProductEligibility() {
           title="Product Eligibility"
         />
       </Grid>
-      <Grid item md={12} lg={6}>
+      <Grid item sm={12} md={6}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Which Products</InputLabel>
           <Select label="Which Products" defaultValue={20}>
@@ -120,79 +47,56 @@ export default function ProductEligibility() {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item md={12} lg={6}>
-        <FormControl fullWidth variant="outlined">
-          <InputLabel>Which Brands</InputLabel>
-          <Select label="Which Brands" defaultValue={20}>
-            <MenuItem value={10}>Brand 1</MenuItem>
-            <MenuItem value={20}>Brand 2</MenuItem>
-            <MenuItem value={30}>Brand 3</MenuItem>
+      <Grid item sm={12} md={6}>
+        <FormControl multiple fullWidth variant="outlined">
+          <InputLabel>Products</InputLabel>
+          <Select label="Products">
+            <Box
+              pt={8}
+              pb={8}
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <CircularProgress color="secondary" />
+              <Box p={3}>
+                <Typography>
+                  Grab some coffee. Its gonna be a minute...
+                </Typography>
+              </Box>
+            </Box>
           </Select>
         </FormControl>
+        <ProductEligibilityProduct />
       </Grid>
-      <Grid item xs={12}>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Box>
-            <CardHeader
-              style={{opacity: '0.85'}}
-              titleTypographyProps={{variant: 'h6'}}
-              title="Products"
-            />
-          </Box>
-          <RadioGroup value={value} onChange={handleChange}>
-            <Box display="flex" flexDirection="row">
-              <FormControlLabel
-                value="Include"
-                control={<Radio />}
-                label="Include"
-              />
-              <FormControlLabel
-                value="Exclude"
-                control={<Radio />}
-                label="Exclude"
-              />
-            </Box>
-          </RadioGroup>
-        </Box>
-        <Divider />
-        <Box style={{maxHeight: '520px', overflow: 'scroll'}}>
-          <List style={{padding: 0}}>
-            {products.map(
-              (
-                {
-                  productName,
-                  brand,
-                  traitCode,
-                  relativeMaturity,
-                  lifeCycle,
-                  launchYear,
-                },
-                i
-              ) => (
-                <Fragment key={i}>
-                  <ListItem>
-                    <ListItemText
-                      primary={[productName, brand].join(' • ')}
-                      secondary={[
-                        traitCode,
-                        relativeMaturity,
-                        lifeCycle,
-                        launchYear,
-                      ].join(' • ')}
+      <Grid item sm={12} md={6}>
+        <FormControl multiple fullWidth variant="outlined">
+          <InputLabel>Brands</InputLabel>
+          <Select label="Brands">
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <Box pl={2} key={n}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={state.checkedB}
+                      onChange={handleChange}
+                      name="checkedB"
+                      color="primary"
+                      value={10}
                     />
-                    <ListItemSecondaryAction>
-                      <IconButton edge="end" aria-label="delete">
-                        <RemoveCircleIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </ListItem>
-                  <Divider />
-                </Fragment>
-              )
-            )}
-          </List>
-        </Box>
+                  }
+                  label="State Name Here"
+                />
+              </Box>
+            ))}
+          </Select>
+        </FormControl>
+        <ProductEligibilityBrands />
+      </Grid>
+      <Grid item sm={12} md={6}>
         <ProductSearchModal />
+        <ProductEligibilityMaterials />
       </Grid>
     </>
   );
