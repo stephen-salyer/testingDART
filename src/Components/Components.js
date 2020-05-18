@@ -117,6 +117,7 @@ export default function Components() {
             aria-label="Vertical tabs example"
             indicatorColor="primary"
             className={classes.tabs}
+            style={{borderRight: '1px solid rgba(0, 0, 0, 0.12)'}}
           >
             {componentsInfo.map(({comp, ted}, i) => (
               <Tab

@@ -144,24 +144,6 @@ export default function ApproverNonDOAInformation() {
       {approverCategories.map(({category}, i) => (
         <TabPanel value={value} key={category} index={i}>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Box
-                display="flex"
-                justifyContent="space-between"
-                alignItems="center"
-              >
-                <CardHeader
-                  title={
-                    <>
-                      <Box display="flex" alignItems="center">
-                        <Typography variant="h5">{category}</Typography>
-                      </Box>
-                    </>
-                  }
-                />
-              </Box>
-              <Divider />
-            </Grid>
             <Grid item xs={6}>
               <Autocomplete
                 options={Members}

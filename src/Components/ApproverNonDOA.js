@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import ApproverNonDOAInformation from './ApproverNonDOAInformation';
+import ApproverNonDOAGlobalAccounting from './ApproverNonDOAGlobalAccounting';
 
 function TabPanel(props) {
   const {children, value, index, ...other} = props;
@@ -68,19 +69,37 @@ export default function ApproverNonDOA() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Marketing" {...a11yProps(0)} />
-          <Tab label="Financials" {...a11yProps(1)} />
-          <Tab label="Operations" {...a11yProps(2)} />
+          <Tab label="Operations" {...a11yProps(0)} />
+          <Tab label="Legals" {...a11yProps(1)} />
+          <Tab label="Sales" {...a11yProps(2)} />
+          <Tab label="Marketing" {...a11yProps(3)} />
+          <Tab label="Additional" {...a11yProps(4)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} dir={theme.direction}>
-        <ApproverNonDOAInformation />
+        <Box pt={3}>
+          <ApproverNonDOAGlobalAccounting />
+        </Box>
       </TabPanel>
       <TabPanel value={value} index={1} dir={theme.direction}>
-        <ApproverNonDOAInformation />
+        <Box pt={3}>
+          <ApproverNonDOAInformation />
+        </Box>
       </TabPanel>
       <TabPanel value={value} index={2} dir={theme.direction}>
-        <ApproverNonDOAInformation />
+        <Box pt={3}>
+          <ApproverNonDOAInformation />
+        </Box>
+      </TabPanel>
+      <TabPanel value={value} index={3} dir={theme.direction}>
+        <Box pt={3}>
+          <ApproverNonDOAInformation />
+        </Box>
+      </TabPanel>
+      <TabPanel value={value} index={4} dir={theme.direction}>
+        <Box pt={3}>
+          <ApproverNonDOAInformation />
+        </Box>
       </TabPanel>
     </div>
   );

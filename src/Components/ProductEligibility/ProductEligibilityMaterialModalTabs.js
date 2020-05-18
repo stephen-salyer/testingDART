@@ -212,7 +212,7 @@ export default function ProductEligibilityMaterialModalTabs() {
               />
             </Box>
             <Divider />
-            <List style={{maxHeight: '67vh', overflow: 'scroll', padding: 0}}>
+            <List style={{maxHeight: '70vh', overflow: 'scroll', padding: 0}}>
               {products.map(
                 (
                   {
@@ -276,9 +276,9 @@ export default function ProductEligibilityMaterialModalTabs() {
         <Box
           display="flex"
           justifyContent="center"
-          style={{maxHeight: '73vh', overflow: 'scroll'}}
+          style={{maxHeight: '76vh', overflow: 'scroll'}}
         >
-          <List style={{width: '60%'}}>
+          <List style={{width: '100%'}}>
             {products.map(
               (
                 {

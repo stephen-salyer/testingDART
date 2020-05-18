@@ -6,6 +6,8 @@ import {
   FormControlLabel,
   Switch,
   Box,
+  CardHeader,
+  Divider,
 } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -52,6 +54,24 @@ export const approverCategories = [
   },
 ];
 
+function TabPanel(props) {
+  const {children, value, index, ...other} = props;
+
+  return (
+    <Typography
+      component="div"
+      role="tabpanel"
+      style={{width: '100%'}}
+      hidden={value !== index}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box pl={3}>{children}</Box>}
+    </Typography>
+  );
+}
+
 export default function Approvers() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -94,6 +114,7 @@ export default function Approvers() {
             aria-label="Vertical tabs example"
             indicatorColor="primary"
             className={classes.tabs}
+            style={{borderRight: '1px solid rgba(0, 0, 0, 0.12)'}}
           >
             {approverCategories.map(({category, approverCount}, i) => (
               <Tab
@@ -124,9 +145,31 @@ export default function Approvers() {
               />
             ))}
           </Tabs>
-          <Box p={3}>
-            <ApproverNonDOA />
-          </Box>
+          {approverCategories.map(({category}, i) => (
+            <TabPanel value={value} key={category} index={i}>
+              <Grid container>
+                <Grid item xs={12}>
+                  <Box
+                    display="flex"
+                    justifyContent="space-between"
+                    alignItems="center"
+                  >
+                    <CardHeader
+                      title={
+                        <>
+                          <Box display="flex" alignItems="center">
+                            <Typography variant="h5">{category}</Typography>
+                          </Box>
+                        </>
+                      }
+                    />
+                  </Box>
+                  <Divider />
+                  <ApproverNonDOA />
+                </Grid>
+              </Grid>
+            </TabPanel>
+          ))}
         </div>
       </Grid>
     </>
