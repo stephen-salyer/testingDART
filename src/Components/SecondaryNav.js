@@ -9,7 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import ProgramListFilter from './ProgramListFilter';
-import {Link} from 'react-router-dom';
+import {Menu, MenuItem} from '@material-ui/core';
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +39,16 @@ const useStyles = makeStyles((theme) => ({
 const SecondaryNav = () => {
   const classes = useStyles();
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const handleDelete = () => {
     console.info('You clicked the delete icon.');
   };
@@ -65,15 +76,28 @@ const SecondaryNav = () => {
               Create New Program
             </Button>
             <ProgramListFilter />
-            <Link
-              to="../app.js"
-              rel="noopener noreferrer"
-              className={classes.linkNoDecoration}
+            <IconButton aria-label="morevert" onClick={handleClick}>
+              <MoreVert />
+            </IconButton>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
             >
-              <IconButton aria-label="morevert">
-                <MoreVert />
-              </IconButton>
-            </Link>
+              <MenuItem onClick={handleClose}>
+                <Typography variant="inherit">
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="space-between"
+                  >
+                    <GetAppIcon style={{paddingRight: 8}} /> Status Report{' '}
+                  </Box>
+                </Typography>
+              </MenuItem>
+            </Menu>
           </Box>
         </Grid>
         <Grid item={true} sm={12} md={12}>

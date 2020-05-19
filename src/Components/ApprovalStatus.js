@@ -45,8 +45,8 @@ const useStyles = makeStyles({
 
 const kpi = [
   {
-    title: 'Program Creation to Approval Submission (Days)',
-    count: '3.4 | 3.2',
+    title: 'Program Creation to Approval Submission (Weeks)',
+    count: '11.4 | 10.2',
     desktopSize: 12,
     tabletSize: 12,
   },

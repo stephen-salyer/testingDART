@@ -17,7 +17,7 @@ import DoneIcon from '@material-ui/icons/Done';
 import CloseIcon from '@material-ui/icons/Close';
 import CardHeader from '@material-ui/core/CardHeader';
 import 'date-fns';
-import {Divider} from '@material-ui/core';
+import {Divider, TextField, Grid} from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -232,23 +232,38 @@ export default function TemporaryDrawer() {
         </FormControl>
       </Box>
       <Divider />
-      <Box pb={2} pl={2} pr={2}>
+      <Box p={2}>
         <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel id="demo-simple-select-outlined-label">Brand</InputLabel>
+          <InputLabel id="demo-simple-select-outlined-label">
+            Choose KPI
+          </InputLabel>
           <Select
             defaultValue=""
             id="demo-simple-select-outlined"
-            label="Brand"
+            label="Choose KPI"
           >
-            <MenuItem value="">
-              <em>None</em>
+            <MenuItem value={10}>
+              Program Creation to Approval Submission
             </MenuItem>
-            <MenuItem value={10}>All</MenuItem>
-            <MenuItem value={20}>Absolute</MenuItem>
-            <MenuItem value={30}>Absolute Maxx</MenuItem>
+            <MenuItem value={20}>Total Approvers</MenuItem>
+            <MenuItem value={30}>Initial Submission to Final Approval</MenuItem>
+            <MenuItem value={30}>
+              DOA Approvers at / above TED by Department
+            </MenuItem>
           </Select>
         </FormControl>
       </Box>
+      <Box display="flex" flexDirection="row" pb={2} pl={2} pr={2}>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <TextField label="Min Week" variant="outlined" />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField label="Max Week" variant="outlined" />
+          </Grid>
+        </Grid>
+      </Box>
+      <Divider />
       <Box p={2} display="flex" justifyContent="flex-end">
         <Box pr={1}>
           <Button>clear</Button>

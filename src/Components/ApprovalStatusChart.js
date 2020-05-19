@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import {Pie} from 'react-chartjs-2';
 
 const state = {
-  labels: ['Approval', 'Draft', 'Pending', 'Pulled Back'],
+  labels: ['Draft', 'Pulled Back', 'Pending', 'Approved'],
   datasets: [
     {
       backgroundColor: ['#75CBB6', '#018ECD', '#DCEDC8', '#F7D000'],
       hoverBackgroundColor: ['#75CBB6', '#018ECD', '#DCEDC8', '#F7D000'],
-      data: [13, 12, 72, 3],
+      data: [887, 12, 98, 4],
     },
   ],
 };
