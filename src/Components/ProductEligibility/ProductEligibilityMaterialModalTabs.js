@@ -195,7 +195,7 @@ export default function ProductEligibilityMaterialModalTabs() {
         <Grid container>
           <Grid
             item
-            md={8}
+            md={7}
             style={{borderRight: '1px solid rgba(0, 0, 0, 0.12)'}}
           >
             <Box ml={3} mr={3} mt={1} mb={1}>
@@ -252,7 +252,7 @@ export default function ProductEligibilityMaterialModalTabs() {
               )}
             </List>
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={5}>
             <Box p={2}>
               {filters.map(({title}, i) => (
                 <Box pb={2} key={i}>
@@ -278,7 +278,7 @@ export default function ProductEligibilityMaterialModalTabs() {
           justifyContent="center"
           style={{maxHeight: '76vh', overflow: 'scroll'}}
         >
-          <List style={{width: '100%'}}>
+          <List style={{width: '60%'}}>
             {products.map(
               (
                 {

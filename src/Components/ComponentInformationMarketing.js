@@ -269,13 +269,7 @@ export default function ComponentInformationMarketing() {
             </Box>
           </Grid>
         </Grid>
-        <Grid
-          container
-          spacing={3}
-          display="flex"
-          flexDirection="row"
-          wrap="nowrap"
-        >
+        <Grid container spacing={3} display="flex" wrap="nowrap">
           <Grid container item spacing={3}>
             <Grid item sm={12} md={4}>
               <FormControl variant="outlined" className={classes.formControl}>

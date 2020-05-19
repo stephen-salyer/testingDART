@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     outline: 0,
-    minWidth: '650px',
+    minWidth: '700px',
     minHeight: '93vh',
     maxHeight: '93vh',
   },
@@ -46,7 +46,6 @@ export default function ProductSearchModal() {
   return (
     <div>
       <Button
-        color="rgba(0, 0, 0, 0.87)"
         fullWidth
         className={classes.materialButtonLabel}
         size="medium"
@@ -78,7 +77,7 @@ export default function ProductSearchModal() {
             <CardHeader
               title={
                 <>
-                  <Box display="flex" alignItems="center">
+                  <Box display="flex" alignItems="center" pl={1}>
                     <Typography variant="h5">Search Products</Typography>
                   </Box>
                 </>

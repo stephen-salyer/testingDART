@@ -41,7 +41,7 @@ export default function GeographyEligibilityState() {
 
   for (var i = 0; i < foo.length; i++)
     return (
-      <>
+      <div>
         <AppBar
           color="default"
           elevation={0}
@@ -63,7 +63,7 @@ export default function GeographyEligibilityState() {
         <TabPanel value={value} index={0}>
           <Box style={{maxHeight: '255px', overflow: 'scroll'}}>
             {[1, 2, 3].map((n) => (
-              <>
+              <div key={n}>
                 <List key={n}>
                   <ListItemText
                     primary="State Name Here"
@@ -76,7 +76,7 @@ export default function GeographyEligibilityState() {
                   </ListItemSecondaryAction>
                 </List>
                 <Divider />
-              </>
+              </div>
             ))}
           </Box>
         </TabPanel>
@@ -133,7 +133,7 @@ export default function GeographyEligibilityState() {
               48,
               49,
             ].map((n) => (
-              <>
+              <div key={n}>
                 <List key={n}>
                   <ListItemText
                     primary="State Name Here"
@@ -146,10 +146,10 @@ export default function GeographyEligibilityState() {
                   </ListItemSecondaryAction>
                 </List>
                 <Divider />
-              </>
+              </div>
             ))}
           </Box>
         </TabPanel>
-      </>
+      </div>
     );
 }

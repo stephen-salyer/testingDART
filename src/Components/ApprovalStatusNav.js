@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
-import ProgramListFilter from './ProgramListFilter';
+import ApprovalStatusFilter from './ApprovalStatusFilter';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,7 +52,7 @@ const ApprovalStatusNav = () => {
         </Grid>
         <Grid item={true} sm={12} md={6}>
           <Box display="flex" justifyContent="flex-end" alignItems="center">
-            <ProgramListFilter />
+            <ApprovalStatusFilter />
           </Box>
         </Grid>
         <Grid item={true} sm={12} md={12}>

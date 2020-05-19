@@ -14,8 +14,8 @@ export default function ProductEligibilityBrands() {
     <>
       <Box style={{maxHeight: '255px', overflow: 'scroll'}} pl={2}>
         {[1, 2, 3].map((n) => (
-          <>
-            <List key={n}>
+          <div key={n}>
+            <List>
               <ListItemText primary="Product" secondary="Brand" />
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
@@ -24,7 +24,7 @@ export default function ProductEligibilityBrands() {
               </ListItemSecondaryAction>
             </List>
             <Divider />
-          </>
+          </div>
         ))}
       </Box>
     </>

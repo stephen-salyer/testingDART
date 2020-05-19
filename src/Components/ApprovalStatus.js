@@ -169,7 +169,7 @@ const ApprovalStatus = () => {
           </Card>
         </Grid>
         <Grid item cs={12}>
-          <Card disablePadding>
+          <Card>
             <CardContent className={classes.content}>
               <Box display="flex" justifyContent="space-between">
                 <CardHeader title="Programs"></CardHeader>
