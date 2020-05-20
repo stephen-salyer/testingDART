@@ -4,23 +4,17 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import {Link, withRouter} from 'react-router-dom';
 import 'typeface-roboto';
+import {Programs} from './ProgramListItemsApproved';
+import {Typography} from '@material-ui/core';
+import ProgramMenu from './ProgramMenu';
 
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
-  },
-  listItemCorrection: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    '&:hover': {
-      textDecoration: 'none',
-    },
   },
   listItemTertiary: {
     marginTop: '0',
@@ -31,9 +25,15 @@ const useStyles = makeStyles({
   listItemTextNoMargin: {
     marginBottom: '0',
   },
-  linkNoDecoration: {
+  linkNoDecorationAndCorrection: {
     textDecoration: 'none',
     color: 'inherit',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    '&:hover': {
+      textDecoration: 'none',
+    },
   },
 });
 
@@ -41,39 +41,51 @@ const ProgramListItemsBackToDraft = () => {
   const classes = useStyles();
 
   return (
-    <List>
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-        <Fragment key={n}>
-          <Link
-            to={'/program/' + n}
-            rel="noopener noreferrer"
-            className={classes.linkNoDecoration}
-          >
-            <ListItem className={classes.listItemCorrection} button>
-              <ListItemText
-                className={classes.listItemTextNoMargin}
-                primary={'Coastal Seed and Trait Crop Switch Replant'}
-                secondary={'SDCLMSCN2 • Version 1.0 • 09/01/2019 - 08/31/2020'}
-              />
-              <ListItemText
-                classes={{primary: classes.listItemTertiary}}
-                primary={
-                  'TED: ' +
-                  (5e6 + n * 482759).toLocaleString() +
-                  'USD • Type: Activity Incentive • Payee: Dealer/Retail • Program Communication Date: 09/01/2020'
-                }
-              />
-              <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="morevert">
-                  <MoreVertIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          </Link>
-          <Divider />
-        </Fragment>
-      ))}
-    </List>
+    <>
+      <List>
+        {Programs.map(
+          (
+            {name, id, version, year, ted, type, payee, communicationDate},
+            i
+          ) => (
+            <Fragment key={i}>
+              <ListItem
+                className={classes.linkNoDecorationAndCorrection}
+                button
+                component={Link}
+                to={'/program/' + i}
+                rel="noopener noreferrer"
+              >
+                <ListItemText
+                  className={classes.listItemTextNoMargin}
+                  primary={<Typography variant="h6">{name}</Typography>}
+                  secondary={
+                    <Typography variant="body1">
+                      {[id, version, year].join(' • ')}
+                    </Typography>
+                  }
+                />
+                <ListItemText
+                  classes={{primary: classes.listItemTertiary}}
+                  primary={
+                    <Typography variant="body1">
+                      {[ted, type, payee, communicationDate].join(' • ')}
+                    </Typography>
+                  }
+                />
+
+                <ListItemSecondaryAction>
+                  <IconButton edge="end" aria-label="morevert">
+                    <ProgramMenu />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+              <Divider />
+            </Fragment>
+          )
+        )}
+      </List>
+    </>
   );
 };
 

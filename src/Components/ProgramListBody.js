@@ -100,7 +100,7 @@ const ProgramListBody = () => {
             aria-label="full width tabs example"
           >
             <Tab label="All (1197)" {...a11yProps(0)} />
-            <Tab label="Approved (4)" {...a11yProps(1)} />
+            <Tab label="Approved (10)" {...a11yProps(1)} />
             <Tab label="Pending (98)" {...a11yProps(2)} />
             <Tab label="Draft (887)" {...a11yProps(3)} />
             <Tab label="Canceled (12)" {...a11yProps(4)} />

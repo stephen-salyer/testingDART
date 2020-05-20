@@ -81,7 +81,7 @@ export default function TemporaryDrawer() {
         alignItems="center"
         justifyContent="space-between"
       >
-        <CardHeader title="Filter Scope"></CardHeader>
+        <CardHeader title="Filters"></CardHeader>
         <Box p={1}>
           <IconButton onClick={toggleDrawer(anchor, false)} color="inherit">
             <CloseIcon />
