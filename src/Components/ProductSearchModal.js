@@ -78,7 +78,7 @@ export default function ProductSearchModal() {
               title={
                 <>
                   <Box display="flex" alignItems="center" pl={1}>
-                    <Typography variant="h5">Search Products</Typography>
+                    <Typography variant="h5">Search Materials</Typography>
                   </Box>
                 </>
               }

@@ -18,6 +18,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import CardHeader from '@material-ui/core/CardHeader';
 import 'date-fns';
 import {Divider, TextField, Grid} from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import {Members} from './MemberList';
 
 const useStyles = makeStyles({
   root: {
@@ -89,24 +91,15 @@ export default function TemporaryDrawer() {
         </Box>
       </Box>
       <Box pb={2} pl={2} pr={2} pt={0}>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel id="demo-simple-select-outlined-label">
-            Search Members
-          </InputLabel>
-
-          <Select
-            defaultValue=""
-            id="demo-simple-select-outlined"
-            label="Search Members"
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Bob Bobbert</MenuItem>
-            <MenuItem value={20}>Rob Robbert</MenuItem>
-            <MenuItem value={30}>Tob Tobbert</MenuItem>
-          </Select>
-        </FormControl>
+        <Autocomplete
+          freeSolo
+          options={Members}
+          getOptionLabel={(option) => option.title}
+          style={{width: '100%'}}
+          renderInput={(params) => (
+            <TextField {...params} label="Search Members" variant="outlined" />
+          )}
+        />
       </Box>
       <Box pb={2} pl={2} pr={2}>
         <Typography variant="subtitle1">Years</Typography>

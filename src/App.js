@@ -11,6 +11,7 @@ import ProgramListBody from './Components/ProgramListBody';
 import NavBar from './Components/NavBar';
 import MemberList from './Components/MemberList';
 import ApprovalStatus from './Components/ApprovalStatus';
+import ProductEligibilityExample from './Components/Examples/ProductEligibility/ProductEligibilityExample';
 
 const theme = createMuiTheme({
   palette: {
@@ -32,6 +33,11 @@ const App = () => (
           <Route path="/program-list">
             <ProgramListBody />
           </Route>
+          {/* Below is temporary */}
+          <Route path="/product-eligibility-example">
+            <ProductEligibilityExample />
+          </Route>
+          {/* Above is temporary */}
           <Route path="/program/:id">
             <Program />
           </Route>

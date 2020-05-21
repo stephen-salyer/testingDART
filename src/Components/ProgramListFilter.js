@@ -23,6 +23,8 @@ import {
 import CardHeader from '@material-ui/core/CardHeader';
 import 'date-fns';
 import {Divider, Grid, TextField} from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import {Members} from './MemberList';
 
 const useStyles = makeStyles({
   root: {
@@ -102,27 +104,20 @@ export default function TemporaryDrawer() {
         </Box>
       </Box>
       <Box pb={2} pl={2} pr={2} pt={0}>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel id="demo-simple-select-outlined-label">
-            Search Members
-          </InputLabel>
-
-          <Select
-            defaultValue=""
-            id="demo-simple-select-outlined"
-            label="Search Members"
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Bob Bobbert</MenuItem>
-            <MenuItem value={20}>Rob Robbert</MenuItem>
-            <MenuItem value={30}>Tob Tobbert</MenuItem>
-          </Select>
-        </FormControl>
+        <Autocomplete
+          freeSolo
+          options={Members}
+          getOptionLabel={(option) => option.title}
+          style={{width: '100%'}}
+          renderInput={(params) => (
+            <TextField {...params} label="Search Members" variant="outlined" />
+          )}
+        />
       </Box>
       <Box pb={2} pl={2} pr={2}>
-        <Typography variant="subtitle1">Years</Typography>
+        <Box pb={1}>
+          <Typography variant="subtitle1">Years</Typography>
+        </Box>
         <Chip
           onClick={handleClick}
           className={classes.chipPadding}
@@ -245,6 +240,25 @@ export default function TemporaryDrawer() {
         </FormControl>
       </Box>
       <Box pb={2} pl={2} pr={2}>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="demo-simple-select-outlined-label">Payee</InputLabel>
+          <Select
+            defaultValue=""
+            id="demo-simple-select-outlined"
+            label="Payee"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>Agent</MenuItem>
+            <MenuItem value={20}>Dealer/Retail</MenuItem>
+            <MenuItem value={30}>Distributor</MenuItem>
+            <MenuItem value={40}>Farmer/Grower</MenuItem>
+            <MenuItem value={50}>Wholesale</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <Box pb={2} pl={2} pr={2}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDatePicker
             disableToolbar
@@ -263,15 +277,18 @@ export default function TemporaryDrawer() {
         </MuiPickersUtilsProvider>
       </Box>
       <Divider />
-      <Box display="flex" flexDirection="row" p={2}>
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <TextField label="Min" variant="outlined" />
+      <Box display="flex" flexDirection="column" p={2}>
+        <Typography variant="subtitle1">TED</Typography>
+        <Box display="flex" flexDirection="row" pt={1}>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <TextField label="Min" variant="outlined" />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField label="Max" variant="outlined" />
+            </Grid>
           </Grid>
-          <Grid item xs={6}>
-            <TextField label="Max" variant="outlined" />
-          </Grid>
-        </Grid>
+        </Box>
       </Box>
       <Divider />
       <Box p={2} display="flex" justifyContent="flex-end">

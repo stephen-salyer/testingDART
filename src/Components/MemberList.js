@@ -124,7 +124,7 @@ const ExpansionPanel = withStyles({
   expanded: {},
 })(MuiExpansionPanel);
 
-const Members = [
+export const Members = [
   {title: 'Justice Madden'},
   {title: 'Alberto Shepard'},
   {title: 'Anahi Mayo'},
