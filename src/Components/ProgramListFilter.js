@@ -22,6 +22,7 @@ import {
 } from '@material-ui/pickers';
 import CardHeader from '@material-ui/core/CardHeader';
 import 'date-fns';
+import {Divider, Grid, TextField} from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -261,6 +262,18 @@ export default function TemporaryDrawer() {
           />
         </MuiPickersUtilsProvider>
       </Box>
+      <Divider />
+      <Box display="flex" flexDirection="row" p={2}>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <TextField label="Min" variant="outlined" />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField label="Max" variant="outlined" />
+          </Grid>
+        </Grid>
+      </Box>
+      <Divider />
       <Box p={2} display="flex" justifyContent="flex-end">
         <Box pr={1}>
           <Button>clear</Button>

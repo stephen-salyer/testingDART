@@ -58,9 +58,16 @@ const ProgramListItemsDraft = () => {
               >
                 <ListItemText
                   className={classes.listItemTextNoMargin}
-                  primary={<Typography variant="h6">{name}</Typography>}
+                  primary={
+                    <Typography
+                      variant="subtitle1"
+                      style={{fontWeight: 'bold'}}
+                    >
+                      {name}
+                    </Typography>
+                  }
                   secondary={
-                    <Typography variant="body1">
+                    <Typography variant="body2">
                       {[id, version, year].join(' • ')}
                     </Typography>
                   }
@@ -68,7 +75,7 @@ const ProgramListItemsDraft = () => {
                 <ListItemText
                   classes={{primary: classes.listItemTertiary}}
                   primary={
-                    <Typography variant="body1">
+                    <Typography variant="body2">
                       {[ted, type, payee, communicationDate].join(' • ')}
                     </Typography>
                   }

@@ -42,7 +42,7 @@ const ProgramMenu = () => {
               alignItems="center"
               justifyContent="space-between"
             >
-              <Delete color="error" style={{paddingRight: 8}} /> Delete Program
+              <Delete color="error" style={{paddingRight: 8}} /> Delete
             </Box>
           </Typography>
         </MenuItem>

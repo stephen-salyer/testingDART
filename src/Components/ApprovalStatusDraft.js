@@ -50,7 +50,7 @@ const programs = [
   {
     title: '2017 APEX & RT MESA Herbicide Program USA',
     programId: 'APIRFP',
-    pulledBack: '3 Times',
+    pulledBack: '3 Times • Program Creation to Approval Submission: 3 weeks',
   },
   {
     title: '2017 Acetanilide Dicamba Incentive Offer US',
