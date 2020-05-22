@@ -16,7 +16,7 @@ export default function ProductEligibilityBrands() {
         {[1, 2, 3].map((n) => (
           <div key={n}>
             <List>
-              <ListItemText primary="Product" secondary="Brand" />
+              <ListItemText primary="Brand" secondary="Product" />
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
                   <RemoveCircleIcon />
