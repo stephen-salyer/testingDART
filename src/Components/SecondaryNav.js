@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  mediaQueries: {
+    [theme.breakpoints.up('md')]: {
+      backgroundColor: theme.palette.primary.main,
+    },
+  },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -33,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   },
   containerPadding: {
     padding: '112px 0 32px 0',
+    [theme.breakpoints.down('lg')]: {
+      padding: '112px 16px 32px 16px',
+    },
   },
 }));
 

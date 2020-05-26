@@ -7,9 +7,10 @@ import {
   ListItemText,
   makeStyles,
   IconButton,
+  Collapse,
 } from '@material-ui/core';
 import {Link} from 'react-router-dom';
-import {Close, Menu} from '@material-ui/icons';
+import {Close, Menu, ExpandLess, ExpandMore} from '@material-ui/icons';
 
 const useStyles = makeStyles(() => ({
   list: {
@@ -36,6 +37,12 @@ const Nav = () => {
   const classes = useStyles();
   const [isOpen, setOpen] = useState(false);
 
+  const [open, setMenuOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setMenuOpen(!open);
+  };
+
   return (
     <>
       <Menu onClick={() => setOpen(true)} className={classes.colorChange} />
@@ -55,6 +62,24 @@ const Nav = () => {
                 </ListItem>
               </Link>
             ))}
+            <ListItem button onClick={handleClick}>
+              <ListItemText primary="Experimental States" />
+              {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={!open} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem
+                  onClick={() => setOpen(false)}
+                  component={Link}
+                  rel="noopener noreferrer"
+                  to={'/product-eligibility-example'}
+                  button
+                  className={classes.nested}
+                >
+                  <ListItemText primary="Product Eligibility" />
+                </ListItem>
+              </List>
+            </Collapse>
           </List>
         </div>
       </Drawer>
