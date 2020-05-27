@@ -12,13 +12,11 @@ import {
   Typography,
   Container,
   TextField,
-  Button,
   ListItemText,
 } from '@material-ui/core';
 import ProductEligibilityProduct from './ProductEligibilityProduct';
 import ProductEligibilityBrands from './ProductEligibilityBrands';
 import ProductEligibilityMaterials from './ProductEligibilityMaterials';
-import {Add} from '@material-ui/icons';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -28,6 +26,11 @@ const MenuProps = {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
       width: 250,
     },
+  },
+  getContentAnchorEl: null,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
   },
 };
 
@@ -43,14 +46,38 @@ const brandNames = [
 ];
 
 const materialNames = [
-  {material: 'Material1', productBrand: 'Product1 • Brand1'},
-  {material: 'Material2', productBrand: 'Product2 • Brand2'},
-  {material: 'Material3', productBrand: 'Product3 • Brand3'},
-  {material: 'Material4', productBrand: 'Product4 • Brand4'},
-  {material: 'Material5', productBrand: 'Product5 • Brand5'},
-  {material: 'Material6', productBrand: 'Product6 • Brand6'},
-  {material: 'Material7', productBrand: 'Product7 • Brand7'},
-  {material: 'Material8', productBrand: 'Product8 • Brand8'},
+  {
+    materialBrand: 'DKB230PR03 • DEKALB',
+    subInfo: 'NS5031MGKZ • VT2P / DG',
+  },
+  {
+    materialBrand: 'DKB230PR04 • DEKALB',
+    subInfo: 'NS5031MGKZ • VT2P / DG',
+  },
+  {
+    materialBrand: 'DKB230PR05 • DEKALB',
+    subInfo: 'NS5031MGKZ • VT2P / DG',
+  },
+  {
+    materialBrand: 'DKB230PR06 • DEKALB',
+    subInfo: 'NS5031MGKZ • VT2P / DG',
+  },
+  {
+    materialBrand: 'DKB230PR07 • DEKALB',
+    subInfo: 'NS5031MGKZ • VT2P / DG',
+  },
+  {
+    materialBrand: 'DKB230PR08 • DEKALB',
+    subInfo: 'NS5031MGKZ • VT2P / DG',
+  },
+  {
+    materialBrand: 'DKB230PR09 • DEKALB',
+    subInfo: 'NS5031MGKZ • VT2P / DG',
+  },
+  {
+    materialBrand: 'DKB230PR00 • DEKALB',
+    subInfo: 'NS5031MGKZ • VT2P / DG',
+  },
 ];
 
 export default function ProductEligibilityExample() {
@@ -69,26 +96,30 @@ export default function ProductEligibilityExample() {
     <>
       <Container maxWidth="md" style={{paddingTop: '85px'}}>
         <Grid container spacing={3}>
-          <Grid item sm={12}>
+          <Grid item xs={12}>
             <CardHeader
               titleTypographyProps={{variant: 'h6'}}
               title="Product Eligibility"
             />
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <FormControl fullWidth variant="outlined">
               <InputLabel>Which Products</InputLabel>
-              <Select label="Which Products" defaultValue={20}>
+              <Select
+                MenuProps={MenuProps}
+                label="Which Products"
+                defaultValue={20}
+              >
                 <MenuItem value={10}>All Products</MenuItem>
                 <MenuItem value={20}>Some Products</MenuItem>
                 <MenuItem value={30}>Other</MenuItem>
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <FormControl multiple fullWidth variant="outlined">
               <InputLabel>Products</InputLabel>
-              <Select label="Products">
+              <Select MenuProps={MenuProps} label="Products">
                 <Box
                   pt={8}
                   pb={8}
@@ -108,19 +139,19 @@ export default function ProductEligibilityExample() {
             </FormControl>
             <ProductEligibilityProduct />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <FormControl variant="outlined" fullWidth={true}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Brand
               </InputLabel>
               <Select
+                MenuProps={MenuProps}
                 multiple
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
                 value={personName}
                 onChange={handleChange}
                 label="Brand"
-                MenuProps={MenuProps}
                 renderValue={(selected) => selected.join(', ')}
               >
                 {brandNames.map(({product, brand}) => (
@@ -133,7 +164,7 @@ export default function ProductEligibilityExample() {
             </FormControl>
             <ProductEligibilityBrands />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <FormControl variant="outlined" fullWidth={true}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Materials
@@ -148,30 +179,25 @@ export default function ProductEligibilityExample() {
                 MenuProps={MenuProps}
                 renderValue={(selected) => selected.join(', ')}
               >
-                {materialNames.map(({material, productBrand}) => (
-                  <MenuItem key={material} value={material}>
-                    <Checkbox checked={materialName.includes(material)} />
-                    <ListItemText primary={material} secondary={productBrand} />
+                {materialNames.map(({materialBrand, subInfo}) => (
+                  <MenuItem key={materialBrand} value={materialBrand}>
+                    <Checkbox checked={materialName.includes(materialBrand)} />
+                    <ListItemText primary={materialBrand} secondary={subInfo} />
                   </MenuItem>
                 ))}
-                <Box display="flex" justifyContent="center" p={1}>
-                  <Button color="primary" endIcon={<Add />}>
-                    Add Custom Material
-                  </Button>
-                </Box>
               </Select>
             </FormControl>
             <ProductEligibilityMaterials />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <TextField
               fullWidth
               id="outlined-multiline-static"
-              label="Sub-Materials"
+              label="Add Missing Materials"
               multiline
-              placeholder="Example of format we want them in (seperate by comma)"
-              rows="8"
+              placeholder="Materials Format (seperate with commas)"
               variant="outlined"
+              helperText="Missing Materials: Brand 123456, 2344567, 2344567, 35465678, 3455467"
             />
           </Grid>
         </Grid>

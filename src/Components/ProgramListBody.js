@@ -18,6 +18,7 @@ import Pagination from '@material-ui/lab/Pagination';
 import CardHeader from '@material-ui/core/CardHeader';
 import Divider from '@material-ui/core/Divider';
 import SearchBar from './SearchBar';
+import {Hidden} from '@material-ui/core';
 
 const a11yProps = (index) => ({
   id: `simple-tab-${index}`,
@@ -42,7 +43,7 @@ const useStyles = makeStyles({
     minHeight: '67vh',
   },
   cardPadding: {
-    padding: '0 0 32px 0',
+    padding: '0 16px 32px 16px',
   },
 });
 
@@ -91,21 +92,41 @@ const ProgramListBody = () => {
             <SearchBar />
           </Box>
           <Divider />
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            variant="fullWidth"
-            aria-label="full width tabs example"
-          >
-            <Tab label="All (1197)" {...a11yProps(0)} />
-            <Tab label="Approved (10)" {...a11yProps(1)} />
-            <Tab label="Pending (98)" {...a11yProps(2)} />
-            <Tab label="Draft (887)" {...a11yProps(3)} />
-            <Tab label="Canceled (12)" {...a11yProps(4)} />
-            <Tab label="Back to Draft (12)" {...a11yProps(5)} />
-          </Tabs>
+          <Hidden smDown>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              variant="fullWidth"
+              aria-label="full width tabs example"
+            >
+              <Tab label="All (1197)" {...a11yProps(0)} />
+              <Tab label="Approved (10)" {...a11yProps(1)} />
+              <Tab label="Pending (98)" {...a11yProps(2)} />
+              <Tab label="Draft (887)" {...a11yProps(3)} />
+              <Tab label="Canceled (12)" {...a11yProps(4)} />
+              <Tab label="Back to Draft (12)" {...a11yProps(5)} />
+            </Tabs>
+          </Hidden>
+          <Hidden only={['md', 'lg', 'xl']}>
+            <Tabs
+              className={classes.tabletBP}
+              value={value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              variant="scrollable"
+              aria-label="full width tabs example"
+            >
+              <Tab label="All (1197)" {...a11yProps(0)} />
+              <Tab label="Approved (10)" {...a11yProps(1)} />
+              <Tab label="Pending (98)" {...a11yProps(2)} />
+              <Tab label="Draft (887)" {...a11yProps(3)} />
+              <Tab label="Canceled (12)" {...a11yProps(4)} />
+              <Tab label="Back to Draft (12)" {...a11yProps(5)} />
+            </Tabs>
+          </Hidden>
           <TabPanel value={value} index={0}>
             <ProgramListItemsAll />
             <div>

@@ -59,6 +59,11 @@ const MenuProps = {
       width: 250,
     },
   },
+  getContentAnchorEl: null,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
+  },
 };
 
 const names = [
@@ -123,6 +128,7 @@ export default function Finance() {
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               defaultValue={10}
+              MenuProps={MenuProps}
               label="Market Funding Category"
             >
               <MenuItem value={10}>Grower Incentive</MenuItem>
@@ -140,6 +146,7 @@ export default function Finance() {
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               defaultValue={10}
+              MenuProps={MenuProps}
               label="Liability Classification"
             >
               <MenuItem value={10}>Accured Market Funding</MenuItem>
@@ -225,6 +232,7 @@ export default function Finance() {
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               defaultValue={10}
+              MenuProps={MenuProps}
               label="Currency"
             >
               <MenuItem value={10}>Currency 1</MenuItem>

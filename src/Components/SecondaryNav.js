@@ -16,11 +16,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  mediaQueries: {
-    [theme.breakpoints.up('md')]: {
-      backgroundColor: theme.palette.primary.main,
-    },
-  },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -31,6 +26,12 @@ const useStyles = makeStyles((theme) => ({
   },
   chipMargin: {
     marginRight: '8px',
+    paddingTop: 8,
+    paddingBottom: 8,
+    [theme.breakpoints.down('xs')]: {
+      paddingTop: 0,
+      paddingBottom: 0,
+    },
   },
   linkNoDecoration: {
     textDecoration: 'none',
@@ -38,11 +39,38 @@ const useStyles = makeStyles((theme) => ({
   },
   containerPadding: {
     padding: '112px 0 32px 0',
-    [theme.breakpoints.down('lg')]: {
-      padding: '112px 16px 32px 16px',
+    [theme.breakpoints.down('xs')]: {
+      padding: '75px 0 32px 0',
+    },
+  },
+
+  flexPositioning: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    [theme.breakpoints.down('xs')]: {
+      justifyContent: 'start',
+      paddingTop: 8,
+      paddingBottom: 8,
     },
   },
 }));
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+  getContentAnchorEl: null,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
+  },
+};
 
 const SecondaryNav = () => {
   const classes = useStyles();
@@ -68,13 +96,13 @@ const SecondaryNav = () => {
       className={classes.containerPadding}
     >
       <Grid container>
-        <Grid item={true} sm={12} md={6}>
+        <Grid item={true} xs={12} sm={5} md={6}>
           <Typography variant="h3" color="primary">
             Program List
           </Typography>
         </Grid>
-        <Grid item={true} sm={12} md={6}>
-          <Box display="flex" justifyContent="flex-end" alignItems="center">
+        <Grid item={true} xs={12} sm={7} md={6}>
+          <Box className={classes.flexPositioning}>
             <Button
               variant="contained"
               color="primary"
@@ -88,6 +116,7 @@ const SecondaryNav = () => {
               <MoreVert />
             </IconButton>
             <Menu
+              MenuProps={MenuProps}
               id="simple-menu"
               anchorEl={anchorEl}
               keepMounted
@@ -108,8 +137,8 @@ const SecondaryNav = () => {
             </Menu>
           </Box>
         </Grid>
-        <Grid item={true} sm={12} md={12}>
-          <Box display="flex" justifyContent="flex-end" my={2}>
+        <Grid item={true} xs={12} md={12}>
+          <Box className={classes.flexPositioning}>
             <div className={classes.chipMargin}>
               <Chip label="2020" onDelete={handleDelete} variant="outlined" />
             </div>

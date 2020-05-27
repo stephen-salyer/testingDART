@@ -86,6 +86,13 @@ export default function FullWidthGrid() {
               id="demo-simple-select-outlined"
               defaultValue={10}
               value={age}
+              MenuProps={{
+                getContentAnchorEl: null,
+                anchorOrigin: {
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                },
+              }}
               onChange={handleChange}
               label="Market year"
             >

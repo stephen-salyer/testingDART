@@ -47,6 +47,11 @@ const MenuProps = {
       width: 250,
     },
   },
+  getContentAnchorEl: null,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
+  },
 };
 
 export default function CustomizedSelects() {

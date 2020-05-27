@@ -29,6 +29,22 @@ export default function GeographyEligibility() {
     setState({...state, [event.target.name]: event.target.checked});
   };
 
+  const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
+    },
+    getContentAnchorEl: null,
+    anchorOrigin: {
+      vertical: 'bottom',
+      horizontal: 'left',
+    },
+  };
+
   return (
     <>
       <Grid item sm={12}>
@@ -40,7 +56,11 @@ export default function GeographyEligibility() {
       <Grid item sm={12} md={6}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Which Geographies</InputLabel>
-          <Select label="Which Geographies" defaultValue={20}>
+          <Select
+            MenuProps={MenuProps}
+            label="Which Geographies"
+            defaultValue={20}
+          >
             <MenuItem value={10}>All Geographies</MenuItem>
             <MenuItem value={20}>Some Geographies</MenuItem>
             <MenuItem value={30}>Some Sales Regions</MenuItem>
@@ -51,7 +71,7 @@ export default function GeographyEligibility() {
       <Grid item sm={12} md={6}>
         <FormControl multiple fullWidth variant="outlined">
           <InputLabel>Country</InputLabel>
-          <Select label="Country">
+          <Select MenuProps={MenuProps} label="Country">
             <Box
               pt={8}
               pb={8}
@@ -74,7 +94,7 @@ export default function GeographyEligibility() {
       <Grid item sm={12} md={6}>
         <FormControl multiple fullWidth variant="outlined">
           <InputLabel>State / Province / Ect.</InputLabel>
-          <Select label="State / Province / Ect.">
+          <Select MenuProps={MenuProps} label="State / Province / Ect.">
             {[1, 2, 3, 4, 5, 6].map((n) => (
               <Box pl={2} key={n}>
                 <FormControlLabel
@@ -98,7 +118,7 @@ export default function GeographyEligibility() {
       <Grid item sm={12} md={6}>
         <FormControl multiple fullWidth variant="outlined">
           <InputLabel>Counties / Disctricts / Ect.</InputLabel>
-          <Select label="Counties / Disctricts / Ect.">
+          <Select MenuProps={MenuProps} label="Counties / Disctricts / Ect.">
             {[1, 2, 3, 4, 5, 6].map((n) => (
               <Box pl={2} key={n}>
                 <FormControlLabel

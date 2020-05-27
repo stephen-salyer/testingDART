@@ -179,7 +179,17 @@ export default function CustomizedExpansionPanels() {
               <Grid key={i} item xs={12} sm={size}>
                 <FormControl variant="outlined" className={classes.formControl}>
                   <InputLabel>{label}</InputLabel>
-                  <Select defaultValue={scope[key]} label={label}>
+                  <Select
+                    MenuProps={{
+                      getContentAnchorEl: null,
+                      anchorOrigin: {
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                      },
+                    }}
+                    defaultValue={scope[key]}
+                    label={label}
+                  >
                     {makeMenuItems(options)}
                   </Select>
                 </FormControl>

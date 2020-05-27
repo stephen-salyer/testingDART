@@ -7,7 +7,16 @@ import Divider from '@material-ui/core/Divider';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import {Link} from 'react-router-dom';
 import 'typeface-roboto';
-import {Button, Grid, Box, Typography, Container} from '@material-ui/core';
+import {
+  Button,
+  Grid,
+  Box,
+  Typography,
+  Container,
+  Hidden,
+  IconButton,
+} from '@material-ui/core';
+import {Email} from '@material-ui/icons';
 
 const useStyles = makeStyles({
   root: {
@@ -104,12 +113,6 @@ const people = [
   },
 ];
 
-// window.onload = function wrapNameHeight() {
-//   if ('#nameDiv'.height() > 50) {
-//     document.getElementById('nameDiv').style.bottom = '55px';
-//   }
-// };
-
 const ApprovalStatusDraft = () => {
   const classes = useStyles();
 
@@ -144,7 +147,14 @@ const ApprovalStatusDraft = () => {
                   rel="noopener noreferrer"
                   className={classes.linkNoDecoration}
                 >
-                  <Button edge="end">Email Owners</Button>
+                  <Hidden smDown>
+                    <Button edge="end">Email Owners</Button>
+                  </Hidden>
+                  <Hidden only={['xl', 'lg', 'md']}>
+                    <IconButton edge="end">
+                      <Email />
+                    </IconButton>
+                  </Hidden>
                 </Link>
               </ListItemSecondaryAction>
             </ListItem>
@@ -168,6 +178,7 @@ const ApprovalStatusDraft = () => {
                             display="flex"
                             alignItems="center"
                             justifyContent="center"
+                            textAlign="center"
                             pr={2}
                           >
                             <Typography

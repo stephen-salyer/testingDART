@@ -44,6 +44,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+  getContentAnchorEl: null,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
+  },
+};
+
 export default function ComponentInformationFinance() {
   const classes = useStyles();
 
@@ -54,6 +70,7 @@ export default function ComponentInformationFinance() {
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="P&L">P&L</InputLabel>
             <Select
+              MenuProps={MenuProps}
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               defaultValue={10}
@@ -79,6 +96,7 @@ export default function ComponentInformationFinance() {
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="Market Year">Market Year</InputLabel>
             <Select
+              MenuProps={MenuProps}
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               defaultValue={10}
@@ -118,6 +136,7 @@ export default function ComponentInformationFinance() {
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="P&L">P&L</InputLabel>
               <Select
+                MenuProps={MenuProps}
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
                 defaultValue={20}
@@ -139,6 +158,7 @@ export default function ComponentInformationFinance() {
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="Market Year">Market Year</InputLabel>
               <Select
+                MenuProps={MenuProps}
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
                 defaultValue={20}

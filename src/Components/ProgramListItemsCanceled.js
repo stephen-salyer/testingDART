@@ -8,7 +8,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import {Link, withRouter} from 'react-router-dom';
 import 'typeface-roboto';
-import {Programs} from './ProgramListItemsApproved';
+import {Programs} from './ProgramListItemsAll';
 import {Typography} from '@material-ui/core';
 import ProgramMenu from './ProgramMenu';
 

@@ -45,6 +45,13 @@ export default function Operations() {
               Reason For Strategic Intent
             </InputLabel>
             <Select
+              MenuProps={{
+                getContentAnchorEl: null,
+                anchorOrigin: {
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                },
+              }}
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               label="Reason For Strategic Intent"

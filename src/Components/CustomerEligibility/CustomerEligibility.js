@@ -33,6 +33,22 @@ const customers = [
   {name: 'Maisha Parson', sapId: '00012345'},
 ];
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+  getContentAnchorEl: null,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
+  },
+};
+
 export default function CustomerEligibility() {
   const [value, setValue] = React.useState('Include');
 
@@ -51,7 +67,11 @@ export default function CustomerEligibility() {
       <Grid item md={12} lg={4}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Which Customers</InputLabel>
-          <Select label="Which Customers" defaultValue={20}>
+          <Select
+            MenuProps={MenuProps}
+            label="Which Customers"
+            defaultValue={20}
+          >
             <MenuItem value={10}>All Customer</MenuItem>
             <MenuItem value={20}>Some Account Classification</MenuItem>
             <MenuItem value={30}>Other</MenuItem>
@@ -61,7 +81,11 @@ export default function CustomerEligibility() {
       <Grid item md={12} lg={4}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Account Classification</InputLabel>
-          <Select label="Account Classification" defaultValue={20}>
+          <Select
+            MenuProps={MenuProps}
+            label="Account Classification"
+            defaultValue={20}
+          >
             <MenuItem value={10}>Farmer Customer</MenuItem>
             <MenuItem value={20}>Farmer Customer</MenuItem>
             <MenuItem value={30}>Farmer Customer</MenuItem>
@@ -71,7 +95,7 @@ export default function CustomerEligibility() {
       <Grid item md={12} lg={4}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Segment</InputLabel>
-          <Select label="Segment" defaultValue={20}>
+          <Select MenuProps={MenuProps} label="Segment" defaultValue={20}>
             <MenuItem value={10}>NEED SELECTIONS</MenuItem>
             <MenuItem value={20}>NEED SELECTIONS</MenuItem>
             <MenuItem value={30}>NEED SELECTIONS</MenuItem>

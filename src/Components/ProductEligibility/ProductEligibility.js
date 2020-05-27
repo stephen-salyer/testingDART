@@ -17,6 +17,22 @@ import ProductEligibilityBrands from './ProductEligibilityBrands';
 import ProductEligibilityMaterials from './ProductEligibilityMaterials';
 import ProductSearchModal from '../ProductSearchModal';
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+  getContentAnchorEl: null,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
+  },
+};
+
 export default function ProductEligibility() {
   const [state, setState] = React.useState({
     checkedA: true,
@@ -40,7 +56,11 @@ export default function ProductEligibility() {
       <Grid item sm={12} md={6}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Which Products</InputLabel>
-          <Select label="Which Products" defaultValue={20}>
+          <Select
+            MenuProps={MenuProps}
+            label="Which Products"
+            defaultValue={20}
+          >
             <MenuItem value={10}>All Products</MenuItem>
             <MenuItem value={20}>Some Products</MenuItem>
             <MenuItem value={30}>Other</MenuItem>
@@ -50,7 +70,7 @@ export default function ProductEligibility() {
       <Grid item sm={12} md={6}>
         <FormControl multiple fullWidth variant="outlined">
           <InputLabel>Products</InputLabel>
-          <Select label="Products">
+          <Select MenuProps={MenuProps} label="Products">
             <Box
               pt={8}
               pb={8}
@@ -73,7 +93,7 @@ export default function ProductEligibility() {
       <Grid item sm={12} md={6}>
         <FormControl multiple fullWidth variant="outlined">
           <InputLabel>Brands</InputLabel>
-          <Select label="Brands">
+          <Select MenuProps={MenuProps} label="Brands">
             {[1, 2, 3, 4, 5, 6].map((n) => (
               <Box pl={2} key={n}>
                 <FormControlLabel

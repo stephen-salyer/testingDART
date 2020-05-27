@@ -39,6 +39,13 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     minWidth: 120,
   },
+  flexPositioning: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'start',
+    },
+  },
 }));
 
 const BootstrapInput = withStyles((theme) => ({
@@ -55,6 +62,22 @@ const BootstrapInput = withStyles((theme) => ({
     },
   },
 }))(InputBase);
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+  getContentAnchorEl: null,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
+  },
+};
 
 const SecondaryNavProgram = () => {
   const classes = useStyles();
@@ -93,7 +116,11 @@ const SecondaryNavProgram = () => {
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Box display="flex" justifyContent="flex-end">
+          <Box
+            display="flex"
+            justifyContent="flex-end"
+            className={classes.flexPositioning}
+          >
             <FormControl
               variant="outlined"
               className={classes.formControl}
@@ -104,6 +131,7 @@ const SecondaryNavProgram = () => {
                 Version
               </InputLabel>
               <Select
+                MenuProps={MenuProps}
                 defaultValue="30"
                 id="demo-simple-select-outlined"
                 label="Version"

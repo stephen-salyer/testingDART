@@ -26,12 +26,15 @@ import {Divider, Grid, TextField} from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {Members} from './MemberList';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
   },
   list: {
     width: 300,
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+    },
   },
   fullList: {
     width: 'auto',
@@ -48,7 +51,7 @@ const useStyles = makeStyles({
   formControl: {
     width: '100%',
   },
-});
+}));
 
 export default function TemporaryDrawer() {
   const classes = useStyles();

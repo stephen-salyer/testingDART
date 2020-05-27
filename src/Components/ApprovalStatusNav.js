@@ -50,7 +50,16 @@ const ApprovalStatusNav = () => {
             Approval Status
           </Typography>
         </Grid>
-        <Grid item={true} sm={12} md={6}>
+        <Grid
+          item={true}
+          sm={12}
+          md={6}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+          }}
+        >
           <Box display="flex" justifyContent="flex-end" alignItems="center">
             <ApprovalStatusFilter />
           </Box>

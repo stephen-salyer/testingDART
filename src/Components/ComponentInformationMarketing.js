@@ -52,6 +52,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+  getContentAnchorEl: null,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
+  },
+};
+
 export default function ComponentInformationMarketing() {
   const classes = useStyles();
 
@@ -84,7 +100,11 @@ export default function ComponentInformationMarketing() {
               <InputLabel id="demo-simple-select-outlined-label">
                 Component Incentive Type
               </InputLabel>
-              <Select label="Component Incentive Type" defaultValue={30}>
+              <Select
+                MenuProps={MenuProps}
+                label="Component Incentive Type"
+                defaultValue={30}
+              >
                 <MenuItem value={10}>Activity Incentive</MenuItem>
                 <MenuItem value={20}>Guarentee / Claim</MenuItem>
                 <MenuItem value={30}>Payment Incentive</MenuItem>
@@ -168,7 +188,12 @@ export default function ComponentInformationMarketing() {
               <InputLabel id="demo-simple-select-outlined-label">
                 Season
               </InputLabel>
-              <Select disabled label="Season" defaultValue={10}>
+              <Select
+                MenuProps={MenuProps}
+                disabled
+                label="Season"
+                defaultValue={10}
+              >
                 <MenuItem value={10}>N/A</MenuItem>
               </Select>
             </FormControl>
@@ -179,6 +204,7 @@ export default function ComponentInformationMarketing() {
                 Sub-Country Commercial Area
               </InputLabel>
               <Select
+                MenuProps={MenuProps}
                 disabled
                 label="Sub-Country Commercial Area"
                 defaultValue={10}
@@ -201,7 +227,11 @@ export default function ComponentInformationMarketing() {
               <InputLabel id="demo-simple-select-outlined-label">
                 Component Teir Rate
               </InputLabel>
-              <Select label="Component Teir Rate" defaultValue={10}>
+              <Select
+                MenuProps={MenuProps}
+                label="Component Teir Rate"
+                defaultValue={10}
+              >
                 <MenuItem value={10}>Date</MenuItem>
               </Select>
             </FormControl>
@@ -211,7 +241,7 @@ export default function ComponentInformationMarketing() {
               <InputLabel id="demo-simple-select-outlined-label">
                 Rate
               </InputLabel>
-              <Select label="Rate" defaultValue={10}>
+              <Select MenuProps={MenuProps} label="Rate" defaultValue={10}>
                 <MenuItem value={10}>FOC Discount</MenuItem>
               </Select>
             </FormControl>
@@ -224,7 +254,7 @@ export default function ComponentInformationMarketing() {
               <InputLabel id="demo-simple-select-outlined-label">
                 Type
               </InputLabel>
-              <Select label="Type" defaultValue={10}>
+              <Select MenuProps={MenuProps} label="Type" defaultValue={10}>
                 <MenuItem value={10}>Product</MenuItem>
               </Select>
             </FormControl>
@@ -234,7 +264,7 @@ export default function ComponentInformationMarketing() {
               <InputLabel id="demo-simple-select-outlined-label">
                 Product
               </InputLabel>
-              <Select label="Product" defaultValue={10}>
+              <Select MenuProps={MenuProps} label="Product" defaultValue={10}>
                 <MenuItem value={10}>Corn</MenuItem>
               </Select>
             </FormControl>
@@ -276,7 +306,7 @@ export default function ComponentInformationMarketing() {
                 <InputLabel id="demo-simple-select-outlined-label">
                   Type
                 </InputLabel>
-                <Select label="Type" defaultValue={10}>
+                <Select MenuProps={MenuProps} label="Type" defaultValue={10}>
                   <MenuItem value={10}>Product</MenuItem>
                 </Select>
               </FormControl>
@@ -286,7 +316,7 @@ export default function ComponentInformationMarketing() {
                 <InputLabel id="demo-simple-select-outlined-label">
                   Product
                 </InputLabel>
-                <Select label="Product" defaultValue={10}>
+                <Select MenuProps={MenuProps} label="Product" defaultValue={10}>
                   <MenuItem value={10}>Corn</MenuItem>
                 </Select>
               </FormControl>

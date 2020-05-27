@@ -14,7 +14,7 @@ import SearchBar from './SearchBar';
 import ApprovalStatusNav from './ApprovalStatusNav';
 import ApprovalStatusDraft from './ApprovalStatusDraft';
 import ApprovalStatusChart from './ApprovalStatusChart';
-import {Grid, ListItem, ListItemText} from '@material-ui/core';
+import {Grid, ListItem, ListItemText, Hidden} from '@material-ui/core';
 
 const a11yProps = (index) => ({
   id: `simple-tab-${index}`,
@@ -22,14 +22,6 @@ const a11yProps = (index) => ({
 });
 
 const useStyles = makeStyles({
-  root: {
-    minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
   title: {
     fontSize: 14,
   },
@@ -176,19 +168,35 @@ const ApprovalStatus = () => {
                 <SearchBar />
               </Box>
               <Divider />
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                variant="fullWidth"
-                aria-label="full width tabs example"
-              >
-                <Tab label="Draft (887)" {...a11yProps(0)} />
-                <Tab label="Pulled Back (12)" {...a11yProps(1)} />
-                <Tab label="Pending (98)" {...a11yProps(2)} />
-                <Tab label="Approved (4)" {...a11yProps(3)} />
-              </Tabs>
+              <Hidden smDown>
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  indicatorColor="primary"
+                  textColor="primary"
+                  variant="fullWidth"
+                  aria-label="full width tabs example"
+                >
+                  <Tab label="Draft (887)" {...a11yProps(0)} />
+                  <Tab label="Pulled Back (12)" {...a11yProps(1)} />
+                  <Tab label="Pending (98)" {...a11yProps(2)} />
+                  <Tab label="Approved (4)" {...a11yProps(3)} />
+                </Tabs>
+              </Hidden>
+              <Hidden only={['xl', 'lg', 'md']}>
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  indicatorColor="primary"
+                  textColor="primary"
+                  variant="scrollable"
+                >
+                  <Tab label="Draft (887)" {...a11yProps(0)} />
+                  <Tab label="Pulled Back (12)" {...a11yProps(1)} />
+                  <Tab label="Pending (98)" {...a11yProps(2)} />
+                  <Tab label="Approved (4)" {...a11yProps(3)} />
+                </Tabs>
+              </Hidden>
               <TabPanel value={value} index={0}>
                 <Box className={classes.tabPanel}>
                   <ApprovalStatusDraft />

@@ -10,6 +10,7 @@ import {Link, withRouter} from 'react-router-dom';
 import 'typeface-roboto';
 import {Typography} from '@material-ui/core';
 import ProgramMenu from './ProgramMenu';
+import {Programs} from './ProgramListItemsAll';
 
 const useStyles = makeStyles({
   root: {
@@ -35,109 +36,6 @@ const useStyles = makeStyles({
     },
   },
 });
-
-export const Programs = [
-  {
-    name: 'Acceleron Loyalty',
-    id: 'SDACCL',
-    version: 'Version 1.1',
-    year: '09/01/2019 - 08/31/2020',
-    ted: 'TED: 5,323,000 USD',
-    type: 'Type: Loyalty Incentive',
-    payee: 'Payee: Dealer/Retailer',
-    communicationDate: 'Communication Date 06/01/2020',
-  },
-  {
-    name: 'Asgrow 2 You: 2018 - 2020',
-    id: 'SD2U80',
-    version: 'Version 1.0',
-    year: '09/01/2019 - 08/31/2020',
-    ted: 'TED: 2,189,000 USD',
-    type: 'Type: Volume Incentive',
-    payee: 'Payee: Dealer/Retailer',
-    communicationDate: 'Communication Date 06/01/2020',
-  },
-  {
-    name: 'Asgrow 2 You: 2019 - 2021',
-    id: 'SD2U91',
-    version: 'Version 1.1',
-    year: '09/01/2019 - 08/31/2020',
-    ted: 'TED: 5,323,000 USD',
-    type: 'Type: Volume Incentive',
-    payee: 'Payee: Dealer/Retailer',
-    communicationDate: 'Communication Date 06/01/2020',
-  },
-  {
-    name: 'Asgrow-DEKALB-DeltaPine Subs and Cuts Program USA',
-    id: 'SDADSC',
-    version: 'Version 1.1',
-    year: '09/01/2019 - 08/31/2020',
-    ted: 'TED: 4,286,000 USD',
-    type: 'Type: Volume Incentive',
-    payee: 'Payee: Dealer/Retailer',
-    communicationDate: 'Communication Date 08/01/2020',
-  },
-  {
-    name: 'Bayer Plus Portfolio Rewards',
-    id: 'CHRRPL',
-    version: 'Version 2.0',
-    year: '09/01/2019 - 08/31/2020',
-    ted: 'TED: 115,752,000 USD',
-    type: 'Type: Purchase Behavior Incentive',
-    payee: 'Payee: Farmer/Grower',
-    communicationDate: 'Communication Date 06/01/2020',
-  },
-  {
-    name: 'Bayer Plus Portfolio Rewards v2',
-    id: 'CHRRPL',
-    version: 'Version 2.0',
-    year: '09/01/2019 - 08/31/2020',
-    ted: 'TED: 115,752,000 USD',
-    type: 'Type: Purchase Behavior Incentive',
-    payee: 'Payee: Farmer/Grower',
-    communicationDate: 'Communication Date 06/01/2020',
-  },
-  {
-    name: 'Branded Seed DDR',
-    id: 'SDTDDR',
-    version: 'Version 1.1',
-    year: '09/01/2019 - 08/31/2020',
-    ted: 'TED: 12,340,000 USD',
-    type: 'Type: Activity Incentive',
-    payee: 'Payee: Dealer/Retailer',
-    communicationDate: 'Communication Date 06/01/2020',
-  },
-  {
-    name: 'Branded Seed LCR',
-    id: 'SDBRSD',
-    version: 'Version 1.2',
-    year: '09/01/2019 - 08/31/2020',
-    ted: 'TED: 292,659,000 USD',
-    type: 'Type: Volume Incentive',
-    payee: 'Payee: Dealer/Retail, Farmer/Grower',
-    communicationDate: 'Communication Date 05/01/2020',
-  },
-  {
-    name: 'Coastal Seed and Trait Crop Switch Replant',
-    id: 'SDCLMSCN2',
-    version: 'Version 1.0',
-    year: '09/01/2019 - 08/31/2020',
-    ted: 'TED: 2,505,000 USD',
-    type: 'Type: Guarantee/Claim',
-    payee: 'Payee: Dealer/Retail',
-    communicationDate: 'Communication Date 09/01/2020',
-  },
-  {
-    name: 'DEKALB and Asgrow Production Grower Program',
-    id: 'SDPROD',
-    version: 'Version 1.0',
-    year: '09/01/2019 - 08/31/2020',
-    ted: 'TED: 1,058,000 USD',
-    type: 'Type: Purchase Behavior Incentive',
-    payee: 'Payee: Dealer/Retail',
-    communicationDate: 'Communication Date 06/01/2020',
-  },
-];
 
 const ProgramListItemsApproved = () => {
   const classes = useStyles();
