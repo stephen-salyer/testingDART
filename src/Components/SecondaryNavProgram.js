@@ -32,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
   },
   containerPadding: {
     padding: '112px 24px 32px 24px',
+    [theme.breakpoints.down('sm')]: {
+      padding: '75px 16px 32px 16px',
+    },
   },
   typographyPadding: {
     padding: '8px 0 0 0',
@@ -44,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     [theme.breakpoints.down('sm')]: {
       justifyContent: 'start',
+      paddingTop: 16,
     },
   },
 }));
@@ -95,7 +99,7 @@ const SecondaryNavProgram = () => {
   return (
     <Container maxWidth="lg" className={classes.containerPadding}>
       <Grid container direction="row" justify="space-evenly">
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={8}>
           <Grid container>
             <Box display="flex" flexDirection="row" alignItems="center">
               <IconButton
@@ -115,7 +119,7 @@ const SecondaryNavProgram = () => {
             An_Extremely Long Program Name 123123123123123 (Draft)
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={4}>
           <Box
             display="flex"
             justifyContent="flex-end"

@@ -41,14 +41,14 @@ export default function Marketing() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             label="Program Strategic Intent"
             variant="outlined"
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">
               Reason For Strategic Intent

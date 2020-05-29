@@ -127,7 +127,7 @@ export default function ApproverNonDOAGlobalAccounting() {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={7}>
           <Autocomplete
             options={Members}
             MenuProps={MenuProps}
@@ -194,7 +194,7 @@ export default function ApproverNonDOAGlobalAccounting() {
             </Menu>
           </Box>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={5}>
           <CardHeader
             style={{paddingTop: 7}}
             title={

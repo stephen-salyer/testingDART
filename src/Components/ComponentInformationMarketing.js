@@ -79,7 +79,7 @@ export default function ComponentInformationMarketing() {
         }}
       >
         <Grid container spacing={3}>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <TextField
               label="Component Name"
               defaultValue="Component Name"
@@ -87,7 +87,7 @@ export default function ComponentInformationMarketing() {
               fullWidth
             />
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <TextField
               label="Minimum Volume to Qualify"
               defaultValue="2"
@@ -95,7 +95,7 @@ export default function ComponentInformationMarketing() {
               fullWidth
             />
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Component Incentive Type
@@ -114,7 +114,7 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} sm={6} md={6}>
+          <Grid item xs={12} md={6}>
             <FormControl
               component="fieldset"
               className={classes.formControlRadio}
@@ -136,7 +136,7 @@ export default function ComponentInformationMarketing() {
               </RadioGroup>
             </FormControl>
           </Grid>
-          <Grid item xs={12} sm={6} md={6}>
+          <Grid item xs={12} md={6}>
             <Typography variant="subtitle1">Treatment</Typography>
             <Box display="flex" pt={2}>
               <Box pr={1} width="100%">
@@ -157,7 +157,7 @@ export default function ComponentInformationMarketing() {
               </Box>
             </Box>
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <FormControl
               component="fieldset"
               className={classes.formControlRadio}
@@ -183,7 +183,7 @@ export default function ComponentInformationMarketing() {
               </RadioGroup>
             </FormControl>
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Season
@@ -198,7 +198,7 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Sub-Country Commercial Area
@@ -222,7 +222,7 @@ export default function ComponentInformationMarketing() {
               title="Calculations Applied to Eligible Sales"
             />
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Component Teir Rate
@@ -236,7 +236,7 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Rate
@@ -249,7 +249,7 @@ export default function ComponentInformationMarketing() {
           <Grid item xs={12}>
             <Typography variant="subtitle1">Tier Rates</Typography>
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Type
@@ -259,7 +259,7 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Product
@@ -269,7 +269,7 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <TextField
               label="Incentive"
               defaultValue="25"
@@ -277,7 +277,7 @@ export default function ComponentInformationMarketing() {
               fullWidth
             />
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <TextField
               label="Min / Max Volume"
               defaultValue="24 / 10,000"
@@ -285,7 +285,7 @@ export default function ComponentInformationMarketing() {
               fullWidth
             />
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <TextField
               label="Estimated Impact"
               defaultValue="0.25%"
@@ -301,7 +301,7 @@ export default function ComponentInformationMarketing() {
         </Grid>
         <Grid container spacing={3} display="flex" wrap="nowrap">
           <Grid container item spacing={3}>
-            <Grid item sm={12} md={4}>
+            <Grid item xs={12} md={4}>
               <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel id="demo-simple-select-outlined-label">
                   Type
@@ -311,7 +311,7 @@ export default function ComponentInformationMarketing() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item sm={12} md={4}>
+            <Grid item xs={12} md={4}>
               <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel id="demo-simple-select-outlined-label">
                   Product
@@ -321,7 +321,7 @@ export default function ComponentInformationMarketing() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item sm={12} md={4}>
+            <Grid item xs={12} md={4}>
               <TextField
                 label="Incentive"
                 defaultValue="25"
@@ -329,7 +329,7 @@ export default function ComponentInformationMarketing() {
                 fullWidth
               />
             </Grid>
-            <Grid item sm={12} md={6}>
+            <Grid item xs={12} md={6}>
               <TextField
                 label="Min / Max Volume"
                 defaultValue="24 / 10,000"
@@ -337,7 +337,7 @@ export default function ComponentInformationMarketing() {
                 fullWidth
               />
             </Grid>
-            <Grid item sm={12} md={6}>
+            <Grid item xs={12} md={6}>
               <TextField
                 label="Estimated Impact"
                 defaultValue="0.25%"
@@ -346,7 +346,7 @@ export default function ComponentInformationMarketing() {
               />
             </Grid>
           </Grid>
-          <Grid container item sm={1} alignItems="center">
+          <Grid container item xs={1} alignItems="center">
             <IconButton>
               <RemoveCircleIcon />
             </IconButton>

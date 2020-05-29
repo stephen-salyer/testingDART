@@ -32,16 +32,16 @@ export default function ProductEligibilityBrands() {
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem divider button>
+            <ListItem divider>
               <ListItemText primary="Brand 1" />
             </ListItem>
-            <ListItem divider button>
+            <ListItem divider>
               <ListItemText primary="Brand 2" />
             </ListItem>
-            <ListItem divider button>
+            <ListItem divider>
               <ListItemText primary="Brand 3" />
             </ListItem>
-            <ListItem divider button>
+            <ListItem divider>
               <ListItemText primary="Brand 4" />
             </ListItem>
           </List>

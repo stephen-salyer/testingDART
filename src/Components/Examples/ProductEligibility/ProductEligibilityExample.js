@@ -83,6 +83,9 @@ const materialNames = [
 export default function ProductEligibilityExample() {
   const [personName, setPersonName] = React.useState([]);
   const [materialName, setMaterialName] = React.useState([]);
+  const [products, setProducts] = React.useState(10);
+  const some = products == 20;
+  const someOther = products == 30;
 
   const handleChange = (event) => {
     setPersonName(event.target.value);
@@ -90,6 +93,10 @@ export default function ProductEligibilityExample() {
 
   const handleChange2 = (event) => {
     setMaterialName(event.target.value);
+  };
+
+  const handleChange3 = (event) => {
+    setProducts(event.target.value);
   };
 
   return (
@@ -102,13 +109,13 @@ export default function ProductEligibilityExample() {
               title="Product Eligibility"
             />
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={some || someOther ? 6 : 12}>
             <FormControl fullWidth variant="outlined">
               <InputLabel>Which Products</InputLabel>
               <Select
                 MenuProps={MenuProps}
                 label="Which Products"
-                defaultValue={20}
+                onChange={handleChange3}
               >
                 <MenuItem value={10}>All Products</MenuItem>
                 <MenuItem value={20}>Some Products</MenuItem>
@@ -116,90 +123,112 @@ export default function ProductEligibilityExample() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <FormControl multiple fullWidth variant="outlined">
-              <InputLabel>Products</InputLabel>
-              <Select MenuProps={MenuProps} label="Products">
-                <Box
-                  pt={8}
-                  pb={8}
-                  display="flex"
-                  flexDirection="column"
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <CircularProgress color="secondary" />
-                  <Box p={3}>
-                    <Typography>
-                      Grab some coffee. Its gonna be a minute...
-                    </Typography>
-                  </Box>
-                </Box>
-              </Select>
-            </FormControl>
-            <ProductEligibilityProduct />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <FormControl variant="outlined" fullWidth={true}>
-              <InputLabel id="demo-simple-select-outlined-label">
-                Brand
-              </InputLabel>
-              <Select
-                MenuProps={MenuProps}
-                multiple
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={personName}
-                onChange={handleChange}
-                label="Brand"
-                renderValue={(selected) => selected.join(', ')}
-              >
-                {brandNames.map(({product, brand}) => (
-                  <MenuItem key={product} value={brand}>
-                    <Checkbox checked={personName.includes(brand)} />
-                    <ListItemText primary={brand} secondary={product} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <ProductEligibilityBrands />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <FormControl variant="outlined" fullWidth={true}>
-              <InputLabel id="demo-simple-select-outlined-label">
-                Materials
-              </InputLabel>
-              <Select
-                multiple
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={materialName}
-                onChange={handleChange2}
-                label="Materials"
-                MenuProps={MenuProps}
-                renderValue={(selected) => selected.join(', ')}
-              >
-                {materialNames.map(({materialBrand, subInfo}) => (
-                  <MenuItem key={materialBrand} value={materialBrand}>
-                    <Checkbox checked={materialName.includes(materialBrand)} />
-                    <ListItemText primary={materialBrand} secondary={subInfo} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <ProductEligibilityMaterials />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <TextField
-              fullWidth
-              id="outlined-multiline-static"
-              label="Add Missing Materials"
-              multiline
-              placeholder="Materials Format (seperate with commas)"
-              variant="outlined"
-              helperText="Missing Materials: Brand 123456, 2344567, 2344567, 35465678, 3455467"
-            />
-          </Grid>
+          {some && (
+            <>
+              <Grid item xs={12} md={6}>
+                <FormControl multiple fullWidth variant="outlined">
+                  <InputLabel>Products</InputLabel>
+                  <Select MenuProps={MenuProps} label="Products">
+                    <Box
+                      pt={8}
+                      pb={8}
+                      display="flex"
+                      flexDirection="column"
+                      justifyContent="center"
+                      alignItems="center"
+                    >
+                      <CircularProgress color="secondary" />
+                      <Box p={3}>
+                        <Typography>
+                          Grab some coffee. Its gonna be a minute...
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Select>
+                </FormControl>
+                <ProductEligibilityProduct />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <FormControl variant="outlined" fullWidth={true}>
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Brand
+                  </InputLabel>
+                  <Select
+                    MenuProps={MenuProps}
+                    multiple
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    value={personName}
+                    onChange={handleChange}
+                    label="Brand"
+                    renderValue={(selected) => selected.join(', ')}
+                  >
+                    {brandNames.map(({product, brand}) => (
+                      <MenuItem key={product} value={brand}>
+                        <Checkbox checked={personName.includes(brand)} />
+                        <ListItemText primary={brand} secondary={product} />
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+                <ProductEligibilityBrands />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <FormControl variant="outlined" fullWidth={true}>
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Materials
+                  </InputLabel>
+                  <Select
+                    multiple
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    value={materialName}
+                    onChange={handleChange2}
+                    label="Materials"
+                    MenuProps={MenuProps}
+                    renderValue={(selected) => selected.join(', ')}
+                  >
+                    {materialNames.map(({materialBrand, subInfo}) => (
+                      <MenuItem key={materialBrand} value={materialBrand}>
+                        <Checkbox
+                          checked={materialName.includes(materialBrand)}
+                        />
+                        <ListItemText
+                          primary={materialBrand}
+                          secondary={subInfo}
+                        />
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+                <ProductEligibilityMaterials />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <TextField
+                  fullWidth
+                  id="outlined-multiline-static"
+                  label="Add Missing Materials"
+                  multiline
+                  placeholder="Materials Format (seperate with commas)"
+                  variant="outlined"
+                  helperText="Missing Materials: Brand 123456, 2344567, 2344567, 35465678, 3455467"
+                />
+              </Grid>
+            </>
+          )}
+          {someOther && (
+            <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                id="outlined-multiline-static"
+                label="Undefined Products Here"
+                multiline
+                rows={4}
+                placeholder="Product format here (seperated by comma)"
+                variant="outlined"
+              />
+            </Grid>
+          )}
         </Grid>
       </Container>
     </>

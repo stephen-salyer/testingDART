@@ -15,6 +15,7 @@ import ApprovalStatusNav from './ApprovalStatusNav';
 import ApprovalStatusDraft from './ApprovalStatusDraft';
 import ApprovalStatusChart from './ApprovalStatusChart';
 import {Grid, ListItem, ListItemText, Hidden} from '@material-ui/core';
+import ApprovalStatusNoPrograms from './ApprovalStatusNoPrograms';
 
 const a11yProps = (index) => ({
   id: `simple-tab-${index}`,
@@ -32,6 +33,7 @@ const useStyles = makeStyles({
   tabPanel: {
     overflow: 'scroll',
     maxHeight: '55vh',
+    minHeight: '55vh',
   },
 });
 
@@ -160,7 +162,7 @@ const ApprovalStatus = () => {
             </Box>
           </Card>
         </Grid>
-        <Grid item cs={12}>
+        <Grid item xs={12}>
           <Card>
             <CardContent className={classes.content}>
               <Box display="flex" justifyContent="space-between">
@@ -178,7 +180,7 @@ const ApprovalStatus = () => {
                   aria-label="full width tabs example"
                 >
                   <Tab label="Draft (887)" {...a11yProps(0)} />
-                  <Tab label="Pulled Back (12)" {...a11yProps(1)} />
+                  <Tab label="Pulled Back (0)" {...a11yProps(1)} />
                   <Tab label="Pending (98)" {...a11yProps(2)} />
                   <Tab label="Approved (4)" {...a11yProps(3)} />
                 </Tabs>
@@ -192,7 +194,7 @@ const ApprovalStatus = () => {
                   variant="scrollable"
                 >
                   <Tab label="Draft (887)" {...a11yProps(0)} />
-                  <Tab label="Pulled Back (12)" {...a11yProps(1)} />
+                  <Tab label="Pulled Back (0)" {...a11yProps(1)} />
                   <Tab label="Pending (98)" {...a11yProps(2)} />
                   <Tab label="Approved (4)" {...a11yProps(3)} />
                 </Tabs>
@@ -209,11 +211,11 @@ const ApprovalStatus = () => {
               </TabPanel>
               <TabPanel value={value} index={1}>
                 <Box className={classes.tabPanel}>
-                  <ApprovalStatusDraft />
+                  <ApprovalStatusNoPrograms />
                 </Box>
                 <Pagination
                   style={{paddingTop: '16px', marginBottom: '-8px'}}
-                  count={10}
+                  count={1}
                   color="secondary"
                 />
               </TabPanel>

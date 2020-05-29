@@ -51,7 +51,7 @@ export default function FullWidthGrid() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={12} sm={12} md={8}>
           <TextField
             error
             label="Program Name"
@@ -61,7 +61,7 @@ export default function FullWidthGrid() {
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={12} md={4}>
           <TextField
             id="outlined-error"
             label="Program ID"
@@ -70,13 +70,13 @@ export default function FullWidthGrid() {
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={12} md={4}>
           <TextField label="Program Version" defaultValue="1.1" fullWidth />
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={12} md={4}>
           <TextField label="Program Status" defaultValue="Draft" fullWidth />
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={12} md={4}>
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">
               Market Year
@@ -102,7 +102,7 @@ export default function FullWidthGrid() {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={12} md={4}>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
               disableToolbar
@@ -119,7 +119,7 @@ export default function FullWidthGrid() {
             />
           </MuiPickersUtilsProvider>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={12} md={4}>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
               disableToolbar

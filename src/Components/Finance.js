@@ -91,7 +91,7 @@ export default function Finance() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl
             variant="outlined"
             fullWidth={true}
@@ -119,7 +119,7 @@ export default function Finance() {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">
               Market Funding Category
@@ -137,7 +137,7 @@ export default function Finance() {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">
               Liability Classification
@@ -157,7 +157,7 @@ export default function Finance() {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={12} sm={6} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -179,7 +179,7 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item xs={12} sm={6} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -201,7 +201,7 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -223,7 +223,7 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">
               Currency
@@ -242,7 +242,7 @@ export default function Finance() {
           </FormControl>
         </Grid>
 
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -268,7 +268,7 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             label="Key Accural Assumption Methods"
             multiline
@@ -277,7 +277,7 @@ export default function Finance() {
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={4}>
+        <Grid item xs={12} md={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -312,49 +312,49 @@ export default function Finance() {
           </Box>
           <Divider />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             label="Program TED exceeds ER Threshold"
             defaultValue="No"
             fullWidth
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             label="Global Accounting TED Threshold"
             defaultValue="$10,000,000 USD"
             fullWidth
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             label="Program Term > 12 Months"
             defaultValue="No"
             fullWidth
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             label="Program Total Expected Discount (TED)"
             defaultValue="1,000,000 USD"
             fullWidth
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             label="Program Total Expected Discount (TED) - USD"
             defaultValue="$1,000,000 FY19 Budget Rate"
             fullWidth
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             label="Program Total Expected Discount (TED) - EUR"
             defaultValue="€826,993 FY19 Budget Rate"
             fullWidth
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -376,7 +376,7 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -398,7 +398,7 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -424,7 +424,7 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -446,7 +446,7 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -468,7 +468,7 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -490,7 +490,7 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <ListItemText
             primary={
               <Typography variant="body1">
@@ -508,7 +508,7 @@ export default function Finance() {
             }
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <ListItemText
             primary={
               <Typography variant="body1">
@@ -526,7 +526,7 @@ export default function Finance() {
             }
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <ListItemText
             primary={
               <Typography variant="body1">
@@ -543,7 +543,7 @@ export default function Finance() {
             }
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             label="Document the basis for significant change"
             variant="outlined"
@@ -553,7 +553,7 @@ export default function Finance() {
             fullWidth
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -580,7 +580,7 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -609,7 +609,7 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <ListItemText
             primary={
               <Typography variant="body1">
@@ -624,7 +624,7 @@ export default function Finance() {
             }
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <ListItemText
             primary={
               <Typography variant="body1">
@@ -639,7 +639,7 @@ export default function Finance() {
             }
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <ListItemText
             primary={
               <Typography variant="body1">Legal Approval Required</Typography>

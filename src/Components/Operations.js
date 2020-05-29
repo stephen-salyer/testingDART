@@ -39,7 +39,7 @@ export default function Operations() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} ms={4}>
           <FormControl variant="outlined" fullWidth={true}>
             <InputLabel id="demo-simple-select-outlined-label">
               Reason For Strategic Intent
@@ -68,7 +68,7 @@ export default function Operations() {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} md={4}>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
               disableToolbar
@@ -84,7 +84,7 @@ export default function Operations() {
             />
           </MuiPickersUtilsProvider>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} md={4}>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
               disableToolbar

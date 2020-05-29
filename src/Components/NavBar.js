@@ -39,14 +39,7 @@ const NavBar = () => {
     <div className={classes.root}>
       <AppBar className={classes.appBarTheme} position="fixed">
         <ToolBar className={classes.appBarBackground}>
-          <IconButton
-            className={classes.menuButton}
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-          >
-            <Nav />
-          </IconButton>
+          <Nav />
           <IconButton>
             <Velocity />
           </IconButton>

@@ -67,7 +67,7 @@ export default function CustomizedSelects() {
       <Grid container spacing={3}>
         <>
           {selects.map((selects) => (
-            <Grid item xs={4} key={selects}>
+            <Grid item xs={12} md={4} key={selects}>
               <FormControl
                 variant="outlined"
                 fullWidth={true}
