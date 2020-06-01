@@ -45,7 +45,7 @@ const ProgramListItemsApproved = () => {
       <List>
         {Programs.map(
           (
-            {name, id, version, year, ted, type, payee, communicationDate},
+            {title, id, version, year, ted, type, payee, communicationDate},
             i
           ) => (
             <Fragment key={i}>
@@ -63,7 +63,7 @@ const ProgramListItemsApproved = () => {
                       variant="subtitle1"
                       style={{fontWeight: 'bold'}}
                     >
-                      {name}
+                      {title}
                     </Typography>
                   }
                   secondary={

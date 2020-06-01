@@ -44,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
       root: {
         color: 'orange',
         '&$focused': {
-          // increase the specificity for the pseudo class
           color: 'blue',
         },
       },

@@ -20,29 +20,29 @@ import {
 import {RemoveCircle} from '@material-ui/icons/';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-const filters = [
-  {
-    title: 'Product Name',
-  },
-  {
-    title: 'Brand',
-  },
-  {
-    title: 'Lifecycle',
-  },
-  {
-    title: 'Trait Code',
-  },
-  {
-    title: 'Relative Maturity',
-  },
-  {
-    title: 'Base PCM',
-  },
-  {
-    title: 'Launch Year',
-  },
-];
+// const filters = [
+//   {
+//     title: 'Product Name',
+//   },
+//   {
+//     title: 'Brand',
+//   },
+//   {
+//     title: 'Lifecycle',
+//   },
+//   {
+//     title: 'Trait Code',
+//   },
+//   {
+//     title: 'Relative Maturity',
+//   },
+//   {
+//     title: 'Base PCM',
+//   },
+//   {
+//     title: 'Launch Year',
+//   },
+// ];
 
 const products = [
   {
@@ -54,7 +54,7 @@ const products = [
     launchYear: '2021',
   },
   {
-    productName: 'DKB230PR03',
+    productName: 'DKB230PR04',
     brand: 'DEKALB',
     traitCode: 'NS5031NFSF',
     relativeMaturity: 'VT2P / DG',
@@ -62,7 +62,7 @@ const products = [
     launchYear: '2021',
   },
   {
-    productName: 'DKB230PR03',
+    productName: 'DKB230PR05',
     brand: 'DEKALB',
     traitCode: 'NS5031MGKZ',
     relativeMaturity: 'VT2P / DG',
@@ -70,7 +70,7 @@ const products = [
     launchYear: '2021',
   },
   {
-    productName: 'DKB230PR03',
+    productName: 'DKB230PR06',
     brand: 'DEKALB',
     traitCode: 'NS5031MGKZ',
     relativeMaturity: 'VT2P / DG',
@@ -78,7 +78,7 @@ const products = [
     launchYear: '2021',
   },
   {
-    productName: 'DKB230PR03',
+    productName: 'DKB230PR07',
     brand: 'DEKALB',
     traitCode: 'NS5031MGKZ',
     relativeMaturity: 'VT2P / DG',
@@ -86,7 +86,7 @@ const products = [
     launchYear: '2021',
   },
   {
-    productName: 'DKB230PR03',
+    productName: 'DKB230PR08',
     brand: 'DEKALB',
     traitCode: 'NS5031MGKZ',
     relativeMaturity: 'VT2P / DG',
@@ -94,7 +94,7 @@ const products = [
     launchYear: '2021',
   },
   {
-    productName: 'DKB230PR03',
+    productName: 'DKB230PR09',
     brand: 'DEKALB',
     traitCode: 'NS5031MGKZ',
     relativeMaturity: 'VT2P / DG',
@@ -102,7 +102,7 @@ const products = [
     launchYear: '2021',
   },
   {
-    productName: 'DKB230PR03',
+    productName: 'DKB230PR10',
     brand: 'DEKALB',
     traitCode: 'NS5031MGKZ',
     relativeMaturity: 'VT2P / DG',
@@ -110,7 +110,7 @@ const products = [
     launchYear: '2021',
   },
   {
-    productName: 'DKB230PR03',
+    productName: 'DKB230PR11',
     brand: 'DEKALB',
     traitCode: 'NS5031MGKZ',
     relativeMaturity: 'VT2P / DG',
@@ -118,7 +118,7 @@ const products = [
     launchYear: '2021',
   },
   {
-    productName: 'DKB230PR03',
+    productName: 'DKB230PR12',
     brand: 'DEKALB',
     traitCode: 'NS5031MGKZ',
     relativeMaturity: 'VT2P / DG',
@@ -126,7 +126,7 @@ const products = [
     launchYear: '2021',
   },
   {
-    productName: 'DKB230PR03',
+    productName: 'DKB230PR13',
     brand: 'DEKALB',
     traitCode: 'NS5031MGKZ',
     relativeMaturity: 'VT2P / DG',
@@ -254,17 +254,19 @@ export default function ProductEligibilityMaterialModalTabs() {
           </Grid>
           <Grid item md={5}>
             <Box p={2}>
-              {filters.map(({title}, i) => (
-                <Box pb={2} key={i}>
-                  <Autocomplete
-                    options={filters}
-                    getOptionLabel={(option) => option.title}
-                    renderInput={(params) => (
-                      <TextField {...params} label={title} variant="outlined" />
-                    )}
-                  />
-                </Box>
-              ))}
+              <Box pb={2}>
+                <Autocomplete
+                  options={products}
+                  getOptionLabel={(option) => option.productName}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Search Materials"
+                      variant="outlined"
+                    />
+                  )}
+                />
+              </Box>
               <Box display="flex" justifyContent="flex-end">
                 <Button color="primary">Clear Filters</Button>
               </Box>

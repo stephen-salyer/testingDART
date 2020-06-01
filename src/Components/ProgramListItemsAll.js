@@ -38,7 +38,7 @@ const useStyles = makeStyles({
 
 export const Programs = [
   {
-    name: 'Acceleron Loyalty',
+    title: 'Acceleron Loyalty',
     id: 'SDACCL',
     version: 'Version 1.1',
     year: '09/01/2019 - 08/31/2020',
@@ -46,9 +46,10 @@ export const Programs = [
     type: 'Type: Loyalty Incentive',
     payee: 'Payee: Dealer/Retailer',
     communicationDate: 'Communication Date: 06/01/2020',
+    category: 'program',
   },
   {
-    name: '2020 Asgrow 2 You - 2018 - 2020',
+    title: '2020 Asgrow 2 You - 2018 - 2020',
     id: 'SD2U80',
     version: 'Version 1.0',
     year: '09/01/2019 - 08/31/2020',
@@ -56,9 +57,10 @@ export const Programs = [
     type: 'Type: Volume Incentive',
     payee: 'Payee: Dealer/Retailer',
     communicationDate: 'Communication Date: 06/01/2020',
+    category: 'program',
   },
   {
-    name: '2020 Asgrow 2 You - 2019 - 2021',
+    title: '2020 Asgrow 2 You - 2019 - 2021',
     id: 'SD2U91',
     version: 'Version 1.1',
     year: '09/01/2019 - 08/31/2020',
@@ -66,9 +68,10 @@ export const Programs = [
     type: 'Type: Volume Incentive',
     payee: 'Payee: Dealer/Retailer',
     communicationDate: 'Communication Date: 06/01/2020',
+    category: 'program',
   },
   {
-    name: '2020 Asgrow-DEKALB-DeltaPine Subs and Cuts Program USA',
+    title: '2020 Asgrow-DEKALB-DeltaPine Subs and Cuts Program USA',
     id: 'SDADSC',
     version: 'Version 1.1',
     year: '09/01/2019 - 08/31/2020',
@@ -76,9 +79,10 @@ export const Programs = [
     type: 'Type: Volume Incentive',
     payee: 'Payee: Dealer/Retailer',
     communicationDate: 'Communication Date: 08/01/2020',
+    category: 'program',
   },
   {
-    name: '2020 Bayer Plus Portfolio Rewards',
+    title: '2020 Bayer Plus Portfolio Rewards',
     id: 'CHRRPL',
     version: 'Version 2.0',
     year: '09/01/2019 - 08/31/2020',
@@ -86,9 +90,10 @@ export const Programs = [
     type: 'Type: Purchase Behavior Incentive',
     payee: 'Payee: Farmer/Grower',
     communicationDate: 'Communication Date: 06/01/2020',
+    category: 'program',
   },
   {
-    name: '2020 Bayer Plus Portfolio Rewards v2',
+    title: '2020 Bayer Plus Portfolio Rewards v2',
     id: 'CHRRPL',
     version: 'Version 2.0',
     year: '09/01/2019 - 08/31/2020',
@@ -96,9 +101,10 @@ export const Programs = [
     type: 'Type: Purchase Behavior Incentive',
     payee: 'Payee: Farmer/Grower',
     communicationDate: 'Communication Date: 06/01/2020',
+    category: 'program',
   },
   {
-    name: '2020 Branded Seed DDR',
+    title: '2020 Branded Seed DDR',
     id: 'SDTDDR',
     version: 'Version 1.1',
     year: '09/01/2019 - 08/31/2020',
@@ -106,29 +112,32 @@ export const Programs = [
     type: 'Type: Activity Incentive',
     payee: 'Payee: Dealer/Retailer',
     communicationDate: 'Communication Date: 06/01/2020',
+    category: 'program',
   },
   {
-    name: '2020 Branded Seed LCR',
+    title: '2020 Branded Seed LCR',
     id: 'SDBRSD',
     version: 'Version 1.2',
     year: '09/01/2019 - 08/31/2020',
-    ted: 'TED: 292,659,000 USD',
+    ted: 'TED: 292,659,000 AUD',
     type: 'Type: Volume Incentive',
     payee: 'Payee: Dealer/Retail, Farmer/Grower',
     communicationDate: 'Communication Date: 05/01/2020',
+    category: 'program',
   },
   {
-    name: '2020 Coastal Seed and Trait Crop Switch Replant',
+    title: '2020 Coastal Seed and Trait Crop Switch Replant',
     id: 'SDCLMSCN2',
     version: 'Version 1.0',
     year: '09/01/2019 - 08/31/2020',
-    ted: 'TED: 2,505,000 USD',
+    ted: 'TED: 2,505,000 EUR',
     type: 'Type: Guarantee/Claim',
     payee: 'Payee: Dealer/Retail',
     communicationDate: 'Communication Date: 09/01/2020',
+    category: 'program',
   },
   {
-    name: '2020 DEKALB and Asgrow Production Grower Program',
+    title: '2020 DEKALB and Asgrow Production Grower Program',
     id: 'SDPROD',
     version: 'Version 1.0',
     year: '09/01/2019 - 08/31/2020',
@@ -136,6 +145,7 @@ export const Programs = [
     type: 'Type: Purchase Behavior Incentive',
     payee: 'Payee: Dealer/Retail',
     communicationDate: 'Communication Date: 06/01/2020',
+    category: 'program',
   },
 ];
 
@@ -147,7 +157,7 @@ const ProgramListItemsAll = () => {
       <List>
         {Programs.map(
           (
-            {name, id, version, year, ted, type, payee, communicationDate},
+            {title, id, version, year, ted, type, payee, communicationDate},
             i
           ) => (
             <Fragment key={i}>
@@ -165,7 +175,7 @@ const ProgramListItemsAll = () => {
                       variant="subtitle1"
                       style={{fontWeight: 'bold'}}
                     >
-                      {name}
+                      {title}
                     </Typography>
                   }
                   secondary={

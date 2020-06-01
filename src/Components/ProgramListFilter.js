@@ -22,18 +22,23 @@ import {
 } from '@material-ui/pickers';
 import CardHeader from '@material-ui/core/CardHeader';
 import 'date-fns';
-import {Divider, Grid, TextField} from '@material-ui/core';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import {Members} from './MemberList';
+import {
+  Divider,
+  Grid,
+  TextField,
+  Checkbox,
+  ListItemText,
+} from '@material-ui/core';
+import ProgramListFilterSearch from './ProgramListFilterSearch';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
   },
   list: {
-    width: 300,
+    width: 350,
     [theme.breakpoints.down('md')]: {
-      width: '100%',
+      width: '100vw',
     },
   },
   fullList: {
@@ -53,11 +58,42 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const menuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+  getContentAnchorEl: null,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
+  },
+};
+
+const type = [
+  'Volume Incentive',
+  'Payment Incentive',
+  'Purchase Behavior Incentive',
+  'Guarantee/Claim',
+  'Trade Incentive',
+  'Activity Incentive',
+];
+
 export default function TemporaryDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
   });
+
+  const [personName, setPersonName] = React.useState([]);
+
+  const handleChange = (event) => {
+    setPersonName(event.target.value);
+  };
 
   const handleDelete = () => {
     console.info('You clicked the delete icon.');
@@ -107,15 +143,7 @@ export default function TemporaryDrawer() {
         </Box>
       </Box>
       <Box pb={2} pl={2} pr={2} pt={0}>
-        <Autocomplete
-          freeSolo
-          options={Members}
-          getOptionLabel={(option) => option.title}
-          style={{width: '100%'}}
-          renderInput={(params) => (
-            <TextField {...params} label="Search Members" variant="outlined" />
-          )}
-        />
+        <ProgramListFilterSearch />
       </Box>
       <Box pb={2} pl={2} pr={2}>
         <Box pb={1}>
@@ -158,6 +186,7 @@ export default function TemporaryDrawer() {
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="demo-simple-select-outlined-label">Region</InputLabel>
           <Select
+            MenuProps={menuProps}
             defaultValue=""
             id="demo-simple-select-outlined"
             label="Region"
@@ -175,6 +204,7 @@ export default function TemporaryDrawer() {
             Country
           </InputLabel>
           <Select
+            MenuProps={menuProps}
             defaultValue=""
             id="demo-simple-select-outlined"
             label="Country"
@@ -193,6 +223,7 @@ export default function TemporaryDrawer() {
             Business Category
           </InputLabel>
           <Select
+            MenuProps={menuProps}
             defaultValue=""
             id="demo-simple-select-outlined"
             label="Business Category"
@@ -212,6 +243,7 @@ export default function TemporaryDrawer() {
             Product
           </InputLabel>
           <Select
+            MenuProps={menuProps}
             defaultValue=""
             id="demo-simple-select-outlined"
             label="Product"
@@ -229,6 +261,7 @@ export default function TemporaryDrawer() {
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="demo-simple-select-outlined-label">Brand</InputLabel>
           <Select
+            MenuProps={menuProps}
             defaultValue=""
             id="demo-simple-select-outlined"
             label="Brand"
@@ -243,9 +276,35 @@ export default function TemporaryDrawer() {
         </FormControl>
       </Box>
       <Box pb={2} pl={2} pr={2}>
+        <FormControl
+          variant="outlined"
+          fullWidth={true}
+          className={classes.formControl}
+        >
+          <InputLabel id="demo-mutiple-checkbox-label">Type</InputLabel>
+          <Select
+            limitTags={1}
+            multiple
+            value={personName}
+            onChange={handleChange}
+            label="Type"
+            renderValue={(selected) => selected.join(', ')}
+            MenuProps={menuProps}
+          >
+            {type.map((t) => (
+              <MenuItem key={t} value={t}>
+                <Checkbox checked={personName.indexOf(t) > -1} />
+                <ListItemText primary={t} />
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Box>
+      <Box pb={2} pl={2} pr={2}>
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="demo-simple-select-outlined-label">Payee</InputLabel>
           <Select
+            MenuProps={menuProps}
             defaultValue=""
             id="demo-simple-select-outlined"
             label="Payee"
@@ -285,10 +344,10 @@ export default function TemporaryDrawer() {
         <Box display="flex" flexDirection="row" pt={1}>
           <Grid container spacing={2}>
             <Grid item xs={6}>
-              <TextField label="Min" variant="outlined" />
+              <TextField fullWidth label="Min" variant="outlined" />
             </Grid>
             <Grid item xs={6}>
-              <TextField label="Max" variant="outlined" />
+              <TextField fullWidth label="Max" variant="outlined" />
             </Grid>
           </Grid>
         </Box>

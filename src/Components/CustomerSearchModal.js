@@ -44,15 +44,15 @@ const useStyles = makeStyles((theme) => ({
 
 const customers = [
   {name: 'Oliver Hansen', sapId: '00012345'},
-  {name: 'Van Henry', sapId: '00012345'},
-  {name: 'April Tucker', sapId: '00012345'},
-  {name: 'Ralph Hubbard', sapId: '00012345'},
-  {name: 'Omar Alexander', sapId: '00012345'},
-  {name: 'Minh Amato', sapId: '00012345'},
-  {name: 'Janean Delosh', sapId: '00012345'},
-  {name: 'Cory Waddington', sapId: '00012345'},
-  {name: 'Humberto Kiley', sapId: '00012345'},
-  {name: 'Maisha Parson', sapId: '00012345'},
+  {name: 'Van Henry', sapId: '00012346'},
+  {name: 'April Tucker', sapId: '00012347'},
+  {name: 'Ralph Hubbard', sapId: '00012348'},
+  {name: 'Omar Alexander', sapId: '00012349'},
+  {name: 'Minh Amato', sapId: '00012350'},
+  {name: 'Janean Delosh', sapId: '00012351'},
+  {name: 'Cory Waddington', sapId: '00012352'},
+  {name: 'Humberto Kiley', sapId: '00012353'},
+  {name: 'Maisha Parson', sapId: '00012354'},
 ];
 
 export default function ProductSearchModal() {
@@ -165,8 +165,8 @@ export default function ProductSearchModal() {
               <Grid item md={5}>
                 <Box p={3}>
                   <Autocomplete
-                    options={customers} // THIS DOESNT WORK
-                    getOptionLabel={(option) => option.title}
+                    options={customers}
+                    getOptionLabel={(option) => option.name}
                     renderInput={(params) => (
                       <TextField
                         {...params}

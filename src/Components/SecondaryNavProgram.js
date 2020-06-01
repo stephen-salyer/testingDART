@@ -69,7 +69,7 @@ const BootstrapInput = withStyles((theme) => ({
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
-const MenuProps = {
+const menuProps = {
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
@@ -135,7 +135,7 @@ const SecondaryNavProgram = () => {
                 Version
               </InputLabel>
               <Select
-                MenuProps={MenuProps}
+                menuProps={menuProps}
                 defaultValue="30"
                 id="demo-simple-select-outlined"
                 label="Version"

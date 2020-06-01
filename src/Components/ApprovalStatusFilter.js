@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     width: '100%',
   },
   list: {
-    width: 300,
+    width: 350,
   },
   fullList: {
     width: 'auto',
@@ -175,7 +175,7 @@ export default function TemporaryDrawer() {
             Business Category
           </InputLabel>
           <Select
-            defaultValue=""
+            defaultValue="30"
             id="demo-simple-select-outlined"
             label="Business Category"
           >
@@ -185,6 +185,7 @@ export default function TemporaryDrawer() {
             <MenuItem value={10}>Channel</MenuItem>
             <MenuItem value={20}>Climate</MenuItem>
             <MenuItem value={30}>Crop Protection</MenuItem>
+            <MenuItem value={40}>National Brands</MenuItem>
           </Select>
         </FormControl>
       </Box>
@@ -231,7 +232,7 @@ export default function TemporaryDrawer() {
             Choose KPI
           </InputLabel>
           <Select
-            defaultValue=""
+            defaultValue={30}
             id="demo-simple-select-outlined"
             label="Choose KPI"
           >
@@ -240,7 +241,7 @@ export default function TemporaryDrawer() {
             </MenuItem>
             <MenuItem value={20}>Total Approvers</MenuItem>
             <MenuItem value={30}>Initial Submission to Final Approval</MenuItem>
-            <MenuItem value={30}>
+            <MenuItem value={40}>
               DOA Approvers at / above TED by Department
             </MenuItem>
           </Select>
@@ -249,10 +250,10 @@ export default function TemporaryDrawer() {
       <Box display="flex" flexDirection="row" pb={2} pl={2} pr={2}>
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <TextField label="Min Week" variant="outlined" />
+            <TextField label="Min Week" variant="outlined" defaultValue="6" />
           </Grid>
           <Grid item xs={6}>
-            <TextField label="Max Week" variant="outlined" />
+            <TextField label="Max Week" variant="outlined" defaultValue="7" />
           </Grid>
         </Grid>
       </Box>

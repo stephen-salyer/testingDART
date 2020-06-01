@@ -125,17 +125,17 @@ const ExpansionPanel = withStyles({
 })(MuiExpansionPanel);
 
 export const Members = [
-  {title: 'Justice Madden'},
-  {title: 'Alberto Shepard'},
-  {title: 'Anahi Mayo'},
-  {title: 'Mohamed Ferrell'},
-  {title: 'Jaylin Mcneil'},
-  {title: 'Caden Sosa'},
-  {title: 'Monica Carroll'},
-  {title: 'Leia Roach'},
-  {title: 'Kayden Jordan'},
-  {title: 'Billy Lester'},
-  {title: 'Kinsley Christian'},
+  {title: 'Justice Madden', category: 'approver'},
+  {title: 'Alberto Shepard', category: 'approver'},
+  {title: 'Anahi Mayo', category: 'approver'},
+  {title: 'Mohamed Ferrell', category: 'approver'},
+  {title: 'Jaylin Mcneil', category: 'approver'},
+  {title: 'Caden Sosa', category: 'approver'},
+  {title: 'Monica Carroll', category: 'approver'},
+  {title: 'Leia Roach', category: 'Owner'},
+  {title: 'Kayden Jordan', category: 'Owner'},
+  {title: 'Billy Lester', category: 'Owner'},
+  {title: 'Kinsley Christian', category: 'approver'},
 ];
 
 const Department = [

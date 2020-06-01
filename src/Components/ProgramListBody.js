@@ -19,6 +19,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Divider from '@material-ui/core/Divider';
 import SearchBar from './SearchBar';
 import {Hidden} from '@material-ui/core';
+import ProgramTotals from './ProgramTotals';
 
 const a11yProps = (index) => ({
   id: `simple-tab-${index}`,
@@ -131,36 +132,42 @@ const ProgramListBody = () => {
             <ProgramListItemsAll />
             <div>
               <Pagination count={10} color="secondary" />
+              <ProgramTotals />
             </div>
           </TabPanel>
           <TabPanel value={value} index={1}>
             <ProgramListItemsApproved />
             <div>
               <Pagination count={1} color="secondary" />
+              <ProgramTotals />
             </div>
           </TabPanel>
           <TabPanel value={value} index={2}>
             <ProgramListItemsPending />
             <div>
               <Pagination count={10} color="secondary" />
+              <ProgramTotals />
             </div>
           </TabPanel>
           <TabPanel value={value} index={3}>
             <ProgramListItemsDraft />
             <div>
               <Pagination count={10} color="secondary" />
+              <ProgramTotals />
             </div>
           </TabPanel>
           <TabPanel value={value} index={4}>
             <ProgramListItemsCanceled />
             <div>
               <Pagination count={2} color="secondary" />
+              <ProgramTotals />
             </div>
           </TabPanel>
           <TabPanel value={value} index={5}>
             <ProgramListItemsBackToDraft />
             <div>
               <Pagination count={2} color="secondary" />
+              <ProgramTotals />
             </div>
           </TabPanel>
         </CardContent>

@@ -69,8 +69,15 @@ const ApprovalStatusNav = () => {
             <div className={classes.chipMargin}>
               <Chip label="2020" onDelete={handleDelete} variant="outlined" />
             </div>
+            <div className={classes.chipMargin}>
+              <Chip
+                label="National Brands"
+                onDelete={handleDelete}
+                variant="outlined"
+              />
+            </div>
             <Chip
-              label="National Brands"
+              label="Initial Submission to Final Approval (Weeks 6-7)"
               onDelete={handleDelete}
               variant="outlined"
             />

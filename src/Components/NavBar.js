@@ -12,6 +12,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import Velocity from './Velocity-Logo.js';
 import Nav from './Nav';
+import {Hidden} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,9 +49,16 @@ const NavBar = () => {
             orientation="vertical"
             flexItem
           />
-          <Typography className={classes.title} varient="h6" color="inherit">
-            Market Funding
-          </Typography>
+          <Hidden xsDown>
+            <Typography className={classes.title} varient="h6" color="inherit">
+              Market Funding
+            </Typography>
+          </Hidden>
+          <Hidden Hidden only={['sm', 'md', 'lg', 'xl']}>
+            <Typography className={classes.title} varient="h6" color="inherit">
+              Market Fund.
+            </Typography>
+          </Hidden>
           <IconButton color="inherit" aria-label="search">
             <SearchIcon />
           </IconButton>

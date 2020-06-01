@@ -57,23 +57,23 @@ const useStyles = makeStyles({
 
 const programs = [
   {
-    title: '2017 APEX & RT MESA Herbicide Program USA',
+    title: '2020 APEX & RT MESA Herbicide Program USA',
     programId: 'APIRFP',
     pulledBack: '3 Times • Program Creation to Approval Submission: 3 weeks',
   },
   {
-    title: '2017 Acetanilide Dicamba Incentive Offer US',
+    title: '2020 Acetanilide Dicamba Incentive Offer US',
     programId: 'CHSAIO',
     pulledBack: '5 Times',
   },
-  {title: '2017 Action Pact-Canada', programId: 'R1712', pulledBack: '1 Time'},
+  {title: '2020 Action Pact-Canada', programId: 'R1712', pulledBack: '1 Time'},
   {
-    title: '2017 Crop Protection AMF-Canada',
+    title: '2020 Crop Protection AMF-Canada',
     programId: 'D1707',
     pulledBack: '7 Times',
   },
   {
-    title: '2017 Crop Protection Channel Development Resource US',
+    title: '2020 Crop Protection Channel Development Resource US',
     programId: 'CHLCRC2',
     pulledBack: '30 Times',
   },
@@ -221,6 +221,7 @@ const ApprovalStatusDraft = () => {
                             <ListItemSecondaryAction>
                               <Button edge="end" aria-label="delete">
                                 EMAIL
+                                {/* If approved make email go away */}
                               </Button>
                             </ListItemSecondaryAction>
                           </Box>

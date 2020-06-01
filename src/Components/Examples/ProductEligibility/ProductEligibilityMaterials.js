@@ -16,7 +16,7 @@ const Information = [
     brand: 'Brand Name 1',
     selected: 5,
     max: 5,
-    // make this all instead of numbers
+    // make this all instead of numbers ^^^^^^
   },
   {
     id: 2,

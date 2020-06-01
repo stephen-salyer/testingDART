@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   containerPadding: {
     padding: '112px 0 32px 0',
     [theme.breakpoints.down('xs')]: {
-      padding: '75px 0 32px 0',
+      padding: '75px 0 16px 0',
     },
   },
 
