@@ -45,6 +45,22 @@ const useStyles = makeStyles({
   },
 });
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const menuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+  getContentAnchorEl: null,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
+  },
+};
+
 export default function TemporaryDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -70,6 +86,14 @@ export default function TemporaryDrawer() {
     setState({...state, [anchor]: open});
   };
 
+  const options = Members.map((option) => {
+    const firstLetter = option.category.toUpperCase();
+    return {
+      firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
+      ...option,
+    };
+  });
+
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
@@ -93,11 +117,19 @@ export default function TemporaryDrawer() {
       <Box pb={2} pl={2} pr={2} pt={0}>
         <Autocomplete
           freeSolo
-          options={Members}
+          limitTags={1}
+          options={options.sort(
+            (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
+          )}
+          groupBy={(option) => option.firstLetter}
           getOptionLabel={(option) => option.title}
           style={{width: '100%'}}
           renderInput={(params) => (
-            <TextField {...params} label="Search Members" variant="outlined" />
+            <TextField
+              {...params}
+              label="Search Owners and Approvers"
+              variant="outlined"
+            />
           )}
         />
       </Box>
@@ -140,6 +172,7 @@ export default function TemporaryDrawer() {
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="demo-simple-select-outlined-label">Region</InputLabel>
           <Select
+            MenuProps={menuProps}
             defaultValue=""
             id="demo-simple-select-outlined"
             label="Region"
@@ -157,6 +190,7 @@ export default function TemporaryDrawer() {
             Country
           </InputLabel>
           <Select
+            MenuProps={menuProps}
             defaultValue=""
             id="demo-simple-select-outlined"
             label="Country"
@@ -175,6 +209,7 @@ export default function TemporaryDrawer() {
             Business Category
           </InputLabel>
           <Select
+            MenuProps={menuProps}
             defaultValue="30"
             id="demo-simple-select-outlined"
             label="Business Category"
@@ -195,6 +230,7 @@ export default function TemporaryDrawer() {
             Product
           </InputLabel>
           <Select
+            MenuProps={menuProps}
             defaultValue=""
             id="demo-simple-select-outlined"
             label="Product"
@@ -212,6 +248,7 @@ export default function TemporaryDrawer() {
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="demo-simple-select-outlined-label">Brand</InputLabel>
           <Select
+            MenuProps={menuProps}
             defaultValue=""
             id="demo-simple-select-outlined"
             label="Brand"
@@ -232,17 +269,27 @@ export default function TemporaryDrawer() {
             Choose KPI
           </InputLabel>
           <Select
+            fullWidth
+            MenuProps={menuProps}
             defaultValue={30}
             id="demo-simple-select-outlined"
             label="Choose KPI"
           >
             <MenuItem value={10}>
-              Program Creation to Approval Submission
+              <Typography variant="inherit" noWrap>
+                Program Creation to Approval Submission
+              </Typography>
             </MenuItem>
             <MenuItem value={20}>Total Approvers</MenuItem>
-            <MenuItem value={30}>Initial Submission to Final Approval</MenuItem>
+            <MenuItem value={30}>
+              <Typography variant="inherit" noWrap>
+                Initial Submission to Final Approval
+              </Typography>
+            </MenuItem>
             <MenuItem value={40}>
-              DOA Approvers at / above TED by Department
+              <Typography variant="inherit" noWrap>
+                DOA Approvers at / above TED by Department
+              </Typography>
             </MenuItem>
           </Select>
         </FormControl>

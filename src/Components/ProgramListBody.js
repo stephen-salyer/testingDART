@@ -103,11 +103,11 @@ const ProgramListBody = () => {
               aria-label="full width tabs example"
             >
               <Tab label="All (1197)" {...a11yProps(0)} />
-              <Tab label="Approved (10)" {...a11yProps(1)} />
-              <Tab label="Pending (98)" {...a11yProps(2)} />
-              <Tab label="Draft (887)" {...a11yProps(3)} />
+              <Tab label="Draft (887)" {...a11yProps(1)} />
+              <Tab label="Back to Draft (12)" {...a11yProps(2)} />
+              <Tab label="Pending (98)" {...a11yProps(3)} />
               <Tab label="Canceled (12)" {...a11yProps(4)} />
-              <Tab label="Back to Draft (12)" {...a11yProps(5)} />
+              <Tab label="Approved (10)" {...a11yProps(5)} />
             </Tabs>
           </Hidden>
           <Hidden only={['md', 'lg', 'xl']}>
@@ -121,11 +121,11 @@ const ProgramListBody = () => {
               aria-label="full width tabs example"
             >
               <Tab label="All (1197)" {...a11yProps(0)} />
-              <Tab label="Approved (10)" {...a11yProps(1)} />
-              <Tab label="Pending (98)" {...a11yProps(2)} />
-              <Tab label="Draft (887)" {...a11yProps(3)} />
+              <Tab label="Draft (887)" {...a11yProps(1)} />
+              <Tab label="Back to Draft (12)" {...a11yProps(2)} />
+              <Tab label="Pending (98)" {...a11yProps(3)} />
               <Tab label="Canceled (12)" {...a11yProps(4)} />
-              <Tab label="Back to Draft (12)" {...a11yProps(5)} />
+              <Tab label="Approved (10)" {...a11yProps(5)} />
             </Tabs>
           </Hidden>
           <TabPanel value={value} index={0}>

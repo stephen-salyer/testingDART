@@ -125,17 +125,26 @@ const ExpansionPanel = withStyles({
 })(MuiExpansionPanel);
 
 export const Members = [
-  {title: 'Justice Madden', category: 'approver'},
-  {title: 'Alberto Shepard', category: 'approver'},
-  {title: 'Anahi Mayo', category: 'approver'},
-  {title: 'Mohamed Ferrell', category: 'approver'},
-  {title: 'Jaylin Mcneil', category: 'approver'},
-  {title: 'Caden Sosa', category: 'approver'},
-  {title: 'Monica Carroll', category: 'approver'},
-  {title: 'Leia Roach', category: 'Owner'},
-  {title: 'Kayden Jordan', category: 'Owner'},
-  {title: 'Billy Lester', category: 'Owner'},
-  {title: 'Kinsley Christian', category: 'approver'},
+  {title: 'Justice Madden', category: 'approvers'},
+  {title: 'Alberto Shepard', category: 'approvers'},
+  {title: 'Anahi Mayo', category: 'approvers'},
+  {title: 'Mohamed Ferrell', category: 'approvers'},
+  {title: 'Jaylin Mcneil', category: 'approvers'},
+  {title: 'Caden Sosa', category: 'approvers'},
+  {title: 'Monica Carroll', category: 'approvers'},
+  {title: 'Leia Roach', category: 'Owners'},
+  {title: 'Kayden Jordan', category: 'Owners'},
+  {title: 'Billy Lester', category: 'Owners'},
+  {title: 'Kinsley Christian', category: 'approvers'},
+  {title: 'Kinsley Christian', category: 'Owners'},
+  {
+    title: 'Acceleron Loyalty',
+    category: 'programs',
+  },
+  {
+    title: '2020 Asgrow 2 You - 2018 - 2020',
+    category: 'programs',
+  },
 ];
 
 const Department = [
