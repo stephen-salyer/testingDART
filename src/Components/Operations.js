@@ -124,7 +124,7 @@ export default function Operations() {
               fullWidth={true}
               inputVariant="outlined"
               format="MM/dd/yyyy"
-              label="Communication Date"
+              label="Start Communication Date"
               value={selectedDate}
               onChange={handleDateChange}
               KeyboardButtonProps={{
@@ -140,7 +140,7 @@ export default function Operations() {
               fullWidth={true}
               inputVariant="outlined"
               format="MM/dd/yyyy"
-              label="Communication Date"
+              label="End Communication Date"
               value={selectedDate2}
               onChange={handleDateChange2}
               KeyboardButtonProps={{

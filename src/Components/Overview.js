@@ -110,7 +110,7 @@ export default function FullWidthGrid() {
               inputVariant="outlined"
               format="MM/dd/yyyy"
               margin="normal"
-              label="Communication Date"
+              label="Start Communication Date"
               value={selectedDate}
               onChange={handleDateChange}
               KeyboardButtonProps={{
@@ -127,7 +127,7 @@ export default function FullWidthGrid() {
               inputVariant="outlined"
               format="MM/dd/yyyy"
               margin="normal"
-              label="Communication Date"
+              label="End Communication Date"
               value={selectedDate2}
               onChange={handleDateChange2}
               KeyboardButtonProps={{
