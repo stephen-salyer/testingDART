@@ -12,6 +12,7 @@ import NavBar from './Components/NavBar';
 import MemberList from './Components/MemberList';
 import ApprovalStatus from './Components/ApprovalStatus';
 import ProductEligibilityExample from './Components/Examples/ProductEligibility/ProductEligibilityExample';
+import TowerReview from './Components/TowerReview';
 
 const theme = createMuiTheme({
   palette: {
@@ -49,6 +50,9 @@ const App = () => (
           </Route>
           <Route exact path="/approval-status">
             <ApprovalStatus />
+          </Route>
+          <Route exact path="/tower-review">
+            <TowerReview />
           </Route>
         </Switch>
       </div>

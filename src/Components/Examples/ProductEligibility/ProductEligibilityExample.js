@@ -84,8 +84,8 @@ export default function ProductEligibilityExample() {
   const [personName, setPersonName] = React.useState([]);
   const [materialName, setMaterialName] = React.useState([]);
   const [products, setProducts] = React.useState(10);
-  const some = products == 20;
-  const someOther = products == 30;
+  const some = products === 20;
+  const someOther = products === 30;
 
   const handleChange = (event) => {
     setPersonName(event.target.value);

@@ -24,6 +24,7 @@ export default function ProgramListFilterSearch() {
       clearOnBlur
       freeSolo
       multiple
+      disableClearable
       limitTags={1}
       options={options.sort(
         (a, b) => -b.firstLetter.localeCompare(a.firstLetter)

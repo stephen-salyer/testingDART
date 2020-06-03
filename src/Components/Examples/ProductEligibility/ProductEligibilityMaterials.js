@@ -52,7 +52,7 @@ export default function ProductEligibilityMaterials() {
   const [open, setOpen] = React.useState(null);
   const handleClick = (id) => {
     const prev = open;
-    setOpen(prev == id ? null : id);
+    setOpen(prev === id ? null : id);
   };
 
   return (
@@ -74,9 +74,9 @@ export default function ProductEligibilityMaterials() {
                 }
               />
               {selected !== max &&
-                (open == id ? <ExpandLess /> : <ExpandMore />)}
+                (open === id ? <ExpandLess /> : <ExpandMore />)}
             </ListItem>
-            <Collapse in={open == id} timeout="auto" unmountOnExit>
+            <Collapse in={open === id} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 {Materials.map(({material}) => (
                   <ListItem divider key={material}>

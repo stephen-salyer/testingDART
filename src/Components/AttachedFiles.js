@@ -57,20 +57,18 @@ export default function AttachedFiles() {
                         variant="overline"
                         style={{lineHeight: '0px'}}
                       >
-                        Not Started
+                        Document Type
                       </Typography>
                     }
                     secondary={
                       <Typography variant="subtitle1">
-                        First Name Last Name
+                        Attachment Name
                       </Typography>
                     }
                   />
                   <ListItemText
                     classes={{primary: classes.listItemTertiary}}
-                    primary={
-                      'Wave 1 • External Reporting • $1,000,000 • 1 Year'
-                    }
+                    primary={'Additional Information'}
                   />
                   <ListItemSecondaryAction>
                     <IconButton edge="end" aria-label="delete">

@@ -82,9 +82,10 @@ export default function ProgramTotals() {
               </Typography>
               <Autocomplete
                 size="small"
+                disableClearable
                 value={value}
                 options={currencies}
-                style={{minWidth: 120}}
+                style={{minWidth: 90}}
                 getOptionLabel={(option) => option.title}
                 renderInput={(params) => (
                   <TextField value="12345" {...params} variant="outlined" />

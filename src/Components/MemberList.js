@@ -88,6 +88,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+  getContentAnchorEl: null,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
+  },
+};
+
 const ExpansionPanelSummary = withStyles({
   root: {
     borderBottom: '1px solid rgba(0, 0, 0, .125)',
@@ -491,7 +507,11 @@ const MemberList = () => {
                               className={classes.formControl}
                             >
                               <InputLabel>{label}</InputLabel>
-                              <Select defaultValue={scope[key]} label={label}>
+                              <Select
+                                MenuProps={MenuProps}
+                                defaultValue={scope[key]}
+                                label={label}
+                              >
                                 {makeMenuItems(options)}
                               </Select>
                             </FormControl>
