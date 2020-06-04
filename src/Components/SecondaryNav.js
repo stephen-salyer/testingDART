@@ -130,7 +130,7 @@ const SecondaryNav = () => {
                     alignItems="center"
                     justifyContent="space-between"
                   >
-                    <GetAppIcon style={{paddingRight: 8}} /> Status Report{' '}
+                    <GetAppIcon style={{paddingRight: 8}} /> Status Report
                   </Box>
                 </Typography>
               </MenuItem>

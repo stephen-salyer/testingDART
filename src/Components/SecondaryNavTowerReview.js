@@ -5,7 +5,6 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import {Send} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
-import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import TowerReviewFilter from './TowerReviewFilter';
 import {FormControl, InputLabel, Select, MenuItem} from '@material-ui/core';
@@ -36,9 +35,9 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
   },
   containerPadding: {
-    padding: '112px 0 32px 0',
+    padding: '112px 0 8px 0',
     [theme.breakpoints.down('xs')]: {
-      padding: '75px 0 16px 0',
+      padding: '75px 0 8px 0',
     },
   },
   flexPositioning: {
@@ -79,10 +78,6 @@ const menuProps = {
 const SecondaryNavTowerReview = () => {
   const classes = useStyles();
 
-  const handleDelete = () => {
-    console.info('You clicked the delete icon.');
-  };
-
   return (
     <Container
       maxWidth="lg"
@@ -91,9 +86,14 @@ const SecondaryNavTowerReview = () => {
     >
       <Grid container>
         <Grid item={true} xs={12} sm={5} md={6}>
-          <Typography variant="h3" color="primary">
-            Tower Review
-          </Typography>
+          <Box pb={1}>
+            <Typography variant="h3" color="primary">
+              Tower Review
+            </Typography>
+            <Typography>
+              2020 / North America / US / Alfalfa / Channel
+            </Typography>
+          </Box>
         </Grid>
         <Grid item={true} xs={12} sm={7} md={6}>
           <Box className={classes.flexPositioning}>
@@ -127,37 +127,6 @@ const SecondaryNavTowerReview = () => {
               Approve Tower
             </Button>
             <TowerReviewFilter />
-          </Box>
-        </Grid>
-        <Grid item={true} xs={12} md={12}>
-          <Box className={classes.flexPositioning}>
-            <div className={classes.chipMargin}>
-              <Chip label="2020" onDelete={handleDelete} variant="outlined" />
-            </div>
-            <div className={classes.chipMargin}>
-              <Chip
-                label="North America"
-                onDelete={handleDelete}
-                variant="outlined"
-              />
-            </div>
-            <div className={classes.chipMargin}>
-              <Chip label="US" onDelete={handleDelete} variant="outlined" />
-            </div>
-            <div className={classes.chipMargin}>
-              <Chip
-                label="Alfalfa"
-                onDelete={handleDelete}
-                variant="outlined"
-              />
-            </div>
-            <div className={classes.chipMargin}>
-              <Chip
-                label="Channel"
-                onDelete={handleDelete}
-                variant="outlined"
-              />
-            </div>
           </Box>
         </Grid>
       </Grid>

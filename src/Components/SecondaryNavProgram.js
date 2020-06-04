@@ -155,6 +155,8 @@ const SecondaryNavProgram = () => {
               <MenuItem onClick={handleClose}>Copy Program</MenuItem>
               <MenuItem onClick={handleClose}>View Program Changes</MenuItem>
               <MenuItem onClick={handleClose}>Printable View</MenuItem>
+              <MenuItem onClick={handleClose}>Email Pending Owners</MenuItem>
+
               <MenuItem onClick={handleClose}>
                 <ProgramCancelModal />
               </MenuItem>

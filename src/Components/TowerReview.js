@@ -10,7 +10,11 @@ import SecondaryNavTowerReview from './SecondaryNavTowerReview';
 import {Box, Hidden} from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
 import ApprovalStatusDraft from './ApprovalStatusDraft';
-import ApprovalStatusNoPrograms from './ApprovalStatusNoPrograms';
+import TowerReviewPrograms from './TowerReviewPrograms';
+import ProgramTotals from './ProgramTotals';
+import TowerReviewPricePlan from './TowerReviewPricePlan';
+import AttachedFiles from './AttachedFiles';
+import Comments from './Comments';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,10 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     padding: '0',
+    margin: '0 0 -16px 0',
     minHeight: '67vh',
-    '&:last-child': {
-      paddingBottom: 0,
-    },
   },
   search: {
     display: 'flex',
@@ -91,7 +93,7 @@ const TabPanel = (props) => {
 
 const TowerReview = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(1);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -114,6 +116,7 @@ const TowerReview = () => {
                 <Tab label="Analytics" {...a11yProps(0)} />
                 <Tab label="Programs" {...a11yProps(1)} />
                 <Tab label="Price Plan" {...a11yProps(2)} />
+                <Tab label="Attachments" {...a11yProps(3)} />
               </Tabs>
             </Hidden>
             <Hidden only={['xl', 'lg', 'md']}>
@@ -127,41 +130,41 @@ const TowerReview = () => {
                 <Tab label="Analytics" {...a11yProps(0)} />
                 <Tab label="Programs" {...a11yProps(1)} />
                 <Tab label="Price Plan" {...a11yProps(2)} />
+                <Tab label="Attachments" {...a11yProps(3)} />
               </Tabs>
             </Hidden>
             <TabPanel value={value} index={0}>
-              <Box className={classes.tabPanel}>
+              <Box>
                 <ApprovalStatusDraft />
               </Box>
-              <Pagination
-                style={{paddingTop: '16px', marginBottom: '-8px'}}
-                count={10}
-                color="secondary"
-              />
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <Box className={classes.tabPanel}>
-                <ApprovalStatusNoPrograms />
+              <Box>
+                <TowerReviewPrograms />
               </Box>
               <Pagination
-                style={{paddingTop: '16px', marginBottom: '-8px'}}
+                style={{padding: '8px 0'}}
                 count={1}
                 color="secondary"
               />
+              <ProgramTotals />
             </TabPanel>
             <TabPanel value={value} index={2}>
-              <Box className={classes.tabPanel}>
-                <ApprovalStatusDraft />
+              <Box className={classes.tabPanel} p={3}>
+                <TowerReviewPricePlan />
               </Box>
-              <Pagination
-                style={{paddingTop: '16px', marginBottom: '-8px'}}
-                count={10}
-                color="secondary"
-              />
+            </TabPanel>
+            <TabPanel value={value} index={3}>
+              <Box className={classes.tabPanel}>
+                <AttachedFiles />
+              </Box>
             </TabPanel>
           </CardContent>
         </Card>
       </Container>
+      <Box display="flex" justifyContent="flex-end">
+        <Comments />
+      </Box>
     </>
   );
 };

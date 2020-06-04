@@ -113,35 +113,40 @@ const makeMenuItems = (items) =>
 
 const inputs = [
   {
+    id: 1,
     key: 'region',
     label: 'Region',
     options: [
+      'North America',
       'Asia / Pacific',
       'Europe / Middle East',
-      'North America',
       'South America',
     ],
     size: 6,
   },
   {
+    id: 2,
     key: 'country',
     label: 'Country',
-    options: ['Canada', 'Brazil', 'United States of America'],
+    options: ['United States of America', 'Canada', 'Brazil'],
     size: 6,
   },
   {
+    id: 3,
     key: 'businessCategory',
     label: 'Business Category',
     options: ['All', 'Crop Protection', 'Pasture'],
     size: 4,
   },
   {
+    id: 4,
     key: 'product',
     label: 'Product',
     options: ['All', 'Dicamba', 'Glyphosate', 'Other'],
     size: 4,
   },
   {
+    id: 5,
     key: 'brand',
     label: 'Brand',
     options: scopeData.map((r) => r.brand),

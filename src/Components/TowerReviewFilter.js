@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
-import {FilterList} from '@material-ui/icons';
+import {FilterList, ArrowDownward} from '@material-ui/icons';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 
@@ -16,7 +16,8 @@ import Chip from '@material-ui/core/Chip';
 import DoneIcon from '@material-ui/icons/Done';
 import CloseIcon from '@material-ui/icons/Close';
 import CardHeader from '@material-ui/core/CardHeader';
-import {Divider} from '@material-ui/core';
+import {Divider, TextField} from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,6 +61,8 @@ const menuProps = {
     horizontal: 'left',
   },
 };
+
+const towers = [{title: '2020 / North America / US / Alfalfa / Channel'}];
 
 export default function TowerReviewFilter() {
   const classes = useStyles();
@@ -148,7 +151,7 @@ export default function TowerReviewFilter() {
           <InputLabel id="demo-simple-select-outlined-label">Region</InputLabel>
           <Select
             MenuProps={menuProps}
-            defaultValue=""
+            defaultValue={10}
             id="demo-simple-select-outlined"
             label="Region"
           >
@@ -166,7 +169,7 @@ export default function TowerReviewFilter() {
           </InputLabel>
           <Select
             MenuProps={menuProps}
-            defaultValue=""
+            defaultValue={10}
             id="demo-simple-select-outlined"
             label="Country"
           >
@@ -181,31 +184,11 @@ export default function TowerReviewFilter() {
       <Box pb={2} pl={2} pr={2}>
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="demo-simple-select-outlined-label">
-            Business Category
-          </InputLabel>
-          <Select
-            MenuProps={menuProps}
-            defaultValue=""
-            id="demo-simple-select-outlined"
-            label="Business Category"
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Channel</MenuItem>
-            <MenuItem value={20}>Climate</MenuItem>
-            <MenuItem value={30}>Crop Protection</MenuItem>
-          </Select>
-        </FormControl>
-      </Box>
-      <Box pb={2} pl={2} pr={2}>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel id="demo-simple-select-outlined-label">
             Product
           </InputLabel>
           <Select
             MenuProps={menuProps}
-            defaultValue=""
+            defaultValue={20}
             id="demo-simple-select-outlined"
             label="Product"
           >
@@ -213,7 +196,7 @@ export default function TowerReviewFilter() {
               <em>None</em>
             </MenuItem>
             <MenuItem value={10}>All</MenuItem>
-            <MenuItem value={20}>Acceleration</MenuItem>
+            <MenuItem value={20}>Alfalfa</MenuItem>
             <MenuItem value={30}>Acetanilide</MenuItem>
           </Select>
         </FormControl>
@@ -223,7 +206,7 @@ export default function TowerReviewFilter() {
           <InputLabel id="demo-simple-select-outlined-label">Brand</InputLabel>
           <Select
             MenuProps={menuProps}
-            defaultValue=""
+            defaultValue={20}
             id="demo-simple-select-outlined"
             label="Brand"
           >
@@ -231,10 +214,25 @@ export default function TowerReviewFilter() {
               <em>None</em>
             </MenuItem>
             <MenuItem value={10}>All</MenuItem>
-            <MenuItem value={20}>Absolute</MenuItem>
+            <MenuItem value={20}>Channel</MenuItem>
             <MenuItem value={30}>Absolute Maxx</MenuItem>
           </Select>
         </FormControl>
+      </Box>
+      <Box display="flex" justifyContent="center">
+        <ArrowDownward />
+      </Box>
+      <Box p={2}>
+        <Autocomplete
+          id="combo-box-demo"
+          disableClearable
+          options={towers}
+          getOptionLabel={(option) => option.title}
+          fullWidth={true}
+          renderInput={(params) => (
+            <TextField {...params} label="Tower Selection" variant="outlined" />
+          )}
+        />
       </Box>
       <Divider />
       <Box p={2} display="flex" justifyContent="flex-end">
