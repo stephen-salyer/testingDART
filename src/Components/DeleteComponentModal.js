@@ -60,7 +60,7 @@ export default function DeleteComponentModal() {
           color="primary"
           onClick={() => setOpen(true)}
           className={classes.button}
-          startIcon={<DeleteIcon />}
+          endIcon={<DeleteIcon />}
         >
           Delete
         </Button>

@@ -129,46 +129,58 @@ const ProgramListBody = () => {
             </Tabs>
           </Hidden>
           <TabPanel value={value} index={0}>
-            <ProgramListItemsAll />
-            <div>
+            <div style={{height: '45vh', overflow: 'scroll'}}>
+              <ProgramListItemsAll />
+            </div>
+            <Box pt={1}>
               <Pagination count={10} color="secondary" />
               <ProgramTotals />
-            </div>
+            </Box>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <ProgramListItemsApproved />
-            <div>
+            <div style={{height: '45vh', overflow: 'scroll'}}>
+              <ProgramListItemsApproved />
+            </div>
+            <Box pt={1}>
               <Pagination count={1} color="secondary" />
               <ProgramTotals />
-            </div>
+            </Box>
           </TabPanel>
           <TabPanel value={value} index={2}>
-            <ProgramListItemsPending />
-            <div>
+            <div style={{height: '45vh', overflow: 'scroll'}}>
+              <ProgramListItemsPending />
+            </div>
+            <Box pt={1}>
               <Pagination count={10} color="secondary" />
               <ProgramTotals />
-            </div>
+            </Box>
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <ProgramListItemsDraft />
-            <div>
+            <div style={{height: '45vh', overflow: 'scroll'}}>
+              <ProgramListItemsDraft />
+            </div>
+            <Box pt={1}>
               <Pagination count={10} color="secondary" />
               <ProgramTotals />
-            </div>
+            </Box>
           </TabPanel>
           <TabPanel value={value} index={4}>
-            <ProgramListItemsCanceled />
-            <div>
+            <div style={{height: '45vh', overflow: 'scroll'}}>
+              <ProgramListItemsCanceled />
+            </div>
+            <Box pt={1}>
               <Pagination count={2} color="secondary" />
               <ProgramTotals />
-            </div>
+            </Box>
           </TabPanel>
           <TabPanel value={value} index={5}>
-            <ProgramListItemsBackToDraft />
-            <div>
+            <div style={{height: '45vh', overflow: 'scroll'}}>
+              <ProgramListItemsBackToDraft />
+            </div>
+            <Box pt={1}>
               <Pagination count={2} color="secondary" />
               <ProgramTotals />
-            </div>
+            </Box>
           </TabPanel>
         </CardContent>
       </Card>

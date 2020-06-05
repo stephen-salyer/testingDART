@@ -101,7 +101,7 @@ const Program = () => {
   return (
     <>
       <SecondaryNavProgram />
-      <Container maxWidth="lg" style={{paddingBottom: '24px'}}>
+      <Container maxWidth="lg" style={{paddingBottom: '100px'}}>
         <Card>
           <CardContent className={classes.content}>
             <Tabs

@@ -4,7 +4,6 @@ import {
   ListItemText,
   List,
   ListItemSecondaryAction,
-  IconButton,
   Divider,
   Container,
   Button,
@@ -69,13 +68,15 @@ export default function AttachedFiles() {
                     }
                     secondary={
                       <Typography variant="subtitle1">
-                        Attachment Name
+                        Attachment Name 123-456-789 ABC-DEF-GHI
                       </Typography>
                     }
                   />
                   <ListItemText
                     classes={{primary: classes.listItemTertiary}}
-                    primary={'Additional Information'}
+                    primary={
+                      'Additional information is what would go here. this described the attachment and its purpose'
+                    }
                   />
                   <ListItemSecondaryAction>
                     <DeleteScopeModal />

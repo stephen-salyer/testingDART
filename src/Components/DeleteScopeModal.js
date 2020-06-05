@@ -104,7 +104,7 @@ export default function DeleteScopeModal({onDelete}) {
                     onDelete();
                   }}
                   className={classes.modalButton}
-                  startIcon={<DeleteIcon />}
+                  endIcon={<DeleteIcon />}
                 >
                   Delete
                 </Button>

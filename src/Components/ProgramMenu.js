@@ -1,7 +1,8 @@
 import React from 'react';
 import 'typeface-roboto';
-import {Typography, Menu, MenuItem, Box} from '@material-ui/core';
-import {Delete, MoreVert, FileCopy} from '@material-ui/icons/';
+import {Menu, Box, Button} from '@material-ui/core';
+import {MoreVert, FileCopy} from '@material-ui/icons/';
+import DeleteComponentModal from './DeleteComponentModal';
 
 const ProgramMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -24,28 +25,12 @@ const ProgramMenu = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>
-          <Typography variant="inherit">
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <FileCopy style={{paddingRight: 8}} /> Copy
-            </Box>
-          </Typography>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Typography variant="inherit">
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <Delete color="error" style={{paddingRight: 8}} /> Delete
-            </Box>
-          </Typography>
-        </MenuItem>
+        <Button fullWidth={true} onClick={handleClose} endIcon={<FileCopy />}>
+          copy
+        </Button>
+        <Box onClick={handleClose}>
+          <DeleteComponentModal />
+        </Box>
       </Menu>
     </>
   );
