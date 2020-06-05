@@ -12,8 +12,8 @@ import {
 } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import {Publish} from '@material-ui/icons';
+import DeleteScopeModal from './DeleteComponentModal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,8 +44,15 @@ export default function AttachedFiles() {
 
   return (
     <>
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Grid container>
+          <Grid item xs={12}>
+            <Box pt={3} display="flex" justifyContent="flex-end">
+              <Button color="primary" variant="outlined" endIcon={<Publish />}>
+                Upload Attachment
+              </Button>
+            </Box>
+          </Grid>
           {[1, 2, 3, 4].map((n) => (
             <Grid item sm={12} key={n}>
               <Fragment>
@@ -71,22 +78,13 @@ export default function AttachedFiles() {
                     primary={'Additional Information'}
                   />
                   <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete">
-                      <RemoveCircleIcon />
-                    </IconButton>
+                    <DeleteScopeModal />
                   </ListItemSecondaryAction>
                 </List>
                 <Divider />
               </Fragment>
             </Grid>
           ))}
-          <Box pt={3}>
-            <Grid item sm={12}>
-              <Button color="primary" variant="outlined" endIcon={<Publish />}>
-                Upload Attachment
-              </Button>
-            </Grid>
-          </Box>
         </Grid>
       </Container>
     </>

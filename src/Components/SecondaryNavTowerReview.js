@@ -7,7 +7,6 @@ import {Send} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TowerReviewFilter from './TowerReviewFilter';
-import {FormControl, InputLabel, Select, MenuItem} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,22 +58,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const menuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-  getContentAnchorEl: null,
-  anchorOrigin: {
-    vertical: 'bottom',
-    horizontal: 'left',
-  },
-};
-
 const SecondaryNavTowerReview = () => {
   const classes = useStyles();
 
@@ -97,27 +80,6 @@ const SecondaryNavTowerReview = () => {
         </Grid>
         <Grid item={true} xs={12} sm={7} md={6}>
           <Box className={classes.flexPositioning}>
-            <FormControl
-              style={{marginTop: '4px'}}
-              variant="outlined"
-              margin="dense"
-              label="Version"
-            >
-              <InputLabel htmlFor="outlined-age-native-simple">
-                Currency
-              </InputLabel>
-              <Select
-                className={classes.currencySelect}
-                MenuProps={menuProps}
-                defaultValue={10}
-                id="demo-simple-select-outlined"
-                label="Currency"
-              >
-                <MenuItem value={10}>USD</MenuItem>
-                <MenuItem value={20}>EUR</MenuItem>
-                <MenuItem value={30}>(Local)</MenuItem>
-              </Select>
-            </FormControl>
             <Button
               variant="contained"
               color="primary"

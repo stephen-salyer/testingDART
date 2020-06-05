@@ -253,9 +253,9 @@ export default function TowerReviewFilter() {
 
   return (
     <Box display="flex" alignItems="center">
-      <IconButton onClick={toggleDrawer('right', true)}>
-        <FilterList />
-      </IconButton>
+      <Button onClick={toggleDrawer('right', true)} endIcon={<FilterList />}>
+        filter
+      </Button>
       <Drawer
         anchor={'right'}
         open={state.right}

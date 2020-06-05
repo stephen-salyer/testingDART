@@ -86,14 +86,14 @@ export default function DeleteComponentModal() {
                 id="transition-modal-title"
                 style={{margin: '10px 0'}}
               >
-                Are you sure you want to delete this Component?
+                Are you sure you want to delete this?
               </Typography>
               <IconButton onClick={() => setOpen(false)} color="inherit">
                 <CloseIcon />
               </IconButton>
             </Box>
             <Typography variant="subtitle1" gutterBottom>
-              Component Name Here
+              Name Of Thing Being Deleted
             </Typography>
             <Box display="flex" justifyContent="space-between">
               <ThemeProvider theme={theme}>
