@@ -1,155 +1,189 @@
 import React from 'react';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import {
-  Divider,
-  AppBar,
-  Tabs,
-  Tab,
-  Typography,
-  Box,
+  List,
+  ListItemText,
   ListItemSecondaryAction,
   IconButton,
-  ListItemText,
-  List,
+  Divider,
+  Checkbox,
+  TextField,
+  Box,
 } from '@material-ui/core';
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import {RemoveCircle, CheckBox, CheckBoxOutlineBlank} from '@material-ui/icons';
 
-function TabPanel(props) {
-  const {children, value, index, ...other} = props;
+const icon = <CheckBoxOutlineBlank fontSize="small" />;
+const checkedIcon = <CheckBox fontSize="small" />;
+
+export default function GitHubLabel() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [value, setValue] = React.useState([
+    geographyInformation[1],
+    geographyInformation[11],
+  ]);
+  const [pendingValue, setPendingValue] = React.useState([]);
+
+  const handleClick = (event) => {
+    setPendingValue(value);
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'toggleInput') {
+      return;
+    }
+    setValue(pendingValue);
+    if (anchorEl) {
+      anchorEl.focus();
+    }
+    setAnchorEl(null);
+  };
+
+  const handleClickRemove = (event, reason) => {
+    if (reason === 'toggleInput') {
+      return;
+    }
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'github-label' : undefined;
 
   return (
-    <Typography
-      component="div"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box>{children}</Box>}
-    </Typography>
+    <React.Fragment>
+      <Autocomplete
+        open={open}
+        id={id}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        multiple
+        disableClearable
+        value={pendingValue}
+        onChange={(event, newValue) => {
+          setPendingValue(newValue);
+        }}
+        disableCloseOnSelect
+        renderTags={() => null}
+        noOptionsText="No labels"
+        renderOption={(option, {selected}) => (
+          <React.Fragment>
+            <Checkbox
+              icon={icon}
+              checkedIcon={checkedIcon}
+              style={{marginRight: 8}}
+              checked={selected}
+            />
+            <ListItemText primary={option.state} secondary={option.country} />
+          </React.Fragment>
+        )}
+        options={[...geographyInformation].sort((a, b) => {
+          let ai = value.indexOf(a);
+          ai = ai === -1 ? value.length + geographyInformation.indexOf(a) : ai;
+          let bi = value.indexOf(b);
+          bi = bi === -1 ? value.length + geographyInformation.indexOf(b) : bi;
+          return ai - bi;
+        })}
+        getOptionLabel={(option) => option.state}
+        renderInput={(params) => (
+          <>
+            <TextField
+              onClick={handleClick}
+              ref={params.InputProps.ref}
+              inputProps={params.inputProps}
+              {...params}
+              variant="outlined"
+              label="State / Province / Ect."
+              placeholder="Search"
+            />
+          </>
+        )}
+      />
+      <Box style={{height: '255px', overflow: 'scroll'}}>
+        {value.map((label) => (
+          <>
+            <List>
+              <ListItemText primary={label.state} secondary={label.country} />
+              <ListItemSecondaryAction>
+                <IconButton
+                  onClick={handleClickRemove}
+                  edge="end"
+                  aria-label="delete"
+                >
+                  <RemoveCircle />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </List>
+            <Divider />
+          </>
+        ))}
+      </Box>
+    </React.Fragment>
   );
 }
 
-export default function GeographyEligibilityState() {
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  var foo = new Array(49);
-
-  for (var i = 0; i < foo.length; i++)
-    return (
-      <div>
-        <AppBar
-          color="default"
-          elevation={0}
-          style={{backgroundColor: '#ffffff'}}
-          position="static"
-        >
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            aria-label="simple tabs example"
-            variant="fullWidth"
-          >
-            <Tab label="Included (3)" />
-            <Tab label="Excluded (49)" />
-          </Tabs>
-        </AppBar>
-        <TabPanel value={value} index={0}>
-          <Box style={{maxHeight: '255px', overflow: 'scroll'}}>
-            {[1, 2, 3].map((n) => (
-              <div key={n}>
-                <List key={n}>
-                  <ListItemText
-                    primary="State Name Here"
-                    secondary="Country Name Here"
-                  />
-                  <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete">
-                      <RemoveCircleIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </List>
-                <Divider />
-              </div>
-            ))}
-          </Box>
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Box style={{maxHeight: '255px', overflow: 'scroll'}}>
-            {[
-              1,
-              2,
-              3,
-              4,
-              5,
-              6,
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13,
-              14,
-              15,
-              16,
-              17,
-              18,
-              19,
-              20,
-              21,
-              22,
-              23,
-              24,
-              25,
-              26,
-              27,
-              28,
-              29,
-              30,
-              31,
-              32,
-              33,
-              34,
-              35,
-              36,
-              37,
-              38,
-              39,
-              40,
-              41,
-              42,
-              43,
-              44,
-              45,
-              46,
-              47,
-              48,
-              49,
-            ].map((n) => (
-              <div key={n}>
-                <List key={n}>
-                  <ListItemText
-                    primary="State Name Here"
-                    secondary="Country Name Here"
-                  />
-                  <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete">
-                      <RemoveCircleIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </List>
-                <Divider />
-              </div>
-            ))}
-          </Box>
-        </TabPanel>
-      </div>
-    );
-}
+const geographyInformation = [
+  {
+    state: 'Alabama',
+    country: 'US',
+    county: 'Wilburt',
+  },
+  {
+    state: 'Arkansas',
+    country: 'US',
+    county: 'homer',
+  },
+  {
+    state: 'Alabama1',
+    country: 'US',
+    county: 'Good for newcomers',
+  },
+  {
+    state: 'Alabama2',
+    country: 'US',
+    county: 'Good for newcomers',
+  },
+  {
+    state: 'Alabama3',
+    country: 'US',
+    county: 'Good for newcomers',
+  },
+  {
+    state: 'Alabama4',
+    country: 'US',
+    county: 'Good for newcomers',
+  },
+  {
+    state: 'Alabama5',
+    country: 'US',
+    county: 'Good for newcomers',
+  },
+  {
+    state: 'Alabama6',
+    country: 'US',
+    county: 'Good for newcomers',
+  },
+  {
+    state: 'Alabama7',
+    country: 'US',
+    county: 'Good for newcomers',
+  },
+  {
+    state: 'Alabama8',
+    country: 'US',
+    county: 'Good for newcomers',
+  },
+  {
+    state: 'Alabama9',
+    country: 'US',
+    county: 'Good for newcomers',
+  },
+  {
+    state: 'Alabama10',
+    country: 'US',
+    county: 'Good for newcomers',
+  },
+  {
+    state: 'Alabama11',
+    country: 'US',
+    county: 'Good for newcomers',
+  },
+];

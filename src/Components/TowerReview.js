@@ -9,7 +9,7 @@ import Tab from '@material-ui/core/Tab';
 import SecondaryNavTowerReview from './SecondaryNavTowerReview';
 import {Box, Hidden} from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
-import ApprovalStatusDraft from './ApprovalStatusDraft';
+import TowerReviewAnalytics from './TowerReviewAnalytics';
 import TowerReviewPrograms from './TowerReviewPrograms';
 import ProgramTotals from './ProgramTotals';
 import TowerReviewPricePlan from './TowerReviewPricePlan';
@@ -134,8 +134,8 @@ const TowerReview = () => {
               </Tabs>
             </Hidden>
             <TabPanel value={value} index={0}>
-              <Box>
-                <ApprovalStatusDraft />
+              <Box p={3}>
+                <TowerReviewAnalytics />
               </Box>
             </TabPanel>
             <TabPanel value={value} index={1}>

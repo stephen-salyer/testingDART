@@ -2,17 +2,17 @@ import React from 'react';
 import {Pie} from 'react-chartjs-2';
 
 const state = {
-  labels: ['Draft', 'Pulled Back', 'Pending', 'Approved'],
+  labels: ['Draft', 'Pending Approval', 'Approved'],
   datasets: [
     {
-      backgroundColor: ['#75CBB6', '#018ECD', '#DCEDC8', '#F7D000'],
-      hoverBackgroundColor: ['#75CBB6', '#018ECD', '#DCEDC8', '#F7D000'],
-      data: [887, 12, 98, 4],
+      backgroundColor: ['#75CBB6', '#018ECD', '#DCEDC8'],
+      hoverBackgroundColor: ['#75CBB6', '#018ECD', '#DCEDC8'],
+      data: [40, 30, 30],
     },
   ],
 };
 
-class ApprovalStatusChart extends React.Component {
+class TowerReviewAnalyticsChart1 extends React.Component {
   render() {
     return (
       <div
@@ -42,4 +42,4 @@ class ApprovalStatusChart extends React.Component {
   }
 }
 
-export default ApprovalStatusChart;
+export default TowerReviewAnalyticsChart1;

@@ -92,27 +92,6 @@ export default function GeographyEligibility() {
         <GeographyEligibilityCountry />
       </Grid>
       <Grid item sm={12} md={6}>
-        <FormControl multiple fullWidth variant="outlined">
-          <InputLabel>State / Province / Ect.</InputLabel>
-          <Select MenuProps={MenuProps} label="State / Province / Ect.">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <Box pl={2} key={n}>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={state.checkedB}
-                      onChange={handleChange}
-                      name="checkedB"
-                      color="primary"
-                      value={10}
-                    />
-                  }
-                  label="State Name Here"
-                />
-              </Box>
-            ))}
-          </Select>
-        </FormControl>
         <GeographyEligibilityState />
       </Grid>
       <Grid item sm={12} md={6}>

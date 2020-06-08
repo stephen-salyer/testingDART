@@ -19,8 +19,11 @@ const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
   },
-  chipMargin: {
-    marginRight: '8px',
+  chipPadding: {
+    paddingRight: '8px',
+    [theme.breakpoints.down('xs')]: {
+      padding: '4px',
+    },
   },
   linkNoDecoration: {
     textDecoration: 'none',
@@ -65,22 +68,24 @@ const ApprovalStatusNav = () => {
           </Box>
         </Grid>
         <Grid item={true} sm={12} md={12}>
-          <Box display="flex" justifyContent="flex-end" my={2}>
-            <div className={classes.chipMargin}>
+          <Box display="flex" justifyContent="flex-end" flexWrap="wrap" my={2}>
+            <div className={classes.chipPadding}>
               <Chip label="2020" onDelete={handleDelete} variant="outlined" />
             </div>
-            <div className={classes.chipMargin}>
+            <div className={classes.chipPadding}>
               <Chip
                 label="National Brands"
                 onDelete={handleDelete}
                 variant="outlined"
               />
             </div>
-            <Chip
-              label="Initial Submission to Final Approval (Weeks 6-7)"
-              onDelete={handleDelete}
-              variant="outlined"
-            />
+            <div className={classes.chipPadding}>
+              <Chip
+                label="Initial Submission to Final Approval (Weeks 6-7)"
+                onDelete={handleDelete}
+                variant="outlined"
+              />
+            </div>
           </Box>
         </Grid>
       </Grid>
