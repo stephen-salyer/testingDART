@@ -10,7 +10,7 @@ const state = {
     'Net Invoice Sales',
     'GTM Rebate',
     'Grower Incentives',
-    'Discretionary Guarentee/Performance Claims',
+    'Discretionary Guarantee/Performance Claims',
     'Net Sales',
     'SG&A Program',
     'Net Proceeds',
@@ -45,11 +45,6 @@ class TowerReviewAnalyticsChart4 extends React.Component {
             responsive: true,
             legend: {
               display: false,
-              position: 'bottom',
-              labels: {
-                boxWidth: 20,
-                padding: 20,
-              },
             },
           }}
         />

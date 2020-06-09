@@ -5,7 +5,6 @@ import {
   List,
   ListItemSecondaryAction,
   Divider,
-  Container,
   Button,
   Box,
 } from '@material-ui/core';
@@ -30,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'rgba(0, 0, 0, 0.54)',
     fontSize: '0.875rem',
   },
-  listItemTextNoMargin: {
+  listItemTextMargin: {
     marginBottom: '0',
   },
   tabs: {
@@ -43,51 +42,46 @@ export default function AttachedFiles() {
 
   return (
     <>
-      <Container maxWidth="md">
-        <Grid container>
-          <Grid item xs={12}>
-            <Box pt={3} display="flex" justifyContent="flex-end">
-              <Button color="primary" variant="outlined" endIcon={<Publish />}>
-                Upload Attachment
-              </Button>
-            </Box>
-          </Grid>
-          {[1, 2, 3, 4].map((n) => (
-            <Grid item sm={12} key={n}>
-              <Fragment>
-                <List>
-                  <ListItemText
-                    className={classes.listItemTextNoMargin}
-                    primary={
-                      <Typography
-                        variant="overline"
-                        style={{lineHeight: '0px'}}
-                      >
-                        Document Type
-                      </Typography>
-                    }
-                    secondary={
-                      <Typography variant="subtitle1">
-                        Attachment Name 123-456-789 ABC-DEF-GHI
-                      </Typography>
-                    }
-                  />
-                  <ListItemText
-                    classes={{primary: classes.listItemTertiary}}
-                    primary={
-                      'Additional information is what would go here. this described the attachment and its purpose'
-                    }
-                  />
-                  <ListItemSecondaryAction>
-                    <DeleteScopeModal />
-                  </ListItemSecondaryAction>
-                </List>
-                <Divider />
-              </Fragment>
-            </Grid>
-          ))}
+      <Grid container>
+        <Grid item xs={12}>
+          <Box pt={3} pr={3} display="flex" justifyContent="flex-end">
+            <Button color="primary" variant="outlined" endIcon={<Publish />}>
+              Upload Attachment
+            </Button>
+          </Box>
         </Grid>
-      </Container>
+        {[1, 2, 3, 4].map((n) => (
+          <Grid item sm={12} key={n}>
+            <Fragment>
+              <List style={{paddingLeft: 16}}>
+                <ListItemText
+                  className={classes.listItemTextMargin}
+                  primary={
+                    <Typography variant="overline" style={{lineHeight: '0px'}}>
+                      Document Type
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography variant="subtitle1">
+                      Attachment Name 123-456-789 ABC-DEF-GHI
+                    </Typography>
+                  }
+                />
+                <ListItemText
+                  classes={{primary: classes.listItemTertiary}}
+                  primary={
+                    'Additional information is what would go here. this described the attachment and its purpose'
+                  }
+                />
+                <ListItemSecondaryAction>
+                  <DeleteScopeModal />
+                </ListItemSecondaryAction>
+              </List>
+              <Divider />
+            </Fragment>
+          </Grid>
+        ))}
+      </Grid>
     </>
   );
 }

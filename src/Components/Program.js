@@ -169,7 +169,7 @@ const Program = () => {
               </Box>
             </TabPanel>
             <TabPanel value={value} index={8}>
-              <Box p={3}>
+              <Box>
                 <AttachedFiles />
               </Box>
             </TabPanel>

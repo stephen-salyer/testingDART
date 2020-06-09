@@ -13,6 +13,7 @@ import MemberList from './Components/MemberList';
 import ApprovalStatus from './Components/ApprovalStatus';
 import ProductEligibilityExample from './Components/Examples/ProductEligibility/ProductEligibilityExample';
 import TowerReview from './Components/TowerReview';
+import ProgramPrintable from './Components/ProgramPrintable';
 
 const theme = createMuiTheme({
   palette: {
@@ -53,6 +54,9 @@ const App = () => (
           </Route>
           <Route exact path="/tower-review">
             <TowerReview />
+          </Route>
+          <Route exact path="/program-printable">
+            <ProgramPrintable />
           </Route>
         </Switch>
       </div>
