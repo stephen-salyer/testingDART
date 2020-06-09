@@ -1,105 +1,173 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {makeStyles, useTheme} from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import ApproverNonDOAGlobalAccounting from './ApproverNonDOAGlobalAccounting';
+import {makeStyles} from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import {
+  MenuItem,
+  Box,
+  Divider,
+  IconButton,
+  CardHeader,
+  Typography,
+  ListItemText,
+  List,
+  ListItemSecondaryAction,
+  Menu,
+} from '@material-ui/core';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import ApproverManualNotify from './ApproverManualNotify';
+import ApproverChart from './ApproverChart';
+import {Members, approvers} from './ApproverNonDOADetails';
 
-function TabPanel(props) {
-  const {children, value, index, ...other} = props;
-
-  return (
-    <Typography
-      component="div"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`full-width-tabpanel-${index}`}
-      aria-labelledby={`full-width-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box pt={1}>{children}</Box>}
-    </Typography>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
-  };
-}
-
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    flexGrow: 1,
   },
-});
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  formControl: {
+    margin: 0,
+    fullWidth: true,
+    display: 'flex',
+    wrap: 'nowrap',
+  },
+  overrides: {
+    MuiFormLabel: {
+      root: {
+        color: 'orange',
+        '&$focused': {
+          color: 'blue',
+        },
+      },
+    },
+  },
+  listItemTertiary: {
+    lineHeight: '0.5',
+  },
+}));
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+  getContentAnchorEl: null,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
+  },
+};
 
 export default function ApproverNonDOA() {
   const classes = useStyles();
-  const theme = useTheme();
-  const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
-    <div className={classes.root}>
-      <AppBar
-        position="static"
-        color="default"
-        elevation={0}
-        style={{backgroundColor: '#ffffff'}}
-      >
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          variant="fullWidth"
-          aria-label="full width tabs example"
-        >
-          <Tab label="Operations" {...a11yProps(0)} />
-          <Tab label="Legals" {...a11yProps(1)} />
-          <Tab label="Sales" {...a11yProps(2)} />
-          <Tab label="Marketing" {...a11yProps(3)} />
-          <Tab label="Additional" {...a11yProps(4)} />
-        </Tabs>
-      </AppBar>
-      <TabPanel value={value} index={0} dir={theme.direction}>
-        <Box pt={3}>
-          <ApproverNonDOAGlobalAccounting />
-        </Box>
-      </TabPanel>
-      <TabPanel value={value} index={1} dir={theme.direction}>
-        <Box pt={3}>
-          <ApproverNonDOAGlobalAccounting />
-        </Box>
-      </TabPanel>
-      <TabPanel value={value} index={2} dir={theme.direction}>
-        <Box pt={3}>
-          <ApproverNonDOAGlobalAccounting />
-        </Box>
-      </TabPanel>
-      <TabPanel value={value} index={3} dir={theme.direction}>
-        <Box pt={3}>
-          <ApproverNonDOAGlobalAccounting />
-        </Box>
-      </TabPanel>
-      <TabPanel value={value} index={4} dir={theme.direction}>
-        <Box pt={3}>
-          <ApproverNonDOAGlobalAccounting />
-        </Box>
-      </TabPanel>
-    </div>
+    <>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={7}>
+          <Box pt={3}>
+            <Autocomplete
+              options={Members}
+              MenuProps={MenuProps}
+              getOptionLabel={(option) => option.title}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Search Members"
+                  variant="outlined"
+                />
+              )}
+            />
+          </Box>
+          <Box style={{maxHeight: '365px', overflow: 'scroll'}}>
+            {approvers.map(({progress, name, wave, ted, year}, i) => (
+              <>
+                <List key={i}>
+                  <Box display="flex" flexDirection="row" alignItems="center">
+                    <ApproverManualNotify />
+                    <Box display="flex" flexDirection="column">
+                      <ListItemText
+                        className={classes.listItemTextNoMargin}
+                        primary={
+                          <Typography
+                            variant="overline"
+                            style={{lineHeight: '0px'}}
+                          >
+                            {progress}
+                          </Typography>
+                        }
+                        secondary={
+                          <Typography variant="subtitle1">{name}</Typography>
+                        }
+                      />
+                      <ListItemText
+                        classes={{primary: classes.listItemTertiary}}
+                        primary={[wave, ted, year].join(' • ')}
+                      />
+                    </Box>
+                    <ListItemSecondaryAction>
+                      <IconButton
+                        onClick={handleClick}
+                        aria-label="More"
+                        component="span"
+                        edge="end"
+                      >
+                        <MoreVertIcon />
+                      </IconButton>
+                    </ListItemSecondaryAction>
+                  </Box>
+                </List>
+
+                <Divider />
+              </>
+            ))}
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Edit</MenuItem>
+              <MenuItem onClick={handleClose}>Remove Approver</MenuItem>
+            </Menu>
+          </Box>
+        </Grid>
+        <Grid item xs={12} md={5}>
+          <CardHeader
+            style={{paddingTop: 7}}
+            title={
+              <>
+                <Box display="flex" alignItems="center">
+                  <Typography variant="h6">Stats Here?</Typography>
+                </Box>
+              </>
+            }
+          />
+          <Divider />
+          <Box pt={1}>
+            <ApproverChart />
+          </Box>
+        </Grid>
+      </Grid>
+    </>
   );
 }

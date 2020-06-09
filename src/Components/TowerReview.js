@@ -100,7 +100,7 @@ const TowerReview = () => {
 
   return (
     <>
-      <Container maxWidth="lg" style={{paddingBottom: '24px'}}>
+      <Container maxWidth="lg" style={{paddingBottom: '92px'}}>
         <SecondaryNavTowerReview />
         <Card>
           <CardContent className={classes.content}>

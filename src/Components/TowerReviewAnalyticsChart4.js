@@ -1,34 +1,50 @@
 import React from 'react';
-import {Pie} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
 
 const state = {
-  labels: ['Draft', 'Pending Approval', 'Approved'],
+  labels: [
+    'Gross Sales',
+    'Trade Incentive',
+    'Other Off-Invoice',
+    'Payment Incentive',
+    'Net Invoice Sales',
+    'GTM Rebate',
+    'Grower Incentives',
+    'Discretionary Guarentee/Performance Claims',
+    'Net Sales',
+    'SG&A Program',
+    'Net Proceeds',
+  ],
   datasets: [
     {
-      backgroundColor: ['#75CBB6', '#018ECD', '#DCEDC8'],
-      hoverBackgroundColor: ['#75CBB6', '#018ECD', '#DCEDC8'],
-      data: [40, 30, 30],
+      backgroundColor: ['#75CBB6', '#018ECD', '#DCEDC8', '#018ECD', '#018ECD'],
+      hoverBackgroundColor: [
+        '#75CBB6',
+        '#018ECD',
+        '#DCEDC8',
+        '#018ECD',
+        '#018ECD',
+      ],
+      data: [-40, 0, 0, 30, 10],
     },
   ],
 };
 
-class TowerReviewAnalyticsChart1 extends React.Component {
+class TowerReviewAnalyticsChart4 extends React.Component {
   render() {
     return (
       <div
         style={{
           position: 'relative',
-          width: '80%',
-          minWidth: 425,
-          maxWidth: 425,
+          width: '100%',
         }}
       >
-        <Pie
+        <Bar
           data={state}
           options={{
             responsive: true,
             legend: {
-              display: true,
+              display: false,
               position: 'bottom',
               labels: {
                 boxWidth: 20,
@@ -42,4 +58,4 @@ class TowerReviewAnalyticsChart1 extends React.Component {
   }
 }
 
-export default TowerReviewAnalyticsChart1;
+export default TowerReviewAnalyticsChart4;

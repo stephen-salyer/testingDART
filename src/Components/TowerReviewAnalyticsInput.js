@@ -2,6 +2,7 @@ import React from 'react';
 import 'typeface-roboto';
 import {Grid, TextField} from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import TowerReviewAnalyticsChart4 from './TowerReviewAnalyticsChart4';
 
 const currencies = [
   {title: 'AED'},
@@ -49,8 +50,8 @@ export default function TowerReviewAnalyticsInput() {
               <TextField
                 {...params}
                 variant="outlined"
-                label="Checkboxes"
-                placeholder="Favorites"
+                label="Currency"
+                placeholder="Search"
               />
             )}
           />
@@ -60,6 +61,9 @@ export default function TowerReviewAnalyticsInput() {
             <TextField fullWidth label={label} variant="outlined" />
           </Grid>
         ))}
+        <Grid item xs={12}>
+          <TowerReviewAnalyticsChart4 />
+        </Grid>
       </Grid>
     </>
   );

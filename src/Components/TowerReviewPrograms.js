@@ -142,7 +142,7 @@ const ProgramListItemsAll = () => {
   return (
     <>
       <List>
-        <Box pt={1} pb={1} style={{height: '46.5vh', overflow: 'scroll'}}>
+        <Box pt={1} pb={1}>
           {Programs.map(
             (
               {

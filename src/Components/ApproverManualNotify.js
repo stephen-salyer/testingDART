@@ -15,7 +15,7 @@ class ApproverManualNotify extends React.Component {
   render() {
     return (
       <FormControlLabel
-        style={{width: '80px', textAlign: 'center'}}
+        style={{width: '100px', textAlign: 'center'}}
         control={
           <Switch
             classes={this.props.classes}

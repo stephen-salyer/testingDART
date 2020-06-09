@@ -14,6 +14,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import ApproverNonDOA from './ApproverNonDOA';
+import ApproverGlobalAccounting from './ApproverGlobalAccounting';
 
 const useStyles = makeStyles({
   root: {
@@ -43,14 +44,17 @@ export const approverCategories = [
   {
     category: 'Global Accounting',
     approverCount: '8',
+    tabInformation: <ApproverGlobalAccounting />,
   },
   {
     category: 'Non-DOA',
     approverCount: '3',
+    tabInformation: <ApproverNonDOA />,
   },
   {
     category: 'DOA',
     approverCount: '2',
+    tabInformation: <ApproverNonDOA />,
   },
 ];
 
@@ -145,7 +149,7 @@ export default function Approvers() {
               />
             ))}
           </Tabs>
-          {approverCategories.map(({category}, i) => (
+          {approverCategories.map(({category, tabInformation}, i) => (
             <TabPanel value={value} key={category} index={i}>
               <Grid container>
                 <Grid item xs={12}>
@@ -165,7 +169,7 @@ export default function Approvers() {
                     />
                   </Box>
                   <Divider />
-                  <ApproverNonDOA />
+                  {tabInformation}
                 </Grid>
               </Grid>
             </TabPanel>

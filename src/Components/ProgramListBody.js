@@ -129,7 +129,7 @@ const ProgramListBody = () => {
             </Tabs>
           </Hidden>
           <TabPanel value={value} index={0}>
-            <div style={{height: '45vh', overflow: 'scroll'}}>
+            <div>
               <ProgramListItemsAll />
             </div>
             <Box pt={1}>
@@ -138,7 +138,7 @@ const ProgramListBody = () => {
             </Box>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <div style={{height: '45vh', overflow: 'scroll'}}>
+            <div>
               <ProgramListItemsApproved />
             </div>
             <Box pt={1}>
@@ -147,7 +147,7 @@ const ProgramListBody = () => {
             </Box>
           </TabPanel>
           <TabPanel value={value} index={2}>
-            <div style={{height: '45vh', overflow: 'scroll'}}>
+            <div>
               <ProgramListItemsPending />
             </div>
             <Box pt={1}>
@@ -156,7 +156,7 @@ const ProgramListBody = () => {
             </Box>
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <div style={{height: '45vh', overflow: 'scroll'}}>
+            <div>
               <ProgramListItemsDraft />
             </div>
             <Box pt={1}>
@@ -165,7 +165,7 @@ const ProgramListBody = () => {
             </Box>
           </TabPanel>
           <TabPanel value={value} index={4}>
-            <div style={{height: '45vh', overflow: 'scroll'}}>
+            <div>
               <ProgramListItemsCanceled />
             </div>
             <Box pt={1}>
@@ -174,7 +174,7 @@ const ProgramListBody = () => {
             </Box>
           </TabPanel>
           <TabPanel value={value} index={5}>
-            <div style={{height: '45vh', overflow: 'scroll'}}>
+            <div>
               <ProgramListItemsBackToDraft />
             </div>
             <Box pt={1}>

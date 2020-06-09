@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Members = [
+export const Members = [
   {title: 'Justice Madden'},
   {title: 'Alberto Shepard'},
   {title: 'Anahi Mayo'},
@@ -63,7 +63,7 @@ const Members = [
   {title: 'Kinsley Christian'},
 ];
 
-const approvers = [
+export const approvers = [
   {
     progress: 'Pending',
     name: 'Justice Madden',
@@ -110,7 +110,7 @@ const MenuProps = {
   },
 };
 
-export default function ApproverNonDOAGlobalAccounting() {
+export default function ApproverNonDOA() {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
