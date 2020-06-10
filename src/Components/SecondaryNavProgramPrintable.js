@@ -70,7 +70,7 @@ const SecondaryNavProgramPrintable = () => {
               <IconButton
                 aria-label="arrow-back"
                 color="default"
-                href="/program-list"
+                href="/program/:id"
               >
                 <ArrowBack />
               </IconButton>

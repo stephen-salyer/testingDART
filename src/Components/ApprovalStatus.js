@@ -30,11 +30,6 @@ const useStyles = makeStyles({
     padding: '0',
     minHeight: '67vh',
   },
-  tabPanel: {
-    overflow: 'scroll',
-    maxHeight: '55vh',
-    minHeight: '55vh',
-  },
 });
 
 const kpi = [
