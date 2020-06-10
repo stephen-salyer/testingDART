@@ -16,18 +16,11 @@ import Typography from '@material-ui/core/Typography';
 import {Publish, MoreVert} from '@material-ui/icons';
 import DeleteScopeModal from './DeleteComponentModal';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
     display: 'flex',
     paddingTop: '16px',
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    boxShadow: theme.shadows[1],
-    color: theme.palette.text.secondary,
   },
   indicator: {
     backgroundColor: '#142357',
@@ -44,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   tabs: {
     minWidth: '200px',
   },
-}));
+});
 
 export default function AttachedFiles() {
   const classes = useStyles();
@@ -103,7 +96,6 @@ export default function AttachedFiles() {
                   <MoreVert />
                 </IconButton>
                 <Menu
-                  className={classes.paper}
                   id="simple-menu"
                   anchorEl={anchorEl}
                   keepMounted
