@@ -15,6 +15,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import ApproverNonDOA from './ApproverNonDOA';
 import ApproverGlobalAccounting from './ApproverGlobalAccounting';
+import ApproverDOA from './ApproverDOA';
 
 const useStyles = makeStyles({
   root: {
@@ -54,7 +55,7 @@ export const approverCategories = [
   {
     category: 'DOA',
     approverCount: '2',
-    tabInformation: <ApproverNonDOA />,
+    tabInformation: <ApproverDOA />,
   },
 ];
 

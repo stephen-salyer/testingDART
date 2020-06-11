@@ -8,13 +8,11 @@ import {
   Button,
   Box,
   IconButton,
-  Menu,
-  MenuItem,
 } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import {Publish, MoreVert} from '@material-ui/icons';
-import DeleteScopeModal from './DeleteComponentModal';
+import {Publish} from '@material-ui/icons';
+import ProgramMenu from './ProgramMenu';
 
 const useStyles = makeStyles({
   root: {
@@ -41,16 +39,6 @@ const useStyles = makeStyles({
 
 export default function AttachedFiles() {
   const classes = useStyles();
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <>
@@ -88,24 +76,9 @@ export default function AttachedFiles() {
                 }
               />
               <ListItemSecondaryAction>
-                <IconButton
-                  onClick={handleClick}
-                  aria-label="More"
-                  component="span"
-                >
-                  <MoreVert />
+                <IconButton edge="end" aria-label="morevert">
+                  <ProgramMenu />
                 </IconButton>
-                <Menu
-                  id="simple-menu"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                >
-                  <MenuItem onClick={handleClose}>
-                    <DeleteScopeModal />
-                  </MenuItem>
-                </Menu>
               </ListItemSecondaryAction>
             </List>
             <Divider />

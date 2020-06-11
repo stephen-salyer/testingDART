@@ -55,7 +55,16 @@ export default function DeleteComponentModal() {
 
   return (
     <div>
-      <Typography onClick={() => setOpen(true)}>Delete</Typography>
+      <ThemeProvider theme={theme}>
+        <Button
+          color="primary"
+          onClick={() => setOpen(true)}
+          className={classes.button}
+          endIcon={<DeleteIcon />}
+        >
+          Delete
+        </Button>
+      </ThemeProvider>
       <Modal
         disableEnforceFocus
         aria-labelledby="transition-modal-title"
