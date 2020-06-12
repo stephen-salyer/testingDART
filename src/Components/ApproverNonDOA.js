@@ -65,10 +65,25 @@ export default function ApproverNonDOA() {
           value={value}
           onChange={handleChange}
           indicatorColor="primary"
-          variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Operations" {...a11yProps(0)} />
+          <Tab
+            label={
+              <>
+                <Box display="flex" alignItems="flex-end">
+                  <Typography variant="inherit">Operations</Typography>
+                  <Typography
+                    style={{paddingLeft: 8, paddingBottom: 1}}
+                    color="textSecondary"
+                    variant="caption"
+                  >
+                    Commercial Org.
+                  </Typography>
+                </Box>
+              </>
+            }
+            {...a11yProps(0)}
+          />
           <Tab label="Legals" {...a11yProps(1)} />
           <Tab label="Sales" {...a11yProps(2)} />
           <Tab label="Marketing" {...a11yProps(3)} />

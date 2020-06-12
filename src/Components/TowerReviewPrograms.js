@@ -6,7 +6,30 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import {Link, withRouter} from 'react-router-dom';
 import 'typeface-roboto';
-import {Typography, Box} from '@material-ui/core';
+import {
+  Typography,
+  Box,
+  ListItemIcon,
+  CircularProgress,
+  createMuiTheme,
+  ThemeProvider,
+} from '@material-ui/core';
+import {CheckCircle} from '@material-ui/icons';
+import {green, red} from '@material-ui/core/colors';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#0164C4',
+    },
+    secondary: {
+      main: '#142357',
+    },
+    canceled: {
+      main: red[500],
+    },
+  },
+});
 
 const useStyles = makeStyles({
   root: {
@@ -24,9 +47,6 @@ const useStyles = makeStyles({
   linkNoDecorationAndCorrection: {
     textDecoration: 'none',
     color: 'inherit',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
     '&:hover': {
       textDecoration: 'none',
     },
@@ -42,7 +62,34 @@ export const Programs = [
     budget: 'Budget: 5,323,000 USD',
     type: 'Type: Loyalty Incentive',
     components: 'Components: 2',
-    approvalStatus: 'Pending Approval',
+    approvalStatus: 'Pending',
+    icon: (
+      <>
+        <Box p={0.1}>
+          <Box position="relative" display="inline-flex">
+            <CircularProgress variant="static" value={66} size={50} />
+            <Box
+              top={0}
+              left={0}
+              bottom={0}
+              right={0}
+              position="absolute"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Typography
+                variant="caption"
+                component="div"
+                color="textSecondary"
+              >
+                66%
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </>
+    ),
   },
   {
     title: '2020 Asgrow 2 You - 2018 - 2020',
@@ -53,6 +100,11 @@ export const Programs = [
     type: 'Type: Volume Incentive',
     components: 'Components: 3',
     approvalStatus: 'Approved',
+    icon: (
+      <>
+        <CheckCircle style={{fontSize: 50}} htmlColor={green[500]} />
+      </>
+    ),
   },
   {
     title: '2020 Asgrow 2 You - 2019 - 2021',
@@ -62,7 +114,34 @@ export const Programs = [
     budget: 'Budget: 5,323,000 USD',
     type: 'Type: Volume Incentive',
     components: 'Components: 4',
-    approvalStatus: 'Pending Approval',
+    approvalStatus: 'Draft',
+    icon: (
+      <>
+        <Box p={0.1}>
+          <Box position="relative" display="inline-flex">
+            <CircularProgress variant="static" value={33} size={50} />
+            <Box
+              top={0}
+              left={0}
+              bottom={0}
+              right={0}
+              position="absolute"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Typography
+                variant="caption"
+                component="div"
+                color="textSecondary"
+              >
+                33%
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </>
+    ),
   },
   {
     title: '2020 Asgrow-DEKALB-DeltaPine Subs and Cuts Program USA',
@@ -72,7 +151,34 @@ export const Programs = [
     budget: 'Budget: 4,286,000 USD',
     type: 'Type: Volume Incentive',
     components: 'Components: 1',
-    approvalStatus: 'Pending Approval',
+    approvalStatus: 'Pending',
+    icon: (
+      <>
+        <Box p={0.1}>
+          <Box position="relative" display="inline-flex">
+            <CircularProgress variant="static" value={66} size={50} />
+            <Box
+              top={0}
+              left={0}
+              bottom={0}
+              right={0}
+              position="absolute"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Typography
+                variant="caption"
+                component="div"
+                color="textSecondary"
+              >
+                66%
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </>
+    ),
   },
   {
     title: '2020 Bayer Plus Portfolio Rewards',
@@ -83,6 +189,7 @@ export const Programs = [
     type: 'Type: Purchase Behavior Incentive',
     components: 'Components: 5',
     approvalStatus: 'Approved',
+    icon: <CheckCircle style={{fontSize: 50}} htmlColor={green[500]} />,
   },
   {
     title: '2020 Bayer Plus Portfolio Rewards v2',
@@ -93,6 +200,7 @@ export const Programs = [
     type: 'Type: Purchase Behavior Incentive',
     components: 'Components: 1',
     approvalStatus: 'Approved',
+    icon: <CheckCircle style={{fontSize: 50}} htmlColor={green[500]} />,
   },
   {
     title: '2020 Branded Seed DDR',
@@ -103,6 +211,7 @@ export const Programs = [
     type: 'Type: Activity Incentive',
     components: 'Components: 2',
     approvalStatus: 'Approved',
+    icon: <CheckCircle style={{fontSize: 50}} htmlColor={green[500]} />,
   },
   {
     title: '2020 Branded Seed LCR',
@@ -112,7 +221,34 @@ export const Programs = [
     budget: 'Budget: 292,659,000 AUD',
     type: 'Type: Volume Incentive',
     components: 'Components: 5',
-    approvalStatus: 'Pending Approval',
+    approvalStatus: 'Pending',
+    icon: (
+      <>
+        <Box p={0.1}>
+          <Box position="relative" display="inline-flex">
+            <CircularProgress variant="static" value={66} size={50} />
+            <Box
+              top={0}
+              left={0}
+              bottom={0}
+              right={0}
+              position="absolute"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Typography
+                variant="caption"
+                component="div"
+                color="textSecondary"
+              >
+                66%
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </>
+    ),
   },
   {
     title: '2020 Coastal Seed and Trait Crop Switch Replant',
@@ -123,6 +259,7 @@ export const Programs = [
     type: 'Type: Guarantee/Claim',
     components: 'Components: 6',
     approvalStatus: 'Approved',
+    icon: <CheckCircle style={{fontSize: 50}} htmlColor={green[500]} />,
   },
   {
     title: '2020 DEKALB and Asgrow Production Grower Program',
@@ -132,7 +269,34 @@ export const Programs = [
     budget: 'Budget: 1,058,000 USD',
     type: 'Type: Purchase Behavior Incentive',
     components: 'Components: 1',
-    approvalStatus: 'Pending Approval',
+    approvalStatus: 'Pending',
+    icon: (
+      <>
+        <Box p={0.1}>
+          <Box position="relative" display="inline-flex">
+            <CircularProgress variant="static" value={66} size={50} />
+            <Box
+              top={0}
+              left={0}
+              bottom={0}
+              right={0}
+              position="absolute"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Typography
+                variant="caption"
+                component="div"
+                color="textSecondary"
+              >
+                66%
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </>
+    ),
   },
 ];
 
@@ -154,6 +318,7 @@ const ProgramListItemsAll = () => {
                 type,
                 components,
                 approvalStatus,
+                icon,
               },
               i
             ) => (
@@ -165,30 +330,60 @@ const ProgramListItemsAll = () => {
                   to={'/program/' + i}
                   rel="noopener noreferrer"
                 >
-                  <ListItemText
-                    className={classes.listItemTextNoMargin}
-                    primary={
-                      <Typography
-                        variant="subtitle1"
-                        style={{fontWeight: 'bold'}}
+                  <Box
+                    style={{width: 80}}
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <ListItemIcon>
+                      <Box
+                        display="flex"
+                        flexDirection="column"
+                        alignItems="center"
                       >
-                        {title}
-                      </Typography>
-                    }
-                    secondary={
-                      <Typography variant="body2">
-                        {[id, version, year].join(' • ')}
-                      </Typography>
-                    }
-                  />
-                  <ListItemText
-                    classes={{primary: classes.listItemTertiary}}
-                    primary={
-                      <Typography variant="body2">
-                        {[budget, components, type, approvalStatus].join(' • ')}
-                      </Typography>
-                    }
-                  />
+                        <ThemeProvider theme={theme}>
+                          <Box
+                            display="flex"
+                            flexDirection="column"
+                            justifyContent="center"
+                            alignItems="center"
+                          >
+                            {icon}
+                            <Typography variant="caption">
+                              {approvalStatus}
+                            </Typography>
+                          </Box>
+                        </ThemeProvider>
+                      </Box>
+                    </ListItemIcon>
+                  </Box>
+                  <Box display="flex" flexDirection="column" pl={1}>
+                    <ListItemText
+                      className={classes.listItemTextNoMargin}
+                      primary={
+                        <Typography
+                          variant="subtitle1"
+                          style={{fontWeight: 'bold'}}
+                        >
+                          {title}
+                        </Typography>
+                      }
+                      secondary={
+                        <Typography variant="body2">
+                          {[id, version, year].join(' • ')}
+                        </Typography>
+                      }
+                    />
+                    <ListItemText
+                      classes={{primary: classes.listItemTertiary}}
+                      primary={
+                        <Typography variant="body2">
+                          {[budget, components, type].join(' • ')}
+                        </Typography>
+                      }
+                    />
+                  </Box>
                 </ListItem>
                 <Divider />
               </Fragment>
