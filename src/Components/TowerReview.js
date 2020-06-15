@@ -7,7 +7,7 @@ import Container from '@material-ui/core/Container';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import SecondaryNavTowerReview from './SecondaryNavTowerReview';
-import {Box, Hidden} from '@material-ui/core';
+import {Box, Hidden, Divider} from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
 import TowerReviewAnalytics from './TowerReviewAnalytics';
 import TowerReviewPrograms from './TowerReviewPrograms';
@@ -15,6 +15,7 @@ import ProgramTotals from './ProgramTotals';
 import TowerReviewPricePlan from './TowerReviewPricePlan';
 import AttachedFiles from './AttachedFiles';
 import Comments from './Comments';
+import TowerReviewSort from './TowerReviewSort';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -101,7 +102,9 @@ const TowerReview = () => {
   return (
     <>
       <Container maxWidth="lg" style={{paddingBottom: '92px'}}>
-        <SecondaryNavTowerReview />
+        <Box p={2}>
+          <SecondaryNavTowerReview />
+        </Box>
         <Card>
           <CardContent className={classes.content}>
             <Hidden smDown>
@@ -140,6 +143,17 @@ const TowerReview = () => {
             </TabPanel>
             <TabPanel value={value} index={1}>
               <Box>
+                <Box
+                  pr={3}
+                  pl={3}
+                  pt={2}
+                  pb={2}
+                  display="flex"
+                  justifyContent="flex-end"
+                >
+                  <TowerReviewSort />
+                </Box>
+                <Divider />
                 <TowerReviewPrograms />
               </Box>
               <Pagination

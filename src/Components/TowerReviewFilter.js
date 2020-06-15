@@ -109,7 +109,8 @@ export default function TowerReviewFilter() {
           </IconButton>
         </Box>
       </Box>
-      <Box pb={2} pl={2} pr={2}>
+      <Divider />
+      <Box p={2}>
         <Box pb={1}>
           <Typography variant="subtitle1">Years</Typography>
         </Box>
@@ -245,7 +246,7 @@ export default function TowerReviewFilter() {
           onClick={toggleDrawer(anchor, false)}
           onKeyDown={toggleDrawer(anchor, false)}
         >
-          Apply Filters
+          Apply Filter
         </Button>
       </Box>
     </div>

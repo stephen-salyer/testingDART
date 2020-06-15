@@ -305,93 +305,91 @@ const ProgramListItemsAll = () => {
 
   return (
     <>
-      <List>
-        <Box pt={1} pb={1}>
-          {Programs.map(
-            (
-              {
-                title,
-                id,
-                version,
-                year,
-                budget,
-                type,
-                components,
-                approvalStatus,
-                icon,
-              },
-              i
-            ) => (
-              <Fragment key={i}>
-                <ListItem
-                  className={classes.linkNoDecorationAndCorrection}
-                  button
-                  component={Link}
-                  to={'/program/' + i}
-                  rel="noopener noreferrer"
+      <Box pt={1} pb={1} style={{overflow: 'scroll', maxHeight: '45vh'}}>
+        {Programs.map(
+          (
+            {
+              title,
+              id,
+              version,
+              year,
+              budget,
+              type,
+              components,
+              approvalStatus,
+              icon,
+            },
+            i
+          ) => (
+            <Fragment key={i}>
+              <ListItem
+                className={classes.linkNoDecorationAndCorrection}
+                button
+                component={Link}
+                to={'/program/' + i}
+                rel="noopener noreferrer"
+              >
+                <Box
+                  style={{width: 80}}
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
                 >
-                  <Box
-                    style={{width: 80}}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <ListItemIcon>
-                      <Box
-                        display="flex"
-                        flexDirection="column"
-                        alignItems="center"
-                      >
-                        <ThemeProvider theme={theme}>
-                          <Box
-                            id="statusIcons"
-                            display="flex"
-                            flexDirection="column"
-                            justifyContent="center"
-                            alignItems="center"
-                          >
-                            {icon}
-                            <Typography variant="caption">
-                              {approvalStatus}
-                            </Typography>
-                          </Box>
-                        </ThemeProvider>
-                      </Box>
-                    </ListItemIcon>
-                  </Box>
-                  <Box display="flex" flexDirection="column" pl={1}>
-                    <ListItemText
-                      className={classes.listItemTextNoMargin}
-                      primary={
-                        <Typography
-                          variant="subtitle1"
-                          style={{fontWeight: 'bold'}}
+                  <ListItemIcon>
+                    <Box
+                      display="flex"
+                      flexDirection="column"
+                      alignItems="center"
+                    >
+                      <ThemeProvider theme={theme}>
+                        <Box
+                          id="statusIcons"
+                          display="flex"
+                          flexDirection="column"
+                          justifyContent="center"
+                          alignItems="center"
                         >
-                          {title}
-                        </Typography>
-                      }
-                      secondary={
-                        <Typography variant="body2">
-                          {[id, version, year].join(' • ')}
-                        </Typography>
-                      }
-                    />
-                    <ListItemText
-                      classes={{primary: classes.listItemTertiary}}
-                      primary={
-                        <Typography variant="body2">
-                          {[budget, components, type].join(' • ')}
-                        </Typography>
-                      }
-                    />
-                  </Box>
-                </ListItem>
-                <Divider />
-              </Fragment>
-            )
-          )}
-        </Box>
-      </List>
+                          {icon}
+                          <Typography variant="caption">
+                            {approvalStatus}
+                          </Typography>
+                        </Box>
+                      </ThemeProvider>
+                    </Box>
+                  </ListItemIcon>
+                </Box>
+                <Box display="flex" flexDirection="column" pl={1}>
+                  <ListItemText
+                    className={classes.listItemTextNoMargin}
+                    primary={
+                      <Typography
+                        variant="subtitle1"
+                        style={{fontWeight: 'bold'}}
+                      >
+                        {title}
+                      </Typography>
+                    }
+                    secondary={
+                      <Typography variant="body2">
+                        {[id, version, year].join(' • ')}
+                      </Typography>
+                    }
+                  />
+                  <ListItemText
+                    classes={{primary: classes.listItemTertiary}}
+                    primary={
+                      <Typography variant="body2">
+                        {[budget, components, type].join(' • ')}
+                      </Typography>
+                    }
+                  />
+                </Box>
+              </ListItem>
+              <Divider />
+            </Fragment>
+          )
+        )}
+      </Box>
     </>
   );
 };
