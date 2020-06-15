@@ -1,126 +1,207 @@
-import React, {Fragment} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
-import OwnersToggle from './OwnersToggle';
+import React from 'react';
 import {
-  Grid,
   Checkbox,
   ListItemText,
-  ListItem,
   ListItemSecondaryAction,
   IconButton,
   List,
   Box,
   Divider,
+  Grid,
+  TextField,
 } from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import {CheckBoxOutlineBlank, CheckBox, RemoveCircle} from '@material-ui/icons';
+import OwnersToggle from './OwnersToggle';
 
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
-
-const marketingNames = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
+const ownersNames = [
+  {title: 'Justice Madden'},
+  {title: 'Alberto Shepard'},
+  {title: 'Anahi Mayo'},
+  {title: 'Mohamed Ferrell'},
+  {title: 'Jaylin Mcneil'},
+  {title: 'Caden Sosa'},
+  {title: 'Monica Carroll'},
+  {title: 'Leia Roach'},
+  {title: 'Kayden Jordan'},
+  {title: 'Billy Lester'},
+  {title: 'Kinsley Christian'},
+  {title: 'Mohamed Hegal'},
 ];
 
-const selects = [
-  'Add Marketing Owner',
-  'Add Operations Owner',
-  'Add Finance Owner',
-];
+// const labels = [
+//   {title: 'Add Marketing Owner'},
+//   {title: 'Add Operations Owner'},
+//   {title: 'Add Finance Owner'},
+// ];
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-  getContentAnchorEl: null,
-  anchorOrigin: {
-    vertical: 'bottom',
-    horizontal: 'left',
-  },
-};
+const icon = <CheckBoxOutlineBlank fontSize="small" />;
+const checkedIcon = <CheckBox fontSize="small" />;
 
 export default function CustomizedSelects() {
-  const classes = useStyles();
-  const [personName, setPersonName] = React.useState([]);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [value, setValue] = React.useState([ownersNames[1], ownersNames[4]]);
+  const [pendingValue, setPendingValue] = React.useState([]);
 
-  const handleChange = (event) => {
-    setPersonName(event.target.value);
+  const handleClick = (event) => {
+    setPendingValue(value);
+    setAnchorEl(event.currentTarget);
   };
 
+  const handleClose = (event, reason) => {
+    if (reason === 'toggleInput') {
+      return;
+    }
+    setValue(pendingValue);
+    if (anchorEl) {
+      anchorEl.focus();
+    }
+    setAnchorEl(null);
+  };
+
+  const handleClickRemove = (event, reason) => {
+    if (reason === 'toggleInput') {
+      return;
+    }
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'github-label' : undefined;
+
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3}>
-        <>
-          {selects.map((selects) => (
-            <Grid item xs={12} md={4} key={selects}>
-              <FormControl
+    <Grid container spacing={3}>
+      <Grid item xs={12} md={4}>
+        <React.Fragment>
+          <Autocomplete
+            open={open}
+            id={id}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            multiple
+            disableClearable
+            value={pendingValue}
+            onChange={(event, newValue) => {
+              setPendingValue(newValue);
+            }}
+            disableCloseOnSelect
+            renderTags={() => null}
+            noOptionsText="No labels"
+            renderOption={(option, {selected}) => (
+              <React.Fragment>
+                <Checkbox
+                  icon={icon}
+                  checkedIcon={checkedIcon}
+                  style={{marginRight: 8}}
+                  checked={selected}
+                />
+                <ListItemText primary={option.title} />
+              </React.Fragment>
+            )}
+            options={[...ownersNames].sort((a, b) => {
+              let ai = value.indexOf(a);
+              ai = ai === -1 ? value.length + ownersNames.indexOf(a) : ai;
+              let bi = value.indexOf(b);
+              bi = bi === -1 ? value.length + ownersNames.indexOf(b) : bi;
+              return ai - bi;
+            })}
+            getOptionLabel={(option) => option.state}
+            renderInput={(params) => (
+              <TextField
+                onClick={handleClick}
+                ref={params.InputProps.ref}
+                inputProps={params.inputProps}
+                {...params}
                 variant="outlined"
-                fullWidth={true}
-                className={classes.formControl}
-              >
-                <InputLabel id="demo-simple-select-outlined-label">
-                  {selects}
-                </InputLabel>
-                <Select
-                  multiple
-                  labelId="demo-simple-select-outlined-label"
-                  id="demo-simple-select-outlined"
-                  value={personName}
-                  onChange={handleChange}
-                  label={selects}
-                  MenuProps={MenuProps}
-                  renderValue={(selected) => selected.join(', ')}
-                >
-                  {marketingNames.map((name) => (
-                    <MenuItem key={name} value={name}>
-                      <Checkbox checked={personName.includes(name)} />
-                      <ListItemText primary={name} />
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-              <Box
-                style={{maxHeight: '520px', overflow: 'scroll', paddingTop: 8}}
-              >
-                {marketingNames.map((n) => (
-                  <Fragment key={n}>
-                    <List style={{marginTop: '-8px'}}>
-                      <ListItem>
-                        <OwnersToggle />
-                        <ListItemText
-                          primary={n.split(' ')[1]}
-                          secondary={n.split(' ')[0]}
-                        />
-                        <ListItemSecondaryAction>
-                          <IconButton edge="end" aria-label="delete">
-                            <RemoveCircleIcon />
-                          </IconButton>
-                        </ListItemSecondaryAction>
-                      </ListItem>
-                      <Divider />
-                    </List>
-                  </Fragment>
-                ))}
-              </Box>
-            </Grid>
-          ))}
-        </>
+                label="something"
+                placeholder="Search"
+              />
+            )}
+          />
+          <Box style={{height: '255px', overflow: 'scroll'}}>
+            {value.map((label) => (
+              <>
+                <List key={label}>
+                  <Box display="flex" alignItems="center">
+                    <OwnersToggle />
+
+                    <ListItemText primary={label.title} />
+                    <ListItemSecondaryAction>
+                      <IconButton
+                        onClick={handleClickRemove}
+                        edge="end"
+                        aria-label="delete"
+                      >
+                        <RemoveCircle />
+                      </IconButton>
+                    </ListItemSecondaryAction>
+                  </Box>
+                </List>
+                <Divider />
+              </>
+            ))}
+          </Box>
+        </React.Fragment>
       </Grid>
-    </div>
+    </Grid>
+
+    // <div className={classes.root}>
+    //   <Grid container spacing={3}>
+    //     <>
+    //       {selects.map((selects) => (
+    //         <Grid item xs={12} md={4} key={selects}>
+    //           <FormControl
+    //             variant="outlined"
+    //             fullWidth={true}
+    //             className={classes.formControl}
+    //           >
+    //             <InputLabel id="demo-simple-select-outlined-label">
+    //               {selects}
+    //             </InputLabel>
+    //             <Select
+    //               multiple
+    //               labelId="demo-simple-select-outlined-label"
+    //               id="demo-simple-select-outlined"
+    //               value={personName}
+    //               onChange={handleChange}
+    //               label={selects}
+    //               MenuProps={MenuProps}
+    //               renderValue={(selected) => selected.join(', ')}
+    //             >
+    //               {marketingNames.map((name) => (
+    //                 <MenuItem key={name} value={name}>
+    //                   <Checkbox checked={personName.includes(name)} />
+    //                   <ListItemText primary={name} />
+    //                 </MenuItem>
+    //               ))}
+    //             </Select>
+    //           </FormControl>
+    //           <Box
+    //             style={{maxHeight: '520px', overflow: 'scroll', paddingTop: 8}}
+    //           >
+    //             {marketingNames.map((n) => (
+    //               <Fragment key={n}>
+    //                 <List style={{marginTop: '-8px'}}>
+    //                   <ListItem>
+    //                     <OwnersToggle />
+    //                     <ListItemText
+    //                       primary={n.split(' ')[1]}
+    //                       secondary={n.split(' ')[0]}
+    //                     />
+    //                     <ListItemSecondaryAction>
+    //                       <IconButton edge="end" aria-label="delete">
+    //                         <RemoveCircleIcon />
+    //                       </IconButton>
+    //                     </ListItemSecondaryAction>
+    //                   </ListItem>
+    //                   <Divider />
+    //                 </List>
+    //               </Fragment>
+    //             ))}
+    //           </Box>
+    //         </Grid>
+    //       ))}
+    //     </>
+    //   </Grid>
+    // </div>
   );
 }
