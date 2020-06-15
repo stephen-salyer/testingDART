@@ -60,7 +60,7 @@ export default function AttachedFiles() {
                 className={classes.listItemTextMargin}
                 primary={
                   <Typography variant="overline" style={{lineHeight: '0px'}}>
-                    Document Type
+                    Person Name Here • Date Here
                   </Typography>
                 }
                 secondary={
@@ -70,9 +70,12 @@ export default function AttachedFiles() {
                 }
               />
               <ListItemText
-                classes={{primary: classes.listItemTertiary}}
+                style={{paddingRight: 50}}
                 primary={
-                  'Additional information is what would go here. this described the attachment and its purpose'
+                  <Typography className={classes.listItemTertiary}>
+                    Additional information is what would go here. This described
+                    the attachment and its purpose
+                  </Typography>
                 }
               />
               <ListItemSecondaryAction>

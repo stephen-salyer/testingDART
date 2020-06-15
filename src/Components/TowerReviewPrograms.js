@@ -344,6 +344,7 @@ const ProgramListItemsAll = () => {
                       >
                         <ThemeProvider theme={theme}>
                           <Box
+                            id="statusIcons"
                             display="flex"
                             flexDirection="column"
                             justifyContent="center"

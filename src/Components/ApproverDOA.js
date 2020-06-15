@@ -52,8 +52,16 @@ export default function ApproverDOA() {
         elevation={0}
         style={{backgroundColor: '#ffffff'}}
       >
-        <Tabs value={value} onChange={handleChange} indicatorColor="primary">
+        <Tabs
+          value={value}
+          variant="fullWidth"
+          onChange={handleChange}
+          indicatorColor="primary"
+        >
+          <Tab label="Finance" />
+          <Tab label="Sales" />
           <Tab
+            style={{minWidth: 250}}
             label={
               <>
                 <Box display="flex" alignItems="flex-end">
@@ -69,9 +77,6 @@ export default function ApproverDOA() {
               </>
             }
           />
-          <Tab label="Legals" />
-          <Tab label="Sales" />
-          <Tab label="Marketing" />
           <Tab label="Additional" />
         </Tabs>
       </AppBar>

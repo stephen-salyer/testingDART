@@ -63,11 +63,13 @@ export default function ApproverNonDOA() {
       >
         <Tabs
           value={value}
+          variant="fullWidth"
           onChange={handleChange}
           indicatorColor="primary"
           aria-label="full width tabs example"
         >
           <Tab
+            style={{minWidth: 250}}
             label={
               <>
                 <Box display="flex" alignItems="flex-end">

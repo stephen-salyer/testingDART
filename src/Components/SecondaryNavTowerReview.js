@@ -1,16 +1,23 @@
 import React from 'react';
+import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import {Send} from '@material-ui/icons';
+import {Send, DoneAll} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TowerReviewFilter from './TowerReviewFilter';
+import {CircularProgress} from '@material-ui/core';
+import {green} from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  wrapper: {
+    margin: theme.spacing(1),
+    position: 'relative',
   },
   paper: {
     padding: theme.spacing(2),
@@ -56,10 +63,57 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
     },
   },
+  buttonSuccess: {
+    backgroundColor: green[500],
+    '&:hover': {
+      backgroundColor: green[700],
+    },
+  },
+  fabProgress: {
+    color: green[500],
+    position: 'absolute',
+    top: -6,
+    left: -6,
+    zIndex: 1,
+  },
+  buttonProgress: {
+    color: green[500],
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12,
+  },
 }));
 
 const SecondaryNavTowerReview = () => {
   const classes = useStyles();
+
+  const [loading, setLoading] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
+  const timer = React.useRef();
+
+  const buttonClassname = clsx({
+    [classes.buttonSuccess]: success,
+  });
+
+  React.useEffect(
+    () => () => {
+      clearTimeout(timer.current);
+    },
+    []
+  );
+
+  const handleButtonClick = () => {
+    if (!loading) {
+      setSuccess(false);
+      setLoading(true);
+      timer.current = setTimeout(() => {
+        setSuccess(true);
+        setLoading(false);
+      }, 2000);
+    }
+  };
 
   return (
     <Container
@@ -80,14 +134,24 @@ const SecondaryNavTowerReview = () => {
         </Grid>
         <Grid item={true} xs={12} sm={7} md={6}>
           <Box className={classes.flexPositioning}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              endIcon={<Send />}
-            >
-              Approve Tower
-            </Button>
+            <div className={classes.wrapper}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={buttonClassname}
+                disabled={loading}
+                onClick={handleButtonClick}
+                endIcon={success ? <DoneAll /> : <Send />}
+              >
+                Approve Tower
+              </Button>
+              {loading && (
+                <CircularProgress
+                  size={24}
+                  className={classes.buttonProgress}
+                />
+              )}
+            </div>
             <TowerReviewFilter />
           </Box>
         </Grid>
