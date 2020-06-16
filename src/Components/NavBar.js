@@ -54,7 +54,7 @@ const NavBar = () => {
               Market Funding
             </Typography>
           </Hidden>
-          <Hidden Hidden only={['sm', 'md', 'lg', 'xl']}>
+          <Hidden only={['sm', 'md', 'lg', 'xl']}>
             <Typography className={classes.title} varient="h6" color="inherit">
               Market Fund.
             </Typography>

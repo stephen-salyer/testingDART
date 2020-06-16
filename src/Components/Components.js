@@ -147,7 +147,9 @@ export default function Components() {
                 }
               />
             ))}
-            <Button endIcon={<Add />}>Add Component</Button>
+            <Box display="flex" justifyContent="center">
+              <Button endIcon={<Add />}>Add Component</Button>
+            </Box>
           </Tabs>
           {componentsInfo.map(({comp}, i) => (
             <TabPanel value={value} key={comp} index={i}>

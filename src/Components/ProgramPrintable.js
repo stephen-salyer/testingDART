@@ -301,6 +301,167 @@ const printables = [
       },
     ],
   },
+  {
+    header: 'Approvers',
+    items: [
+      {
+        mediumBreak: 4,
+        title: 'Global Accounting',
+        secondary: 'Justice Madden',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Global Accounting',
+        secondary: 'Alberto Shepard',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Global Accounting',
+        secondary: 'Anahi Mayo',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Non-DOA • Operations Commercial Org.',
+        secondary: 'Justice Madden',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Non-DOA • Legal',
+        secondary: 'Alberto Shepard',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Non-DOA • Sales',
+        secondary: 'Anahi Mayo',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Non-DOA • Marketing',
+        secondary: 'Mohamed Ferrell',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Non-DOA • Additional',
+        secondary: 'Andy Kamp',
+      },
+      {
+        mediumBreak: 4,
+        title: 'DOA • Finance',
+        secondary: 'Alberto Shepard',
+      },
+      {
+        mediumBreak: 4,
+        title: 'DOA • Sales',
+        secondary: 'Anahi Mayo',
+      },
+      {
+        mediumBreak: 4,
+        title: 'DOA • Operations Commercial Org.',
+        secondary: 'Mohamed Ferrell',
+      },
+      {
+        mediumBreak: 4,
+        title: 'DOA • Additional',
+        secondary: 'Andy Kamp',
+      },
+    ],
+  },
+  {
+    header: 'Component - Canola',
+    items: [
+      {
+        mediumBreak: 4,
+        title: 'Minimum Volume to Qualify',
+        secondary: '2',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Component Incentive Type',
+        secondary: 'Payment Incentive',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Taxes',
+        secondary: 'Pay',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Treatment - Go To Market Partners',
+        secondary: '43%',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Treatment - Go To Grower',
+        secondary: '57',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Is This Program For A Specific Customer?',
+        secondary: 'Yes',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Which Geographies?',
+        secondary: 'Some Geographies',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Counties',
+        secondary: 'US',
+      },
+      {
+        mediumBreak: 4,
+        title: 'States',
+        secondary: 'US - Arkansas • US - Alabama',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Counties',
+        secondary: 'US - Arkansas - County 1 • US - Alabama - County 2',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Which Customers?',
+        secondary: 'Some Account Classification',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Account Classification',
+        secondary: 'Farmer Customer',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Segment',
+        secondary: 'Not Sure What Goes Here',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Customers Included',
+        secondary: '00012345 - Oliver Hansen • 00012345 - Van Henry',
+      },
+      {
+        mediumBreak: 4,
+        title: 'Which Products?',
+        secondary: 'All Products',
+      },
+    ],
+  },
+  {
+    header: 'Calculations Applied to Eligible Sales',
+    items: [
+      {
+        mediumBreak: 6,
+        title: 'Component Tier Rates',
+        secondary: 'Date',
+      },
+      {mediumBreak: 6, title: 'Rate', secondary: 'FOC Discount'},
+      {mediumBreak: 4, title: 'Type', secondary: 'Product'},
+      {mediumBreak: 4, title: 'Product', secondary: 'Corn'},
+      {mediumBreak: 4, title: 'Incentive', secondary: '25%'},
+      {mediumBreak: 6, title: 'Min / Max Volume', secondary: '24 / 10,000'},
+      {mediumBreak: 6, title: 'Estimated Impact', secondary: '0.25%'},
+    ],
+  },
 ];
 
 const ProgramPrintable = () => (
