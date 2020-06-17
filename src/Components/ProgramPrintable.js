@@ -368,6 +368,7 @@ const printables = [
   },
   {
     header: 'Component - Canola',
+    subHeader: 'Marketing',
     items: [
       {
         mediumBreak: 4,
@@ -447,6 +448,7 @@ const printables = [
     ],
   },
   {
+    subHeader: 'Component - Canola',
     header: 'Calculations Applied to Eligible Sales',
     items: [
       {
@@ -462,6 +464,74 @@ const printables = [
       {mediumBreak: 6, title: 'Estimated Impact', secondary: '0.25%'},
     ],
   },
+  {
+    subHeader: 'Marketing',
+    header: 'Component - Canola',
+    items: [
+      {
+        mediumBreak: 4,
+        title: 'P&L',
+        secondary: 'Agnola • Crop Protection • Glyphosate • RoundUp',
+      },
+      {mediumBreak: 4, title: 'Market Year', secondary: '2020'},
+      {mediumBreak: 4, title: 'Expected Discount', secondary: '1,000,000 USD'},
+      {
+        mediumBreak: 4,
+        title: 'P&L',
+        secondary: 'Agnola • Crop Protection • Glyphosate • RoundUp2',
+      },
+      {mediumBreak: 4, title: 'Market Year', secondary: '2021'},
+      {mediumBreak: 4, title: 'Expected Discount', secondary: '1,000,000 USD'},
+      {
+        mediumBreak: 12,
+        title: 'Total Expected Discount',
+        secondary: '2,100,000 USD',
+      },
+    ],
+  },
+  {
+    subHeader: 'Operations',
+    header: 'Component - Canola',
+    items: [
+      {
+        mediumBreak: 6,
+        title: 'Fulfillment Data Needed',
+        secondary: 'Agnola • Crop Protection • Glyphosate • RoundUp',
+      },
+      {mediumBreak: 6, title: 'Fulfillment Data Source', secondary: 'SAP'},
+      {mediumBreak: 6, title: 'Fulfillment Process', secondary: 'Data Here'},
+      {mediumBreak: 6, title: 'Program Circulation', secondary: 'Data Here'},
+    ],
+  },
+  {
+    header: 'Attached Files',
+    items: [
+      {
+        mediumBreak: 6,
+        title: 'File Name Here',
+        secondary:
+          'Person Name Here and Date Here - description which would be a little longer than this or maybe even this long',
+      },
+      {
+        mediumBreak: 6,
+        title: 'File Name Here',
+        secondary:
+          'Person Name Here and Date Here - description which would be a little longer than this or maybe even this long',
+      },
+      {
+        mediumBreak: 6,
+        title: 'File Name Here',
+        secondary:
+          'Person Name Here and Date Here - description which would be a little longer than this or maybe even this long',
+      },
+      {
+        mediumBreak: 6,
+        title: 'File Name Here',
+        secondary:
+          'Person Name Here and Date Here - description which would be a little longer than this or maybe even this long',
+      },
+    ],
+  },
 ];
 
 const ProgramPrintable = () => (
@@ -469,13 +539,21 @@ const ProgramPrintable = () => (
     <SecondaryNavProgramPrintable />
     <Container maxWidth="lg">
       <Grid container spacing={3}>
-        {printables.map(({header, items}) => (
+        {printables.map(({header, subHeader, subTitle, items}) => (
           <>
             <Grid key={header} item xs={12}>
               <CardHeader
                 title={
                   <>
-                    <Box display="flex" alignItems="center">
+                    <Box
+                      display="flex"
+                      flexDirection="column"
+                      justifyContent="center"
+                    >
+                      <Typography variant="overline" style={{lineHeight: 1}}>
+                        {subHeader}
+                      </Typography>
+                      <Typography variant="h6">{subTitle}</Typography>
                       <Typography variant="h5">{header}</Typography>
                     </Box>
                   </>

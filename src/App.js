@@ -14,6 +14,7 @@ import ApprovalStatus from './Components/ApprovalStatus';
 import ProductEligibilityExample from './Components/Examples/ProductEligibility/ProductEligibilityExample';
 import TowerReview from './Components/TowerReview';
 import ProgramPrintable from './Components/ProgramPrintable';
+import ProgramChanges from './Components/ProgramChanges';
 
 const theme = createMuiTheme({
   palette: {
@@ -57,6 +58,9 @@ const App = () => (
           </Route>
           <Route exact path="/program-printable">
             <ProgramPrintable />
+          </Route>
+          <Route exact path="/program-Changes">
+            <ProgramChanges />
           </Route>
         </Switch>
       </div>

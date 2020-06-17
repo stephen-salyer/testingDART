@@ -153,14 +153,6 @@ export const Members = [
   {title: 'Billy Lester', category: 'Owners'},
   {title: 'Kinsley Christian', category: 'approvers'},
   {title: 'Kinsley Christian', category: 'Owners'},
-  {
-    title: 'Acceleron Loyalty',
-    category: 'programs',
-  },
-  {
-    title: '2020 Asgrow 2 You - 2018 - 2020',
-    category: 'programs',
-  },
 ];
 
 const Department = [

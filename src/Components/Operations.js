@@ -73,7 +73,6 @@ export default function Operations() {
                 {option.title}
               </React.Fragment>
             )}
-            fullWidth
             renderInput={(params) => (
               <TextField
                 {...params}
