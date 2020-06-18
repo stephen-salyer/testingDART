@@ -1,3 +1,16 @@
+// Must haves
+
+// Take out Icons of status
+// make price plan its own page with a button in global leading to that page.
+// price place will have two tabs. Summary, Attachments. Comments FAB
+// Attachments tab can be take out entirely.
+// Vertical tabs for Dealer, Grower, and Other
+// in those vertical tabs have more tabs under the title for their status.
+// ability to multi select programs to mark complete
+
+// Thonk of ways
+// show components and types without accordions.
+
 import Card from '@material-ui/core/Card';
 import React from 'react';
 import {makeStyles, fade} from '@material-ui/core/styles';
@@ -99,12 +112,6 @@ const TowerReview = () => {
     setValue(newValue);
   };
 
-  const howMany = [
-    {label: 'Draft:', amount: '1'},
-    {label: 'Pending:', amount: '4'},
-    {label: 'Approved:', amount: '5'},
-  ];
-
   return (
     <>
       <Container maxWidth="lg" style={{paddingBottom: '92px'}}>
@@ -160,31 +167,7 @@ const TowerReview = () => {
               </Box>
               <Divider />
               <TowerReviewPrograms />
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-              >
-                <Box display="flex">
-                  {howMany.map(({label, amount}) => (
-                    <>
-                      <Box
-                        display="flex"
-                        pt={1}
-                        pr={2}
-                        pb={1}
-                        pl={2}
-                        alignItems="center"
-                      >
-                        <Box key={label} pr={1}>
-                          <Typography variant="subtitle1">{label}</Typography>
-                        </Box>
-                        <Typography variant="body1"> {amount}</Typography>
-                      </Box>
-                      <Divider orientation="vertical" flexItem />
-                    </>
-                  ))}
-                </Box>
+              <Box display="flex" alignItems="center">
                 <Pagination count={1} color="secondary" />
               </Box>
               <ProgramTotals />

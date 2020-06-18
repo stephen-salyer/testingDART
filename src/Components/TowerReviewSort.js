@@ -108,23 +108,6 @@ export default function TowerReviewSort() {
         </Box>
       </Box>
       <Divider />
-      <Box p={2}>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel id="demo-simple-select-outlined-label">
-            Currencies
-          </InputLabel>
-          <Select
-            MenuProps={menuProps}
-            defaultValue={10}
-            id="demo-simple-select-outlined"
-            label="Currencies"
-          >
-            <MenuItem value={10}>USD</MenuItem>
-            <MenuItem value={20}>EUR</MenuItem>
-            <MenuItem value={30}>CAN</MenuItem>
-          </Select>
-        </FormControl>
-      </Box>
       <Box pb={2} pl={2} pr={2}>
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="demo-simple-select-outlined-label">

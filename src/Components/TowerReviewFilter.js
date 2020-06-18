@@ -111,6 +111,24 @@ export default function TowerReviewFilter() {
       </Box>
       <Divider />
       <Box p={2}>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="demo-simple-select-outlined-label">
+            Currencies
+          </InputLabel>
+          <Select
+            MenuProps={menuProps}
+            defaultValue={10}
+            id="demo-simple-select-outlined"
+            label="Currencies"
+          >
+            <MenuItem value={10}>USD</MenuItem>
+            <MenuItem value={20}>EUR</MenuItem>
+            <MenuItem value={30}>CAN</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <Divider />
+      <Box p={2}>
         <Box pb={1}>
           <Typography variant="subtitle1">Years</Typography>
         </Box>
