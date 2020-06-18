@@ -280,7 +280,7 @@ export default function ProductEligibilityMaterialModalTabs() {
           justifyContent="center"
           style={{maxHeight: '76vh', overflow: 'scroll'}}
         >
-          <List style={{width: '60%'}}>
+          <List style={{width: '100%'}}>
             {products.map(
               (
                 {

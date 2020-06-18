@@ -131,8 +131,8 @@ export default function CustomizedSelects() {
                 value[id].map((label) => {
                   const [first, last, ...rest] = label.split(' ');
                   return (
-                    <>
-                      <List key={label}>
+                    <React.Fragment key={label.names}>
+                      <List>
                         <Box display="flex" alignItems="center">
                           <OwnersToggle />
                           <ListItemText
@@ -149,7 +149,7 @@ export default function CustomizedSelects() {
                         </Box>
                       </List>
                       <Divider />
-                    </>
+                    </React.Fragment>
                   );
                 })}
             </Box>

@@ -99,6 +99,12 @@ const TowerReview = () => {
     setValue(newValue);
   };
 
+  const howMany = [
+    {label: 'Draft:', amount: '1'},
+    {label: 'Pending:', amount: '4'},
+    {label: 'Approved:', amount: '5'},
+  ];
+
   return (
     <>
       <Container maxWidth="lg" style={{paddingBottom: '92px'}}>
@@ -142,25 +148,45 @@ const TowerReview = () => {
               </Box>
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <Box>
-                <Box
-                  pr={3}
-                  pl={3}
-                  pt={2}
-                  pb={2}
-                  display="flex"
-                  justifyContent="flex-end"
-                >
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="flex-end"
+                style={{width: '100%'}}
+              >
+                <Box pr={3} pl={3} pt={2} pb={2}>
                   <TowerReviewSort />
                 </Box>
-                <Divider />
-                <TowerReviewPrograms />
               </Box>
-              <Pagination
-                style={{padding: '8px 0'}}
-                count={1}
-                color="secondary"
-              />
+              <Divider />
+              <TowerReviewPrograms />
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="space-between"
+              >
+                <Box display="flex">
+                  {howMany.map(({label, amount}) => (
+                    <>
+                      <Box
+                        display="flex"
+                        pt={1}
+                        pr={2}
+                        pb={1}
+                        pl={2}
+                        alignItems="center"
+                      >
+                        <Box key={label} pr={1}>
+                          <Typography variant="subtitle1">{label}</Typography>
+                        </Box>
+                        <Typography variant="body1"> {amount}</Typography>
+                      </Box>
+                      <Divider orientation="vertical" flexItem />
+                    </>
+                  ))}
+                </Box>
+                <Pagination count={1} color="secondary" />
+              </Box>
               <ProgramTotals />
             </TabPanel>
             <TabPanel value={value} index={2}>

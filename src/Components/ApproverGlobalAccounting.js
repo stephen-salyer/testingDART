@@ -81,9 +81,9 @@ export default function ApproverGlobalAccounting() {
 
   return (
     <>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={7}>
-          <Box pt={3}>
+      <Box pt={3}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={7}>
             <Autocomplete
               options={Members}
               MenuProps={MenuProps}
@@ -96,78 +96,78 @@ export default function ApproverGlobalAccounting() {
                 />
               )}
             />
-          </Box>
-          <Box style={{maxHeight: '365px', overflow: 'scroll'}}>
-            {approvers.map(({progress, name, wave, ted, year}, i) => (
-              <>
-                <List key={i}>
-                  <Box display="flex" flexDirection="row" alignItems="center">
-                    <ApproverManualNotify />
-                    <Box display="flex" flexDirection="column">
-                      <ListItemText
-                        className={classes.listItemTextNoMargin}
-                        primary={
-                          <Typography
-                            variant="overline"
-                            style={{lineHeight: '0px'}}
-                          >
-                            {progress}
-                          </Typography>
-                        }
-                        secondary={
-                          <Typography variant="subtitle1">{name}</Typography>
-                        }
-                      />
-                      <ListItemText
-                        classes={{primary: classes.listItemTertiary}}
-                        primary={[wave, ted, year].join(' • ')}
-                      />
+            <Box style={{maxHeight: '365px', overflow: 'scroll'}}>
+              {approvers.map(({progress, name, wave, ted, year}, i) => (
+                <>
+                  <List key={i}>
+                    <Box display="flex" flexDirection="row" alignItems="center">
+                      <ApproverManualNotify />
+                      <Box display="flex" flexDirection="column">
+                        <ListItemText
+                          className={classes.listItemTextNoMargin}
+                          primary={
+                            <Typography
+                              variant="overline"
+                              style={{lineHeight: '0px'}}
+                            >
+                              {progress}
+                            </Typography>
+                          }
+                          secondary={
+                            <Typography variant="subtitle1">{name}</Typography>
+                          }
+                        />
+                        <ListItemText
+                          classes={{primary: classes.listItemTertiary}}
+                          primary={[wave, ted, year].join(' • ')}
+                        />
+                      </Box>
+                      <ListItemSecondaryAction>
+                        <IconButton
+                          onClick={handleClick}
+                          aria-label="More"
+                          component="span"
+                          edge="end"
+                        >
+                          <MoreVertIcon />
+                        </IconButton>
+                      </ListItemSecondaryAction>
                     </Box>
-                    <ListItemSecondaryAction>
-                      <IconButton
-                        onClick={handleClick}
-                        aria-label="More"
-                        component="span"
-                        edge="end"
-                      >
-                        <MoreVertIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </Box>
-                </List>
+                  </List>
 
-                <Divider />
-              </>
-            ))}
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose}>Edit</MenuItem>
-              <MenuItem onClick={handleClose}>Remove Approver</MenuItem>
-            </Menu>
-          </Box>
+                  <Divider />
+                </>
+              ))}
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Edit</MenuItem>
+                <MenuItem onClick={handleClose}>Remove Approver</MenuItem>
+              </Menu>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={5}>
+            <CardHeader
+              style={{paddingTop: 7}}
+              title={
+                <>
+                  <Box display="flex" alignItems="center">
+                    <Typography variant="h6">Stats Here?</Typography>
+                  </Box>
+                </>
+              }
+            />
+            <Divider />
+            <Box pt={1}>
+              <ApproverChart />
+            </Box>
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={5}>
-          <CardHeader
-            style={{paddingTop: 7}}
-            title={
-              <>
-                <Box display="flex" alignItems="center">
-                  <Typography variant="h6">Stats Here?</Typography>
-                </Box>
-              </>
-            }
-          />
-          <Divider />
-          <Box pt={1}>
-            <ApproverChart />
-          </Box>
-        </Grid>
-      </Grid>
+      </Box>
     </>
   );
 }

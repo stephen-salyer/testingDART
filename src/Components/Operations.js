@@ -1,14 +1,12 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import {Checkbox, TextField} from '@material-ui/core';
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import {CheckBoxOutlineBlank, CheckBox} from '@material-ui/icons';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import OperationsPayeeAutoComplete from './OperationsPayeeAutoComplete';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,50 +36,11 @@ export default function Operations() {
     setSelectedDate(date2);
   };
 
-  const icon = <CheckBoxOutlineBlank fontSize="small" />;
-  const checkedIcon = <CheckBox fontSize="small" />;
-
-  const payeeValuesAuto = [
-    {title: 'Agent'},
-    {title: 'Dealer / Retailer'},
-    {title: 'Distributor'},
-    {title: 'GTM and Farmer Dual Pay'},
-    {title: 'Licensee and Multiplier'},
-    {title: 'Wholesale'},
-  ];
-
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={4}>
-          <Autocomplete
-            style={{paddingBottom: 24}}
-            multiple
-            disableClearable
-            renderTags={() => null}
-            options={payeeValuesAuto}
-            disableCloseOnSelect
-            getOptionLabel={(option) => option.title}
-            renderOption={(option, {selected}) => (
-              <React.Fragment>
-                <Checkbox
-                  icon={icon}
-                  checkedIcon={checkedIcon}
-                  style={{marginRight: 8}}
-                  checked={selected}
-                />
-                {option.title}
-              </React.Fragment>
-            )}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                variant="outlined"
-                label="Payee (No RenderTags)"
-                placeholder="Search List"
-              />
-            )}
-          />
+        <Grid item xs={12} md={4}>
+          <OperationsPayeeAutoComplete />
         </Grid>
         <Grid item xs={12} md={4}>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>

@@ -15,11 +15,11 @@ import CloseIcon from '@material-ui/icons/Close';
 import CardHeader from '@material-ui/core/CardHeader';
 import {
   Divider,
-  FormLabel,
-  Typography,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
+  // FormLabel,
+  // Typography,
+  // RadioGroup,
+  // FormControlLabel,
+  // Radio,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -67,9 +67,14 @@ const menuProps = {
 
 export default function TowerReviewSort() {
   const classes = useStyles();
+  // const [value, setValue] = React.useState('yes');
   const [state, setState] = React.useState({
     right: false,
   });
+
+  // const handleChange = (event) => {
+  //   setValue(event.target.value);
+  // };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -138,19 +143,24 @@ export default function TowerReviewSort() {
           </Select>
         </FormControl>
       </Box>
-      <Box pb={2} pl={2} pr={2}>
+      {/* <Box pb={2} pl={2} pr={2}>
         <FormControl component="fieldset" className={classes.formControlRadio}>
           <FormLabel>
             <Typography>Show Non-Tower Components?</Typography>
           </FormLabel>
-          <RadioGroup aria-label="quiz" name="quiz">
+          <RadioGroup
+            aria-label="quiz"
+            name="quiz"
+            onChange={handleChange}
+            value={value}
+          >
             <Box display="flex">
-              <FormControlLabel value="best" control={<Radio />} label="Yes" />
-              <FormControlLabel value="worst" control={<Radio />} label="No" />
+              <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+              <FormControlLabel value="no" control={<Radio />} label="No" />
             </Box>
           </RadioGroup>
         </FormControl>
-      </Box>
+      </Box> */}
       <Divider />
       <Box p={2} display="flex" justifyContent="flex-end">
         <Box pr={1}>

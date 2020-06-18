@@ -18,7 +18,7 @@ function TabPanel(props) {
       hidden={value !== index}
       {...other}
     >
-      {value === index && <Box pt={3}>{children}</Box>}
+      {value === index && <Box>{children}</Box>}
     </Typography>
   );
 }
