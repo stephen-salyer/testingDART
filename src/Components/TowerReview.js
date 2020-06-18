@@ -4,9 +4,10 @@
 // make price plan its own page with a button in global leading to that page.
 // price place will have two tabs. Summary, Attachments. Comments FAB
 // Attachments tab can be take out entirely.
-// Vertical tabs for Dealer, Grower, and Other
+// Vertical tabs for Dealer, Grower, Distributor, and Other
 // in those vertical tabs have more tabs under the title for their status.
-// ability to multi select programs to mark complete
+// ability to multi select programs to mark Approved (only on pending programs that do not contain components outside their tower)
+// - why they can’t approve a program (wrong status, they aren’t an approver, the amount is too much, program is invalid, etc)
 
 // Thonk of ways
 // show components and types without accordions.
