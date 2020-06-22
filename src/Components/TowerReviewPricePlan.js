@@ -1,198 +1,148 @@
+import Card from '@material-ui/core/Card';
 import React from 'react';
-import 'typeface-roboto';
-import {
-  Grid,
-  ListItem,
-  ListItemText,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Typography,
-  CardHeader,
-  Divider,
-} from '@material-ui/core';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
+import {makeStyles, fade} from '@material-ui/core/styles';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import {Box, Hidden} from '@material-ui/core';
+import TowerReviewOverview from './TowerReviewOverview';
+import AttachedFiles from './AttachedFiles';
+import Comments from './Comments';
+import SecondaryNavTowerReviewPricePlan from './SecondaryNavTowerReviewPricePlan';
 
-const inputs = [
-  {
-    id: 1,
-    key: 'region',
-    label: 'Region',
-    options: [
-      'North America',
-      'Asia / Pacific',
-      'Europe / Middle East',
-      'South America',
-    ],
-    size: 6,
+const useStyles = makeStyles((theme) => ({
+  root: {
+    minWidth: 275,
   },
-  {
-    id: 2,
-    key: 'country',
-    label: 'Country',
-    options: ['United States of America', 'Canada', 'Canada'],
-    size: 6,
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
   },
-  {
-    id: 4,
-    key: 'product',
-    label: 'Product',
-    options: ['All', 'Dicamba', 'Glyphosate', 'Other'],
-    size: 6,
+  pos: {
+    marginBottom: 12,
   },
-  {
-    id: 5,
-    key: 'brand',
-    label: 'Brand',
-    options: ['All', 'Dicamba', 'Glyphosate', 'Other'],
-    size: 6,
+  content: {
+    padding: '0',
+    margin: '0 0 -16px 0',
+    minHeight: '67vh',
   },
-];
-
-const makeMenuItems = (items) =>
-  items.map((item) => (
-    <MenuItem key={item} value={item}>
-      {item}
-    </MenuItem>
-  ));
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const menuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
+  search: {
+    display: 'flex',
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(1),
+      width: 'auto',
     },
   },
-  getContentAnchorEl: null,
-  anchorOrigin: {
-    vertical: 'bottom',
-    horizontal: 'left',
+  inputRoot: {
+    color: 'inherit',
   },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+    },
+  },
+  overrides: {
+    MuiTab: {
+      wrapper: {
+        flexDirection: 'row',
+      },
+    },
+  },
+}));
+
+const a11yProps = (index) => ({
+  id: `simple-tab-${index}`,
+  'aria-controls': `simple-tabpanel-${index}`,
+});
+
+const TabPanel = (props) => {
+  const {children, value, index, ...other} = props;
+
+  return (
+    <Typography
+      component="div"
+      role="tabpanel"
+      hidden={value !== index}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box>{children}</Box>}
+    </Typography>
+  );
 };
 
-const pricePlanSummary = [
-  {
-    mediumBreak: 4,
-    primary: 'Market Year',
-    secondary: '2020',
-  },
-  {
-    mediumBreak: 4,
-    primary: 'Status',
-    secondary: 'Draft',
-  },
-  {
-    mediumBreak: 4,
-    primary: 'Version',
-    secondary: '1.1',
-  },
-];
-
-const pricePlanSummaryEditable = [
-  {
-    mediumBreak: 4,
-    label: 'Currency',
-    options: ['Currency 1', 'Currency 2', 'Currency 3', 'Currency 4'],
-  },
-];
-
-const startEndDates = [
-  {
-    id: 1,
-    mediumBreak: 4,
-    label: 'Start Communication Date',
-  },
-  {
-    id: 2,
-    mediumBreak: 4,
-    label: 'End Communication Date',
-  },
-];
-
-export default function TowerReviewPricePlan() {
-  const [age, setAge] = React.useState('');
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date('2020-02-18T21:11:54')
-  );
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+const TowerReviewPricePlan = () => {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   return (
     <>
-      <Grid container spacing={3}>
-        {pricePlanSummary.map(({mediumBreak, primary, secondary}, i) => (
-          <Grid key={i} item xs={12} md={mediumBreak}>
-            <ListItem divider>
-              <ListItemText primary={primary} secondary={secondary} />
-            </ListItem>
-          </Grid>
-        ))}
-        {pricePlanSummaryEditable.map(({label, mediumBreak, options}, i) => (
-          <Grid key={i} item xs={12} md={mediumBreak}>
-            <FormControl fullWidth={true} variant="outlined">
-              <InputLabel>{label}</InputLabel>
-              <Select
-                MenuProps={menuProps}
-                value={age}
+      <Container maxWidth="lg" style={{paddingBottom: '92px'}}>
+        <Box p={2}>
+          <SecondaryNavTowerReviewPricePlan />
+        </Box>
+        <Card>
+          <CardContent className={classes.content}>
+            <Hidden smDown>
+              <Tabs
+                value={value}
                 onChange={handleChange}
-                label={label}
+                indicatorColor="primary"
+                textColor="primary"
+                variant="fullWidth"
+                aria-label="full width tabs example"
               >
-                {makeMenuItems(options)}
-              </Select>
-            </FormControl>
-          </Grid>
-        ))}
-        {startEndDates.map(({mediumBreak, label, id}) => (
-          <Grid key={id} item xs={12} md={mediumBreak}>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                disableToolbar
-                fullWidth={true}
-                inputVariant="outlined"
-                format="MM/dd/yyyy"
-                label={label}
-                value={selectedDate}
-                onChange={handleDateChange}
-                KeyboardButtonProps={{
-                  'aria-label': 'change date',
-                }}
-              />
-            </MuiPickersUtilsProvider>
-          </Grid>
-        ))}
-        <Grid item xs={12}>
-          <CardHeader title={<Typography variant="h5">Scope</Typography>} />
-          <Divider />
-        </Grid>
-        {inputs.map(({label, options, size, id}) => (
-          <Grid key={id} item xs={12} md={size}>
-            <FormControl fullWidth={true} variant="outlined">
-              <InputLabel>{label}</InputLabel>
-              <Select
-                MenuProps={menuProps}
-                defaultValue={options[0]}
-                label={label}
+                <Tab label="Overview" {...a11yProps(0)} />
+                <Tab label="Attachments" {...a11yProps(1)} />
+              </Tabs>
+            </Hidden>
+            <Hidden only={['xl', 'lg', 'md']}>
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                variant="scrollable"
               >
-                {makeMenuItems(options)}
-              </Select>
-            </FormControl>
-          </Grid>
-        ))}
-      </Grid>
+                <Tab label="Overview" {...a11yProps(0)} />
+                <Tab label="Attachments" {...a11yProps(1)} />
+              </Tabs>
+            </Hidden>
+            <TabPanel value={value} index={0}>
+              <Box p={3}>
+                <TowerReviewOverview />
+              </Box>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              <AttachedFiles />
+            </TabPanel>
+          </CardContent>
+        </Card>
+      </Container>
+      <Box display="flex" justifyContent="flex-end">
+        <Comments />
+      </Box>
     </>
   );
-}
+};
+
+export default TowerReviewPricePlan;

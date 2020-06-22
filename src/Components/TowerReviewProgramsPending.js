@@ -5,7 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import {Link, withRouter} from 'react-router-dom';
 import 'typeface-roboto';
-import {Typography, Box} from '@material-ui/core';
+import {Typography, Box, Checkbox} from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -122,8 +122,19 @@ export const Programs = [
   },
 ];
 
-const ProgramListItemsAll = () => {
+const TowerReviewProgramsPending = () => {
   const classes = useStyles();
+
+  const [state, setState] = React.useState({
+    checkedA: true,
+    checkedB: true,
+    checkedF: true,
+    checkedG: true,
+  });
+
+  const handleChange = (event) => {
+    setState({...state, [event.target.name]: event.target.checked});
+  };
 
   return (
     <>
@@ -132,6 +143,15 @@ const ProgramListItemsAll = () => {
           ({title, id, version, year, budget, type, components}, i) => (
             <Fragment key={i}>
               <Box display="flex" alignItems="center">
+                <Box pl={3}>
+                  <Checkbox
+                    edge="start"
+                    control={
+                      <Checkbox name="checkedC" onChange={handleChange} />
+                    }
+                    label="Uncontrolled"
+                  />
+                </Box>
                 <ListItem
                   className={classes.linkNoDecorationAndCorrection}
                   button
@@ -176,4 +196,4 @@ const ProgramListItemsAll = () => {
   );
 };
 
-export default withRouter(ProgramListItemsAll);
+export default withRouter(TowerReviewProgramsPending);

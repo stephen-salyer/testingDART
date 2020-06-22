@@ -4,13 +4,12 @@ import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import {Send, DoneAll, MoreVert, LocalOffer} from '@material-ui/icons';
+import {Check, ArrowBack} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import TowerReviewFilter from './TowerReviewFilter';
-import {CircularProgress, Menu, MenuItem, IconButton} from '@material-ui/core';
+import {CircularProgress, IconButton} from '@material-ui/core';
 import {green} from '@material-ui/core/colors';
-import {Link} from 'react-router-dom';
+import DeletePricePlanModal from './DeletePricePlanModal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SecondaryNavTowerReview = () => {
+const SecondaryNavTowerReviewPricePlan = () => {
   const classes = useStyles();
 
   const [loading, setLoading] = React.useState(false);
@@ -116,16 +115,6 @@ const SecondaryNavTowerReview = () => {
     }
   };
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   return (
     <Container
       maxWidth="lg"
@@ -134,9 +123,21 @@ const SecondaryNavTowerReview = () => {
     >
       <Grid container>
         <Grid item={true} xs={12} sm={5} md={6}>
+          <Grid container>
+            <Box display="flex" flexDirection="row" alignItems="center">
+              <IconButton
+                aria-label="arrow-back"
+                color="default"
+                href="/tower-review"
+              >
+                <ArrowBack />
+              </IconButton>
+              <Typography>Tower Review</Typography>
+            </Box>
+          </Grid>
           <Box pb={1}>
             <Typography variant="h3" color="primary">
-              Tower Review
+              Price plan
             </Typography>
             <Typography>
               2020 / North America / US / Alfalfa / Channel
@@ -152,9 +153,9 @@ const SecondaryNavTowerReview = () => {
                 className={buttonClassname}
                 disabled={loading}
                 onClick={handleButtonClick}
-                endIcon={success ? <DoneAll /> : <Send />}
+                endIcon={success ? <Check /> : ''}
               >
-                Approve Tower
+                {success ? 'Approved' : 'Approve Price Plan'}
               </Button>
               {loading && (
                 <CircularProgress
@@ -163,44 +164,7 @@ const SecondaryNavTowerReview = () => {
                 />
               )}
             </div>
-            <TowerReviewFilter />
-            <IconButton
-              onClick={handleClick}
-              aria-label="More"
-              component="span"
-            >
-              <MoreVert />
-            </IconButton>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose}>
-                <Typography variant="inherit">
-                  <Box
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="space-between"
-                  >
-                    <Send style={{paddingRight: 8}} /> Send Manual Notifications
-                  </Box>
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleClose} component={Link} to="/price-plan">
-                <Typography variant="inherit">
-                  <Box
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="space-between"
-                  >
-                    <LocalOffer style={{paddingRight: 8}} /> View Price Plan
-                  </Box>
-                </Typography>
-              </MenuItem>
-            </Menu>
+            <DeletePricePlanModal />
           </Box>
         </Grid>
       </Grid>
@@ -208,4 +172,4 @@ const SecondaryNavTowerReview = () => {
   );
 };
 
-export default SecondaryNavTowerReview;
+export default SecondaryNavTowerReviewPricePlan;

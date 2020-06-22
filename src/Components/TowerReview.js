@@ -1,12 +1,12 @@
 // Must haves
 
-// Take out Icons of status
-// make price plan its own page with a button in global leading to that page.
-// price place will have two tabs. Summary, Attachments. Comments FAB
-// Attachments tab can be take out entirely.
-// Vertical tabs for Dealer, Grower, Distributor, and Other
-// in those vertical tabs have more tabs under the title for their status.
-// ability to multi select programs to mark Approved (only on pending programs that do not contain components outside their tower)
+// Take out Icons of status --
+// make price plan its own page with a button in global leading to that page. --
+// price place will have two tabs. Summary, Attachments. Comments FAB --
+// Attachments tab can be take out entirely. --
+// Vertical tabs for Dealer, Grower, Distributor, and Other --
+// in those vertical tabs have more tabs under the title for their status. --
+// ability to multi select programs to mark Approved (only on pending programs that do not contain components outside their tower) --
 // - why they can’t approve a program (wrong status, they aren’t an approver, the amount is too much, program is invalid, etc)
 
 // Thonk of ways
@@ -22,14 +22,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import SecondaryNavTowerReview from './SecondaryNavTowerReview';
 import {Box, Hidden, Divider} from '@material-ui/core';
-import Pagination from '@material-ui/lab/Pagination';
 import TowerReviewAnalytics from './TowerReviewAnalytics';
-import TowerReviewPrograms from './TowerReviewPrograms';
-import ProgramTotals from './ProgramTotals';
-import TowerReviewPricePlan from './TowerReviewPricePlan';
-import AttachedFiles from './AttachedFiles';
 import Comments from './Comments';
-import TowerReviewSort from './TowerReviewSort';
+import TowerReviewBody from './TowerReviewBody';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -132,8 +127,6 @@ const TowerReview = () => {
               >
                 <Tab label="Analytics" {...a11yProps(0)} />
                 <Tab label="Programs" {...a11yProps(1)} />
-                <Tab label="Price Plan" {...a11yProps(2)} />
-                <Tab label="Attachments" {...a11yProps(3)} />
               </Tabs>
             </Hidden>
             <Hidden only={['xl', 'lg', 'md']}>
@@ -146,41 +139,17 @@ const TowerReview = () => {
               >
                 <Tab label="Analytics" {...a11yProps(0)} />
                 <Tab label="Programs" {...a11yProps(1)} />
-                <Tab label="Price Plan" {...a11yProps(2)} />
-                <Tab label="Attachments" {...a11yProps(3)} />
               </Tabs>
             </Hidden>
+            <Divider />
             <TabPanel value={value} index={0}>
               <Box p={3}>
                 <TowerReviewAnalytics />
               </Box>
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="flex-end"
-                style={{width: '100%'}}
-              >
-                <Box pr={3} pl={3} pt={2} pb={2}>
-                  <TowerReviewSort />
-                </Box>
-              </Box>
-              <Divider />
-              <TowerReviewPrograms />
-              <Box display="flex" alignItems="center">
-                <Pagination count={1} color="secondary" />
-              </Box>
-              <ProgramTotals />
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              <Box className={classes.tabPanel} p={3}>
-                <TowerReviewPricePlan />
-              </Box>
-            </TabPanel>
-            <TabPanel value={value} index={3}>
-              <Box className={classes.tabPanel}>
-                <AttachedFiles />
+              <Box pt={3} pl={3} pr={3}>
+                <TowerReviewBody />
               </Box>
             </TabPanel>
           </CardContent>

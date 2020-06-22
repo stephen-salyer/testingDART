@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import CardHeader from '@material-ui/core/CardHeader';
 import SubdirectoryArrowRightIcon from '@material-ui/icons/SubdirectoryArrowRight';
-import {TextField, InputAdornment, Fab} from '@material-ui/core';
+import {TextField, InputAdornment, Fab, Badge} from '@material-ui/core';
 import Comment from '@material-ui/icons/Comment';
 
 const useStyles = makeStyles((theme) => ({
@@ -204,16 +204,27 @@ export default function Comments() {
   return (
     <>
       <Box className={classes.fab}>
-        <Fab
+        <Badge
+          color="error"
+          overlap="circle"
+          badgeContent={1}
           size="large"
-          color="secondary"
-          aria-label="Comment"
-          variant="extended"
-          onClick={toggleDrawer('right', true)}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
         >
-          comments
-          <Comment className={classes.extendedIcon} />
-        </Fab>
+          <Fab
+            size="large"
+            color="secondary"
+            aria-label="Comment"
+            variant="extended"
+            onClick={toggleDrawer('right', true)}
+          >
+            comments
+            <Comment className={classes.extendedIcon} />
+          </Fab>
+        </Badge>
       </Box>
       <Drawer
         anchor={'right'}
