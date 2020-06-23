@@ -148,7 +148,7 @@ const TowerReview = () => {
               </Box>
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <Box pt={3} pl={3} pr={3}>
+              <Box pt={3} pl={3} pr={1}>
                 <TowerReviewBody />
               </Box>
             </TabPanel>

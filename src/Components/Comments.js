@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   list: {
-    width: '20vw',
-    minWidth: '320px',
+    width: '420px',
+    minWidth: '420px',
   },
   fullList: {
     width: 'auto',
@@ -50,6 +50,39 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
 }));
+
+const commentsInformation = [
+  {
+    label: 'Comment',
+    comment: [
+      {
+        name: 'Evan Kommenter',
+        dateTime: '01/01/20 @1:11PM',
+        type:
+          'This is a comment that is not real. It takes up space. Its a happy little comment.',
+      },
+    ],
+  },
+  {
+    label: 'Reply',
+    comment: [
+      {
+        name: 'Amy Replaer',
+        dateTime: '01/01/20 @1:11PM',
+        type:
+          'This is a reply that is not real. It takes up space. Its a happy little reply.',
+        replyIcon: <SubdirectoryArrowRightIcon />,
+      },
+      {
+        name: 'Marvin Hanns',
+        dateTime: '01/01/20 @1:11PM',
+        type:
+          'This is a reply that is not real. It takes up space. Its a happy little reply.',
+        replyIcon: <SubdirectoryArrowRightIcon />,
+      },
+    ],
+  },
+];
 
 export default function Comments() {
   const classes = useStyles();
@@ -88,116 +121,65 @@ export default function Comments() {
           </IconButton>
         </Box>
       </Box>
-      <Box pb={2} pl={2} pr={2} pt={0}>
-        <TextField
-          className={(classes.margin, classes.formControl)}
-          id="input-with-icon-textfield"
-          label="Comment"
-          variant="outlined"
-          multiline
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <SendIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Box>
-      <Box pl={2} pr={2} display="flex" justifyContent="space-between">
-        <Box display="flex" flexDirection="column">
-          <Typography variant="subtitle2">Evan Kommenter</Typography>
-        </Box>
-        <Box mt={0} pl={2}>
-          <Typography variant="caption">01/01/20 @1:11PM</Typography>
-        </Box>
-      </Box>
-      <Box pb={2} pl={2} pr={2} pt={0}>
-        <Typography variant="caption">
-          This is a comment that is not real. It takes up space. Its a happy
-          little comment.
-        </Typography>
-      </Box>
-      <Box pb={2} pl={2} pr={2} pt={0}>
-        <TextField
-          className={(classes.margin, classes.formControl)}
-          id="input-with-icon-textfield"
-          label="Reply"
-          variant="outlined"
-          multiline
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <SendIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Box>
-      <Box pb={2} pl={2} display="flex" flexDirection="row">
-        <SubdirectoryArrowRightIcon />
-        <Box
-          pl={2}
-          pr={2}
-          display="flex"
-          flexDirection="column"
-          justifyContent="space-between"
-          width="100%"
-        >
-          <Box
-            display="flex"
-            flexDirection="row"
-            width="100%"
-            justifyContent="space-between"
-          >
-            <Box pr={1}>
-              <Typography variant="subtitle2">Amy Replaer</Typography>
-            </Box>
-            <Box pl={1}>
-              <Typography variant="caption">01/01/20</Typography>
-              <Typography variant="caption">@1:11PM</Typography>
-            </Box>
+      {commentsInformation.map(({label, comment}) => (
+        <>
+          <Box key={label} pb={2} pl={2} pr={2} pt={0}>
+            <TextField
+              className={(classes.margin, classes.formControl)}
+              id="input-with-icon-textfield"
+              label={label}
+              variant="outlined"
+              multiline
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton>
+                      <SendIcon color="secondary" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
           </Box>
-          <Box pb={2}>
-            <Typography variant="caption">
-              This is a reply that is not real. It takes up space. Its a happy
-              little reply.
-            </Typography>
-          </Box>
-        </Box>
-      </Box>
-      <Box pb={2} pl={2} display="flex" flexDirection="row">
-        <SubdirectoryArrowRightIcon />
-        <Box
-          pl={2}
-          pr={2}
-          display="flex"
-          flexDirection="column"
-          justifyContent="space-between"
-          width="100%"
-        >
-          <Box
-            display="flex"
-            flexDirection="row"
-            width="100%"
-            justifyContent="space-between"
-          >
-            <Box pr={1}>
-              <Typography variant="subtitle2">Marvin Hanns</Typography>
-            </Box>
-            <Box pl={1}>
-              <Typography variant="caption">01/01/20</Typography>
-              <Typography variant="caption">@1:11PM</Typography>
-            </Box>
-          </Box>
-          <Box pb={2} pt={0}>
-            <Typography variant="caption">
-              This is a reply that is not real. It takes up space. Its a happy
-              little reply.
-            </Typography>
-          </Box>
-        </Box>
-      </Box>
+          {comment.map(({name, dateTime, type, replyIcon}) => (
+            <>
+              <Box pb={2} pl={2} display="flex" flexDirection="row">
+                {replyIcon}
+                <Box
+                  pl={2}
+                  pr={2}
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="space-between"
+                  width="100%"
+                >
+                  <Box
+                    display="flex"
+                    flexDirection="row"
+                    width="100%"
+                    justifyContent="space-between"
+                  >
+                    <Box pr={1}>
+                      <Typography
+                        variant="subtitle1"
+                        style={{fontWeight: 'bold'}}
+                      >
+                        {name}
+                      </Typography>
+                    </Box>
+                    <Box pl={1} display="flex" alignItems="center">
+                      <Typography variant="body2">{dateTime}</Typography>
+                    </Box>
+                  </Box>
+                  <Box pb={2}>
+                    <Typography variant="body2">{type}</Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </>
+          ))}
+        </>
+      ))}
     </div>
   );
 
@@ -227,6 +209,7 @@ export default function Comments() {
         </Badge>
       </Box>
       <Drawer
+        style={{width: 30}}
         anchor={'right'}
         open={state.right}
         onClose={toggleDrawer('right', false)}

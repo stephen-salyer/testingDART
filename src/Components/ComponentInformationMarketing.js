@@ -224,14 +224,19 @@ export default function ComponentInformationMarketing() {
           <Grid item xs={12} md={6}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">
-                Component Teir Rate
+                Component Tier Rate
               </InputLabel>
               <Select
                 MenuProps={MenuProps}
-                label="Component Teir Rate"
+                label="Component Tier Rate"
                 defaultValue={10}
               >
                 <MenuItem value={10}>Date</MenuItem>
+                <MenuItem value={20}>FOC</MenuItem>
+                <MenuItem value={30}>None</MenuItem>
+                <MenuItem value={40}>Sales Target</MenuItem>
+                <MenuItem value={50}>Volume</MenuItem>
+                <MenuItem value={60}>Flat Rate</MenuItem>
               </Select>
             </FormControl>
           </Grid>

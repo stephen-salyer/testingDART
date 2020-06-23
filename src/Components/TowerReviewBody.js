@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import ProgramTotals from './ProgramTotals';
 import Pagination from '@material-ui/lab/Pagination';
 import TowerReviewSubTabs from './TowerReviewSubTabs';
+import TowerReviewPrograms from './TowerReviewPrograms';
 
 const useStyles = makeStyles({
   root: {
@@ -35,20 +36,29 @@ const useStyles = makeStyles({
 
 export const approverCategories = [
   {
+    category: 'All',
+    approverCount: '89',
+    information: <TowerReviewPrograms />,
+  },
+  {
     category: 'Dealer',
     approverCount: '12',
+    information: <TowerReviewSubTabs />,
   },
   {
     category: 'Grower',
     approverCount: '23',
+    information: <TowerReviewSubTabs />,
   },
   {
     category: 'Distributor',
     approverCount: '9',
+    information: <TowerReviewSubTabs />,
   },
   {
     category: 'Other',
     approverCount: '32',
+    information: <TowerReviewSubTabs />,
   },
 ];
 
@@ -102,7 +112,12 @@ export default function TowerReviewBody() {
                     <ListItemText
                       className={classes.listItemTextNoMargin}
                       primary={
-                        <Typography variant="subtitle1">{category}</Typography>
+                        <Typography
+                          variant="subtitle1"
+                          style={{fontWeight: 'bold'}}
+                        >
+                          {category}
+                        </Typography>
                       }
                       secondary={
                         <Typography
@@ -123,7 +138,7 @@ export default function TowerReviewBody() {
             ))}
           </Tabs>
 
-          {approverCategories.map(({category}, i) => (
+          {approverCategories.map(({category, information}, i) => (
             <TabPanel value={value} key={category} index={i}>
               <Grid container>
                 <Grid item xs={12}>
@@ -148,7 +163,7 @@ export default function TowerReviewBody() {
                     />
                   </Box>
                   <Divider />
-                  <TowerReviewSubTabs />
+                  {information}
                 </Grid>
               </Grid>
               <Grid item xs={12}>

@@ -130,7 +130,12 @@ export default function Approvers() {
                     <ListItemText
                       className={classes.listItemTextNoMargin}
                       primary={
-                        <Typography variant="subtitle1">{category}</Typography>
+                        <Typography
+                          variant="subtitle1"
+                          style={{fontWeight: 'bold'}}
+                        >
+                          {category}
+                        </Typography>
                       }
                       secondary={
                         <Typography

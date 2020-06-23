@@ -10,6 +10,7 @@ import {
   Button,
   Menu,
   MenuItem,
+  Tooltip,
 } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -60,7 +61,7 @@ export const componentsInfo = [
     ted: '$6,232,348',
   },
   {
-    comp: 'Alfalfa',
+    comp: '2019 Pack 72-10 MGRR & 71-10 VT3P DK Arg',
     ted: '$3,444,335',
   },
   {
@@ -125,10 +126,80 @@ export default function Components() {
                 key={i}
                 label={
                   <List style={{width: '100%'}}>
+                    {/* {{comp}.length <= 20 ? (
+                      <Tooltip
+                        title={
+                          <Typography variant="overline">{comp}</Typography>
+                        }
+                      >
+                        <ListItemText
+                          className={classes.listItemTextNoMargin}
+                          primary={
+                            <Typography
+                              noWrap
+                              variant="subtitle1"
+                              style={{fontWeight: 'bold'}}
+                            >
+                              {comp}
+                            </Typography>
+                          }
+                          secondary={
+                            <Typography
+                              style={{
+                                marginTop: '0',
+                                fontWeight: '400',
+                                color: 'rgba(0, 0, 0, 0.54)',
+                                fontSize: '0.875rem',
+                              }}
+                            >
+                              TED: {ted}
+                            </Typography>
+                          }
+                        />
+                      </Tooltip>
+                    ) : (
+                      <ListItemText
+                        className={classes.listItemTextNoMargin}
+                        primary={
+                          <Typography
+                            noWrap
+                            variant="subtitle1"
+                            style={{fontWeight: 'bold'}}
+                          >
+                            {comp}
+                          </Typography>
+                        }
+                        secondary={
+                          <Typography
+                            style={{
+                              marginTop: '0',
+                              fontWeight: '400',
+                              color: 'rgba(0, 0, 0, 0.54)',
+                              fontSize: '0.875rem',
+                            }}
+                          >
+                            TED: {ted}
+                          </Typography>
+                        }
+                      />
+                    )} */}
+
                     <ListItemText
                       className={classes.listItemTextNoMargin}
                       primary={
-                        <Typography variant="subtitle1">{comp}</Typography>
+                        <Tooltip
+                          title={
+                            <Typography variant="overline">{comp}</Typography>
+                          }
+                        >
+                          <Typography
+                            noWrap
+                            variant="subtitle1"
+                            style={{fontWeight: 'bold'}}
+                          >
+                            {comp}
+                          </Typography>
+                        </Tooltip>
                       }
                       secondary={
                         <Typography
