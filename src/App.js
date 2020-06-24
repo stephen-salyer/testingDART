@@ -16,6 +16,7 @@ import TowerReview from './Components/TowerReview';
 import ProgramPrintable from './Components/ProgramPrintable';
 import ProgramChanges from './Components/ProgramChanges';
 import TowerReviewPricePlan from './Components/TowerReviewPricePlan';
+import UnitSelect from './Components/Examples/UnitSelect';
 
 const theme = createMuiTheme({
   palette: {
@@ -65,6 +66,9 @@ const App = () => (
           </Route>
           <Route exact path="/price-plan">
             <TowerReviewPricePlan />
+          </Route>
+          <Route exact path="/unit-select-example">
+            <UnitSelect />
           </Route>
         </Switch>
       </div>

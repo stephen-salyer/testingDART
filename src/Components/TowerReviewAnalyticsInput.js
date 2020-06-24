@@ -1,8 +1,9 @@
 import React from 'react';
 import 'typeface-roboto';
-import {Grid, TextField} from '@material-ui/core';
+import {Grid, TextField, CardHeader, Divider, Box} from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TowerReviewAnalyticsChart4 from './TowerReviewAnalyticsChart4';
+import TowerReviewAnalyticsChart5 from './TowerReviewAnalyticsChart5';
 
 const currencies = [
   {title: 'AED'},
@@ -61,8 +62,19 @@ export default function TowerReviewAnalyticsInput() {
             <TextField fullWidth label={label} variant="outlined" />
           </Grid>
         ))}
-        <Grid item xs={12}>
-          <TowerReviewAnalyticsChart4 />
+        <Grid item xs={12} md={6}>
+          <CardHeader title="Gross to Net Waterfall"></CardHeader>
+          <Divider />
+          <Box pt={2} display="flex" flexDirection="column" alignItems="center">
+            <TowerReviewAnalyticsChart4 />
+          </Box>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <CardHeader title="Gross to Net Year-Over-Year"></CardHeader>
+          <Divider />
+          <Box pt={2} display="flex" flexDirection="column" alignItems="center">
+            <TowerReviewAnalyticsChart5 />
+          </Box>
         </Grid>
       </Grid>
     </>

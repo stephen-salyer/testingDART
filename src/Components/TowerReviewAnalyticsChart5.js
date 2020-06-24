@@ -2,7 +2,7 @@ import React from 'react';
 import {Bar} from 'react-chartjs-2';
 
 const state = {
-  labels: ['Gross Sales', 'Payment Incentive', 'Net Invoice Sales'],
+  labels: ['Net', 'Discounts'],
   datasets: [
     {
       backgroundColor: ['#75CBB6', '#018ECD', '#DCEDC8', '#018ECD', '#018ECD'],
@@ -13,12 +13,12 @@ const state = {
         '#018ECD',
         '#018ECD',
       ],
-      data: [-40, 30, 10],
+      data: [-40, 30],
     },
   ],
 };
 
-class TowerReviewAnalyticsChart4 extends React.Component {
+class TowerReviewAnalyticsChart5 extends React.Component {
   render() {
     return (
       <div
@@ -41,4 +41,4 @@ class TowerReviewAnalyticsChart4 extends React.Component {
   }
 }
 
-export default TowerReviewAnalyticsChart4;
+export default TowerReviewAnalyticsChart5;

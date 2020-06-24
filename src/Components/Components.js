@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '0',
   },
   tabs: {
-    minWidth: '250px',
+    minWidth: '280px',
   },
   MuiTab: {
     wrapper: {
@@ -110,23 +110,31 @@ export default function Components() {
     <>
       <Grid container>
         <div className={classes.root}>
-          <Tabs
-            orientation="vertical"
-            variant="scrollable"
-            value={value}
-            onChange={handleChange}
-            aria-label="Vertical tabs example"
-            indicatorColor="primary"
+          <Box
             className={classes.tabs}
             style={{borderRight: '1px solid rgba(0, 0, 0, 0.12)'}}
           >
-            {componentsInfo.map(({comp, ted}, i) => (
-              <Tab
-                style={{textAlign: 'left'}}
-                key={i}
-                label={
-                  <List style={{width: '100%'}}>
-                    {/* {{comp}.length <= 20 ? (
+            <Box
+              display="flex"
+              flexDirection="column"
+              style={{position: 'fixed', overflow: 'visible'}}
+            >
+              <Tabs
+                orientation="vertical"
+                variant="scrollable"
+                value={value}
+                onChange={handleChange}
+                aria-label="Vertical tabs example"
+                indicatorColor="primary"
+                className={classes.tabs}
+              >
+                {componentsInfo.map(({comp, ted}, i) => (
+                  <Tab
+                    style={{textAlign: 'left'}}
+                    key={i}
+                    label={
+                      <List style={{width: '100%'}}>
+                        {/* {{comp}.length <= 20 ? (
                       <Tooltip
                         title={
                           <Typography variant="overline">{comp}</Typography>
@@ -184,44 +192,48 @@ export default function Components() {
                       />
                     )} */}
 
-                    <ListItemText
-                      className={classes.listItemTextNoMargin}
-                      primary={
-                        <Tooltip
-                          title={
-                            <Typography variant="overline">{comp}</Typography>
+                        <ListItemText
+                          className={classes.listItemTextNoMargin}
+                          primary={
+                            <Tooltip
+                              title={
+                                <Typography variant="overline">
+                                  {comp}
+                                </Typography>
+                              }
+                            >
+                              <Typography
+                                noWrap
+                                variant="subtitle1"
+                                style={{fontWeight: 'bold'}}
+                              >
+                                {comp}
+                              </Typography>
+                            </Tooltip>
                           }
-                        >
-                          <Typography
-                            noWrap
-                            variant="subtitle1"
-                            style={{fontWeight: 'bold'}}
-                          >
-                            {comp}
-                          </Typography>
-                        </Tooltip>
-                      }
-                      secondary={
-                        <Typography
-                          style={{
-                            marginTop: '0',
-                            fontWeight: '400',
-                            color: 'rgba(0, 0, 0, 0.54)',
-                            fontSize: '0.875rem',
-                          }}
-                        >
-                          TED: {ted}
-                        </Typography>
-                      }
-                    />
-                  </List>
-                }
-              />
-            ))}
-            <Box display="flex" justifyContent="center">
-              <Button endIcon={<Add />}>Add Component</Button>
+                          secondary={
+                            <Typography
+                              style={{
+                                marginTop: '0',
+                                fontWeight: '400',
+                                color: 'rgba(0, 0, 0, 0.54)',
+                                fontSize: '0.875rem',
+                              }}
+                            >
+                              TED: {ted}
+                            </Typography>
+                          }
+                        />
+                      </List>
+                    }
+                  />
+                ))}
+                <Box display="flex" justifyContent="center">
+                  <Button endIcon={<Add />}>Add Component</Button>
+                </Box>
+              </Tabs>
             </Box>
-          </Tabs>
+          </Box>
           {componentsInfo.map(({comp}, i) => (
             <TabPanel value={value} key={comp} index={i}>
               <Grid container>

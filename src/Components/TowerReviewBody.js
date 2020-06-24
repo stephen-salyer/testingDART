@@ -56,7 +56,7 @@ export const approverCategories = [
     information: <TowerReviewSubTabs />,
   },
   {
-    category: 'Other',
+    category: 'Other / Multi',
     approverCount: '32',
     information: <TowerReviewSubTabs />,
   },
@@ -93,50 +93,60 @@ export default function TowerReviewBody() {
       <Grid container>
         <Divider />
         <div className={classes.root}>
-          <Tabs
-            orientation="vertical"
-            variant="standard"
-            value={value}
-            onChange={handleChange}
-            aria-label="Vertical tabs example"
-            indicatorColor="primary"
+          <Box
             className={classes.tabs}
             style={{borderRight: '1px solid rgba(0, 0, 0, 0.12)'}}
           >
-            {approverCategories.map(({category, approverCount}, i) => (
-              <Tab
-                style={{textAlign: 'left'}}
-                key={i}
-                label={
-                  <List style={{width: '100%'}}>
-                    <ListItemText
-                      className={classes.listItemTextNoMargin}
-                      primary={
-                        <Typography
-                          variant="subtitle1"
-                          style={{fontWeight: 'bold'}}
-                        >
-                          {category}
-                        </Typography>
-                      }
-                      secondary={
-                        <Typography
-                          style={{
-                            marginTop: '0',
-                            fontWeight: '400',
-                            color: 'rgba(0, 0, 0, 0.54)',
-                            fontSize: '0.875rem',
-                          }}
-                        >
-                          {approverCount} Programs
-                        </Typography>
-                      }
-                    />
-                  </List>
-                }
-              />
-            ))}
-          </Tabs>
+            <Box
+              display="flex"
+              flexDirection="column"
+              style={{position: 'fixed', overflow: 'visible'}}
+            >
+              <Tabs
+                orientation="vertical"
+                variant="standard"
+                value={value}
+                onChange={handleChange}
+                aria-label="Vertical tabs example"
+                indicatorColor="primary"
+                className={classes.tabs}
+              >
+                {approverCategories.map(({category, approverCount}, i) => (
+                  <Tab
+                    style={{textAlign: 'left'}}
+                    key={i}
+                    label={
+                      <List style={{width: '100%'}}>
+                        <ListItemText
+                          className={classes.listItemTextNoMargin}
+                          primary={
+                            <Typography
+                              variant="subtitle1"
+                              style={{fontWeight: 'bold'}}
+                            >
+                              {category}
+                            </Typography>
+                          }
+                          secondary={
+                            <Typography
+                              style={{
+                                marginTop: '0',
+                                fontWeight: '400',
+                                color: 'rgba(0, 0, 0, 0.54)',
+                                fontSize: '0.875rem',
+                              }}
+                            >
+                              {approverCount} Programs
+                            </Typography>
+                          }
+                        />
+                      </List>
+                    }
+                  />
+                ))}
+              </Tabs>
+            </Box>
+          </Box>
 
           {approverCategories.map(({category, information}, i) => (
             <TabPanel value={value} key={category} index={i}>

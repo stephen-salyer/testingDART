@@ -28,7 +28,7 @@ const chartColumns = [
   },
   {
     mediumSize: 12,
-    title: 'Financial Analytics Calculator?',
+    title: 'Financial Analytics Calculator',
     data: <TowerReviewAnalyticsInput />,
     display: 'block',
     saveButton: (

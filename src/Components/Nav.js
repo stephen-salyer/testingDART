@@ -80,6 +80,16 @@ const Nav = () => {
                 >
                   <ListItemText primary="Product Eligibility" />
                 </ListItem>
+                <ListItem
+                  onClick={() => setOpen(false)}
+                  component={Link}
+                  rel="noopener noreferrer"
+                  to={'/unit-select-example'}
+                  button
+                  className={classes.nested}
+                >
+                  <ListItemText primary="Unit Select" />
+                </ListItem>
               </List>
             </Collapse>
           </List>
