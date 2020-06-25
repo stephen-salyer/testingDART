@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Overview from './Overview';
 import Comments from './Comments';
 import {Box, Badge, Grid} from '@material-ui/core';
 import Scopes from './Scopes';
@@ -18,6 +17,7 @@ import Approvers from './Approvers';
 import Components from './Components';
 import AttachedFiles from './AttachedFiles';
 import SecondaryNavProgramChanges from './SecondaryNavProgramChanges';
+import ProgramChangesOverview from './ProgramChangesOverview';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -104,7 +104,7 @@ const ProgramChanges = () => {
       <Container maxWidth="lg" style={{paddingBottom: '100px'}}>
         <Card>
           <Grid container>
-            <Grid item xs={6}>
+            <Grid item xs={12}>
               <CardContent className={classes.content}>
                 <Tabs
                   value={value}
@@ -135,81 +135,7 @@ const ProgramChanges = () => {
                 </Tabs>
                 <TabPanel value={value} index={0}>
                   <Box p={3}>
-                    <Overview />
-                  </Box>
-                </TabPanel>
-                <TabPanel value={value} index={1}>
-                  <Scopes />
-                </TabPanel>
-                <TabPanel value={value} index={2}>
-                  <Box p={3}>
-                    <Marketing />
-                  </Box>
-                </TabPanel>
-                <TabPanel value={value} index={3}>
-                  <Box p={3}>
-                    <Operations />
-                  </Box>
-                </TabPanel>
-                <TabPanel value={value} index={4}>
-                  <Box p={3}>
-                    <Owners />
-                  </Box>
-                </TabPanel>
-                <TabPanel value={value} index={5}>
-                  <Box p={3}>
-                    <Finance />
-                  </Box>
-                </TabPanel>
-                <TabPanel value={value} index={6}>
-                  <Box p={3}>
-                    <Approvers />
-                  </Box>
-                </TabPanel>
-                <TabPanel value={value} index={7}>
-                  <Box p={3}>
-                    <Components />
-                  </Box>
-                </TabPanel>
-                <TabPanel value={value} index={8}>
-                  <Box>
-                    <AttachedFiles />
-                  </Box>
-                </TabPanel>
-              </CardContent>
-            </Grid>
-            <Grid item xs={6}>
-              <CardContent className={classes.content}>
-                <Tabs
-                  value={value}
-                  onChange={handleChange}
-                  indicatorColor="primary"
-                  textColor="primary"
-                  variant="scrollable"
-                  aria-label="full width tabs example"
-                >
-                  <Tab
-                    style={{minWidth: '10%'}}
-                    label={
-                      <div>
-                        <Badge color="error" variant="dot">
-                          Overview
-                        </Badge>
-                      </div>
-                    }
-                  />
-                  <Tab style={{minWidth: '10.1%'}} label="Scopes" />
-                  <Tab style={{minWidth: '11.1%'}} label="Marketing" />
-                  <Tab style={{minWidth: '11.1%'}} label="Operations" />
-                  <Tab style={{minWidth: '10.1%'}} label="Owners" />
-                  <Tab style={{minWidth: '11.1%'}} label="Finance" />
-                  <Tab style={{minWidth: '12.1%'}} label="Approvers" />
-                  <Tab style={{minWidth: '12.1%'}} label="Components" />
-                  <Tab style={{minWidth: '12.2%'}} label="Attached Files" />
-                </Tabs>
-                <TabPanel value={value} index={0}>
-                  <Box p={3}>
-                    <Overview />
+                    <ProgramChangesOverview />
                   </Box>
                 </TabPanel>
                 <TabPanel value={value} index={1}>

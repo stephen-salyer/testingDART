@@ -22,7 +22,7 @@ import Container from '@material-ui/core/Container';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import SecondaryNavTowerReview from './SecondaryNavTowerReview';
-import {Box, Hidden, Divider} from '@material-ui/core';
+import {Box, Divider} from '@material-ui/core';
 import TowerReviewAnalytics from './TowerReviewAnalytics';
 import TowerReviewBody from './TowerReviewBody';
 
@@ -116,31 +116,16 @@ const TowerReview = () => {
         </Box>
         <Card>
           <CardContent className={classes.content}>
-            <Hidden smDown>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                variant="fullWidth"
-                aria-label="full width tabs example"
-              >
-                <Tab label="Tower" {...a11yProps(0)} />
-                <Tab label="Financials" {...a11yProps(1)} />
-              </Tabs>
-            </Hidden>
-            <Hidden only={['xl', 'lg', 'md']}>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                variant="scrollable"
-              >
-                <Tab label="Tower" {...a11yProps(0)} />
-                <Tab label="Financials" {...a11yProps(1)} />
-              </Tabs>
-            </Hidden>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              variant="fullWidth"
+            >
+              <Tab label="Tower" {...a11yProps(0)} />
+              <Tab label="Financials" {...a11yProps(1)} />
+            </Tabs>
             <Divider />
             <TabPanel value={value} index={0}>
               <Box pt={3} pl={3} pr={1}>

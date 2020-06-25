@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import {Box, Hidden} from '@material-ui/core';
+import {Box} from '@material-ui/core';
 import TowerReviewOverview from './TowerReviewOverview';
 import AttachedFiles from './AttachedFiles';
 import Comments from './Comments';
@@ -102,31 +102,16 @@ const TowerReviewPricePlan = () => {
         </Box>
         <Card>
           <CardContent className={classes.content}>
-            <Hidden smDown>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                variant="fullWidth"
-                aria-label="full width tabs example"
-              >
-                <Tab label="Overview" {...a11yProps(0)} />
-                <Tab label="Attachments" {...a11yProps(1)} />
-              </Tabs>
-            </Hidden>
-            <Hidden only={['xl', 'lg', 'md']}>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                variant="scrollable"
-              >
-                <Tab label="Overview" {...a11yProps(0)} />
-                <Tab label="Attachments" {...a11yProps(1)} />
-              </Tabs>
-            </Hidden>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              variant="fullWidth"
+            >
+              <Tab label="Overview" {...a11yProps(0)} />
+              <Tab label="Attachments" {...a11yProps(1)} />
+            </Tabs>
             <TabPanel value={value} index={0}>
               <Box p={3}>
                 <TowerReviewOverview />

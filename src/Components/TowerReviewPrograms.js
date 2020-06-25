@@ -1,11 +1,38 @@
 import React, {Fragment} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import {makeStyles, withStyles} from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import {Link, withRouter} from 'react-router-dom';
 import 'typeface-roboto';
-import {Typography, Box} from '@material-ui/core';
+import {
+  Typography,
+  Box,
+  ExpansionPanelDetails,
+  ExpansionPanelSummary,
+} from '@material-ui/core';
+import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
+import {ExpandMore} from '@material-ui/icons';
+
+const ExpansionPanel = withStyles({
+  root: {
+    border: '0px solid rgba(0, 0, 0, .125)',
+    boxShadow: 'none',
+    '&:not(:last-child)': {
+      borderBottom: 0,
+    },
+    '&:before': {
+      display: 'none',
+    },
+    '&$expanded': {
+      margin: 'auto',
+    },
+    '&hover': {
+      backgroundColor: 'primary',
+    },
+  },
+  expanded: {},
+})(MuiExpansionPanel);
 
 const useStyles = makeStyles({
   root: {
@@ -13,12 +40,14 @@ const useStyles = makeStyles({
   },
   listItemTertiary: {
     marginTop: '0',
+    flexGrow: '0',
     fontWeight: '400',
     color: 'rgba(0, 0, 0, 0.54)',
     fontSize: '0.875rem',
   },
   listItemTextNoMargin: {
     marginBottom: '0',
+    flexGrow: '0',
   },
   linkNoDecorationAndCorrection: {
     textDecoration: 'none',
@@ -131,15 +160,27 @@ const ProgramListItemsAll = () => {
         {Programs.map(
           ({title, id, version, year, budget, type, components}, i) => (
             <Fragment key={i}>
-              <Box display="flex" alignItems="center">
+              <Box
+                display="flex"
+                alignItems="center"
+                flexDirection="column"
+                flexGrow="1"
+                style={{height: '100%'}}
+              >
                 <ListItem
+                  style={{height: '100%'}}
                   className={classes.linkNoDecorationAndCorrection}
                   button
                   component={Link}
                   to={'/program/' + i}
                   rel="noopener noreferrer"
                 >
-                  <Box display="flex" flexDirection="column">
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="flex-start"
+                    style={{height: '100%'}}
+                  >
                     <ListItemText
                       className={classes.listItemTextNoMargin}
                       primary={
@@ -159,13 +200,56 @@ const ProgramListItemsAll = () => {
                     <ListItemText
                       classes={{primary: classes.listItemTertiary}}
                       primary={
-                        <Typography variant="body2">
-                          {[budget, components, type].join(' • ')}
-                        </Typography>
+                        <>
+                          <Typography variant="body2">
+                            {[budget, type].join(' • ')}
+                          </Typography>
+                        </>
                       }
                     />
                   </Box>
                 </ListItem>
+                <ExpansionPanel elevation={0} square style={{width: '100%'}}>
+                  <ExpansionPanelSummary
+                    expandIcon={<ExpandMore />}
+                    aria-label="Expand"
+                    aria-controls="additional-actions1-content"
+                    id="additional-actions1-header"
+                  >
+                    <Typography variant="body2">{components}</Typography>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <Box display="flex" flexDirection="column">
+                      <Typography color="textSecondary">
+                        Component Name - 1,000,000 USD
+                      </Typography>
+                      <Typography color="textSecondary">
+                        Component Name - 1,000,000 USD
+                      </Typography>
+                      <Typography color="textSecondary">
+                        Component Name - 1,000,000 USD
+                      </Typography>
+                      <Typography color="textSecondary">
+                        Component Name - 1,000,000 USD
+                      </Typography>
+                      <Typography color="textSecondary">
+                        Component Name - 1,000,000 USD
+                      </Typography>
+                      <Typography color="textSecondary">
+                        Component Name - 1,000,000 USD
+                      </Typography>
+                      <Typography color="textSecondary">
+                        Component Name - 1,000,000 USD
+                      </Typography>
+                      <Typography color="textSecondary">
+                        Component Name - 1,000,000 USD
+                      </Typography>
+                      <Typography color="textSecondary">
+                        Component Name - 1,000,000 USD
+                      </Typography>
+                    </Box>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
               </Box>
               <Divider />
             </Fragment>

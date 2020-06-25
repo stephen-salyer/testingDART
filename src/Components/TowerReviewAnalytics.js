@@ -1,11 +1,11 @@
 import React from 'react';
 import 'typeface-roboto';
-import {Grid, CardHeader, Divider, Box, Button} from '@material-ui/core';
+import {Grid, CardHeader, Divider, Box} from '@material-ui/core';
 import TowerReviewAnalyticsChart1 from './TowerReviewAnalyticsChart1';
 import TowerReviewAnalyticsChart2 from './TowerReviewAnalyticsChart2';
 import TowerReviewAnalyticsChart3 from './TowerReviewAnalyticsChart3';
 import TowerReviewAnalyticsInput from './TowerReviewAnalyticsInput';
-import {Save} from '@material-ui/icons';
+import TowerReviewFinancialCalculatorSave from './TowerReviewFinancialCalculatorSave';
 
 const chartColumns = [
   {
@@ -31,13 +31,7 @@ const chartColumns = [
     title: 'Financial Analytics Calculator',
     data: <TowerReviewAnalyticsInput />,
     display: 'block',
-    saveButton: (
-      <Box display="flex" alignItems="center" pr={2}>
-        <Button endIcon={<Save />} variant="contained" color="primary">
-          Save
-        </Button>
-      </Box>
-    ),
+    saveButton: <TowerReviewFinancialCalculatorSave />,
   },
 ];
 

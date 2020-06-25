@@ -17,6 +17,7 @@ import {
 } from '@material-ui/core';
 import ProgramCancelModal from './ProgramCancelModal';
 import {Link} from 'react-router-dom';
+import ProgramSaveIndicator from './ProgramSaveIndicator';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,7 +79,7 @@ const SecondaryNavProgram = () => {
   return (
     <Container maxWidth="lg" className={classes.containerPadding}>
       <Grid container direction="row" justify="space-evenly">
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={7}>
           <Grid container>
             <Box display="flex" flexDirection="row" alignItems="center">
               <IconButton
@@ -98,12 +99,13 @@ const SecondaryNavProgram = () => {
             An_Extremely Long Program Name 123123123123123 (Draft)
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={5}>
           <Box
             display="flex"
             justifyContent="flex-end"
             className={classes.flexPositioning}
           >
+            <ProgramSaveIndicator />
             <FormControl
               variant="outlined"
               className={classes.formControl}

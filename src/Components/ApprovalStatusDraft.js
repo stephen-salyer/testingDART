@@ -174,7 +174,7 @@ const ApprovalStatusDraft = () => {
                       <List style={{height: '100%'}}>
                         <ListItem style={{height: '100%'}}>
                           <Box
-                            style={{width: '72px', height: '100%'}}
+                            style={{width: '72px'}}
                             display="flex"
                             alignItems="center"
                             justifyContent="center"

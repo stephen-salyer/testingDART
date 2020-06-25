@@ -180,16 +180,9 @@ export default function TowerReviewOverview() {
         </Grid>
         {inputs.map(({label, options, size, id}) => (
           <Grid key={id} item xs={12} md={size}>
-            <FormControl fullWidth={true} variant="outlined">
-              <InputLabel>{label}</InputLabel>
-              <Select
-                MenuProps={menuProps}
-                defaultValue={options[0]}
-                label={label}
-              >
-                {makeMenuItems(options)}
-              </Select>
-            </FormControl>
+            <ListItem divider>
+              <ListItemText primary={label} secondary={options[0]} />
+            </ListItem>
           </Grid>
         ))}
       </Grid>
