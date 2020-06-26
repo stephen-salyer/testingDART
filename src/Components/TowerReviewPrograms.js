@@ -10,6 +10,8 @@ import {
   Box,
   ExpansionPanelDetails,
   ExpansionPanelSummary,
+  Grid,
+  Tooltip,
 } from '@material-ui/core';
 import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
 import {ExpandMore} from '@material-ui/icons';
@@ -27,9 +29,6 @@ const ExpansionPanel = withStyles({
     '&$expanded': {
       margin: 'auto',
     },
-    '&hover': {
-      backgroundColor: 'primary',
-    },
   },
   expanded: {},
 })(MuiExpansionPanel);
@@ -46,7 +45,7 @@ const useStyles = makeStyles({
     fontSize: '0.875rem',
   },
   listItemTextNoMargin: {
-    marginBottom: '0',
+    margin: '0',
     flexGrow: '0',
   },
   linkNoDecorationAndCorrection: {
@@ -55,6 +54,9 @@ const useStyles = makeStyles({
     '&:hover': {
       textDecoration: 'none',
     },
+  },
+  expandedSummary: {
+    margin: 0,
   },
 });
 
@@ -151,6 +153,37 @@ export const Programs = [
   },
 ];
 
+export const componentsInfoTowerReview = [
+  {
+    comp: 'Canola',
+    ted: '$1,234,345',
+  },
+  {
+    comp: 'Corn',
+    ted: '$1,432,345',
+  },
+  {
+    comp: 'Soybean',
+    ted: '$6,232,348',
+  },
+  {
+    comp: '2019 Pack 72-10 MGRR & 71-10 VT3P DK Arg',
+    ted: '$3,444,335',
+  },
+  {
+    comp: 'Crop Here',
+    ted: '$2,222,777',
+  },
+  {
+    comp: 'Crop Here',
+    ted: '$2,222,777',
+  },
+  {
+    comp: 'Crop Here',
+    ted: '$2,222,777',
+  },
+];
+
 const ProgramListItemsAll = () => {
   const classes = useStyles();
 
@@ -167,87 +200,104 @@ const ProgramListItemsAll = () => {
                 flexGrow="1"
                 style={{height: '100%'}}
               >
-                <ListItem
-                  style={{height: '100%'}}
-                  className={classes.linkNoDecorationAndCorrection}
-                  button
-                  component={Link}
-                  to={'/program/' + i}
-                  rel="noopener noreferrer"
-                >
-                  <Box
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="flex-start"
-                    style={{height: '100%'}}
-                  >
-                    <ListItemText
-                      className={classes.listItemTextNoMargin}
-                      primary={
-                        <Typography
-                          variant="subtitle1"
-                          style={{fontWeight: 'bold'}}
-                        >
-                          {title}
-                        </Typography>
-                      }
-                      secondary={
-                        <Typography variant="body2">
-                          {[id, version, year].join(' • ')}
-                        </Typography>
-                      }
-                    />
-                    <ListItemText
-                      classes={{primary: classes.listItemTertiary}}
-                      primary={
-                        <>
-                          <Typography variant="body2">
-                            {[budget, type].join(' • ')}
-                          </Typography>
-                        </>
-                      }
-                    />
-                  </Box>
-                </ListItem>
                 <ExpansionPanel elevation={0} square style={{width: '100%'}}>
                   <ExpansionPanelSummary
+                    classes={{content: classes.expandedSummary}}
+                    style={{padding: '0 16px 0 0', margin: 0}}
                     expandIcon={<ExpandMore />}
                     aria-label="Expand"
                     aria-controls="additional-actions1-content"
                     id="additional-actions1-header"
                   >
-                    <Typography variant="body2">{components}</Typography>
+                    <Box style={{width: '100%'}}>
+                      <ListItem
+                        style={{height: '100%', padding: 16}}
+                        className={classes.linkNoDecorationAndCorrection}
+                        button
+                        component={Link}
+                        to={'/program/' + i}
+                        rel="noopener noreferrer"
+                      >
+                        <Box
+                          display="flex"
+                          flexDirection="column"
+                          alignItems="flex-start"
+                          style={{height: '100%'}}
+                        >
+                          <ListItemText
+                            className={classes.listItemTextNoMargin}
+                            primary={
+                              <Typography
+                                variant="subtitle1"
+                                style={{fontWeight: 'bold'}}
+                              >
+                                {title}
+                              </Typography>
+                            }
+                            secondary={
+                              <Typography variant="body2">
+                                {[id, version, year].join(' • ')}
+                              </Typography>
+                            }
+                          />
+                          <ListItemText
+                            classes={{primary: classes.listItemTertiary}}
+                            primary={
+                              <>
+                                <Typography variant="body2">
+                                  {[budget, components, type].join(' • ')}
+                                </Typography>
+                              </>
+                            }
+                          />
+                        </Box>
+                      </ListItem>
+                    </Box>
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails>
-                    <Box display="flex" flexDirection="column">
-                      <Typography color="textSecondary">
-                        Component Name - 1,000,000 USD
-                      </Typography>
-                      <Typography color="textSecondary">
-                        Component Name - 1,000,000 USD
-                      </Typography>
-                      <Typography color="textSecondary">
-                        Component Name - 1,000,000 USD
-                      </Typography>
-                      <Typography color="textSecondary">
-                        Component Name - 1,000,000 USD
-                      </Typography>
-                      <Typography color="textSecondary">
-                        Component Name - 1,000,000 USD
-                      </Typography>
-                      <Typography color="textSecondary">
-                        Component Name - 1,000,000 USD
-                      </Typography>
-                      <Typography color="textSecondary">
-                        Component Name - 1,000,000 USD
-                      </Typography>
-                      <Typography color="textSecondary">
-                        Component Name - 1,000,000 USD
-                      </Typography>
-                      <Typography color="textSecondary">
-                        Component Name - 1,000,000 USD
-                      </Typography>
-                    </Box>
+                    <Grid container spacing={3}>
+                      {componentsInfoTowerReview.map(({comp, ted}, i) => (
+                        <>
+                          <Grid key={i} item xs={12} md={3}>
+                            <ListItemText
+                              className={classes.listItemTextNoMargin}
+                              primary={
+                                <Tooltip
+                                  title={
+                                    <Typography variant="overline">
+                                      {comp}
+                                    </Typography>
+                                  }
+                                >
+                                  <Typography
+                                    noWrap
+                                    variant="subtitle2"
+                                    style={{fontWeight: 'bold'}}
+                                  >
+                                    {comp}
+                                  </Typography>
+                                </Tooltip>
+                              }
+                              secondary={
+                                <Typography
+                                  style={{
+                                    marginTop: '0',
+                                    fontWeight: '400',
+                                    color: 'rgba(0, 0, 0, 0.54)',
+                                    fontSize: '0.875rem',
+                                  }}
+                                >
+                                  {ted}
+                                </Typography>
+                              }
+                            />
+                            <Box pt={1}>
+                              <Divider />
+                            </Box>
+                          </Grid>
+                        </>
+                      ))}
+                    </Grid>
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
               </Box>

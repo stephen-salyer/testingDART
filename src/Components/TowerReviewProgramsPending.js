@@ -5,7 +5,37 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import {Link, withRouter} from 'react-router-dom';
 import 'typeface-roboto';
-import {Typography, Box, Checkbox} from '@material-ui/core';
+import {
+  Typography,
+  Box,
+  Checkbox,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
+  Grid,
+  Tooltip,
+  FormControlLabel,
+  withStyles,
+} from '@material-ui/core';
+import {ExpandMore} from '@material-ui/icons';
+import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
+import {componentsInfoTowerReview} from './TowerReviewPrograms';
+
+const ExpansionPanel = withStyles({
+  root: {
+    border: '0px solid rgba(0, 0, 0, .125)',
+    boxShadow: 'none',
+    '&:not(:last-child)': {
+      borderBottom: 0,
+    },
+    '&:before': {
+      display: 'none',
+    },
+    '&$expanded': {
+      margin: 'auto',
+    },
+  },
+  expanded: {},
+})(MuiExpansionPanel);
 
 const useStyles = makeStyles({
   root: {
@@ -13,12 +43,14 @@ const useStyles = makeStyles({
   },
   listItemTertiary: {
     marginTop: '0',
+    flexGrow: '0',
     fontWeight: '400',
     color: 'rgba(0, 0, 0, 0.54)',
     fontSize: '0.875rem',
   },
   listItemTextNoMargin: {
-    marginBottom: '0',
+    margin: '0',
+    flexGrow: '0',
   },
   linkNoDecorationAndCorrection: {
     textDecoration: 'none',
@@ -26,6 +58,9 @@ const useStyles = makeStyles({
     '&:hover': {
       textDecoration: 'none',
     },
+  },
+  expandedSummary: {
+    margin: 0,
   },
 });
 
@@ -138,6 +173,133 @@ const TowerReviewProgramsPending = () => {
 
   return (
     <>
+      <Box pt={1} pb={1}>
+        {Programs.map(
+          ({title, id, version, year, budget, type, components}, i) => (
+            <Fragment key={i}>
+              <Box
+                display="flex"
+                alignItems="center"
+                flexDirection="column"
+                flexGrow="1"
+                style={{height: '100%'}}
+              >
+                <ExpansionPanel elevation={0} square style={{width: '100%'}}>
+                  <ExpansionPanelSummary
+                    classes={{content: classes.expandedSummary}}
+                    style={{padding: '0 16px 0 0', margin: 0}}
+                    expandIcon={<ExpandMore />}
+                    aria-label="Expand"
+                    aria-controls="additional-actions1-content"
+                    id="additional-actions1-header"
+                  >
+                    <FormControlLabel
+                      aria-label="Acknowledge"
+                      onClick={(event) => event.stopPropagation()}
+                      onFocus={(event) => event.stopPropagation()}
+                      control={
+                        <Box pl={3} mr={-2}>
+                          <Checkbox />
+                        </Box>
+                      }
+                    />
+                    <Box style={{width: '100%'}}>
+                      <ListItem
+                        style={{height: '100%', padding: 16}}
+                        className={classes.linkNoDecorationAndCorrection}
+                        button
+                        component={Link}
+                        to={'/program/' + i}
+                        rel="noopener noreferrer"
+                      >
+                        <Box
+                          display="flex"
+                          flexDirection="column"
+                          alignItems="flex-start"
+                          style={{height: '100%'}}
+                        >
+                          <ListItemText
+                            className={classes.listItemTextNoMargin}
+                            primary={
+                              <Typography
+                                variant="subtitle1"
+                                style={{fontWeight: 'bold'}}
+                              >
+                                {title}
+                              </Typography>
+                            }
+                            secondary={
+                              <Typography variant="body2">
+                                {[id, version, year].join(' • ')}
+                              </Typography>
+                            }
+                          />
+                          <ListItemText
+                            classes={{primary: classes.listItemTertiary}}
+                            primary={
+                              <>
+                                <Typography variant="body2">
+                                  {[budget, components, type].join(' • ')}
+                                </Typography>
+                              </>
+                            }
+                          />
+                        </Box>
+                      </ListItem>
+                    </Box>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <Grid container spacing={3}>
+                      {componentsInfoTowerReview.map(({comp, ted}, i) => (
+                        <>
+                          <Grid key={i} item xs={12} md={3}>
+                            <ListItemText
+                              className={classes.listItemTextNoMargin}
+                              primary={
+                                <Tooltip
+                                  title={
+                                    <Typography variant="overline">
+                                      {comp}
+                                    </Typography>
+                                  }
+                                >
+                                  <Typography
+                                    noWrap
+                                    variant="subtitle2"
+                                    style={{fontWeight: 'bold'}}
+                                  >
+                                    {comp}
+                                  </Typography>
+                                </Tooltip>
+                              }
+                              secondary={
+                                <Typography
+                                  style={{
+                                    marginTop: '0',
+                                    fontWeight: '400',
+                                    color: 'rgba(0, 0, 0, 0.54)',
+                                    fontSize: '0.875rem',
+                                  }}
+                                >
+                                  {ted}
+                                </Typography>
+                              }
+                            />
+                            <Box pt={1}>
+                              <Divider />
+                            </Box>
+                          </Grid>
+                        </>
+                      ))}
+                    </Grid>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+              </Box>
+              <Divider />
+            </Fragment>
+          )
+        )}
+      </Box>
       <Box pt={1} pb={1}>
         {Programs.map(
           ({title, id, version, year, budget, type, components}, i) => (
