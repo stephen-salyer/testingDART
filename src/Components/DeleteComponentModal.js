@@ -56,14 +56,7 @@ export default function DeleteComponentModal() {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <Button
-          color="primary"
-          onClick={() => setOpen(true)}
-          className={classes.button}
-          endIcon={<DeleteIcon />}
-        >
-          Delete
-        </Button>
+        <Typography onClick={() => setOpen(true)}>Delete</Typography>
       </ThemeProvider>
       <Modal
         disableEnforceFocus

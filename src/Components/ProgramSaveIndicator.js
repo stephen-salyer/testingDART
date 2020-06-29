@@ -4,6 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import {green, grey} from '@material-ui/core/colors';
 import Button from '@material-ui/core/Button';
 import {Save, Check} from '@material-ui/icons';
+import {Typography} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     top: '50%',
     left: '50%',
     marginTop: -12,
-    marginLeft: -6,
+    marginLeft: -18,
   },
 }));
 
@@ -32,14 +33,7 @@ export default function ProgramSaveIndicator() {
   const [success, setSuccess] = React.useState(false);
   const timer = React.useRef();
 
-  React.useEffect(
-    () => () => {
-      clearTimeout(timer.current);
-    },
-    []
-  );
-
-  const handleButtonClick = () => {
+  window.onload = function () {
     if (!loading) {
       setSuccess(false);
       setLoading(true);
@@ -54,11 +48,20 @@ export default function ProgramSaveIndicator() {
     <div className={classes.root}>
       <div className={classes.wrapper}>
         <Button
-          endIcon={success ? <Check /> : <Save style={{color: grey[500]}} />}
+          startIcon={
+            success ? (
+              <Check style={{color: green[500]}} />
+            ) : (
+              <Save style={{color: grey[500]}} />
+            )
+          }
           disabled={loading}
-          onClick={handleButtonClick}
         >
-          {success ? 'Saved' : ''}
+          {success ? (
+            <Typography variant="caption">saved 4:23pm</Typography>
+          ) : (
+            ''
+          )}
         </Button>
         {loading && (
           <CircularProgress size={24} className={classes.buttonProgress} />

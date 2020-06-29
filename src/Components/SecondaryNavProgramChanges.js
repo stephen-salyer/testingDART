@@ -6,7 +6,6 @@ import {ArrowBack} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {FormControl, InputLabel, Select, MenuItem} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,30 +23,7 @@ const useStyles = makeStyles((theme) => ({
   typographyPadding: {
     padding: '8px 0 0 0',
   },
-  formControl: {
-    minWidth: 120,
-  },
-  flexPositioning: {
-    display: 'flex',
-    justifyContent: 'center',
-    paddingTop: 16,
-  },
 }));
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const menuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-    },
-  },
-  getContentAnchorEl: null,
-  anchorOrigin: {
-    vertical: 'bottom',
-    horizontal: 'left',
-  },
-};
 
 const SecondaryNavProgramChanges = () => {
   const classes = useStyles();
@@ -76,56 +52,6 @@ const SecondaryNavProgramChanges = () => {
           </Typography>
         </Grid>
         <Grid item xs={12} md={4}></Grid>
-        <Grid item xs={6}>
-          <Box className={classes.flexPositioning}>
-            <FormControl
-              variant="outlined"
-              className={classes.formControl}
-              margin="dense"
-              label="Version"
-            >
-              <InputLabel htmlFor="outlined-age-native-simple">
-                Version
-              </InputLabel>
-              <Select
-                style={{height: 37}}
-                MenuProps={menuProps}
-                defaultValue={20}
-                id="demo-simple-select-outlined"
-                label="Version"
-              >
-                <MenuItem value={10}>1.1</MenuItem>
-                <MenuItem value={20}>1.2</MenuItem>
-                <MenuItem value={30}>1.3</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-        </Grid>
-        <Grid item xs={6}>
-          <Box className={classes.flexPositioning}>
-            <FormControl
-              variant="outlined"
-              className={classes.formControl}
-              margin="dense"
-              label="Version"
-            >
-              <InputLabel htmlFor="outlined-age-native-simple">
-                Version
-              </InputLabel>
-              <Select
-                style={{height: 37}}
-                MenuProps={menuProps}
-                defaultValue={30}
-                id="demo-simple-select-outlined"
-                label="Version"
-              >
-                <MenuItem value={10}>1.1</MenuItem>
-                <MenuItem value={20}>1.2</MenuItem>
-                <MenuItem value={30}>1.3</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-        </Grid>
       </Grid>
     </Container>
   );

@@ -19,6 +19,7 @@ import {
 import {ExpandMore} from '@material-ui/icons';
 import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
 import {componentsInfoTowerReview} from './TowerReviewPrograms';
+import TowerReviewInfoPop from './TowerReviewInfoPop';
 
 const ExpansionPanel = withStyles({
   root: {
@@ -73,6 +74,7 @@ export const Programs = [
     budget: 'Budget: 5,323,000 USD',
     type: 'Type: Loyalty Incentive',
     components: 'Components: 2',
+    action: <Checkbox />,
   },
   {
     title: '2020 Asgrow 2 You - 2018 - 2020',
@@ -82,6 +84,7 @@ export const Programs = [
     budget: 'Budget: 2,189,000 USD',
     type: 'Type: Volume Incentive',
     components: 'Components: 3',
+    action: <TowerReviewInfoPop />,
   },
   {
     title: '2020 Asgrow 2 You - 2019 - 2021',
@@ -91,6 +94,7 @@ export const Programs = [
     budget: 'Budget: 5,323,000 USD',
     type: 'Type: Volume Incentive',
     components: 'Components: 4',
+    action: <Checkbox />,
   },
   {
     title: '2020 Asgrow-DEKALB-DeltaPine Subs and Cuts Program USA',
@@ -100,6 +104,7 @@ export const Programs = [
     budget: 'Budget: 4,286,000 USD',
     type: 'Type: Volume Incentive',
     components: 'Components: 1',
+    action: <Checkbox />,
   },
   {
     title: '2020 Bayer Plus Portfolio Rewards',
@@ -109,6 +114,7 @@ export const Programs = [
     budget: 'Budget: 115,752,000 USD',
     type: 'Type: Purchase Behavior Incentive',
     components: 'Components: 5',
+    action: <Checkbox />,
   },
   {
     title: '2020 Bayer Plus Portfolio Rewards v2',
@@ -118,6 +124,7 @@ export const Programs = [
     budget: 'Budget: 115,752,000 USD',
     type: 'Type: Purchase Behavior Incentive',
     components: 'Components: 1',
+    action: <Checkbox />,
   },
   {
     title: '2020 Branded Seed DDR',
@@ -127,6 +134,7 @@ export const Programs = [
     budget: 'Budget: 12,340,000 USD',
     type: 'Type: Activity Incentive',
     components: 'Components: 2',
+    action: <Checkbox />,
   },
   {
     title: '2020 Branded Seed LCR',
@@ -136,6 +144,7 @@ export const Programs = [
     budget: 'Budget: 292,659,000 AUD',
     type: 'Type: Volume Incentive',
     components: 'Components: 5',
+    action: <Checkbox />,
   },
   {
     title: '2020 Coastal Seed and Trait Crop Switch Replant',
@@ -145,6 +154,7 @@ export const Programs = [
     budget: 'Budget: 2,505,000 EUR',
     type: 'Type: Guarantee/Claim',
     components: 'Components: 6',
+    action: <Checkbox />,
   },
   {
     title: '2020 DEKALB and Asgrow Production Grower Program',
@@ -154,6 +164,7 @@ export const Programs = [
     budget: 'Budget: 1,058,000 USD',
     type: 'Type: Purchase Behavior Incentive',
     components: 'Components: 1',
+    action: <Checkbox />,
   },
 ];
 
@@ -175,7 +186,7 @@ const TowerReviewProgramsPending = () => {
     <>
       <Box pt={1} pb={1}>
         {Programs.map(
-          ({title, id, version, year, budget, type, components}, i) => (
+          ({title, id, version, year, budget, type, components, action}, i) => (
             <Fragment key={i}>
               <Box
                 display="flex"
@@ -199,7 +210,7 @@ const TowerReviewProgramsPending = () => {
                       onFocus={(event) => event.stopPropagation()}
                       control={
                         <Box pl={3} mr={-2}>
-                          <Checkbox />
+                          {action}
                         </Box>
                       }
                     />

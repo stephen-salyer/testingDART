@@ -56,13 +56,7 @@ export default function DeletePricePlanModal() {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <Button
-          color="primary"
-          onClick={() => setOpen(true)}
-          className={classes.button}
-        >
-          Delete
-        </Button>
+        <Typography onClick={() => setOpen(true)}>Delete</Typography>
       </ThemeProvider>
       <Modal
         disableEnforceFocus

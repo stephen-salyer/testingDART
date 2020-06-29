@@ -4,10 +4,10 @@ import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import {Check, ArrowBack} from '@material-ui/icons';
+import {Check, ArrowBack, MoreVert} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import {CircularProgress, IconButton} from '@material-ui/core';
+import {CircularProgress, IconButton, Menu, MenuItem} from '@material-ui/core';
 import {green} from '@material-ui/core/colors';
 import DeletePricePlanModal from './DeletePricePlanModal';
 
@@ -115,6 +115,16 @@ const SecondaryNavTowerReviewPricePlan = () => {
     }
   };
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Container
       maxWidth="lg"
@@ -164,7 +174,24 @@ const SecondaryNavTowerReviewPricePlan = () => {
                 />
               )}
             </div>
-            <DeletePricePlanModal />
+            <IconButton
+              onClick={handleClick}
+              aria-label="More"
+              component="span"
+            >
+              <MoreVert />
+            </IconButton>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>
+                <DeletePricePlanModal />
+              </MenuItem>
+            </Menu>
           </Box>
         </Grid>
       </Grid>

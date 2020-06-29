@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import {red} from '@material-ui/core/colors';
+import {Delete} from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -92,6 +93,7 @@ export default function ProgramCancelModal() {
                 <Button
                   variant="contained"
                   color="primary"
+                  endIcon={<Delete />}
                   onClick={() => {
                     setOpen(false);
                   }}
