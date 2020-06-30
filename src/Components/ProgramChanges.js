@@ -7,9 +7,7 @@ import Container from '@material-ui/core/Container';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Comments from './Comments';
-import {Box, Badge, Grid} from '@material-ui/core';
-import Scopes from './Scopes';
-import Marketing from './Marketing';
+import {Box, Grid} from '@material-ui/core';
 import Operations from './Operations';
 import Owners from './Owners';
 import Finance from './Finance';
@@ -18,6 +16,8 @@ import Components from './Components';
 import AttachedFiles from './AttachedFiles';
 import SecondaryNavProgramChanges from './SecondaryNavProgramChanges';
 import ProgramChangesOverview from './ProgramChangesOverview';
+import ProgramChangesScopes from './ProgramChangesScopes';
+import ProgramChangesMarketing from './ProgramChangesMarketing';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -86,7 +86,7 @@ const TabPanel = (props) => {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && <Box>{children}</Box>}
+      {value === index && <Box p={3}>{children}</Box>}
     </Typography>
   );
 };
@@ -114,16 +114,7 @@ const ProgramChanges = () => {
                   variant="scrollable"
                   aria-label="full width tabs example"
                 >
-                  <Tab
-                    style={{minWidth: '10%'}}
-                    label={
-                      <div>
-                        <Badge color="error" variant="dot">
-                          Overview
-                        </Badge>
-                      </div>
-                    }
-                  />
+                  <Tab style={{minWidth: '10%'}} label="Overview" />
                   <Tab style={{minWidth: '10.1%'}} label="Scopes" />
                   <Tab style={{minWidth: '11.1%'}} label="Marketing" />
                   <Tab style={{minWidth: '11.1%'}} label="Operations" />
@@ -134,16 +125,14 @@ const ProgramChanges = () => {
                   <Tab style={{minWidth: '12.2%'}} label="Attached Files" />
                 </Tabs>
                 <TabPanel value={value} index={0}>
-                  <Box p={3}>
-                    <ProgramChangesOverview />
-                  </Box>
+                  <ProgramChangesOverview />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                  <Scopes />
+                  <ProgramChangesScopes />
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                   <Box p={3}>
-                    <Marketing />
+                    <ProgramChangesMarketing />
                   </Box>
                 </TabPanel>
                 <TabPanel value={value} index={3}>

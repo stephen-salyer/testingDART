@@ -1,6 +1,5 @@
 import React from 'react';
-import 'typeface-roboto';
-import {Typography, Box, makeStyles} from '@material-ui/core';
+import {Box, Typography, makeStyles} from '@material-ui/core';
 import {Warning} from '@material-ui/icons';
 
 const useStyles = makeStyles({
@@ -10,7 +9,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ApprovalStatusNoPrograms = () => {
+export default function ProgramChangesMarketing() {
   const classes = useStyles();
 
   return (
@@ -22,12 +21,8 @@ const ApprovalStatusNoPrograms = () => {
       style={{height: '50vh'}}
     >
       <Warning className={classes.conState} />
-      <Typography variant="h6">No Programs</Typography>
-      <Typography variant="body2">
-        The filter selected shows no programs
-      </Typography>
+      <Typography variant="h6">No Changes in Marketing</Typography>
+      <Typography variant="body2">between the versions selected</Typography>
     </Box>
   );
-};
-
-export default ApprovalStatusNoPrograms;
+}

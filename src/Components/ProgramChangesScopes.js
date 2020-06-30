@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import {red, green} from '@material-ui/core/colors';
 
-const overviewChanges = [
+const scopesChanges = [
   {
     headers: [
       {
@@ -29,27 +29,21 @@ const overviewChanges = [
     ],
     items: [
       {
-        primary: 'Program Name',
+        primary: 'Scope',
         secondaryTakeDiff: (
           <>
             <Typography>
+              North America • US •{' '}
               <span
                 style={{
                   backgroundColor: red[100],
                   textDecoration: 'line-through',
                 }}
               >
-                An Extremely
+                {' '}
+                Crop Protection
               </span>{' '}
-              Long Program Name{' '}
-              <span
-                style={{
-                  backgroundColor: red[100],
-                  textDecoration: 'line-through',
-                }}
-              >
-                123123123123123
-              </span>
+              • Glyphosate • All
             </Typography>
           </>
         ),
@@ -65,64 +59,21 @@ const overviewChanges = [
         ),
       },
       {
-        primary: 'Program Name',
+        primary: 'Scope',
         secondaryTakeDiff: (
           <>
             <Typography>
+              North America • US •{' '}
               <span
                 style={{
                   backgroundColor: green[100],
                   textDecoration: 'underline',
                 }}
               >
-                A very
+                {' '}
+                APS
               </span>{' '}
-              Long Program Name
-            </Typography>
-          </>
-        ),
-        whoChanged: 'Bob Boberson - YYYY/MM/DD',
-      },
-      {
-        primary: 'Program ID',
-        secondaryTakeDiff: (
-          <>
-            <Typography>
-              Program ID{' '}
-              <span
-                style={{
-                  backgroundColor: green[100],
-                  textDecoration: 'underline',
-                }}
-              ></span>
-            </Typography>
-          </>
-        ),
-        whoChanged: 'Bob Boberson - YYYY/MM/DD',
-        divider: (
-          <Box pl={3} pr={3}>
-            <Divider
-              style={{height: '100%', width: 1}}
-              orientation="vertical"
-              flexItem
-            />
-          </Box>
-        ),
-      },
-      {
-        primary: 'Program ID',
-        secondaryTakeDiff: (
-          <>
-            <Typography>
-              Program ID{' '}
-              <span
-                style={{
-                  backgroundColor: green[100],
-                  textDecoration: 'underline',
-                }}
-              >
-                Here
-              </span>
+              • Glyphosate • All
             </Typography>
           </>
         ),
@@ -135,7 +86,7 @@ const overviewChanges = [
 export default function ProgramChangesOverview() {
   return (
     <Grid container>
-      {overviewChanges.map(({items, headers}) => (
+      {scopesChanges.map(({items, headers}) => (
         <>
           {headers.map(({header, version, divider}, i) => (
             <>
@@ -154,7 +105,7 @@ export default function ProgramChangesOverview() {
           {items.map(({primary, secondaryTakeDiff, whoChanged, divider}, i) => (
             <>
               <Grid item xs={6} key={i}>
-                <Box display="flex" style={{width: '100%'}}>
+                <Box display="flex" wstyle={{width: '100%'}}>
                   <Box
                     display="flex"
                     flexGrow="1"
@@ -168,6 +119,13 @@ export default function ProgramChangesOverview() {
                     />
                     <Divider />
                     <FormHelperText>{whoChanged}</FormHelperText>
+                    <Box pl={3} pr={3}>
+                      <Divider
+                        style={{height: '100%', width: 1}}
+                        orientation="vertical"
+                        flexItem
+                      />
+                    </Box>
                   </Box>
                   {divider}
                 </Box>

@@ -100,7 +100,7 @@ export default function OperationsPayeeAutoComplete() {
               inputProps={params.inputProps}
               {...params}
               variant="outlined"
-              label="State / Province / Ect."
+              label="Payee"
               placeholder="Search"
             />
           </>
