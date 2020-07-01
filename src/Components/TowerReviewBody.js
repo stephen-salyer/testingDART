@@ -9,6 +9,7 @@ import ProgramTotals from './ProgramTotals';
 import Pagination from '@material-ui/lab/Pagination';
 import TowerReviewSubTabs from './TowerReviewSubTabs';
 import TowerReviewPrograms from './TowerReviewPrograms';
+import TowerReviewApproveProgramsModal from './TowerReviewApproveProgramsModal';
 
 const useStyles = makeStyles({
   root: {
@@ -154,16 +155,20 @@ export default function TowerReviewBody() {
                     justifyContent="space-between"
                     alignItems="center"
                     pr={2}
+                    style={{width: '100%'}}
                   >
                     <CardHeader
+                      style={{width: '100%'}}
                       title={
                         <>
                           <Box
                             display="flex"
                             alignItems="center"
                             justifyContent="space-between"
+                            style={{width: '100%'}}
                           >
                             <Typography variant="h5">{category}</Typography>
+                            <TowerReviewApproveProgramsModal />
                           </Box>
                         </>
                       }

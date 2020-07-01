@@ -23,6 +23,11 @@ import GeographyEligibility from './GeographyEligibility/GeographyEligibility';
 import CustomerEligibility from './CustomerEligibility/CustomerEligibility';
 import ProductEligibility from './ProductEligibility/ProductEligibility';
 import {Add} from '@material-ui/icons';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,6 +74,26 @@ const MenuProps = {
 
 export default function ComponentInformationMarketing() {
   const classes = useStyles();
+
+  const [selectedDate, setSelectedDate] = React.useState(
+    new Date('2020-01-01T03:24:00')
+  );
+
+  const [selectedDate2] = React.useState(new Date('2020-02-01T03:24:00'));
+
+  const [selectedDate3] = React.useState(new Date('2020-02-01T03:24:00'));
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
+  const handleDateChange2 = (date2) => {
+    setSelectedDate(date2);
+  };
+
+  const handleDateChange3 = (date3) => {
+    setSelectedDate(date3);
+  };
 
   return (
     <div className={classes.root}>
@@ -250,28 +275,38 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
           </Grid>
+          <Grid item xs={12} md={6}>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel>Calculation Base</InputLabel>
+              <Select
+                MenuProps={MenuProps}
+                label="Calculation Base"
+                defaultValue={10}
+              >
+                <MenuItem value={10}>Gross Sell Price (List Price)</MenuItem>
+                <MenuItem value={20}>Net Invoice Price</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel>Calculation On</InputLabel>
+              <Select
+                MenuProps={MenuProps}
+                label="Calculation On"
+                defaultValue={10}
+              >
+                <MenuItem value={10}>Germ and Trait Only</MenuItem>
+                <MenuItem value={20}>Germplasm Only</MenuItem>
+                <MenuItem value={30}>Not Applicable</MenuItem>
+                <MenuItem value={40}>Seed Treatment Only</MenuItem>
+                <MenuItem value={50}>Trait Only</MenuItem>
+                <MenuItem value={60}>Whole Bag</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle1">Tier Rates</Typography>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel id="demo-simple-select-outlined-label">
-                Type
-              </InputLabel>
-              <Select MenuProps={MenuProps} label="Type" defaultValue={10}>
-                <MenuItem value={10}>Product</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel id="demo-simple-select-outlined-label">
-                Product
-              </InputLabel>
-              <Select MenuProps={MenuProps} label="Product" defaultValue={10}>
-                <MenuItem value={10}>Corn</MenuItem>
-              </Select>
-            </FormControl>
           </Grid>
           <Grid item xs={12} md={4}>
             <TextField
@@ -281,18 +316,49 @@ export default function ComponentInformationMarketing() {
               fullWidth
             />
           </Grid>
+          <Grid item xs={12} md={4}>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardDatePicker
+                disableToolbar
+                fullWidth={true}
+                inputVariant="outlined"
+                format="YYY/MM/dd"
+                label="Start Date"
+                value={selectedDate}
+                onChange={handleDateChange}
+              />
+            </MuiPickersUtilsProvider>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardDatePicker
+                disableToolbar
+                fullWidth={true}
+                inputVariant="outlined"
+                format="YYY/MM/dd"
+                label="External End Date"
+                value={selectedDate2}
+                onChange={handleDateChange2}
+              />
+            </MuiPickersUtilsProvider>
+          </Grid>
           <Grid item xs={12} md={6}>
-            <TextField
-              label="Min / Max Volume"
-              defaultValue="24 / 10,000"
-              variant="outlined"
-              fullWidth
-            />
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardDatePicker
+                disableToolbar
+                fullWidth={true}
+                inputVariant="outlined"
+                format="YYY/MM/dd"
+                label="internal End Date"
+                value={selectedDate3}
+                onChange={handleDateChange3}
+              />
+            </MuiPickersUtilsProvider>
           </Grid>
           <Grid item xs={12} md={6}>
             <TextField
-              label="Estimated Impact"
-              defaultValue="0.25%"
+              label="Estimated % Volume Impacted"
+              defaultValue=""
               variant="outlined"
               fullWidth
             />
@@ -306,26 +372,6 @@ export default function ComponentInformationMarketing() {
         <Grid container spacing={3} display="flex" wrap="nowrap">
           <Grid container item spacing={3}>
             <Grid item xs={12} md={4}>
-              <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">
-                  Type
-                </InputLabel>
-                <Select MenuProps={MenuProps} label="Type" defaultValue={10}>
-                  <MenuItem value={10}>Product</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">
-                  Product
-                </InputLabel>
-                <Select MenuProps={MenuProps} label="Product" defaultValue={10}>
-                  <MenuItem value={10}>Corn</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12} md={4}>
               <TextField
                 label="Incentive"
                 defaultValue="25"
@@ -333,18 +379,49 @@ export default function ComponentInformationMarketing() {
                 fullWidth
               />
             </Grid>
+            <Grid item xs={12} md={4}>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  disableToolbar
+                  fullWidth={true}
+                  inputVariant="outlined"
+                  format="YYY/MM/dd"
+                  label="Start Date"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                />
+              </MuiPickersUtilsProvider>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  disableToolbar
+                  fullWidth={true}
+                  inputVariant="outlined"
+                  format="YYY/MM/dd"
+                  label="External End Date"
+                  value={selectedDate2}
+                  onChange={handleDateChange2}
+                />
+              </MuiPickersUtilsProvider>
+            </Grid>
             <Grid item xs={12} md={6}>
-              <TextField
-                label="Min / Max Volume"
-                defaultValue="24 / 10,000"
-                variant="outlined"
-                fullWidth
-              />
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  disableToolbar
+                  fullWidth={true}
+                  inputVariant="outlined"
+                  format="YYY/MM/dd"
+                  label="internal End Date"
+                  value={selectedDate3}
+                  onChange={handleDateChange3}
+                />
+              </MuiPickersUtilsProvider>
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
-                label="Estimated Impact"
-                defaultValue="0.25%"
+                label="Estimated % Volume Impacted"
+                defaultValue=""
                 variant="outlined"
                 fullWidth
               />

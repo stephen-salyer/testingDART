@@ -114,11 +114,7 @@ export default function Components() {
             className={classes.tabs}
             style={{borderRight: '1px solid rgba(0, 0, 0, 0.12)'}}
           >
-            <Box
-              display="flex"
-              flexDirection="column"
-              style={{position: 'fixed', overflow: 'visible'}}
-            >
+            <Box display="flex" flexDirection="column">
               <Tabs
                 orientation="vertical"
                 variant="scrollable"
@@ -134,64 +130,6 @@ export default function Components() {
                     key={i}
                     label={
                       <List style={{width: '100%'}}>
-                        {/* {{comp}.length <= 20 ? (
-                      <Tooltip
-                        title={
-                          <Typography variant="overline">{comp}</Typography>
-                        }
-                      >
-                        <ListItemText
-                          className={classes.listItemTextNoMargin}
-                          primary={
-                            <Typography
-                              noWrap
-                              variant="subtitle1"
-                              style={{fontWeight: 'bold'}}
-                            >
-                              {comp}
-                            </Typography>
-                          }
-                          secondary={
-                            <Typography
-                              style={{
-                                marginTop: '0',
-                                fontWeight: '400',
-                                color: 'rgba(0, 0, 0, 0.54)',
-                                fontSize: '0.875rem',
-                              }}
-                            >
-                              TED: {ted}
-                            </Typography>
-                          }
-                        />
-                      </Tooltip>
-                    ) : (
-                      <ListItemText
-                        className={classes.listItemTextNoMargin}
-                        primary={
-                          <Typography
-                            noWrap
-                            variant="subtitle1"
-                            style={{fontWeight: 'bold'}}
-                          >
-                            {comp}
-                          </Typography>
-                        }
-                        secondary={
-                          <Typography
-                            style={{
-                              marginTop: '0',
-                              fontWeight: '400',
-                              color: 'rgba(0, 0, 0, 0.54)',
-                              fontSize: '0.875rem',
-                            }}
-                          >
-                            TED: {ted}
-                          </Typography>
-                        }
-                      />
-                    )} */}
-
                         <ListItemText
                           className={classes.listItemTextNoMargin}
                           primary={

@@ -87,36 +87,6 @@ export const Programs = [
     action: <TowerReviewInfoPop />,
   },
   {
-    title: '2020 Asgrow 2 You - 2019 - 2021',
-    id: 'SD2U91',
-    version: 'Version 1.1',
-    year: '09/01/2019 - 08/31/2020',
-    budget: 'Budget: 5,323,000 USD',
-    type: 'Type: Volume Incentive',
-    components: 'Components: 4',
-    action: <Checkbox />,
-  },
-  {
-    title: '2020 Asgrow-DEKALB-DeltaPine Subs and Cuts Program USA',
-    id: 'SDADSC',
-    version: 'Version 1.1',
-    year: '09/01/2019 - 08/31/2020',
-    budget: 'Budget: 4,286,000 USD',
-    type: 'Type: Volume Incentive',
-    components: 'Components: 1',
-    action: <Checkbox />,
-  },
-  {
-    title: '2020 Bayer Plus Portfolio Rewards',
-    id: 'CHRRPL',
-    version: 'Version 2.0',
-    year: '09/01/2019 - 08/31/2020',
-    budget: 'Budget: 115,752,000 USD',
-    type: 'Type: Purchase Behavior Incentive',
-    components: 'Components: 5',
-    action: <Checkbox />,
-  },
-  {
     title: '2020 Bayer Plus Portfolio Rewards v2',
     id: 'CHRRPL',
     version: 'Version 2.0',
@@ -170,17 +140,6 @@ export const Programs = [
 
 const TowerReviewProgramsPending = () => {
   const classes = useStyles();
-
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
-    checkedF: true,
-    checkedG: true,
-  });
-
-  const handleChange = (event) => {
-    setState({...state, [event.target.name]: event.target.checked});
-  };
 
   return (
     <>
@@ -305,60 +264,6 @@ const TowerReviewProgramsPending = () => {
                     </Grid>
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
-              </Box>
-              <Divider />
-            </Fragment>
-          )
-        )}
-      </Box>
-      <Box pt={1} pb={1}>
-        {Programs.map(
-          ({title, id, version, year, budget, type, components}, i) => (
-            <Fragment key={i}>
-              <Box display="flex" alignItems="center">
-                <Box pl={3}>
-                  <Checkbox
-                    edge="start"
-                    control={
-                      <Checkbox name="checkedC" onChange={handleChange} />
-                    }
-                    label="Uncontrolled"
-                  />
-                </Box>
-                <ListItem
-                  className={classes.linkNoDecorationAndCorrection}
-                  button
-                  component={Link}
-                  to={'/program/' + i}
-                  rel="noopener noreferrer"
-                >
-                  <Box display="flex" flexDirection="column">
-                    <ListItemText
-                      className={classes.listItemTextNoMargin}
-                      primary={
-                        <Typography
-                          variant="subtitle1"
-                          style={{fontWeight: 'bold'}}
-                        >
-                          {title}
-                        </Typography>
-                      }
-                      secondary={
-                        <Typography variant="body2">
-                          {[id, version, year].join(' • ')}
-                        </Typography>
-                      }
-                    />
-                    <ListItemText
-                      classes={{primary: classes.listItemTertiary}}
-                      primary={
-                        <Typography variant="body2">
-                          {[budget, components, type].join(' • ')}
-                        </Typography>
-                      }
-                    />
-                  </Box>
-                </ListItem>
               </Box>
               <Divider />
             </Fragment>
