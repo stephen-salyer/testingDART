@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     margin: theme.spacing(1),
     position: 'relative',
+    paddingTop: 2,
   },
   buttonSuccess: {
     backgroundColor: green[500],
@@ -33,7 +34,7 @@ export default function ProgramSaveIndicator() {
   const [success, setSuccess] = React.useState(false);
   const timer = React.useRef();
 
-  window.onload = function () {
+  const handleButtonClick = () => {
     if (!loading) {
       setSuccess(false);
       setLoading(true);
@@ -48,6 +49,7 @@ export default function ProgramSaveIndicator() {
     <div className={classes.root}>
       <div className={classes.wrapper}>
         <Button
+          onClick={handleButtonClick}
           startIcon={
             success ? (
               <Check style={{color: green[500]}} />
@@ -57,11 +59,7 @@ export default function ProgramSaveIndicator() {
           }
           disabled={loading}
         >
-          {success ? (
-            <Typography variant="caption">saved 4:23pm</Typography>
-          ) : (
-            ''
-          )}
+          {success ? <Typography variant="caption">saved</Typography> : ''}
         </Button>
         {loading && (
           <CircularProgress size={24} className={classes.buttonProgress} />

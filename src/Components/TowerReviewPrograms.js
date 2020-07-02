@@ -112,30 +112,37 @@ export const componentsInfoTowerReview = [
   {
     comp: 'Canola',
     ted: '$1,234,345',
+    type: 'Volume Incentive',
   },
   {
     comp: 'Corn',
     ted: '$1,432,345',
+    type: 'Trade Incentive',
   },
   {
     comp: 'Soybean',
     ted: '$6,232,348',
+    type: 'Trade Incentive',
   },
   {
     comp: '2019 Pack 72-10 MGRR & 71-10 VT3P DK Arg',
     ted: '$3,444,335',
+    type: 'Volume Incentive',
   },
   {
     comp: 'Crop Here',
     ted: '$2,222,777',
+    type: 'Trade Incentive',
   },
   {
     comp: 'Crop Here',
     ted: '$2,222,777',
+    type: 'Volume Incentive',
   },
   {
     comp: 'Crop Here',
     ted: '$2,222,777',
+    type: 'Volume Incentive',
   },
 ];
 
@@ -211,9 +218,9 @@ const ProgramListItemsAll = () => {
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails>
                     <Grid container spacing={3}>
-                      {componentsInfoTowerReview.map(({comp, ted}, i) => (
+                      {componentsInfoTowerReview.map(({comp, ted, type}, i) => (
                         <>
-                          <Grid key={i} item xs={12} md={3}>
+                          <Grid key={i} item xs={12} md={4}>
                             <ListItemText
                               className={classes.listItemTextNoMargin}
                               primary={
@@ -243,6 +250,21 @@ const ProgramListItemsAll = () => {
                                   }}
                                 >
                                   {ted}
+                                </Typography>
+                              }
+                            />
+                            <ListItemText
+                              className={classes.listItemTextNoMargin}
+                              secondary={
+                                <Typography
+                                  style={{
+                                    marginTop: '0',
+                                    fontWeight: '400',
+                                    color: 'rgba(0, 0, 0, 0.54)',
+                                    fontSize: '0.875rem',
+                                  }}
+                                >
+                                  {type}
                                 </Typography>
                               }
                             />

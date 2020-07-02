@@ -6,7 +6,14 @@ import {ArrowBack, SyncAlt} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {FormControl, InputLabel, Select, MenuItem} from '@material-ui/core';
+import {
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormControlLabel,
+  Switch,
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,7 +69,7 @@ const SecondaryNavProgramChanges = () => {
   return (
     <Container maxWidth="lg" className={classes.containerPadding}>
       <Grid container direction="row" justify="space-evenly">
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={6}>
           <Grid container>
             <Box display="flex" flexDirection="row" alignItems="center">
               <IconButton
@@ -82,13 +89,17 @@ const SecondaryNavProgramChanges = () => {
             An_Extremely Long Program Name 123123123123123 (Draft)
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <Box
             display="flex"
             justifyContent="flex-end"
             pt={1}
             style={{width: '100%'}}
           >
+            <FormControlLabel
+              control={<Switch checked color="primary" />}
+              label="Only Show Changes"
+            />
             {versions.map(({version, value, icon}) => (
               <>
                 <Box display="flex" alignItems="center">

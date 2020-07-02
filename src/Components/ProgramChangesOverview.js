@@ -6,8 +6,12 @@ import {
   ListItemText,
   Typography,
   FormHelperText,
+  ListItemSecondaryAction,
+  ListItem,
+  List,
 } from '@material-ui/core';
 import {red, green} from '@material-ui/core/colors';
+import ProgramChangesHistoryModal from './ProgramChangesHistoryModal';
 
 const overviewChanges = [
   {
@@ -53,7 +57,7 @@ const overviewChanges = [
             </Typography>
           </>
         ),
-        whoChanged: 'Bob Boberson - YYYY/MM/DD',
+        whoChanged: 'Last Changed By: Bob Boberson - YYYY/MM/DD',
         divider: (
           <Box pl={3} pr={3}>
             <Divider
@@ -81,7 +85,7 @@ const overviewChanges = [
             </Typography>
           </>
         ),
-        whoChanged: 'Bob Boberson - YYYY/MM/DD',
+        whoChanged: 'Last Changed By: Bob Boberson - YYYY/MM/DD',
       },
       {
         primary: 'Program ID',
@@ -98,7 +102,7 @@ const overviewChanges = [
             </Typography>
           </>
         ),
-        whoChanged: 'Bob Boberson - YYYY/MM/DD',
+        whoChanged: 'Last Changed By: Bob Boberson - YYYY/MM/DD',
         divider: (
           <Box pl={3} pr={3}>
             <Divider
@@ -126,7 +130,7 @@ const overviewChanges = [
             </Typography>
           </>
         ),
-        whoChanged: 'Bob Boberson - YYYY/MM/DD',
+        whoChanged: 'Last Changed By: Bob Boberson - YYYY/MM/DD',
       },
     ],
   },
@@ -158,16 +162,24 @@ export default function ProgramChangesOverview() {
                   <Box
                     display="flex"
                     flexGrow="1"
-                    pt={2}
                     flexDirection="column"
                     style={{height: '100%'}}
                   >
-                    <ListItemText
-                      primary={primary}
-                      secondary={secondaryTakeDiff}
-                    />
-                    <Divider />
-                    <FormHelperText>{whoChanged}</FormHelperText>
+                    <List>
+                      <ListItem>
+                        <ListItemText
+                          primary={primary}
+                          secondary={secondaryTakeDiff}
+                        />
+                        <ListItemSecondaryAction>
+                          <ProgramChangesHistoryModal />
+                        </ListItemSecondaryAction>
+                      </ListItem>
+                      <Divider />
+                      <FormHelperText style={{paddingLeft: 16}}>
+                        {whoChanged}
+                      </FormHelperText>
+                    </List>
                   </Box>
                   {divider}
                 </Box>
