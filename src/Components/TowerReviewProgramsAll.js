@@ -20,6 +20,7 @@ import {ExpandMore} from '@material-ui/icons';
 import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
 import {componentsInfoTowerReview} from './TowerReviewPrograms';
 import TowerReviewInfoPop from './TowerReviewInfoPop';
+import TowerReviewInfoPopApproved from './TowerReviewInfoPopApproved';
 
 const ExpansionPanel = withStyles({
   root: {
@@ -74,6 +75,7 @@ export const Programs = [
     budget: 'Budget: 5,323,000 USD',
     type: 'Type: Loyalty Incentive',
     components: 'Components: 2',
+    lifecycle: 'Pending',
     action: <Checkbox />,
   },
   {
@@ -84,6 +86,7 @@ export const Programs = [
     budget: 'Budget: 2,189,000 USD',
     type: 'Type: Volume Incentive',
     components: 'Components: 3',
+    lifecycle: 'Pending',
     action: <TowerReviewInfoPop />,
   },
   {
@@ -94,18 +97,76 @@ export const Programs = [
     budget: 'Budget: 115,752,000 USD',
     type: 'Type: Purchase Behavior Incentive',
     components: 'Components: 1',
+    lifecycle: 'Approved',
+    action: <TowerReviewInfoPopApproved />,
+  },
+  {
+    title: '2020 Branded Seed DDR',
+    id: 'SDTDDR',
+    version: 'Version 1.1',
+    year: '09/01/2019 - 08/31/2020',
+    budget: 'Budget: 12,340,000 USD',
+    type: 'Type: Activity Incentive',
+    components: 'Components: 2',
+    lifecycle: 'Pending',
+    action: <Checkbox />,
+  },
+  {
+    title: '2020 Branded Seed LCR',
+    id: 'SDBRSD',
+    version: 'Version 1.2',
+    year: '09/01/2019 - 08/31/2020',
+    budget: 'Budget: 292,659,000 AUD',
+    type: 'Type: Volume Incentive',
+    components: 'Components: 5',
+    lifecycle: 'Pending',
+    action: <Checkbox />,
+  },
+  {
+    title: '2020 Coastal Seed and Trait Crop Switch Replant',
+    id: 'SDCLMSCN2',
+    version: 'Version 1.0',
+    year: '09/01/2019 - 08/31/2020',
+    budget: 'Budget: 2,505,000 EUR',
+    type: 'Type: Guarantee/Claim',
+    components: 'Components: 6',
+    lifecycle: 'Pending',
+    action: <Checkbox />,
+  },
+  {
+    title: '2020 DEKALB and Asgrow Production Grower Program',
+    id: 'SDPROD',
+    version: 'Version 1.0',
+    year: '09/01/2019 - 08/31/2020',
+    budget: 'Budget: 1,058,000 USD',
+    type: 'Type: Purchase Behavior Incentive',
+    components: 'Components: 1',
+    lifecycle: 'Pending',
     action: <Checkbox />,
   },
 ];
 
-const TowerReviewProgramsPending = () => {
+const TowerReviewProgramsAll = () => {
   const classes = useStyles();
 
   return (
     <>
       <Box pt={1} pb={1}>
         {Programs.map(
-          ({title, id, version, year, budget, type, components, action}, i) => (
+          (
+            {
+              title,
+              id,
+              version,
+              year,
+              budget,
+              type,
+              components,
+              action,
+              lifecycle,
+            },
+            i
+          ) => (
             <Fragment key={i}>
               <Box
                 display="flex"
@@ -128,7 +189,14 @@ const TowerReviewProgramsPending = () => {
                       onClick={(event) => event.stopPropagation()}
                       onFocus={(event) => event.stopPropagation()}
                       control={
-                        <Box pl={3} mr={-2}>
+                        <Box
+                          pl={3}
+                          mr={-2}
+                          display="flex"
+                          alignItems="center"
+                          justifyContent="center"
+                          style={{minWidth: 40}}
+                        >
                           {action}
                         </Box>
                       }
@@ -169,7 +237,9 @@ const TowerReviewProgramsPending = () => {
                             primary={
                               <>
                                 <Typography variant="body2">
-                                  {[budget, components, type].join(' • ')}
+                                  {[budget, components, type, lifecycle].join(
+                                    ' • '
+                                  )}
                                 </Typography>
                               </>
                             }
@@ -234,4 +304,4 @@ const TowerReviewProgramsPending = () => {
   );
 };
 
-export default withRouter(TowerReviewProgramsPending);
+export default withRouter(TowerReviewProgramsAll);

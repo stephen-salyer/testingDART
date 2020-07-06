@@ -1,70 +1,21 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import {green, grey} from '@material-ui/core/colors';
-import Button from '@material-ui/core/Button';
-import {Save, Check} from '@material-ui/icons';
-import {Typography} from '@material-ui/core';
-
-const useStyles = makeStyles((theme) => ({
-  wrapper: {
-    margin: theme.spacing(1),
-    position: 'relative',
-    paddingTop: 2,
-  },
-  buttonSuccess: {
-    backgroundColor: green[500],
-    '&:hover': {
-      backgroundColor: green[700],
-    },
-  },
-  buttonProgress: {
-    color: green[500],
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    marginTop: -12,
-    marginLeft: -18,
-  },
-}));
+import {Box, Typography, CircularProgress} from '@material-ui/core';
 
 export default function ProgramSaveIndicator() {
-  const classes = useStyles();
-  const [loading, setLoading] = React.useState(false);
-  const [success, setSuccess] = React.useState(false);
-  const timer = React.useRef();
-
-  const handleButtonClick = () => {
-    if (!loading) {
-      setSuccess(false);
-      setLoading(true);
-      timer.current = setTimeout(() => {
-        setSuccess(true);
-        setLoading(false);
-      }, 2000);
-    }
-  };
-
   return (
-    <div className={classes.root}>
-      <div className={classes.wrapper}>
-        <Button
-          onClick={handleButtonClick}
-          startIcon={
-            success ? (
-              <Check style={{color: green[500]}} />
-            ) : (
-              <Save style={{color: grey[500]}} />
-            )
-          }
-          disabled={loading}
-        >
-          {success ? <Typography variant="caption">saved</Typography> : ''}
-        </Button>
-        {loading && (
-          <CircularProgress size={24} className={classes.buttonProgress} />
-        )}
-      </div>
-    </div>
+    <>
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        pr={1}
+        style={{opacity: 0.54}}
+      >
+        <Box pr={0.5}>
+          <CircularProgress size={16} thickness={5} />
+        </Box>
+        <Typography>saving</Typography>
+      </Box>
+    </>
   );
 }

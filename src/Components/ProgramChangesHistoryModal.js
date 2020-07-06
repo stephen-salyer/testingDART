@@ -99,7 +99,7 @@ export default function ProgramChangesHistoryModal() {
                 </Typography>
               </Grid>
               <Grid item xs={6}>
-                <List style={{paddingLeft: 16}}>
+                <Box style={{paddingLeft: 16}}>
                   <ListItemText
                     className={classes.listItemTextMargin}
                     primary="Changed From: "
@@ -127,10 +127,10 @@ export default function ProgramChangesHistoryModal() {
                       </>
                     }
                   />
-                </List>
+                </Box>
               </Grid>
               <Grid item xs={6}>
-                <List style={{paddingLeft: 16}}>
+                <Box style={{paddingLeft: 16}}>
                   <ListItemText
                     className={classes.listItemTextMargin}
                     primary="Changed To: "
@@ -150,7 +150,7 @@ export default function ProgramChangesHistoryModal() {
                       </>
                     }
                   />
-                </List>
+                </Box>
               </Grid>
               <Grid item xs={12} style={{marginTop: -16}}>
                 <Divider />

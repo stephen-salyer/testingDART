@@ -17,41 +17,14 @@ import {
   IconButton,
 } from '@material-ui/core';
 import {Email} from '@material-ui/icons';
+import ApprovalStatusProgressApproved from './ApprovalStatusProgressApproved';
+import ApprovalStatusProgressNotStarted from './ApprovalStatusProgressNotStarted';
+import ApprovalStatusProgressPending from './ApprovalStatusProgressPending';
 
 const useStyles = makeStyles({
-  root: {
-    minWidth: 275,
-  },
-  listItemCorrection: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    '&:hover': {
-      textDecoration: 'none',
-    },
-    marginTop: '16px',
-  },
-  listItemTertiary: {
-    marginTop: '0',
-    fontWeight: '400',
-    color: 'rgba(0, 0, 0, 0.54)',
-    fontSize: '0.875rem',
-  },
-  listItemTextNoMargin: {
-    marginBottom: '0',
-  },
   linkNoDecoration: {
     textDecoration: 'none',
     color: 'inherit',
-  },
-  department: {
-    lineHeight: 2.6,
-  },
-  lastname: {
-    lineHeight: 0.8,
-  },
-  firstname: {
-    lineHeight: 2.6,
   },
 });
 
@@ -80,36 +53,88 @@ const programs = [
 ];
 
 const people = [
-  {name: 'Oliver Hansen', department: 'Finance', progress: 'Done'},
-  {name: 'Van Henry', department: 'Finance', progress: 'Not Done'},
   {
-    name: 'April Tucker',
-    department: 'Legal',
-    progress: 'Done',
+    name: 'Stefan Peters',
+    department: 'Operations',
+    progress: <ApprovalStatusProgressNotStarted />,
+    email: (
+      <Button edge="end" aria-label="delete">
+        EMAIL
+      </Button>
+    ),
   },
-  {name: 'Ralph Hubbard', department: 'Marketing', progress: 'Done'},
-  {name: 'Omar Alexander', department: 'Marketing', progress: 'Approved'},
-  {name: 'Stefan Peters', department: 'Operations', progress: 'Not Done'},
-  {name: 'Mark Oberman', department: 'Operations', progress: '5 Weeks Pending'},
   {
-    name: 'Nicolas Ezequiel Fernandez Zapiola',
-    department: 'Marketing',
-    progress: 'Done',
+    name: 'Oliver Hansen',
+    department: 'Finance',
+    progress: <ApprovalStatusProgressPending />,
+    email: (
+      <Button edge="end" aria-label="delete">
+        EMAIL
+      </Button>
+    ),
+  },
+  {
+    name: 'Van Henry',
+    department: 'Finance',
+    progress: <ApprovalStatusProgressPending />,
+    email: (
+      <Button edge="end" aria-label="delete">
+        EMAIL
+      </Button>
+    ),
   },
   {
     name: 'Juan Ernesto Albino Ramirez Martinez',
     department: 'Marketing',
-    progress: 'Approved',
+    progress: <ApprovalStatusProgressPending />,
+    email: (
+      <Button edge="end" aria-label="delete">
+        EMAIL
+      </Button>
+    ),
   },
+
+  {
+    name: 'Mark Oberman',
+    department: 'Operations',
+    progress: <ApprovalStatusProgressPending />,
+    email: (
+      <Button edge="end" aria-label="delete">
+        EMAIL
+      </Button>
+    ),
+  },
+  {
+    name: 'April Tucker',
+    department: 'Legal',
+    progress: <ApprovalStatusProgressApproved />,
+  },
+  {
+    name: 'Ralph Hubbard',
+    department: 'Marketing',
+    progress: <ApprovalStatusProgressApproved />,
+  },
+  {
+    name: 'Omar Alexander',
+    department: 'Marketing',
+    progress: <ApprovalStatusProgressApproved />,
+  },
+
+  {
+    name: 'Nicolas Ezequiel Fernandez Zapiola',
+    department: 'Marketing',
+    progress: <ApprovalStatusProgressApproved />,
+  },
+
   {
     name: 'Prekki Srinivasa Sudhakar',
     department: 'Marketing',
-    progress: 'Approved',
+    progress: <ApprovalStatusProgressApproved />,
   },
   {
     name: 'Wimonphan Tangmanvitayasak',
     department: 'Marketing',
-    progress: 'Approved',
+    progress: <ApprovalStatusProgressApproved />,
   },
 ];
 
@@ -160,73 +185,33 @@ const ApprovalStatusDraft = () => {
             </ListItem>
           </Link>
           <Divider />
-          <Container maxWidth="lg">
+          <Container maxWidth="lg" style={{paddingTop: 16}}>
             <Grid container spacing={3}>
-              {people.map(({name, department, progress}, i) => (
+              {people.map(({name, department, progress, email}, i) => (
                 <>
-                  <Grid item key={i} xs={12} md={6} lg={4}>
+                  <Grid item key={i} xs={12} sm={6}>
                     <Box
                       display="flex"
                       flexGrow="1"
-                      flexDirection="column"
+                      alignItems="center"
+                      justifyContent="space-between"
                       style={{height: '100%'}}
                     >
-                      <List style={{height: '100%'}}>
-                        <ListItem style={{height: '100%'}}>
-                          <Box
-                            style={{width: '72px'}}
-                            display="flex"
-                            alignItems="center"
-                            justifyContent="center"
-                            textAlign="center"
-                            pr={2}
+                      <Box display="flex" alignItems="center" pb={1}>
+                        {progress}
+                        <Box display="flex" flexDirection="column">
+                          <Typography
+                            style={{lineHeight: '1.7'}}
+                            variant="overline"
                           >
-                            <Typography
-                              style={{lineHeight: '1.7'}}
-                              variant="overline"
-                            >
-                              {progress}
-                            </Typography>
-                          </Box>
-                          <Box
-                            display="flex"
-                            flexDirection="column"
-                            style={{height: '100%'}}
-                          >
-                            <ListItemText
-                              style={{margin: '0'}}
-                              primary={
-                                <Typography
-                                  className={classes.department}
-                                  variant="overline"
-                                >
-                                  {department}
-                                </Typography>
-                              }
-                              secondary={
-                                <Typography
-                                  id="nameDiv"
-                                  style={{
-                                    paddingBottom: '8px',
-                                    width: '185px',
-                                  }}
-                                  variant="subtitle1"
-                                >
-                                  {name}
-                                </Typography>
-                              }
-                            />
-                          </Box>
-                          <Box style={{height: '100%'}}>
-                            <ListItemSecondaryAction>
-                              <Button edge="end" aria-label="delete">
-                                EMAIL
-                                {/* If approved make email go away */}
-                              </Button>
-                            </ListItemSecondaryAction>
-                          </Box>
-                        </ListItem>
-                      </List>
+                            {department}
+                          </Typography>
+                          <Typography style={{paddingBottom: 4}}>
+                            {name}
+                          </Typography>
+                        </Box>
+                      </Box>
+                      <Box p={1}>{email}</Box>
                     </Box>
                     <Divider />
                   </Grid>

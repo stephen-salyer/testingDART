@@ -20,30 +20,6 @@ import {
 import {RemoveCircle} from '@material-ui/icons/';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-// const filters = [
-//   {
-//     title: 'Product Name',
-//   },
-//   {
-//     title: 'Brand',
-//   },
-//   {
-//     title: 'Lifecycle',
-//   },
-//   {
-//     title: 'Trait Code',
-//   },
-//   {
-//     title: 'Relative Maturity',
-//   },
-//   {
-//     title: 'Base PCM',
-//   },
-//   {
-//     title: 'Launch Year',
-//   },
-// ];
-
 const products = [
   {
     productName: 'DKB230PR03',

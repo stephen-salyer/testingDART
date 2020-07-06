@@ -7,7 +7,6 @@ import {
   Divider,
   Button,
   Box,
-  IconButton,
 } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -79,9 +78,7 @@ export default function AttachedFiles() {
                 }
               />
               <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="morevert">
-                  <ProgramMenu />
-                </IconButton>
+                <ProgramMenu />
               </ListItemSecondaryAction>
             </List>
             <Divider />

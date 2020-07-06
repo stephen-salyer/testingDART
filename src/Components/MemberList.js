@@ -461,7 +461,7 @@ const MemberList = () => {
               <Toolbar className={classes.toolBarEnd} disableGutters={true}>
                 <CardHeader
                   titleTypographyProps={{variant: 'h6'}}
-                  title="Scope Builder"
+                  title="Scopes"
                 />
                 <div className={classes.toolBarEnd}>
                   <Box

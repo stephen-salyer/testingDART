@@ -1,7 +1,3 @@
-// Notes
-
-// make toggle view from only changes and full information history
-
 import Card from '@material-ui/core/Card';
 import React from 'react';
 import {makeStyles, fade} from '@material-ui/core/styles';

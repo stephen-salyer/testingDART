@@ -8,8 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import ProgramTotals from './ProgramTotals';
 import Pagination from '@material-ui/lab/Pagination';
 import TowerReviewSubTabs from './TowerReviewSubTabs';
-import TowerReviewPrograms from './TowerReviewPrograms';
 import TowerReviewApproveProgramsModal from './TowerReviewApproveProgramsModal';
+import TowerReviewProgramsAll from './TowerReviewProgramsAll';
 
 const useStyles = makeStyles({
   root: {
@@ -38,27 +38,27 @@ const useStyles = makeStyles({
 export const approverCategories = [
   {
     category: 'All',
-    approverCount: '89',
-    information: <TowerReviewPrograms />,
+    approverCount: '10',
+    information: <TowerReviewProgramsAll />,
   },
   {
     category: 'Dealer',
-    approverCount: '12',
+    approverCount: '5',
     information: <TowerReviewSubTabs />,
   },
   {
     category: 'Grower',
-    approverCount: '23',
+    approverCount: '2',
     information: <TowerReviewSubTabs />,
   },
   {
     category: 'Distributor',
-    approverCount: '9',
+    approverCount: '2',
     information: <TowerReviewSubTabs />,
   },
   {
     category: 'Other / Multi',
-    approverCount: '32',
+    approverCount: '1',
     information: <TowerReviewSubTabs />,
   },
 ];
