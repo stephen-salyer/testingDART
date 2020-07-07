@@ -26,14 +26,6 @@ const useStyles = makeStyles({
   title: {
     fontSize: 14,
   },
-  content: {
-    padding: '0',
-    minHeight: '67vh',
-  },
-  tabPanel: {
-    height: '70vh',
-    overflow: 'scroll',
-  },
 });
 
 const kpi = [
@@ -163,7 +155,7 @@ const ApprovalStatus = () => {
         </Grid>
         <Grid item xs={12}>
           <Card>
-            <CardContent className={classes.content}>
+            <CardContent style={{padding: '0 0 24px 0'}}>
               <Box display="flex" justifyContent="space-between">
                 <CardHeader title="Programs"></CardHeader>
                 <SearchBar />

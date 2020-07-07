@@ -8,7 +8,6 @@ import {
   Box,
   IconButton,
   Grid,
-  List,
   ListItemText,
   Divider,
   Tooltip,

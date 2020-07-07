@@ -1,10 +1,7 @@
 import React, {Fragment} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import {Link} from 'react-router-dom';
 import 'typeface-roboto';
 import {
@@ -12,19 +9,58 @@ import {
   Grid,
   Box,
   Typography,
-  Container,
+  ExpansionPanelDetails,
+  ExpansionPanelSummary,
+  withStyles,
+  ListItemSecondaryAction,
   Hidden,
   IconButton,
+  List,
 } from '@material-ui/core';
-import {Email} from '@material-ui/icons';
+import {ExpandMore, Email} from '@material-ui/icons';
+import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
+import MuiListItem from '@material-ui/core/ListItem';
 import ApprovalStatusProgressApproved from './ApprovalStatusProgressApproved';
 import ApprovalStatusProgressNotStarted from './ApprovalStatusProgressNotStarted';
 import ApprovalStatusProgressPending from './ApprovalStatusProgressPending';
 
+const ExpansionPanel = withStyles({
+  root: {
+    border: '0px solid rgba(0, 0, 0, .125)',
+    boxShadow: 'none',
+    '&:not(:last-child)': {
+      borderBottom: 0,
+    },
+    '&:before': {
+      display: 'none',
+    },
+    '&$expanded': {
+      margin: 'auto',
+    },
+  },
+  expanded: {},
+})(MuiExpansionPanel);
+
+const ListItem = withStyles({
+  container: {
+    width: '100%',
+  },
+})(MuiListItem);
+
 const useStyles = makeStyles({
-  linkNoDecoration: {
+  listItemTextNoMargin: {
+    margin: '0',
+    flexGrow: '0',
+  },
+  linkNoDecorationAndCorrection: {
     textDecoration: 'none',
     color: 'inherit',
+    '&:hover': {
+      textDecoration: 'none',
+    },
+  },
+  expandedSummary: {
+    margin: 0,
   },
 });
 
@@ -32,7 +68,8 @@ const programs = [
   {
     title: '2020 APEX & RT MESA Herbicide Program USA',
     programId: 'APIRFP',
-    pulledBack: '3 Times • Program Creation to Approval Submission: 3 weeks',
+    pulledBack: '3 Times',
+    // • Program Creation to Approval Submission: 3 weeks
   },
   {
     title: '2020 Acetanilide Dicamba Incentive Offer US',
@@ -56,7 +93,12 @@ const people = [
   {
     name: 'Stefan Peters',
     department: 'Operations',
-    progress: <ApprovalStatusProgressNotStarted />,
+    progress: (
+      <>
+        <ApprovalStatusProgressNotStarted />
+        <Typography variant="caption">Not Started</Typography>
+      </>
+    ),
     email: (
       <Button edge="end" aria-label="delete">
         EMAIL
@@ -66,7 +108,12 @@ const people = [
   {
     name: 'Oliver Hansen',
     department: 'Finance',
-    progress: <ApprovalStatusProgressPending />,
+    progress: (
+      <>
+        <ApprovalStatusProgressPending />
+        <Typography variant="caption">Pending</Typography>
+      </>
+    ),
     email: (
       <Button edge="end" aria-label="delete">
         EMAIL
@@ -76,7 +123,12 @@ const people = [
   {
     name: 'Van Henry',
     department: 'Finance',
-    progress: <ApprovalStatusProgressPending />,
+    progress: (
+      <>
+        <ApprovalStatusProgressPending />
+        <Typography variant="caption">Pending</Typography>
+      </>
+    ),
     email: (
       <Button edge="end" aria-label="delete">
         EMAIL
@@ -86,7 +138,12 @@ const people = [
   {
     name: 'Juan Ernesto Albino Ramirez Martinez',
     department: 'Marketing',
-    progress: <ApprovalStatusProgressPending />,
+    progress: (
+      <>
+        <ApprovalStatusProgressPending />
+        <Typography variant="caption">Pending</Typography>
+      </>
+    ),
     email: (
       <Button edge="end" aria-label="delete">
         EMAIL
@@ -97,7 +154,12 @@ const people = [
   {
     name: 'Mark Oberman',
     department: 'Operations',
-    progress: <ApprovalStatusProgressPending />,
+    progress: (
+      <>
+        <ApprovalStatusProgressPending />
+        <Typography variant="caption">Pending</Typography>
+      </>
+    ),
     email: (
       <Button edge="end" aria-label="delete">
         EMAIL
@@ -107,34 +169,64 @@ const people = [
   {
     name: 'April Tucker',
     department: 'Legal',
-    progress: <ApprovalStatusProgressApproved />,
+    progress: (
+      <>
+        <ApprovalStatusProgressApproved />
+        <Typography variant="caption">Approved</Typography>
+      </>
+    ),
   },
   {
     name: 'Ralph Hubbard',
     department: 'Marketing',
-    progress: <ApprovalStatusProgressApproved />,
+    progress: (
+      <>
+        <ApprovalStatusProgressApproved />
+        <Typography variant="caption">Approved</Typography>
+      </>
+    ),
   },
   {
     name: 'Omar Alexander',
     department: 'Marketing',
-    progress: <ApprovalStatusProgressApproved />,
+    progress: (
+      <>
+        <ApprovalStatusProgressApproved />
+        <Typography variant="caption">Approved</Typography>
+      </>
+    ),
   },
 
   {
     name: 'Nicolas Ezequiel Fernandez Zapiola',
     department: 'Marketing',
-    progress: <ApprovalStatusProgressApproved />,
+    progress: (
+      <>
+        <ApprovalStatusProgressApproved />
+        <Typography variant="caption">Approved</Typography>
+      </>
+    ),
   },
 
   {
     name: 'Prekki Srinivasa Sudhakar',
     department: 'Marketing',
-    progress: <ApprovalStatusProgressApproved />,
+    progress: (
+      <>
+        <ApprovalStatusProgressApproved />
+        <Typography variant="caption">Approved</Typography>
+      </>
+    ),
   },
   {
     name: 'Wimonphan Tangmanvitayasak',
     department: 'Marketing',
-    progress: <ApprovalStatusProgressApproved />,
+    progress: (
+      <>
+        <ApprovalStatusProgressApproved />
+        <Typography variant="caption">Approved</Typography>
+      </>
+    ),
   },
 ];
 
@@ -142,86 +234,203 @@ const ApprovalStatusDraft = () => {
   const classes = useStyles();
 
   return (
-    <List>
-      {programs.map(({title, programId, pulledBack}, i) => (
-        <Fragment key={i}>
-          <Link
-            to={'/program/:id'}
-            rel="noopener noreferrer"
-            className={classes.linkNoDecoration}
-          >
-            <ListItem className={classes.listItemCorrection} button>
-              <ListItemText
-                className={classes.listItemTextNoMargin}
-                primary={
-                  <>
-                    <Typography>
-                      {programId} • {title}
-                    </Typography>
-                  </>
-                }
-                secondary={
-                  <>
-                    <Typography>Pulled Back: {pulledBack}</Typography>
-                  </>
-                }
-              />
-              <ListItemSecondaryAction>
-                <Link
-                  to={'/approval-status/'}
-                  rel="noopener noreferrer"
-                  className={classes.linkNoDecoration}
-                >
-                  <Hidden smDown>
-                    <Button edge="end">Email Owners</Button>
-                  </Hidden>
-                  <Hidden only={['xl', 'lg', 'md']}>
-                    <IconButton edge="end">
-                      <Email />
-                    </IconButton>
-                  </Hidden>
-                </Link>
-              </ListItemSecondaryAction>
-            </ListItem>
-          </Link>
-          <Divider />
-          <Container maxWidth="lg" style={{paddingTop: 16}}>
-            <Grid container spacing={3}>
-              {people.map(({name, department, progress, email}, i) => (
-                <>
-                  <Grid item key={i} xs={12} sm={6}>
-                    <Box
-                      display="flex"
-                      flexGrow="1"
-                      alignItems="center"
-                      justifyContent="space-between"
-                      style={{height: '100%'}}
+    <>
+      <List>
+        <Box pt={1} pb={1}>
+          {programs.map(({title, programId, pulledBack}, i) => (
+            <Fragment key={i}>
+              <Box
+                display="flex"
+                alignItems="center"
+                flexDirection="column"
+                flexGrow="1"
+                style={{height: '100%'}}
+              >
+                <ExpansionPanel elevation={0} square style={{width: '100%'}}>
+                  <ExpansionPanelSummary
+                    classes={{content: classes.expandedSummary}}
+                    style={{padding: '0 16px 0 0', margin: 0}}
+                    expandIcon={<ExpandMore />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <ListItem
+                      className={classes.linkNoDecorationAndCorrection}
+                      button
+                      component={Link}
+                      to={'/program/' + i}
+                      rel="noopener noreferrer"
                     >
-                      <Box display="flex" alignItems="center" pb={1}>
-                        {progress}
-                        <Box display="flex" flexDirection="column">
+                      <ListItemText
+                        className={classes.listItemTextNoMargin}
+                        primary={
                           <Typography
-                            style={{lineHeight: '1.7'}}
-                            variant="overline"
+                            variant="subtitle1"
+                            style={{fontWeight: 'bold'}}
                           >
-                            {department}
+                            {[programId, title].join(' • ')}
                           </Typography>
-                          <Typography style={{paddingBottom: 4}}>
-                            {name}
+                        }
+                        secondary={
+                          <Typography variant="body2">
+                            Pulled Back: {pulledBack}
                           </Typography>
-                        </Box>
-                      </Box>
-                      <Box p={1}>{email}</Box>
-                    </Box>
-                    <Divider />
-                  </Grid>
-                </>
-              ))}
-            </Grid>
-          </Container>
-        </Fragment>
-      ))}
-    </List>
+                        }
+                      />
+                      <ListItemSecondaryAction>
+                        <Hidden smDown>
+                          <Button edge="end" style={{textDecoration: 'none'}}>
+                            Email Owners
+                          </Button>
+                        </Hidden>
+                        <Hidden only={['xl', 'lg', 'md']}>
+                          <IconButton edge="end">
+                            <Email />
+                          </IconButton>
+                        </Hidden>
+                      </ListItemSecondaryAction>
+                    </ListItem>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <Grid container spacing={3}>
+                      {people.map(({name, department, progress, email}, i) => (
+                        <>
+                          <Grid item key={i} xs={12} sm={6}>
+                            <Box
+                              display="flex"
+                              flexGrow="1"
+                              alignItems="center"
+                              justifyContent="space-between"
+                              style={{height: '100%'}}
+                            >
+                              <Box display="flex" alignItems="center" pb={1}>
+                                <Box
+                                  display="flex"
+                                  flexDirection="column"
+                                  alignItems="center"
+                                  justifyContent="center"
+                                  pr={2}
+                                  style={{minWidth: 70}}
+                                >
+                                  {progress}
+                                </Box>
+                                <Box display="flex" flexDirection="column">
+                                  <Typography
+                                    style={{lineHeight: '1.7'}}
+                                    variant="overline"
+                                  >
+                                    {department}
+                                  </Typography>
+                                  <Typography style={{paddingBottom: 4}}>
+                                    {name}
+                                  </Typography>
+                                </Box>
+                              </Box>
+                              <Box p={1}>{email}</Box>
+                            </Box>
+                            <Divider />
+                          </Grid>
+                        </>
+                      ))}
+                    </Grid>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+              </Box>
+              <Divider />
+            </Fragment>
+          ))}
+        </Box>
+      </List>
+    </>
+    // <List>
+    //   {programs.map(({title, programId, pulledBack}, i) => (
+    //     <Fragment key={i}>
+    //       <Link
+    //         to={'/program/:id'}
+    //         rel="noopener noreferrer"
+    //         className={classes.linkNoDecoration}
+    //       >
+    //         <ListItem className={classes.listItemCorrection} button>
+    //           <ListItemText
+    //             className={classes.listItemTextNoMargin}
+    //             primary={
+    //               <>
+    //                 <Typography>
+    //                   {programId} • {title}
+    //                 </Typography>
+    //               </>
+    //             }
+    //             secondary={
+    //               <>
+    //                 <Typography>Pulled Back: {pulledBack}</Typography>
+    //               </>
+    //             }
+    //           />
+    //           <ListItemSecondaryAction>
+    //             <Link
+    //               to={'/approval-status/'}
+    //               rel="noopener noreferrer"
+    //               className={classes.linkNoDecoration}
+    //             >
+    //               <Hidden smDown>
+    //                 <Button edge="end">Email Owners</Button>
+    //               </Hidden>
+    //               <Hidden only={['xl', 'lg', 'md']}>
+    //                 <IconButton edge="end">
+    //                   <Email />
+    //                 </IconButton>
+    //               </Hidden>
+    //             </Link>
+    //           </ListItemSecondaryAction>
+    //         </ListItem>
+    //       </Link>
+    //       <Divider />
+    //       <Container maxWidth="lg" style={{paddingTop: 16}}>
+    //         <Grid container spacing={3}>
+    //           {people.map(({name, department, progress, email}, i) => (
+    //             <>
+    //               <Grid item key={i} xs={12} sm={6}>
+    //                 <Box
+    //                   display="flex"
+    //                   flexGrow="1"
+    //                   alignItems="center"
+    //                   justifyContent="space-between"
+    //                   style={{height: '100%'}}
+    //                 >
+    //                   <Box display="flex" alignItems="center" pb={1}>
+    //                     <Box
+    //                       display="flex"
+    //                       flexDirection="column"
+    //                       alignItems="center"
+    //                       justifyContent="center"
+    //                       pr={2}
+    //                       style={{minWidth: 70}}
+    //                     >
+    //                       {progress}
+    //                     </Box>
+    //                     <Box display="flex" flexDirection="column">
+    //                       <Typography
+    //                         style={{lineHeight: '1.7'}}
+    //                         variant="overline"
+    //                       >
+    //                         {department}
+    //                       </Typography>
+    //                       <Typography style={{paddingBottom: 4}}>
+    //                         {name}
+    //                       </Typography>
+    //                     </Box>
+    //                   </Box>
+    //                   <Box p={1}>{email}</Box>
+    //                 </Box>
+    //                 <Divider />
+    //               </Grid>
+    //             </>
+    //           ))}
+    //         </Grid>
+    //       </Container>
+    //     </Fragment>
+    //   ))}
+    // </List>
   );
 };
 

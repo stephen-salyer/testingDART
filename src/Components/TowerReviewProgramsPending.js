@@ -215,6 +215,21 @@ const TowerReviewProgramsPending = () => {
                                 </Typography>
                               }
                             />
+                            <ListItemText
+                              className={classes.listItemTextNoMargin}
+                              secondary={
+                                <Typography
+                                  style={{
+                                    marginTop: '0',
+                                    fontWeight: '400',
+                                    color: 'rgba(0, 0, 0, 0.54)',
+                                    fontSize: '0.875rem',
+                                  }}
+                                >
+                                  {type}
+                                </Typography>
+                              }
+                            />
                             <Box pt={1}>
                               <Divider />
                             </Box>
