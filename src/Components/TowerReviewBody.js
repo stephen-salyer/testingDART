@@ -121,7 +121,7 @@ export default function TowerReviewBody() {
                         primary={
                           <Typography
                             variant="subtitle1"
-                            style={{fontWeight: 'bold'}}
+                            style={{fontWeight: 500}}
                           >
                             {category}
                           </Typography>

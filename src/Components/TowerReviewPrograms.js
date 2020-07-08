@@ -191,7 +191,7 @@ const ProgramListItemsAll = () => {
                             primary={
                               <Typography
                                 variant="subtitle1"
-                                style={{fontWeight: 'bold'}}
+                                style={{fontWeight: 500}}
                               >
                                 {title}
                               </Typography>
@@ -234,7 +234,7 @@ const ProgramListItemsAll = () => {
                                   <Typography
                                     noWrap
                                     variant="subtitle2"
-                                    style={{fontWeight: 'bold'}}
+                                    style={{fontWeight: 500}}
                                   >
                                     {comp}
                                   </Typography>

@@ -132,7 +132,7 @@ export default function Approvers() {
                       primary={
                         <Typography
                           variant="subtitle1"
-                          style={{fontWeight: 'bold'}}
+                          style={{fontWeight: 500}}
                         >
                           {category}
                         </Typography>

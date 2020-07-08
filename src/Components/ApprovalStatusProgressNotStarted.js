@@ -1,53 +1,29 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import Popper from '@material-ui/core/Popper';
 import Typography from '@material-ui/core/Typography';
-import Fade from '@material-ui/core/Fade';
-import Paper from '@material-ui/core/Paper';
-import {Warning} from '@material-ui/icons';
-import {IconButton, ClickAwayListener} from '@material-ui/core';
 import {amber} from '@material-ui/core/colors';
+import {withStyles, Tooltip} from '@material-ui/core';
+import {WarningOutlined} from '@material-ui/icons';
 
-const useStyles = makeStyles((theme) => ({
-  typography: {
-    padding: theme.spacing(2),
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: 'rgba(0, 0, 0, 0.87)',
+    boxShadow: theme.shadows[1],
+    fontSize: 11,
+    padding: 16,
   },
-}));
+}))(Tooltip);
 
 export default function ApprovalStatusProgressNotStarted() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [open, setOpen] = React.useState(false);
-  const [placement, setPlacement] = React.useState();
-  const classes = useStyles();
-
-  const handleClick = (newPlacement) => (event) => {
-    setAnchorEl(event.currentTarget);
-    setOpen((prev) => placement !== newPlacement || !prev);
-    setPlacement(newPlacement);
-  };
-
-  const handleClickAway = () => {
-    setOpen(false);
-  };
-
   return (
-    <div>
-      <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
-        {({TransitionProps}) => (
-          <Fade {...TransitionProps} timeout={350}>
-            <Paper>
-              <Typography className={classes.typography}>
-                Not Started since 22/22/2222
-              </Typography>
-            </Paper>
-          </Fade>
-        )}
-      </Popper>
-      <ClickAwayListener onClickAway={handleClickAway}>
-        <IconButton onClick={handleClick('right')}>
-          <Warning fontSize="large" style={{color: amber[900]}} />
-        </IconButton>
-      </ClickAwayListener>
-    </div>
+    <LightTooltip
+      title={<Typography>Not Started since 22/22/2222</Typography>}
+      placement="right"
+    >
+      <WarningOutlined
+        fontSize="large"
+        style={{color: amber[800], paddingRight: 3, paddingLeft: 3}}
+      />
+    </LightTooltip>
   );
 }

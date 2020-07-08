@@ -31,6 +31,7 @@ const links = [
   {label: 'Member List', to: '/member-list'},
   {label: 'Approval Status', to: '/approval-status'},
   {label: 'View Reports', to: '/reports'},
+  {label: 'Bug Hunter', to: '/bug-hunter'},
 ];
 
 const Nav = () => {

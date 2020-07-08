@@ -128,7 +128,14 @@ const TowerReviewProgramsPending = () => {
                       onClick={(event) => event.stopPropagation()}
                       onFocus={(event) => event.stopPropagation()}
                       control={
-                        <Box pl={3} mr={-2}>
+                        <Box
+                          pl={3}
+                          mr={-2}
+                          display="flex"
+                          alignItems="center"
+                          justifyContent="center"
+                          style={{width: '100%'}}
+                        >
                           {action}
                         </Box>
                       }
@@ -153,7 +160,7 @@ const TowerReviewProgramsPending = () => {
                             primary={
                               <Typography
                                 variant="subtitle1"
-                                style={{fontWeight: 'bold'}}
+                                style={{fontWeight: 500}}
                               >
                                 {title}
                               </Typography>
@@ -196,7 +203,7 @@ const TowerReviewProgramsPending = () => {
                                   <Typography
                                     noWrap
                                     variant="subtitle2"
-                                    style={{fontWeight: 'bold'}}
+                                    style={{fontWeight: 500}}
                                   >
                                     {comp}
                                   </Typography>

@@ -1,56 +1,29 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import Popper from '@material-ui/core/Popper';
 import Typography from '@material-ui/core/Typography';
-import Fade from '@material-ui/core/Fade';
-import Paper from '@material-ui/core/Paper';
 import {WarningOutlined} from '@material-ui/icons';
-import {IconButton, ClickAwayListener} from '@material-ui/core';
+import {Tooltip, withStyles} from '@material-ui/core';
 import {amber} from '@material-ui/core/colors';
 
-const useStyles = makeStyles((theme) => ({
-  typography: {
-    padding: theme.spacing(2),
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: 'rgba(0, 0, 0, 0.87)',
+    boxShadow: theme.shadows[1],
+    fontSize: 11,
+    padding: 16,
   },
-}));
+}))(Tooltip);
 
 export default function TowerReviewInfoPop() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [open, setOpen] = React.useState(false);
-  const [placement, setPlacement] = React.useState();
-  const classes = useStyles();
-
-  const handleClick = (newPlacement) => (event) => {
-    setAnchorEl(event.currentTarget);
-    setOpen((prev) => placement !== newPlacement || !prev);
-    setPlacement(newPlacement);
-  };
-
-  const handleClickAway = () => {
-    setOpen(false);
-  };
-
   return (
-    <div>
-      <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
-        {({TransitionProps}) => (
-          <Fade {...TransitionProps} timeout={350}>
-            <Paper>
-              <Typography className={classes.typography}>
-                You are not an approver on this program.
-              </Typography>
-            </Paper>
-          </Fade>
-        )}
-      </Popper>
-      <ClickAwayListener onClickAway={handleClickAway}>
-        <IconButton
-          onClick={handleClick('right')}
-          style={{marginRight: -9, marginLeft: -9, color: amber[500]}}
-        >
-          <WarningOutlined fontSize="large" />
-        </IconButton>
-      </ClickAwayListener>
-    </div>
+    <LightTooltip
+      title={<Typography>You are not an approver on this program.</Typography>}
+      placement="right"
+    >
+      <WarningOutlined
+        fontSize="large"
+        style={{color: amber[500], paddingRight: 3, paddingLeft: 3}}
+      />
+    </LightTooltip>
   );
 }

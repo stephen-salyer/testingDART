@@ -61,7 +61,7 @@ const ProgramListItemsCanceled = () => {
                   primary={
                     <Typography
                       variant="subtitle1"
-                      style={{fontWeight: 'bold'}}
+                      style={{fontWeight: 500}}
                     >
                       {title}
                     </Typography>

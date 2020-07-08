@@ -143,7 +143,7 @@ export default function Components() {
                               <Typography
                                 noWrap
                                 variant="subtitle1"
-                                style={{fontWeight: 'bold'}}
+                                style={{fontWeight: 500}}
                               >
                                 {comp}
                               </Typography>

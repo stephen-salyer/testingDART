@@ -59,10 +59,7 @@ const ProgramListItemsPending = () => {
                 <ListItemText
                   className={classes.listItemTextNoMargin}
                   primary={
-                    <Typography
-                      variant="subtitle1"
-                      style={{fontWeight: 'bold'}}
-                    >
+                    <Typography variant="subtitle1" style={{fontWeight: 500}}>
                       {title}
                     </Typography>
                   }

@@ -162,7 +162,7 @@ export default function Comments() {
                     <Box pr={1}>
                       <Typography
                         variant="subtitle1"
-                        style={{fontWeight: 'bold'}}
+                        style={{fontWeight: 500}}
                       >
                         {name}
                       </Typography>

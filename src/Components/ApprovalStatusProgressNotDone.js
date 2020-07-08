@@ -1,8 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import {Tooltip, withStyles} from '@material-ui/core';
 import {amber} from '@material-ui/core/colors';
-import {Timelapse} from '@material-ui/icons';
+import {withStyles, Tooltip} from '@material-ui/core';
+import {WarningOutlined} from '@material-ui/icons';
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -14,13 +14,13 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-export default function ApprovalStatusProgressPending() {
+export default function ApprovalStatusProgressNotDone() {
   return (
     <LightTooltip
-      title={<Typography>Pending since 22/22/2222</Typography>}
+      title={<Typography>Not Done since 22/22/2222</Typography>}
       placement="right"
     >
-      <Timelapse
+      <WarningOutlined
         fontSize="large"
         style={{color: amber[500], paddingRight: 3, paddingLeft: 3}}
       />

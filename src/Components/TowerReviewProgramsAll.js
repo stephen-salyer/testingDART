@@ -221,7 +221,7 @@ const TowerReviewProgramsAll = () => {
                             primary={
                               <Typography
                                 variant="subtitle1"
-                                style={{fontWeight: 'bold'}}
+                                style={{fontWeight: 500}}
                               >
                                 {title}
                               </Typography>
@@ -266,7 +266,7 @@ const TowerReviewProgramsAll = () => {
                                   <Typography
                                     noWrap
                                     variant="subtitle2"
-                                    style={{fontWeight: 'bold'}}
+                                    style={{fontWeight: 500}}
                                   >
                                     {comp}
                                   </Typography>

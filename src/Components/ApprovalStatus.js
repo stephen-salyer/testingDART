@@ -16,6 +16,8 @@ import ApprovalStatusDraft from './ApprovalStatusDraft';
 import ApprovalStatusChart from './ApprovalStatusChart';
 import {Grid, ListItem, ListItemText, Hidden} from '@material-ui/core';
 import ApprovalStatusNoPrograms from './ApprovalStatusNoPrograms';
+import ApprovalStatusPending from './ApprovalStatusPending';
+import ApprovalStatusApproved from './ApprovalStatusApproved';
 
 const a11yProps = (index) => ({
   id: `simple-tab-${index}`,
@@ -212,7 +214,7 @@ const ApprovalStatus = () => {
               </TabPanel>
               <TabPanel value={value} index={2}>
                 <Box className={classes.tabPanel}>
-                  <ApprovalStatusDraft />
+                  <ApprovalStatusPending />
                 </Box>
                 <Pagination
                   style={{paddingTop: '16px', marginBottom: '-8px'}}
@@ -222,7 +224,7 @@ const ApprovalStatus = () => {
               </TabPanel>
               <TabPanel value={value} index={3}>
                 <Box className={classes.tabPanel}>
-                  <ApprovalStatusDraft />
+                  <ApprovalStatusApproved />
                 </Box>
                 <Pagination
                   style={{paddingTop: '16px', marginBottom: '-8px'}}

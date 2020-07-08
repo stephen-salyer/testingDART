@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     padding: '0',
     margin: '0 0 -16px 0',
-    minHeight: '67vh',
+    minHeight: '60vh',
   },
   search: {
     display: 'flex',
