@@ -18,6 +18,7 @@ import {
 import ProgramCancelModal from './ProgramCancelModal';
 import {Link} from 'react-router-dom';
 import ProgramSaveIndicator from './ProgramSaveIndicator';
+import InfoModal from './InfoModal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -166,7 +167,9 @@ const SecondaryNavProgram = () => {
                 Printable View
               </MenuItem>
               <MenuItem onClick={handleClose}>Email Pending Owners</MenuItem>
-
+              <MenuItem onClick={handleClose}>
+                <InfoModal />
+              </MenuItem>
               <MenuItem onClick={handleClose}>
                 <ProgramCancelModal />
               </MenuItem>

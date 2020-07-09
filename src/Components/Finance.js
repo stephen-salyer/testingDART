@@ -2,7 +2,6 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import InfoModal from './InfoModal';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
   FormControl,
@@ -20,6 +19,8 @@ import {
   Typography,
   Divider,
   Checkbox,
+  Tooltip,
+  withStyles,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  customWidth: {
+    maxWidth: 500,
+  },
 }));
 
 const ITEM_HEIGHT = 48;
@@ -64,6 +68,16 @@ const MenuProps = {
     horizontal: 'left',
   },
 };
+
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: 'rgba(0, 0, 0, 0.87)',
+    boxShadow: theme.shadows[2],
+    fontSize: 11,
+    padding: 16,
+  },
+}))(Tooltip);
 
 const names = [
   'Credit/Rebill (extend payment terms – no expense)',
@@ -91,32 +105,48 @@ export default function Finance() {
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-          <FormControl
-            variant="outlined"
-            fullWidth={true}
-            className={classes.formControl}
+          <LightTooltip
+            id="tt"
+            enterTouchDelay={1}
+            leaveDelay={window.innerWidth <= 800 ? 5000 : 1}
+            classes={{tooltip: classes.customWidth}}
+            placement="top"
+            title={
+              <Typography>
+                Select funding source for majority of program spend. If more
+                than one source, please document both sources and related
+                supporting analysis within the &quot;Key Accrual Methodology
+                Assumptions&quot;.
+              </Typography>
+            }
+            interactive
           >
-            <InputLabel id="demo-mutiple-checkbox-label">
-              Funding Source
-            </InputLabel>
-            <Select
-              labelId="demo-mutiple-checkbox-label"
-              id="demo-mutiple-checkbox"
-              multiple
-              value={personName}
-              onChange={handleChange}
-              label="Funding Source"
-              renderValue={(selected) => selected.join(', ')}
-              MenuProps={MenuProps}
+            <FormControl
+              variant="outlined"
+              fullWidth={true}
+              className={classes.formControl}
             >
-              {names.map((name) => (
-                <MenuItem key={name} value={name}>
-                  <Checkbox checked={personName.indexOf(name) > -1} />
-                  <ListItemText primary={name} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+              <InputLabel>Funding Source</InputLabel>
+
+              <Select
+                labelId="demo-mutiple-checkbox-label"
+                id="demo-mutiple-checkbox"
+                multiple
+                value={personName}
+                onChange={handleChange}
+                label="Funding Source"
+                renderValue={(selected) => selected.join(', ')}
+                MenuProps={MenuProps}
+              >
+                {names.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    <Checkbox checked={personName.indexOf(name) > -1} />
+                    <ListItemText primary={name} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </LightTooltip>
         </Grid>
         <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl}>
@@ -242,30 +272,47 @@ export default function Finance() {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <FormControl
-            component="fieldset"
-            className={classes.formControlRadio}
-          >
-            <FormLabel>
+          <LightTooltip
+            id="tt"
+            enterTouchDelay={1}
+            leaveDelay={window.innerWidth <= 800 ? 5000 : 1}
+            classes={{tooltip: classes.customWidth}}
+            placement="top"
+            title={
               <Typography>
-                Does program require consumption-based accrual methodology?
+                Consumption based accrual methodology is defined as: Accrual
+                based on sales to direct customer (i.e. retailer/dealer) but
+                rebate/discount based on sales to indirect customer (i.e.
+                grower).
               </Typography>
-            </FormLabel>
-            <RadioGroup aria-label="quiz" name="quiz">
-              <Box display="flex">
-                <FormControlLabel
-                  value="best"
-                  control={<Radio />}
-                  label="Required"
-                />
-                <FormControlLabel
-                  value="worst"
-                  control={<Radio />}
-                  label="Not Required"
-                />
-              </Box>
-            </RadioGroup>
-          </FormControl>
+            }
+            interactive
+          >
+            <FormControl
+              component="fieldset"
+              className={classes.formControlRadio}
+            >
+              <FormLabel>
+                <Typography>
+                  Does program require consumption-based accrual methodology?
+                </Typography>
+              </FormLabel>
+              <RadioGroup aria-label="quiz" name="quiz">
+                <Box display="flex">
+                  <FormControlLabel
+                    value="best"
+                    control={<Radio />}
+                    label="Required"
+                  />
+                  <FormControlLabel
+                    value="worst"
+                    control={<Radio />}
+                    label="Not Required"
+                  />
+                </Box>
+              </RadioGroup>
+            </FormControl>
+          </LightTooltip>
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
@@ -298,17 +345,10 @@ export default function Finance() {
           </FormControl>
         </Grid>
         <Grid item xs={12} style={{padding: '0'}}>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            <CardHeader
-              titleTypographyProps={{variant: 'h5'}}
-              title="Global Accounting and Legal Review"
-            />
-            <InfoModal />
-          </Box>
+          <CardHeader
+            titleTypographyProps={{variant: 'h5'}}
+            title="Global Accounting and Legal Review"
+          />
           <Divider />
         </Grid>
         <Grid item xs={12} md={6}>

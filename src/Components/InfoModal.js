@@ -11,8 +11,8 @@ import {
   Divider,
   InputBase,
   fade,
+  Typography,
 } from '@material-ui/core';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import CloseIcon from '@material-ui/icons/Close';
 import {Search} from '@material-ui/icons';
 
@@ -124,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal() {
+export default function InfoModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -138,13 +138,7 @@ export default function TransitionsModal() {
 
   return (
     <div>
-      <IconButton
-        aria-label="toggle password visibility"
-        edge="start"
-        onClick={handleOpen}
-      >
-        <InfoOutlinedIcon />
-      </IconButton>
+      <Typography onClick={handleOpen}>Help</Typography>
       <Modal
         className={classes.modal}
         open={open}
@@ -159,7 +153,8 @@ export default function TransitionsModal() {
           <div className={classes.paper}>
             <Box display="flex" justifyContent="space-between">
               <h2 id="transition-modal-title" style={{margin: '10px 0'}}>
-                Global and Legal Accounting Information
+                Something Something Information (holds all tooltip information
+                could sort with tabs)
               </h2>
               <IconButton
                 onClick={handleClose}
