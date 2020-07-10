@@ -13,7 +13,6 @@ import {
   FormControlLabel,
   Radio,
   Box,
-  FormHelperText,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,27 +46,10 @@ export default function Marketing() {
             label="Program Strategic Intent"
             variant="outlined"
             fullWidth
+            multiline
+            rows={4}
+            placeholder="i.e. Farmers are challenged with weed control. or Secure volume commitments by providing payments to key accounts... ect."
           />
-          <FormHelperText>
-            Some examples of Program Strategic Intent include: Farmers are
-            challenged with weed control from resistant weeds; this program
-            incentivizes them to take proactive step for residual herbicide use
-            as a tool for weed management and protecting Bayer&lsquo;s herbicide
-            tolerant trait technologies. Incentive to retailers to take delivery
-            of Roundup products in a timeframe most conducive to the needs of
-            Bayer. Provides logistic and manufacturing efficiencies to Bayer and
-            the customer. Reward growers who support both the “X” brand corn
-            seed and the Bayer Crop Protection portfolio. This rewards growers
-            who grow their purchases of each and rewards the loyalty of growers
-            that currently utilize both products. The purpose of this program is
-            to secure volume commitments by providing payments to key accounts
-            for seed and traits above and beyond the published incentive
-            programs. The payments include Key Accounts agreements and specific
-            strategic targets. The overall intent of this program is to drive
-            increased unit purchases and to get the distributor to a wholesale
-            price. The volume discount increases as the number of purchased
-            units increase.
-          </FormHelperText>
         </Grid>
         <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl}>

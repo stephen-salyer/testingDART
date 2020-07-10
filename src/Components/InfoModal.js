@@ -137,8 +137,10 @@ export default function InfoModal() {
   };
 
   return (
-    <div>
-      <Typography onClick={handleOpen}>Help</Typography>
+    <>
+      <Box style={{width: '100%'}} onClick={handleOpen}>
+        <Typography>Help</Typography>
+      </Box>
       <Modal
         className={classes.modal}
         open={open}
@@ -192,6 +194,6 @@ export default function InfoModal() {
           </div>
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }

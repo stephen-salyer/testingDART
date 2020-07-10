@@ -19,8 +19,9 @@ import {
   Typography,
   Divider,
   Checkbox,
-  Tooltip,
-  withStyles,
+  // Tooltip,
+  // withStyles,
+  FormHelperText,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -69,15 +70,15 @@ const MenuProps = {
   },
 };
 
-const LightTooltip = withStyles((theme) => ({
-  tooltip: {
-    backgroundColor: theme.palette.common.white,
-    color: 'rgba(0, 0, 0, 0.87)',
-    boxShadow: theme.shadows[2],
-    fontSize: 11,
-    padding: 16,
-  },
-}))(Tooltip);
+// const LightTooltip = withStyles((theme) => ({
+//   tooltip: {
+//     backgroundColor: theme.palette.common.white,
+//     color: 'rgba(0, 0, 0, 0.87)',
+//     boxShadow: theme.shadows[2],
+//     fontSize: 11,
+//     padding: 16,
+//   },
+// }))(Tooltip);
 
 const names = [
   'Credit/Rebill (extend payment terms – no expense)',
@@ -105,7 +106,7 @@ export default function Finance() {
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-          <LightTooltip
+          {/* <LightTooltip
             id="tt"
             enterTouchDelay={1}
             leaveDelay={window.innerWidth <= 800 ? 5000 : 1}
@@ -121,32 +122,38 @@ export default function Finance() {
             }
             interactive
           >
-            <FormControl
-              variant="outlined"
-              fullWidth={true}
-              className={classes.formControl}
-            >
-              <InputLabel>Funding Source</InputLabel>
+            <LightTooltip/> */}
+          <FormControl
+            variant="outlined"
+            fullWidth={true}
+            className={classes.formControl}
+          >
+            <InputLabel>Funding Source</InputLabel>
 
-              <Select
-                labelId="demo-mutiple-checkbox-label"
-                id="demo-mutiple-checkbox"
-                multiple
-                value={personName}
-                onChange={handleChange}
-                label="Funding Source"
-                renderValue={(selected) => selected.join(', ')}
-                MenuProps={MenuProps}
-              >
-                {names.map((name) => (
-                  <MenuItem key={name} value={name}>
-                    <Checkbox checked={personName.indexOf(name) > -1} />
-                    <ListItemText primary={name} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </LightTooltip>
+            <Select
+              labelId="demo-mutiple-checkbox-label"
+              id="demo-mutiple-checkbox"
+              multiple
+              value={personName}
+              onChange={handleChange}
+              label="Funding Source"
+              renderValue={(selected) => selected.join(', ')}
+              MenuProps={MenuProps}
+            >
+              {names.map((name) => (
+                <MenuItem key={name} value={name}>
+                  <Checkbox checked={personName.indexOf(name) > -1} />
+                  <ListItemText primary={name} />
+                </MenuItem>
+              ))}
+            </Select>
+            <FormHelperText>
+              Select funding source for majority of program spend. If more than
+              one source, please document both sources and related supporting
+              analysis within the &quot;Key Accrual Methodology
+              Assumptions&quot;.
+            </FormHelperText>
+          </FormControl>
         </Grid>
         <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl}>
@@ -272,7 +279,7 @@ export default function Finance() {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <LightTooltip
+          {/* <LightTooltip
             id="tt"
             enterTouchDelay={1}
             leaveDelay={window.innerWidth <= 800 ? 5000 : 1}
@@ -288,31 +295,38 @@ export default function Finance() {
             }
             interactive
           >
-            <FormControl
-              component="fieldset"
-              className={classes.formControlRadio}
-            >
-              <FormLabel>
-                <Typography>
-                  Does program require consumption-based accrual methodology?
-                </Typography>
-              </FormLabel>
-              <RadioGroup aria-label="quiz" name="quiz">
-                <Box display="flex">
-                  <FormControlLabel
-                    value="best"
-                    control={<Radio />}
-                    label="Required"
-                  />
-                  <FormControlLabel
-                    value="worst"
-                    control={<Radio />}
-                    label="Not Required"
-                  />
-                </Box>
-              </RadioGroup>
-            </FormControl>
-          </LightTooltip>
+
+          </LightTooltip> */}
+          <FormControl
+            component="fieldset"
+            className={classes.formControlRadio}
+          >
+            <FormLabel>
+              <Typography>
+                Does program require consumption-based accrual methodology?
+              </Typography>
+            </FormLabel>
+            <RadioGroup aria-label="quiz" name="quiz">
+              <Box display="flex">
+                <FormControlLabel
+                  value="best"
+                  control={<Radio />}
+                  label="Required"
+                />
+                <FormControlLabel
+                  value="worst"
+                  control={<Radio />}
+                  label="Not Required"
+                />
+              </Box>
+            </RadioGroup>
+            <Divider />
+            <FormHelperText>
+              Consumption based accrual methodology is defined as: Accrual based
+              on sales to direct customer (i.e. retailer/dealer) but
+              rebate/discount based on sales to indirect customer (i.e. grower).
+            </FormHelperText>
+          </FormControl>
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
@@ -398,7 +412,7 @@ export default function Finance() {
             component="fieldset"
             className={classes.formControlRadio}
           >
-            <FormLabel>Multi-Year Earning Criteria?</FormLabel>
+            <FormLabel>Multi-Year Earnings Criteria?</FormLabel>
             <RadioGroup aria-label="quiz" name="quiz">
               <Box display="flex">
                 <FormControlLabel
@@ -413,6 +427,13 @@ export default function Finance() {
                 />
               </Box>
             </RadioGroup>
+            <Divider />
+            <FormHelperText>
+              Programs with any earning criteria reference to prior year data
+              (such as earn backs, purchases, prices or ending inventory) and/or
+              Programs offering future discount rights (next season/crop year)
+              based on current season purchases.
+            </FormHelperText>
           </FormControl>
         </Grid>
         <Grid item xs={12} md={6}>
@@ -435,6 +456,15 @@ export default function Finance() {
                 />
               </Box>
             </RadioGroup>
+            <Divider />
+            <FormHelperText>
+              Significant changes include, but are not limited to, fundamental
+              changes to program criteria. The addition of any multi-year
+              criteria, requirements to purchase a combination of products, or
+              where discount eliminates profit is considered significant.
+              Changes to price, volume, or the incentive percentage of sales are
+              not considered significant.
+            </FormHelperText>
           </FormControl>
         </Grid>
         <Grid item xs={12} md={6}>
@@ -460,6 +490,11 @@ export default function Finance() {
                   label="No"
                 />
               </Box>
+              <Divider />
+              <FormHelperText>
+                Programs offering incentives to customers that are fulfilled
+                with something other than cash/check or credit note.
+              </FormHelperText>
             </RadioGroup>
           </FormControl>
         </Grid>
@@ -468,7 +503,9 @@ export default function Finance() {
             component="fieldset"
             className={classes.formControlRadio}
           >
-            <FormLabel>Intigrated Acre?</FormLabel>
+            <FormLabel>
+              <Typography>Intigrated Acre?</Typography>
+            </FormLabel>
             <RadioGroup aria-label="quiz" name="quiz">
               <Box display="flex">
                 <FormControlLabel
@@ -483,6 +520,11 @@ export default function Finance() {
                 />
               </Box>
             </RadioGroup>
+            <Divider />
+            <FormHelperText>
+              Program requires purchase of a combination of products to earn a
+              discount or rebate.
+            </FormHelperText>
           </FormControl>
         </Grid>
         <Grid item xs={12} md={6}>
@@ -505,6 +547,11 @@ export default function Finance() {
                 />
               </Box>
             </RadioGroup>
+            <Divider />
+            <FormHelperText>
+              Programs with payments/account credits in excess of the related
+              program accrual at time of payment.
+            </FormHelperText>
           </FormControl>
         </Grid>
         <Grid item xs={12} md={6}>
@@ -617,6 +664,12 @@ export default function Finance() {
                 />
               </Box>
             </RadioGroup>
+            <Divider />
+            <FormHelperText>
+              Selling below cost can result in antitrust violations and has
+              potential accounting implications; therefore requires legal and
+              accounting review. Excludes replant and/or claims/PPI programs.
+            </FormHelperText>
           </FormControl>
         </Grid>
         <Grid item xs={12} md={6}>
@@ -646,6 +699,16 @@ export default function Finance() {
                 />
               </Box>
             </RadioGroup>
+            <Divider />
+            <FormHelperText>
+              Similarly situated should be evaluated in terms of product
+              offerings, number of locations/acres, volume or other similar
+              comparative factors. For example, are two similarly situated
+              dealers who compete against each other provided different
+              opportunities or incentives under the program, or some similarly
+              situated dealers are covered by the program and others are not? If
+              so, Legal review required.
+            </FormHelperText>
           </FormControl>
         </Grid>
         <Grid item xs={12} md={6}>
