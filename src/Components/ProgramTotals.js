@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   spacingBoth: {
     padding: '0 8px',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       padding: 0,
     },
   },
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       justifyContent: 'flex-end',
     },
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       flexDirection: 'column',
       alignItems: 'start',
     },

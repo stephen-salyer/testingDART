@@ -9,51 +9,35 @@ import {
   Divider,
   Grid,
   TextField,
+  Container,
+  Typography,
 } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {CheckBoxOutlineBlank, CheckBox, RemoveCircle} from '@material-ui/icons';
 import OwnersToggle from './OwnersToggle';
 
-const autoCompletes = [
-  {
-    id: '1',
-    title: 'Add Marketing Owner',
-    names: [
-      'Justice Madden',
-      'Alberto Shepard',
-      'Monica Carroll',
-      'Billy Lester',
-      'Lisa Hackerman',
-      'Amber Yogster',
-      'Helga Mater',
-    ],
-  },
-  {
-    id: '2',
-    title: 'Add Operations Owner',
-    names: [
-      'Anahi Mayo',
-      'Mohamed Ferrell',
-      'Leia Roach',
-      'Kinsley Christian',
-      'Hank Bobsman',
-      'Ethan Mikman',
-      'Heath Maples',
-    ],
-  },
-  {
-    id: '3',
-    title: 'Add Finance Owner',
-    names: [
-      'Jaylin Mcneil',
-      'Caden Sosa',
-      'Kayden Jordan',
-      'Mohamed Hegal',
-      'John Seedsman',
-      'Ricky Todds',
-      'John Meris',
-    ],
-  },
+const people = [
+  {name: 'Jaylin Mcneil', category: 'Financial'},
+  {name: 'Caden Sosa', category: 'Financial'},
+  {name: 'Mohamed Ferrell', category: 'Operations'},
+  {name: 'Mohamed Hegal', category: 'Financial'},
+  {name: 'John Seedsman', category: 'Financial'},
+  {name: 'Ricky Todds', category: 'Marketing'},
+  {name: 'John Meris', category: 'Financial'},
+  {name: 'Anahi Mayo', category: 'Marketing'},
+  {name: 'Justice Madden', category: 'Financial'},
+  {name: 'Kayden Jordan', category: 'Financial'},
+  {name: 'Leia Roach', category: 'Marketing'},
+  {name: 'Kinsley Christian', category: 'Financial'},
+  {name: 'Hank Bobsman', category: 'Financial'},
+  {name: 'Ethan Mikman', category: 'Financial'},
+  {name: 'Heath Maples', category: 'Financial'},
+  {name: 'Alberto Shepard', category: 'Financial'},
+  {name: 'Monica Carroll', category: 'Financial'},
+  {name: 'Billy Lester', category: 'Financial'},
+  {name: 'Lisa Hackerman', category: 'Financial'},
+  {name: 'Amber Yogster', category: 'Financial'},
+  {name: 'Helga Mater', category: 'Financial'},
 ];
 
 const icon = <CheckBoxOutlineBlank fontSize="small" />;
@@ -61,16 +45,12 @@ const checkedIcon = <CheckBox fontSize="small" />;
 
 export default function CustomizedSelects() {
   const [openEl, setopenEl] = React.useState(null);
-  const [value, setValue] = React.useState({
-    [autoCompletes[0].id]: autoCompletes[0].names,
-    [autoCompletes[1].id]: autoCompletes[1].names,
-    [autoCompletes[2].id]: autoCompletes[2].names,
-  });
+  const [value, setValue] = React.useState({[people[0]]: people[0].names});
   const [pendingValue, setPendingValue] = React.useState(value);
 
-  const handleClick = (id) => () => {
+  const handleClick = () => {
     setPendingValue(value);
-    setopenEl(id);
+    setopenEl();
   };
 
   const handleClose = (event, reason) => {
@@ -82,80 +62,78 @@ export default function CustomizedSelects() {
   };
 
   return (
-    <Grid container spacing={3}>
-      {autoCompletes.map(({title, names, id}) => (
-        <Grid key={title} item xs={12} md={4}>
+    <Container maxWidth="sm" style={{padding: 0}}>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
           <React.Fragment>
             <Autocomplete
-              open={openEl === id}
-              id={id}
+              open={openEl}
               onClose={handleClose}
               multiple
               disableClearable
-              value={pendingValue[id]}
               onChange={(event, newValue) => {
-                setPendingValue((state) => ({...state, [id]: newValue}));
+                setPendingValue((state) => ({...state, newValue}));
               }}
               disableCloseOnSelect
               renderTags={() => null}
               noOptionsText="No labels"
-              renderOption={(option, {selected}) => {
-                const [first, last] = option.split(' ');
-                return (
-                  <React.Fragment>
-                    <Checkbox
-                      icon={icon}
-                      checkedIcon={checkedIcon}
-                      style={{marginRight: 8}}
-                      checked={selected}
-                    />
-                    <ListItemText primary={first} secondary={last} />
-                  </React.Fragment>
-                );
-              }}
-              options={[...names].sort((a, b) => a.localeCompare(b))}
+              renderOption={(option, {selected}) => (
+                <React.Fragment key={option.name}>
+                  <Checkbox
+                    icon={icon}
+                    checkedIcon={checkedIcon}
+                    style={{marginRight: 8}}
+                    checked={selected}
+                  />
+                  <ListItemText primary={option.name} />
+                </React.Fragment>
+              )}
+              options={people.sort((a, b) => -b.name.localeCompare(a.name))}
+              groupBy={(people) => people.category}
+              getOptionLabel={(people) => people.category}
               renderInput={(params) => (
                 <TextField
-                  onClick={handleClick(id)}
+                  onClick={handleClick}
                   ref={params.InputProps.ref}
                   inputProps={params.inputProps}
                   {...params}
                   variant="outlined"
-                  label={title}
-                  placeholder="Search"
+                  label="Add Owners"
+                  placeholder="Search Here"
                 />
               )}
             />
             <Box style={{height: '51vh', overflow: 'scroll'}}>
-              {value[id] &&
-                value[id].map((label) => {
-                  const [first, last, ...rest] = label.split(' ');
-                  return (
-                    <React.Fragment key={label.names}>
-                      <List>
-                        <Box display="flex" alignItems="center">
-                          <OwnersToggle />
-                          <ListItemText
-                            style={{paddingRight: 55}}
-                            primary={`${first} ${rest.join(' ')}`}
-                            secondary={last}
-                          />
-
-                          <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label="delete">
-                              <RemoveCircle />
-                            </IconButton>
-                          </ListItemSecondaryAction>
-                        </Box>
-                      </List>
-                      <Divider />
-                    </React.Fragment>
-                  );
-                })}
+              {people.map(({name, category}) => (
+                <React.Fragment key={name}>
+                  <List>
+                    <Box display="flex" alignItems="center">
+                      <OwnersToggle />
+                      <ListItemText
+                        style={{paddingRight: 55}}
+                        secondary={
+                          <Typography variant="body1">{name}</Typography>
+                        }
+                        primary={
+                          <Typography variant="body2" color="textSecondary">
+                            {category}
+                          </Typography>
+                        }
+                      />
+                      <ListItemSecondaryAction>
+                        <IconButton edge="end" aria-label="delete">
+                          <RemoveCircle />
+                        </IconButton>
+                      </ListItemSecondaryAction>
+                    </Box>
+                  </List>
+                  <Divider />
+                </React.Fragment>
+              ))}
             </Box>
           </React.Fragment>
         </Grid>
-      ))}
-    </Grid>
+      </Grid>
+    </Container>
   );
 }

@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     margin: theme.spacing(1),
     position: 'relative',
+    minWidth: 175,
   },
   paper: {
     padding: theme.spacing(2),

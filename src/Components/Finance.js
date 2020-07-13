@@ -19,8 +19,6 @@ import {
   Typography,
   Divider,
   Checkbox,
-  // Tooltip,
-  // withStyles,
   FormHelperText,
 } from '@material-ui/core';
 
@@ -70,16 +68,6 @@ const MenuProps = {
   },
 };
 
-// const LightTooltip = withStyles((theme) => ({
-//   tooltip: {
-//     backgroundColor: theme.palette.common.white,
-//     color: 'rgba(0, 0, 0, 0.87)',
-//     boxShadow: theme.shadows[2],
-//     fontSize: 11,
-//     padding: 16,
-//   },
-// }))(Tooltip);
-
 const names = [
   'Credit/Rebill (extend payment terms – no expense)',
   'Discretionary Programs',
@@ -106,23 +94,6 @@ export default function Finance() {
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-          {/* <LightTooltip
-            id="tt"
-            enterTouchDelay={1}
-            leaveDelay={window.innerWidth <= 800 ? 5000 : 1}
-            classes={{tooltip: classes.customWidth}}
-            placement="top"
-            title={
-              <Typography>
-                Select funding source for majority of program spend. If more
-                than one source, please document both sources and related
-                supporting analysis within the &quot;Key Accrual Methodology
-                Assumptions&quot;.
-              </Typography>
-            }
-            interactive
-          >
-            <LightTooltip/> */}
           <FormControl
             variant="outlined"
             fullWidth={true}
@@ -279,24 +250,6 @@ export default function Finance() {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          {/* <LightTooltip
-            id="tt"
-            enterTouchDelay={1}
-            leaveDelay={window.innerWidth <= 800 ? 5000 : 1}
-            classes={{tooltip: classes.customWidth}}
-            placement="top"
-            title={
-              <Typography>
-                Consumption based accrual methodology is defined as: Accrual
-                based on sales to direct customer (i.e. retailer/dealer) but
-                rebate/discount based on sales to indirect customer (i.e.
-                grower).
-              </Typography>
-            }
-            interactive
-          >
-
-          </LightTooltip> */}
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}

@@ -19,6 +19,7 @@ import ProgramCancelModal from './ProgramCancelModal';
 import {Link} from 'react-router-dom';
 import ProgramSaveIndicator from './ProgramSaveIndicator';
 import InfoModal from './InfoModal';
+import Multiuser from './Multiuser';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,77 +104,87 @@ const SecondaryNavProgram = () => {
         <Grid item xs={12} md={7}>
           <Box
             display="flex"
-            justifyContent="flex-end"
-            className={classes.flexPositioning}
+            justifyContent="space-between"
+            flexDirection="column"
+            style={{height: '100%'}}
           >
-            <ProgramSaveIndicator />
-            <FormControl
-              variant="outlined"
-              className={classes.formControl}
-              margin="dense"
-              label="Version"
+            <Box
+              display="flex"
+              justifyContent="flex-end"
+              className={classes.flexPositioning}
             >
-              <InputLabel htmlFor="outlined-age-native-simple">
-                Version
-              </InputLabel>
-              <Select
-                style={{height: 37}}
-                MenuProps={menuProps}
-                defaultValue={30}
-                id="demo-simple-select-outlined"
+              <ProgramSaveIndicator />
+              <FormControl
+                variant="outlined"
+                className={classes.formControl}
+                margin="dense"
                 label="Version"
               >
-                <MenuItem value={10}>1.1</MenuItem>
-                <MenuItem value={20}>1.2</MenuItem>
-                <MenuItem value={30}>1.3</MenuItem>
-              </Select>
-            </FormControl>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              endIcon={<Icon>send</Icon>}
-            >
-              Route For Approval
-            </Button>
-            <IconButton
-              onClick={handleClick}
-              aria-label="More"
-              component="span"
-            >
-              <MoreVert />
-            </IconButton>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose}>Copy Program</MenuItem>
-              <MenuItem
-                onClick={handleClose}
-                component={Link}
-                to={'/program-changes'}
+                <InputLabel htmlFor="outlined-age-native-simple">
+                  Version
+                </InputLabel>
+                <Select
+                  style={{height: 37}}
+                  MenuProps={menuProps}
+                  defaultValue={30}
+                  id="demo-simple-select-outlined"
+                  label="Version"
+                >
+                  <MenuItem value={10}>1.1</MenuItem>
+                  <MenuItem value={20}>1.2</MenuItem>
+                  <MenuItem value={30}>1.3</MenuItem>
+                </Select>
+              </FormControl>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                endIcon={<Icon>send</Icon>}
               >
-                View Program Changes
-              </MenuItem>
-              <MenuItem
-                onClick={handleClose}
-                component={Link}
-                rel="noopener noreferrer"
-                to={'/program-printable'}
+                Route For Approval
+              </Button>
+              <IconButton
+                onClick={handleClick}
+                aria-label="More"
+                component="span"
               >
-                Printable View
-              </MenuItem>
-              <MenuItem onClick={handleClose}>Email Pending Owners</MenuItem>
-              <MenuItem onClick={handleClose}>
-                <InfoModal />
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <ProgramCancelModal />
-              </MenuItem>
-            </Menu>
+                <MoreVert />
+              </IconButton>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Copy Program</MenuItem>
+                <MenuItem
+                  onClick={handleClose}
+                  component={Link}
+                  to={'/program-changes'}
+                >
+                  View Program Changes
+                </MenuItem>
+                <MenuItem
+                  onClick={handleClose}
+                  component={Link}
+                  rel="noopener noreferrer"
+                  to={'/program-printable'}
+                >
+                  Printable View
+                </MenuItem>
+                <MenuItem onClick={handleClose}>Email Pending Owners</MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <InfoModal />
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <ProgramCancelModal />
+                </MenuItem>
+              </Menu>
+            </Box>
+            <Box display="flex" justifyContent="flex-end">
+              <Multiuser />
+            </Box>
           </Box>
         </Grid>
       </Grid>
