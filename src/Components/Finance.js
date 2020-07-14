@@ -118,12 +118,6 @@ export default function Finance() {
                 </MenuItem>
               ))}
             </Select>
-            <FormHelperText>
-              Select funding source for majority of program spend. If more than
-              one source, please document both sources and related supporting
-              analysis within the &quot;Key Accrual Methodology
-              Assumptions&quot;.
-            </FormHelperText>
           </FormControl>
         </Grid>
         <Grid item xs={12} md={6}>

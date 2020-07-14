@@ -45,9 +45,6 @@ const useStyles = makeStyles({
   listItemTertiary: {
     marginTop: '0',
     flexGrow: '0',
-    fontWeight: '400',
-    color: 'rgba(0, 0, 0, 0.54)',
-    fontSize: '0.875rem',
   },
   listItemTextNoMargin: {
     margin: '0',
@@ -175,7 +172,10 @@ const TowerReviewProgramsPending = () => {
                             classes={{primary: classes.listItemTertiary}}
                             primary={
                               <>
-                                <Typography variant="body2">
+                                <Typography
+                                  variant="body2"
+                                  color="textSecondary"
+                                >
                                   {[budget, components, type].join(' • ')}
                                 </Typography>
                               </>
@@ -211,11 +211,9 @@ const TowerReviewProgramsPending = () => {
                               }
                               secondary={
                                 <Typography
+                                  variant="body2"
                                   style={{
                                     marginTop: '0',
-                                    fontWeight: '400',
-                                    color: 'rgba(0, 0, 0, 0.54)',
-                                    fontSize: '0.875rem',
                                   }}
                                 >
                                   {ted}
@@ -226,11 +224,10 @@ const TowerReviewProgramsPending = () => {
                               className={classes.listItemTextNoMargin}
                               secondary={
                                 <Typography
+                                  color="textSecondary"
+                                  variant="body2"
                                   style={{
                                     marginTop: '0',
-                                    fontWeight: '400',
-                                    color: 'rgba(0, 0, 0, 0.54)',
-                                    fontSize: '0.875rem',
                                   }}
                                 >
                                   {type}

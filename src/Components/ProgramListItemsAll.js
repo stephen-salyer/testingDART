@@ -184,7 +184,7 @@ const ProgramListItemsAll = () => {
                 <ListItemText
                   classes={{primary: classes.listItemTertiary}}
                   primary={
-                    <Typography variant="body2">
+                    <Typography variant="body2" color="textSecondary">
                       {[ted, type, payee, communicationDate].join(' • ')}
                     </Typography>
                   }

@@ -19,7 +19,6 @@ import Typography from '@material-ui/core/Typography';
 import ComponentInformation from './ComponentInformation';
 import {Add} from '@material-ui/icons';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import EditIcon from '@material-ui/icons/Edit';
 import DeleteComponentModal from './DeleteComponentModal';
 
 const useStyles = makeStyles((theme) => ({
@@ -188,9 +187,6 @@ export default function Components() {
                             <Typography variant="h5">
                               Component - {comp}
                             </Typography>
-                            <IconButton component="span">
-                              <EditIcon />
-                            </IconButton>
                           </Box>
                         </>
                       }
