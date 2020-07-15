@@ -11,6 +11,7 @@ import {
   ListItemText,
   Divider,
   Tooltip,
+  Container,
 } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import {Timeline} from '@material-ui/icons';
@@ -29,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     outline: 0,
-    width: '50vw',
   },
   button: {
     maxWidth: '98px',
@@ -79,82 +79,84 @@ export default function ProgramChangesHistoryModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <Box display="flex" justifyContent="space-between">
-              <Typography
-                variant="h5"
-                id="transition-modal-title"
-                style={{margin: '10px 0'}}
-              >
-                History of Changes 1.1 - Program Name
-              </Typography>
-              <IconButton onClick={() => setOpen(false)} color="inherit">
-                <CloseIcon />
-              </IconButton>
-            </Box>
-            <Grid container spacing={3}>
-              <Grid item xs={12} style={{marginBottom: -32}}>
-                <Typography variant="overline">
-                  BOB BOBERSON • 2/13/2020, 1:31:46 PM
+            <Container maxWidth="md">
+              <Box display="flex" justifyContent="space-between">
+                <Typography
+                  variant="h5"
+                  id="transition-modal-title"
+                  style={{margin: '10px 0'}}
+                >
+                  History of Changes 1.1 - Program Name
                 </Typography>
+                <IconButton onClick={() => setOpen(false)} color="inherit">
+                  <CloseIcon />
+                </IconButton>
+              </Box>
+              <Grid container spacing={3}>
+                <Grid item xs={12} style={{marginBottom: -32}}>
+                  <Typography variant="overline">
+                    BOB BOBERSON • 2/13/2020, 1:31:46 PM
+                  </Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Box style={{paddingLeft: 16}}>
+                    <ListItemText
+                      className={classes.listItemTextMargin}
+                      primary="Changed From: "
+                      secondary={
+                        <>
+                          <Typography>
+                            <span
+                              style={{
+                                backgroundColor: red[100],
+                                textDecoration: 'line-through',
+                              }}
+                            >
+                              An Extremely
+                            </span>{' '}
+                            Long Program Name{' '}
+                            <span
+                              style={{
+                                backgroundColor: red[100],
+                                textDecoration: 'line-through',
+                              }}
+                            >
+                              123123123123123
+                            </span>
+                          </Typography>
+                        </>
+                      }
+                    />
+                  </Box>
+                </Grid>
+                <Grid item xs={6}>
+                  <Box style={{paddingLeft: 16}}>
+                    <ListItemText
+                      className={classes.listItemTextMargin}
+                      primary="Changed To: "
+                      secondary={
+                        <>
+                          <Typography>
+                            <span
+                              style={{
+                                backgroundColor: green[100],
+                                textDecoration: 'underline',
+                              }}
+                            >
+                              A very
+                            </span>{' '}
+                            Long Program Name
+                          </Typography>
+                        </>
+                      }
+                    />
+                  </Box>
+                </Grid>
+                <Grid item xs={12} style={{marginTop: -16}}>
+                  <Divider />
+                </Grid>
               </Grid>
-              <Grid item xs={6}>
-                <Box style={{paddingLeft: 16}}>
-                  <ListItemText
-                    className={classes.listItemTextMargin}
-                    primary="Changed From: "
-                    secondary={
-                      <>
-                        <Typography>
-                          <span
-                            style={{
-                              backgroundColor: red[100],
-                              textDecoration: 'line-through',
-                            }}
-                          >
-                            An Extremely
-                          </span>{' '}
-                          Long Program Name{' '}
-                          <span
-                            style={{
-                              backgroundColor: red[100],
-                              textDecoration: 'line-through',
-                            }}
-                          >
-                            123123123123123
-                          </span>
-                        </Typography>
-                      </>
-                    }
-                  />
-                </Box>
-              </Grid>
-              <Grid item xs={6}>
-                <Box style={{paddingLeft: 16}}>
-                  <ListItemText
-                    className={classes.listItemTextMargin}
-                    primary="Changed To: "
-                    secondary={
-                      <>
-                        <Typography>
-                          <span
-                            style={{
-                              backgroundColor: green[100],
-                              textDecoration: 'underline',
-                            }}
-                          >
-                            A very
-                          </span>{' '}
-                          Long Program Name
-                        </Typography>
-                      </>
-                    }
-                  />
-                </Box>
-              </Grid>
-              <Grid item xs={12} style={{marginTop: -16}}>
-                <Divider />
-              </Grid>
-            </Grid>
+            </Container>
           </div>
         </Fade>
       </Modal>

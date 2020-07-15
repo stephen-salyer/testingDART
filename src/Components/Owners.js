@@ -62,7 +62,7 @@ export default function CustomizedSelects() {
   };
 
   return (
-    <Container maxWidth="sm" style={{padding: 0}}>
+    <Container maxWidth="sm">
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <React.Fragment>

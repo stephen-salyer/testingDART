@@ -7,6 +7,7 @@ import {
   Divider,
   Button,
   Box,
+  Container,
 } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -41,50 +42,52 @@ export default function AttachedFiles() {
 
   return (
     <>
-      <Grid container>
-        <Grid item xs={12}>
-          <Box p={3} display="flex" justifyContent="flex-end">
-            <Button color="primary" variant="outlined" endIcon={<Publish />}>
-              Upload Attachment
-            </Button>
-          </Box>
-        </Grid>
-        <Grid item xs={12}>
-          <Divider />
-        </Grid>
-        {[1, 2, 3, 4].map((n) => (
-          <Grid item sm={12} key={n}>
-            <List style={{paddingLeft: 16}}>
-              <ListItemText
-                className={classes.listItemTextMargin}
-                primary={
-                  <Typography variant="overline" style={{lineHeight: '0px'}}>
-                    Person Name Here • Date Here
-                  </Typography>
-                }
-                secondary={
-                  <Typography variant="subtitle1">
-                    Attachment Name 123-456-789 ABC-DEF-GHI
-                  </Typography>
-                }
-              />
-              <ListItemText
-                style={{paddingRight: 50}}
-                primary={
-                  <Typography className={classes.listItemTertiary}>
-                    Additional information is what would go here. This described
-                    the attachment and its purpose
-                  </Typography>
-                }
-              />
-              <ListItemSecondaryAction>
-                <ProgramMenu />
-              </ListItemSecondaryAction>
-            </List>
+      <Container maxWidth="sm">
+        <Grid container>
+          <Grid item xs={12}>
+            <Box p={3} display="flex" justifyContent="flex-end">
+              <Button color="primary" variant="outlined" endIcon={<Publish />}>
+                Upload Attachment
+              </Button>
+            </Box>
+          </Grid>
+          <Grid item xs={12}>
             <Divider />
           </Grid>
-        ))}
-      </Grid>
+          {[1, 2, 3, 4].map((n) => (
+            <Grid item sm={12} key={n}>
+              <List style={{paddingLeft: 16}}>
+                <ListItemText
+                  className={classes.listItemTextMargin}
+                  primary={
+                    <Typography variant="overline" style={{lineHeight: '0px'}}>
+                      Person Name Here • Date Here
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography variant="subtitle1">
+                      Attachment Name 123-456-789 ABC-DEF-GHI
+                    </Typography>
+                  }
+                />
+                <ListItemText
+                  style={{paddingRight: 50}}
+                  primary={
+                    <Typography className={classes.listItemTertiary}>
+                      Additional information is what would go here. This
+                      described the attachment and its purpose
+                    </Typography>
+                  }
+                />
+                <ListItemSecondaryAction>
+                  <ProgramMenu />
+                </ListItemSecondaryAction>
+              </List>
+              <Divider />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </>
   );
 }

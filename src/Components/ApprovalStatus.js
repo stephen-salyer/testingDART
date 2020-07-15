@@ -206,11 +206,6 @@ const ApprovalStatus = () => {
                 <Box className={classes.tabPanel}>
                   <ApprovalStatusNoPrograms />
                 </Box>
-                <Pagination
-                  style={{paddingTop: '16px', marginBottom: '-8px'}}
-                  count={1}
-                  color="secondary"
-                />
               </TabPanel>
               <TabPanel value={value} index={2}>
                 <Box className={classes.tabPanel}>
