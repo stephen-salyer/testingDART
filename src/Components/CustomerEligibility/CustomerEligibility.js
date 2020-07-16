@@ -63,6 +63,7 @@ export default function CustomerEligibility() {
           titleTypographyProps={{variant: 'h6'}}
           title="Customer Eligibility"
         />
+        <Divider />
       </Grid>
       <Grid item md={12} lg={4}>
         <FormControl fullWidth variant="outlined">

@@ -111,6 +111,7 @@ const SecondaryNavProgram = () => {
             <Box
               display="flex"
               justifyContent="flex-end"
+              flexWrap="wrap"
               className={classes.flexPositioning}
             >
               <ProgramSaveIndicator />

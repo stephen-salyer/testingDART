@@ -93,6 +93,7 @@ const SecondaryNavProgramChanges = () => {
           <Box
             display="flex"
             justifyContent="flex-end"
+            flexWrap="wrap"
             pt={1}
             style={{width: '100%'}}
           >
@@ -100,35 +101,37 @@ const SecondaryNavProgramChanges = () => {
               control={<Switch checked color="primary" />}
               label="Only Show Changes"
             />
-            {versions.map(({version, value, icon}) => (
-              <>
-                <Box display="flex" alignItems="center">
-                  <FormControl
-                    key={version}
-                    variant="outlined"
-                    className={classes.formControl}
-                    margin="dense"
-                    label={version}
-                  >
-                    <InputLabel htmlFor="outlined-age-native-simple">
-                      {version}
-                    </InputLabel>
-                    <Select
-                      style={{height: 37}}
-                      MenuProps={menuProps}
-                      defaultValue={value}
-                      id="demo-simple-select-outlined"
+            <Box display="flex">
+              {versions.map(({version, value, icon}) => (
+                <>
+                  <Box display="flex" alignItems="center">
+                    <FormControl
+                      key={version}
+                      variant="outlined"
+                      className={classes.formControl}
+                      margin="dense"
                       label={version}
                     >
-                      <MenuItem value={10}>1.1</MenuItem>
-                      <MenuItem value={20}>1.2</MenuItem>
-                      <MenuItem value={30}>1.3</MenuItem>
-                    </Select>
-                  </FormControl>
-                  <Box p={1}>{icon}</Box>
-                </Box>
-              </>
-            ))}
+                      <InputLabel htmlFor="outlined-age-native-simple">
+                        {version}
+                      </InputLabel>
+                      <Select
+                        style={{height: 37}}
+                        MenuProps={menuProps}
+                        defaultValue={value}
+                        id="demo-simple-select-outlined"
+                        label={version}
+                      >
+                        <MenuItem value={10}>1.1</MenuItem>
+                        <MenuItem value={20}>1.2</MenuItem>
+                        <MenuItem value={30}>1.3</MenuItem>
+                      </Select>
+                    </FormControl>
+                    <Box p={1}>{icon}</Box>
+                  </Box>
+                </>
+              ))}
+            </Box>
           </Box>
         </Grid>
       </Grid>

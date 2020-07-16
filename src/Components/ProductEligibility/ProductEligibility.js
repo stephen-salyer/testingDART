@@ -11,6 +11,7 @@ import {
   Box,
   Typography,
   FormControlLabel,
+  Divider,
 } from '@material-ui/core';
 import ProductEligibilityProduct from './ProductEligibilityProduct';
 import ProductEligibilityBrands from './ProductEligibilityBrands';
@@ -52,6 +53,7 @@ export default function ProductEligibility() {
           titleTypographyProps={{variant: 'h6'}}
           title="Product Eligibility"
         />
+        <Divider />
       </Grid>
       <Grid item sm={12} md={6}>
         <FormControl fullWidth variant="outlined">

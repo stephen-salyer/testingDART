@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 
-export default function GeographyEligibilityState() {
+export default function GeographyEligibilitySalesRegion() {
   return (
     <>
       <Box style={{height: '255px', overflow: 'scroll'}}>
@@ -46,11 +46,8 @@ export default function GeographyEligibilityState() {
           30,
         ].map((n) => (
           <>
-            <List key={n}>
-              <ListItemText
-                primary="County Name Here"
-                secondary="Country Name Here • State Name Here"
-              />
+            <List key={n} style={{padding: 20}}>
+              <ListItemText primary="option" />
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
                   <RemoveCircleIcon />

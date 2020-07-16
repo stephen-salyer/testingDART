@@ -2,7 +2,6 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import {
   Divider,
-  Box,
   ListItemText,
   Typography,
   FormHelperText,
@@ -113,23 +112,21 @@ export default function ProgramChangesOverview() {
             </Typography>
             {items.map(({primary, secondaryTakeDiff, whoChanged}) => (
               <>
-                <Box display="flex" flexGrow="1" flexDirection="column">
-                  <List>
-                    <ListItem>
-                      <ListItemText
-                        primary={primary}
-                        secondary={secondaryTakeDiff}
-                      />
-                      <ListItemSecondaryAction>
-                        <ProgramChangesHistoryModal />
-                      </ListItemSecondaryAction>
-                    </ListItem>
-                    <Divider />
-                    <FormHelperText style={{paddingLeft: 16}}>
-                      {whoChanged}
-                    </FormHelperText>
-                  </List>
-                </Box>
+                <List>
+                  <ListItem display="flex">
+                    <ListItemText
+                      primary={primary}
+                      secondary={secondaryTakeDiff}
+                    />
+                    <ListItemSecondaryAction>
+                      <ProgramChangesHistoryModal />
+                    </ListItemSecondaryAction>
+                  </ListItem>
+                  <Divider />
+                  <FormHelperText style={{paddingLeft: 16}}>
+                    {whoChanged}
+                  </FormHelperText>
+                </List>
               </>
             ))}
           </Grid>

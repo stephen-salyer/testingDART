@@ -12,10 +12,14 @@ import {
   Box,
   Typography,
   FormControlLabel,
+  Divider,
+  TextField,
 } from '@material-ui/core';
 import GeographyEligibilityCountry from './GeographyEligibilityCountry';
 import GeographyEligibilityState from './GeographyEligibilityState';
 import GeographyEligibilityCounty from './GeographyEligibilityCounty';
+import GeographyEligibilitySalesRegion from './GeographyEligibilitySalesRegion';
+import GeographyEligibilitySalesTeams from './GeographyEligibilitySalesTeams';
 
 export default function GeographyEligibility() {
   const [state, setState] = React.useState({
@@ -44,6 +48,14 @@ export default function GeographyEligibility() {
       horizontal: 'left',
     },
   };
+  const [products, setProducts] = React.useState(10);
+  const some = products === 20;
+  const sales = products === 30;
+  const someOther = products === 40;
+
+  const handleChange1 = (event) => {
+    setProducts(event.target.value);
+  };
 
   return (
     <>
@@ -52,14 +64,15 @@ export default function GeographyEligibility() {
           titleTypographyProps={{variant: 'h6'}}
           title="Geography Eligibility"
         />
+        <Divider />
       </Grid>
-      <Grid item sm={12} md={6}>
+      <Grid item sm={12} md={some || someOther ? 6 : 12}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Which Geographies</InputLabel>
           <Select
             MenuProps={MenuProps}
             label="Which Geographies"
-            defaultValue={20}
+            onChange={handleChange1}
           >
             <MenuItem value={10}>All Geographies</MenuItem>
             <MenuItem value={20}>Some Geographies</MenuItem>
@@ -68,61 +81,108 @@ export default function GeographyEligibility() {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item sm={12} md={6}>
-        <FormControl multiple fullWidth variant="outlined">
-          <InputLabel>Country</InputLabel>
-          <Select MenuProps={MenuProps} label="Country">
-            <Box
-              pt={8}
-              pb={8}
-              display="flex"
-              flexDirection="column"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <CircularProgress color="secondary" />
-              <Box p={3}>
-                <Typography>
-                  Grab some coffee. Its gonna be a minute...
-                </Typography>
-              </Box>
-            </Box>
-          </Select>
-        </FormControl>
-        <GeographyEligibilityCountry />
-      </Grid>
-      <Grid item sm={12} md={6}>
-        <GeographyEligibilityState />
-      </Grid>
-      <Grid item sm={12} md={6}>
-        <FormControl multiple fullWidth variant="outlined">
-          <InputLabel>Counties / Disctricts / Ect.</InputLabel>
-          <Select MenuProps={MenuProps} label="Counties / Disctricts / Ect.">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <Box pl={2} key={n}>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={state.checkedB}
-                      onChange={handleChange}
-                      name="checkedB"
-                      color="primary"
-                      value={10}
+      {some && (
+        <>
+          <Grid item sm={12} md={6}>
+            <FormControl multiple fullWidth variant="outlined">
+              <InputLabel>Country</InputLabel>
+              <Select MenuProps={MenuProps} label="Country">
+                <Box
+                  pt={8}
+                  pb={8}
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <CircularProgress color="secondary" />
+                  <Box p={3}>
+                    <Typography>
+                      Grab some coffee. Its gonna be a minute...
+                    </Typography>
+                  </Box>
+                </Box>
+              </Select>
+            </FormControl>
+            <GeographyEligibilityCountry />
+          </Grid>
+          <Grid item sm={12} md={6}>
+            <GeographyEligibilityState />
+          </Grid>
+          <Grid item sm={12} md={6}>
+            <FormControl multiple fullWidth variant="outlined">
+              <InputLabel>Counties / Disctricts / Ect.</InputLabel>
+              <Select
+                MenuProps={MenuProps}
+                label="Counties / Disctricts / Ect."
+              >
+                {[1, 2, 3, 4, 5, 6].map((n) => (
+                  <Box pl={2} key={n}>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={state.checkedB}
+                          onChange={handleChange}
+                          name="checkedB"
+                          color="primary"
+                          value={10}
+                        />
+                      }
+                      label={
+                        <ListItemText
+                          primary="County Name"
+                          secondary="Country Name • State Name"
+                        />
+                      }
                     />
-                  }
-                  label={
-                    <ListItemText
-                      primary="County Name"
-                      secondary="Country Name • State Name"
-                    />
-                  }
-                />
-              </Box>
-            ))}
-          </Select>
-        </FormControl>
-        <GeographyEligibilityCounty />
-      </Grid>
+                  </Box>
+                ))}
+              </Select>
+            </FormControl>
+            <GeographyEligibilityCounty />
+          </Grid>
+        </>
+      )}
+      {sales && (
+        <>
+          <Grid item xs={12} md={6}>
+            <FormControl fullWidth variant="outlined">
+              <InputLabel>Regions</InputLabel>
+              <Select MenuProps={MenuProps} label="Regions">
+                <MenuItem value={10}>OH / Northeast</MenuItem>
+                <MenuItem value={20}>OH / Northwest</MenuItem>
+                <MenuItem value={30}>OH / Northsouth</MenuItem>
+                <MenuItem value={40}>OH / Northnorth</MenuItem>
+              </Select>
+            </FormControl>
+            <GeographyEligibilitySalesRegion />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <FormControl fullWidth variant="outlined">
+              <InputLabel>Teams</InputLabel>
+              <Select MenuProps={MenuProps} label="Teams">
+                <MenuItem value={10}>OH / Northeast ∙ N201</MenuItem>
+                <MenuItem value={20}>OH / Northeast ∙ N202</MenuItem>
+                <MenuItem value={30}>OH / Northeast ∙ N203</MenuItem>
+                <MenuItem value={40}>OH / Northeast ∙ N204</MenuItem>
+              </Select>
+            </FormControl>
+            <GeographyEligibilitySalesTeams />
+          </Grid>
+        </>
+      )}
+      {someOther && (
+        <Grid item xs={12} md={6}>
+          <TextField
+            fullWidth
+            id="outlined-multiline-static"
+            label="Undefined Geographies Here"
+            multiline
+            rows={4}
+            variant="outlined"
+          />
+        </Grid>
+      )}
     </>
   );
 }
