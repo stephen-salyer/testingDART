@@ -12,6 +12,7 @@ import {
   Typography,
   FormControlLabel,
   Divider,
+  TextField,
 } from '@material-ui/core';
 import ProductEligibilityProduct from './ProductEligibilityProduct';
 import ProductEligibilityBrands from './ProductEligibilityBrands';
@@ -46,6 +47,14 @@ export default function ProductEligibility() {
     setState({...state, [event.target.name]: event.target.checked});
   };
 
+  const [products, setProducts] = React.useState(10);
+  const someProducts = products === 20;
+  const other = products === 30;
+
+  const handleChange1 = (event) => {
+    setProducts(event.target.value);
+  };
+
   return (
     <>
       <Grid item sm={12}>
@@ -55,13 +64,13 @@ export default function ProductEligibility() {
         />
         <Divider />
       </Grid>
-      <Grid item sm={12} md={6}>
+      <Grid item sm={12} md={someProducts || other ? 6 : 6}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Which Products</InputLabel>
           <Select
+            onChange={handleChange1}
             MenuProps={MenuProps}
             label="Which Products"
-            defaultValue={20}
           >
             <MenuItem value={10}>All Products</MenuItem>
             <MenuItem value={20}>Some Products</MenuItem>
@@ -69,57 +78,75 @@ export default function ProductEligibility() {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item sm={12} md={6}>
-        <FormControl multiple fullWidth variant="outlined">
-          <InputLabel>Products</InputLabel>
-          <Select MenuProps={MenuProps} label="Products">
-            <Box
-              pt={8}
-              pb={8}
-              display="flex"
-              flexDirection="column"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <CircularProgress color="secondary" />
-              <Box p={3}>
-                <Typography>
-                  Grab some coffee. Its gonna be a minute...
-                </Typography>
-              </Box>
-            </Box>
-          </Select>
-        </FormControl>
-        <ProductEligibilityProduct />
-      </Grid>
-      <Grid item sm={12} md={6}>
-        <FormControl multiple fullWidth variant="outlined">
-          <InputLabel>Brands</InputLabel>
-          <Select MenuProps={MenuProps} label="Brands">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <Box pl={2} key={n}>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={state.checkedB}
-                      onChange={handleChange}
-                      name="checkedB"
-                      color="primary"
-                      value={10}
+      {someProducts && (
+        <>
+          <Grid item sm={12} md={6}>
+            <FormControl multiple fullWidth variant="outlined">
+              <InputLabel>Products</InputLabel>
+              <Select MenuProps={MenuProps} label="Products">
+                <Box
+                  pt={8}
+                  pb={8}
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <CircularProgress color="secondary" />
+                  <Box p={3}>
+                    <Typography>
+                      Grab some coffee. Its gonna be a minute...
+                    </Typography>
+                  </Box>
+                </Box>
+              </Select>
+            </FormControl>
+            <ProductEligibilityProduct />
+          </Grid>
+          <Grid item sm={12} md={6}>
+            <FormControl multiple fullWidth variant="outlined">
+              <InputLabel>Brands</InputLabel>
+              <Select MenuProps={MenuProps} label="Brands">
+                {[1, 2, 3, 4, 5, 6].map((n) => (
+                  <Box pl={2} key={n}>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={state.checkedB}
+                          onChange={handleChange}
+                          name="checkedB"
+                          color="primary"
+                          value={10}
+                        />
+                      }
+                      label="State Name Here"
                     />
-                  }
-                  label="State Name Here"
-                />
-              </Box>
-            ))}
-          </Select>
-        </FormControl>
-        <ProductEligibilityBrands />
-      </Grid>
-      <Grid item sm={12} md={6}>
-        <ProductSearchModal />
-        <ProductEligibilityMaterials />
-      </Grid>
+                  </Box>
+                ))}
+              </Select>
+            </FormControl>
+            <ProductEligibilityBrands />
+          </Grid>
+          <Grid item sm={12} md={6}>
+            <ProductSearchModal />
+            <ProductEligibilityMaterials />
+          </Grid>
+        </>
+      )}
+      {other && (
+        <>
+          <Grid item xs={12} md={6}>
+            <TextField
+              fullWidth
+              id="outlined-multiline-static"
+              label="Undefined Products Here"
+              multiline
+              rows={4}
+              variant="outlined"
+            />
+          </Grid>
+        </>
+      )}
     </>
   );
 }

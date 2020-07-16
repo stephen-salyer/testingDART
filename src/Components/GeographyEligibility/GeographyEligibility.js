@@ -49,9 +49,9 @@ export default function GeographyEligibility() {
     },
   };
   const [products, setProducts] = React.useState(10);
-  const some = products === 20;
-  const sales = products === 30;
-  const someOther = products === 40;
+  const someGeographies = products === 20;
+  const someSales = products === 30;
+  const other = products === 40;
 
   const handleChange1 = (event) => {
     setProducts(event.target.value);
@@ -66,7 +66,7 @@ export default function GeographyEligibility() {
         />
         <Divider />
       </Grid>
-      <Grid item sm={12} md={some || someOther ? 6 : 6}>
+      <Grid item sm={12} md={someGeographies || other ? 6 : 6}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Which Geographies</InputLabel>
           <Select
@@ -81,7 +81,7 @@ export default function GeographyEligibility() {
           </Select>
         </FormControl>
       </Grid>
-      {some && (
+      {someGeographies && (
         <>
           <Grid item sm={12} md={6}>
             <FormControl multiple fullWidth variant="outlined">
@@ -143,7 +143,7 @@ export default function GeographyEligibility() {
           </Grid>
         </>
       )}
-      {sales && (
+      {someSales && (
         <>
           <Grid item xs={0} md={6}></Grid>
           <Grid item xs={12} md={6}>
@@ -172,7 +172,7 @@ export default function GeographyEligibility() {
           </Grid>
         </>
       )}
-      {someOther && (
+      {other && (
         <Grid item xs={12} md={6}>
           <TextField
             fullWidth

@@ -8,6 +8,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import Skeleton from '@material-ui/lab/Skeleton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -119,7 +120,7 @@ export default function FullWidthGrid() {
             />
           </MuiPickersUtilsProvider>
         </Grid>
-        <Grid item xs={12} sm={12} md={4}>
+        <Grid item xs={12} md={4}>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
               disableToolbar
