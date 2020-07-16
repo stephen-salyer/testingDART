@@ -66,7 +66,7 @@ export default function GeographyEligibility() {
         />
         <Divider />
       </Grid>
-      <Grid item sm={12} md={some || someOther ? 6 : 12}>
+      <Grid item sm={12} md={some || someOther ? 6 : 6}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Which Geographies</InputLabel>
           <Select
@@ -145,6 +145,7 @@ export default function GeographyEligibility() {
       )}
       {sales && (
         <>
+          <Grid item xs={0} md={6}></Grid>
           <Grid item xs={12} md={6}>
             <FormControl fullWidth variant="outlined">
               <InputLabel>Regions</InputLabel>
