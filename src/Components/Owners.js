@@ -11,9 +11,15 @@ import {
   TextField,
   Container,
   Typography,
+  Button,
 } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import {CheckBoxOutlineBlank, CheckBox, RemoveCircle} from '@material-ui/icons';
+import {
+  CheckBoxOutlineBlank,
+  CheckBox,
+  RemoveCircle,
+  Send,
+} from '@material-ui/icons';
 import OwnersToggle from './OwnersToggle';
 
 const people = [
@@ -33,11 +39,11 @@ const people = [
   {name: 'Ethan Mikman', category: 'Financial'},
   {name: 'Heath Maples', category: 'Financial'},
   {name: 'Alberto Shepard', category: 'Financial'},
-  {name: 'Monica Carroll', category: 'Financial'},
+  {name: 'Monica Carroll', category: 'Other'},
   {name: 'Billy Lester', category: 'Financial'},
   {name: 'Lisa Hackerman', category: 'Financial'},
-  {name: 'Amber Yogster', category: 'Financial'},
-  {name: 'Helga Mater', category: 'Financial'},
+  {name: 'Amber Yogster', category: 'Other'},
+  {name: 'Helga Mater', category: 'Other'},
 ];
 
 const icon = <CheckBoxOutlineBlank fontSize="small" />;
@@ -64,6 +70,13 @@ export default function CustomizedSelects() {
   return (
     <Container maxWidth="sm">
       <Grid container spacing={3}>
+        <Grid xs={12}>
+          <Box display="flex" justifyContent="flex-end">
+            <Button variant="outlined" color="primary" endIcon={<Send />}>
+              Email Pending Owners
+            </Button>
+          </Box>
+        </Grid>
         <Grid item xs={12}>
           <React.Fragment>
             <Autocomplete

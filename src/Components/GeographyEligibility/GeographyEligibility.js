@@ -176,9 +176,10 @@ export default function GeographyEligibility() {
         <Grid item xs={12} md={6}>
           <TextField
             fullWidth
+            multiline
             id="outlined-multiline-static"
             label="Undefined Geographies Here"
-            multiline
+            placeholder='Please use "Some Geographies" first, if that does not meet your geographic requirements type those requirements here.'
             rows={4}
             variant="outlined"
           />

@@ -48,7 +48,8 @@ export default function Marketing() {
             fullWidth
             multiline
             rows={4}
-            placeholder="i.e. Farmers are challenged with weed control. or Secure volume commitments by providing payments to key accounts... ect."
+            placeholder="Example:
+            Farmers are challenged with weed control from resistant weeds; this program incentivizes them to take proactive step for residual herbicide use as a tool for weed management and protecting Bayer's herbicide tolerant trait technologies."
           />
         </Grid>
         <Grid item xs={12} md={6}>

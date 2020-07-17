@@ -1,8 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import {amber} from '@material-ui/core/colors';
+import {grey} from '@material-ui/core/colors';
 import {withStyles, Tooltip} from '@material-ui/core';
-import {WarningOutlined} from '@material-ui/icons';
+import {RadioButtonUnchecked} from '@material-ui/icons';
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -20,9 +20,9 @@ export default function ApprovalStatusProgressNotStarted() {
       title={<Typography>Not Started since 22/22/2222</Typography>}
       placement="right"
     >
-      <WarningOutlined
+      <RadioButtonUnchecked
         fontSize="large"
-        style={{color: amber[800], paddingRight: 3, paddingLeft: 3}}
+        style={{color: grey[500], paddingRight: 3, paddingLeft: 3}}
       />
     </LightTooltip>
   );

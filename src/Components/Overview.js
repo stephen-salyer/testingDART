@@ -8,7 +8,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import Skeleton from '@material-ui/lab/Skeleton';
+// import Skeleton from '@material-ui/lab/Skeleton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
