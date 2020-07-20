@@ -26,8 +26,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     outline: 0,
-    minWidth: '700px',
-    minHeight: '93vh',
+    minWidth: '800px',
     maxHeight: '93vh',
   },
   modalButton: {

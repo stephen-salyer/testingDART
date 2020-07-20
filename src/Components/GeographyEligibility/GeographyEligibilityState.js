@@ -1,16 +1,24 @@
 import React from 'react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {
-  List,
   ListItemText,
   ListItemSecondaryAction,
   IconButton,
-  Divider,
   Checkbox,
   TextField,
   Box,
+  ListItem,
+  Typography,
+  Collapse,
+  List,
 } from '@material-ui/core';
-import {RemoveCircle, CheckBox, CheckBoxOutlineBlank} from '@material-ui/icons';
+import {
+  RemoveCircle,
+  CheckBox,
+  CheckBoxOutlineBlank,
+  ExpandLess,
+  ExpandMore,
+} from '@material-ui/icons';
 
 const icon = <CheckBoxOutlineBlank fontSize="small" />;
 const checkedIcon = <CheckBox fontSize="small" />;
@@ -39,19 +47,19 @@ export default function GitHubLabel() {
     setAnchorEl(null);
   };
 
-  const handleClickRemove = (event, reason) => {
-    if (reason === 'toggleInput') {
-      return;
-    }
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick1 = () => {
+    setOpen(!open);
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'github-label' : undefined;
+  const open1 = Boolean(anchorEl);
+  const id = open1 ? 'github-label' : undefined;
 
   return (
     <React.Fragment>
       <Autocomplete
-        open={open}
+        open={open1}
         id={id}
         anchorEl={anchorEl}
         onClose={handleClose}
@@ -97,24 +105,36 @@ export default function GitHubLabel() {
           </>
         )}
       />
-      <Box style={{height: '255px', overflow: 'scroll'}}>
-        {value.map((label) => (
-          <>
-            <List>
-              <ListItemText primary={label.state} secondary={label.country} />
-              <ListItemSecondaryAction>
-                <IconButton
-                  onClick={handleClickRemove}
-                  edge="end"
-                  aria-label="delete"
-                >
-                  <RemoveCircle />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </List>
-            <Divider />
-          </>
-        ))}
+      <Box style={{maxHeight: '255px', overflow: 'scroll'}}>
+        <ListItem button onClick={handleClick1}>
+          <ListItemText
+            primary={
+              <>
+                <Typography>US</Typography>
+                <Typography variant="caption" color="TextSecondary">
+                  2/50 selected
+                </Typography>
+              </>
+            }
+          />
+          {open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            {value.map((label) => (
+              <>
+                <ListItem key={label.state} divider style={{padding: 16}}>
+                  <ListItemText primary={label.state} />
+                  <ListItemSecondaryAction>
+                    <IconButton edge="end" aria-label="delete">
+                      <RemoveCircle />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                </ListItem>
+              </>
+            ))}
+          </List>
+        </Collapse>
       </Box>
     </React.Fragment>
   );
@@ -124,66 +144,53 @@ const geographyInformation = [
   {
     state: 'Alabama',
     country: 'US',
-    county: 'Wilburt',
   },
   {
     state: 'Arkansas',
     country: 'US',
-    county: 'homer',
   },
   {
-    state: 'Alabama1',
+    state: 'California',
     country: 'US',
-    county: 'Good for newcomers',
   },
   {
-    state: 'Alabama2',
+    state: 'Conneticut',
     country: 'US',
-    county: 'Good for newcomers',
   },
   {
-    state: 'Alabama3',
+    state: 'Calorado',
     country: 'US',
-    county: 'Good for newcomers',
   },
   {
-    state: 'Alabama4',
+    state: 'Delaware',
     country: 'US',
-    county: 'Good for newcomers',
   },
   {
-    state: 'Alabama5',
+    state: 'Georgia',
     country: 'US',
-    county: 'Good for newcomers',
   },
   {
-    state: 'Alabama6',
+    state: 'Indiana',
     country: 'US',
-    county: 'Good for newcomers',
   },
   {
-    state: 'Alabama7',
+    state: 'Illinois',
     country: 'US',
-    county: 'Good for newcomers',
   },
   {
-    state: 'Alabama8',
+    state: 'Montana',
     country: 'US',
-    county: 'Good for newcomers',
   },
   {
-    state: 'Alabama9',
+    state: 'North Carolina',
     country: 'US',
-    county: 'Good for newcomers',
   },
   {
-    state: 'Alabama10',
+    state: 'South Carolina',
     country: 'US',
-    county: 'Good for newcomers',
   },
   {
-    state: 'Alabama11',
+    state: 'Texas',
     country: 'US',
-    county: 'Good for newcomers',
   },
 ];

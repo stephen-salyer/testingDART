@@ -189,43 +189,37 @@ export default function ProductEligibilityMaterialModalTabs() {
             </Box>
             <Divider />
             <List style={{maxHeight: '70vh', overflow: 'scroll', padding: 0}}>
-              {products.map(
-                (
-                  {
-                    productName,
-                    traitCode,
-                    brand,
-                    relativeMaturity,
-                    lifeCycle,
-                    launchYear,
-                  },
-                  i
-                ) => (
-                  <Box key={i}>
-                    <ListItem>
-                      <FormControlLabel
-                        control={
-                          <Box pl={1} pr={0} pt={0} pb={0}>
-                            <Checkbox color="primary" name="checkedC" />
-                          </Box>
-                        }
-                        label={
-                          <ListItemText
-                            primary={[productName, brand].join(' • ')}
-                            secondary={[
-                              traitCode,
-                              relativeMaturity,
-                              lifeCycle,
-                              launchYear,
-                            ].join(' • ')}
-                          />
-                        }
-                      />
-                    </ListItem>
-                    <Divider />
-                  </Box>
-                )
-              )}
+              {products.map((
+                {productName, brand},
+                i // traitCode,
+              ) => (
+                // relativeMaturity,
+                // lifeCycle,
+                // launchYear,
+                <Box key={i}>
+                  <ListItem>
+                    <FormControlLabel
+                      control={
+                        <Box pl={1} pr={0} pt={0} pb={0}>
+                          <Checkbox color="primary" name="checkedC" />
+                        </Box>
+                      }
+                      label={
+                        <ListItemText
+                          primary={[productName, brand].join(' • ')}
+                          // secondary={[
+                          //   traitCode,
+                          //   relativeMaturity,
+                          //   lifeCycle,
+                          //   launchYear,
+                          // ].join(' • ')}
+                        />
+                      }
+                    />
+                  </ListItem>
+                  <Divider />
+                </Box>
+              ))}
             </List>
           </Grid>
           <Grid item md={5}>

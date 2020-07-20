@@ -19,7 +19,6 @@ import {
   Grid,
 } from '@material-ui/core';
 import MuiListItem from '@material-ui/core/ListItem';
-import ApprovalStatusProgressApproved from './ApprovalStatusProgressApproved';
 import {ExpandMore, Email} from '@material-ui/icons';
 
 const ListItem = withStyles({
@@ -82,115 +81,49 @@ const people = [
   {
     name: 'Stefan Peters',
     department: 'Operations',
-    progress: (
-      <>
-        <ApprovalStatusProgressApproved />
-        <Typography variant="caption">Not Started</Typography>
-      </>
-    ),
   },
   {
     name: 'Oliver Hansen',
     department: 'Finance',
-    progress: (
-      <>
-        <ApprovalStatusProgressApproved />
-        <Typography variant="caption">Pending</Typography>
-      </>
-    ),
   },
   {
     name: 'Van Henry',
     department: 'Finance',
-    progress: (
-      <>
-        <ApprovalStatusProgressApproved />
-        <Typography variant="caption">Pending</Typography>
-      </>
-    ),
   },
   {
     name: 'Juan Ernesto Albino Ramirez Martinez',
     department: 'Marketing',
-    progress: (
-      <>
-        <ApprovalStatusProgressApproved />
-        <Typography variant="caption">Pending</Typography>
-      </>
-    ),
   },
 
   {
     name: 'Mark Oberman',
     department: 'Operations',
-    progress: (
-      <>
-        <ApprovalStatusProgressApproved />
-        <Typography variant="caption">Pending</Typography>
-      </>
-    ),
   },
   {
     name: 'April Tucker',
     department: 'Legal',
-    progress: (
-      <>
-        <ApprovalStatusProgressApproved />
-        <Typography variant="caption">Approved</Typography>
-      </>
-    ),
   },
   {
     name: 'Ralph Hubbard',
     department: 'Marketing',
-    progress: (
-      <>
-        <ApprovalStatusProgressApproved />
-        <Typography variant="caption">Approved</Typography>
-      </>
-    ),
   },
   {
     name: 'Omar Alexander',
     department: 'Marketing',
-    progress: (
-      <>
-        <ApprovalStatusProgressApproved />
-        <Typography variant="caption">Approved</Typography>
-      </>
-    ),
   },
 
   {
     name: 'Nicolas Ezequiel Fernandez Zapiola',
     department: 'Marketing',
-    progress: (
-      <>
-        <ApprovalStatusProgressApproved />
-        <Typography variant="caption">Approved</Typography>
-      </>
-    ),
   },
 
   {
     name: 'Prekki Srinivasa Sudhakar',
     department: 'Marketing',
-    progress: (
-      <>
-        <ApprovalStatusProgressApproved />
-        <Typography variant="caption">Approved</Typography>
-      </>
-    ),
   },
   {
     name: 'Wimonphan Tangmanvitayasak',
     department: 'Marketing',
-    progress: (
-      <>
-        <ApprovalStatusProgressApproved />
-        <Typography variant="caption">Approved</Typography>
-      </>
-    ),
   },
 ];
 
@@ -263,7 +196,7 @@ const ApprovalStatusApproved = () => {
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails>
                     <Grid container spacing={3}>
-                      {people.map(({name, department, progress, email}, i) => (
+                      {people.map(({name, department, email}, i) => (
                         <>
                           <Grid item key={i} xs={12} sm={6}>
                             <Box
@@ -274,16 +207,6 @@ const ApprovalStatusApproved = () => {
                               style={{height: '100%'}}
                             >
                               <Box display="flex" alignItems="center" pb={1}>
-                                <Box
-                                  display="flex"
-                                  flexDirection="column"
-                                  alignItems="center"
-                                  justifyContent="center"
-                                  pr={2}
-                                  style={{minWidth: 70}}
-                                >
-                                  {progress}
-                                </Box>
                                 <Box display="flex" flexDirection="column">
                                   <Typography
                                     style={{lineHeight: '1.7'}}

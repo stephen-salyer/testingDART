@@ -13,15 +13,13 @@ export default function GeographyEligibilityCountry() {
   return (
     <>
       <Box style={{maxHeight: '255px', overflow: 'scroll'}}>
-        <List>
-          <Box p={1}>
-            <ListItemText primary="United States of America" />
-            <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="delete">
-                <RemoveCircleIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </Box>
+        <List style={{padding: 16}}>
+          <ListItemText primary="US" />
+          <ListItemSecondaryAction>
+            <IconButton edge="end" aria-label="delete">
+              <RemoveCircleIcon />
+            </IconButton>
+          </ListItemSecondaryAction>
         </List>
         <Divider />
       </Box>

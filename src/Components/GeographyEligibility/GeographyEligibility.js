@@ -1,8 +1,6 @@
 import React from 'react';
 import {
   CardHeader,
-  Checkbox,
-  ListItemText,
   CircularProgress,
   Grid,
   FormControl,
@@ -11,7 +9,6 @@ import {
   MenuItem,
   Box,
   Typography,
-  FormControlLabel,
   Divider,
   TextField,
 } from '@material-ui/core';
@@ -22,17 +19,6 @@ import GeographyEligibilitySalesRegion from './GeographyEligibilitySalesRegion';
 import GeographyEligibilitySalesTeams from './GeographyEligibilitySalesTeams';
 
 export default function GeographyEligibility() {
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
-    checkedF: true,
-    checkedG: true,
-  });
-
-  const handleChange = (event) => {
-    setState({...state, [event.target.name]: event.target.checked});
-  };
-
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
   const MenuProps = {
@@ -110,35 +96,6 @@ export default function GeographyEligibility() {
             <GeographyEligibilityState />
           </Grid>
           <Grid item sm={12} md={6}>
-            <FormControl multiple fullWidth variant="outlined">
-              <InputLabel>Counties / Disctricts / Ect.</InputLabel>
-              <Select
-                MenuProps={MenuProps}
-                label="Counties / Disctricts / Ect."
-              >
-                {[1, 2, 3, 4, 5, 6].map((n) => (
-                  <Box pl={2} key={n}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={state.checkedB}
-                          onChange={handleChange}
-                          name="checkedB"
-                          color="primary"
-                          value={10}
-                        />
-                      }
-                      label={
-                        <ListItemText
-                          primary="County Name"
-                          secondary="Country Name • State Name"
-                        />
-                      }
-                    />
-                  </Box>
-                ))}
-              </Select>
-            </FormControl>
             <GeographyEligibilityCounty />
           </Grid>
         </>

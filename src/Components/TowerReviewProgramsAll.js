@@ -73,6 +73,7 @@ export const Programs = [
     type: 'Type: Loyalty Incentive',
     components: 'Components: 2',
     lifecycle: 'Pending',
+    category: 'Dealer',
     action: <Checkbox />,
   },
   {
@@ -84,6 +85,7 @@ export const Programs = [
     type: 'Type: Volume Incentive',
     components: 'Components: 3',
     lifecycle: 'Pending',
+    category: 'Dealer',
     action: <TowerReviewInfoPop />,
   },
   {
@@ -95,6 +97,7 @@ export const Programs = [
     type: 'Type: Purchase Behavior Incentive',
     components: 'Components: 1',
     lifecycle: 'Approved',
+    category: 'Dealer',
     action: <TowerReviewInfoPopApproved />,
   },
   {
@@ -106,6 +109,7 @@ export const Programs = [
     type: 'Type: Activity Incentive',
     components: 'Components: 2',
     lifecycle: 'Pending',
+    category: 'Grower',
     action: <Checkbox />,
   },
   {
@@ -117,6 +121,7 @@ export const Programs = [
     type: 'Type: Volume Incentive',
     components: 'Components: 5',
     lifecycle: 'Pending',
+    category: 'Grower',
     action: <Checkbox />,
   },
   {
@@ -128,6 +133,7 @@ export const Programs = [
     type: 'Type: Guarantee/Claim',
     components: 'Components: 6',
     lifecycle: 'Pending',
+    category: 'Grower',
     action: <Checkbox />,
   },
   {
@@ -139,6 +145,7 @@ export const Programs = [
     type: 'Type: Purchase Behavior Incentive',
     components: 'Components: 1',
     lifecycle: 'Pending',
+    category: 'Distributor',
     action: <Checkbox />,
   },
 ];
@@ -161,6 +168,7 @@ const TowerReviewProgramsAll = () => {
               components,
               action,
               lifecycle,
+              category,
             },
             i
           ) => (
@@ -237,9 +245,13 @@ const TowerReviewProgramsAll = () => {
                                   variant="body2"
                                   color="textSecondary"
                                 >
-                                  {[budget, components, type, lifecycle].join(
-                                    ' • '
-                                  )}
+                                  {[
+                                    budget,
+                                    components,
+                                    category,
+                                    type,
+                                    lifecycle,
+                                  ].join(' • ')}
                                 </Typography>
                               </>
                             }

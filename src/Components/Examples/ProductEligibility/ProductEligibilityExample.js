@@ -188,15 +188,12 @@ export default function ProductEligibilityExample() {
                     MenuProps={MenuProps}
                     renderValue={(selected) => selected.join(', ')}
                   >
-                    {materialNames.map(({materialBrand, subInfo}) => (
+                    {materialNames.map(({materialBrand}) => (
                       <MenuItem key={materialBrand} value={materialBrand}>
                         <Checkbox
                           checked={materialName.includes(materialBrand)}
                         />
-                        <ListItemText
-                          primary={materialBrand}
-                          secondary={subInfo}
-                        />
+                        <ListItemText primary={materialBrand} />
                       </MenuItem>
                     ))}
                   </Select>

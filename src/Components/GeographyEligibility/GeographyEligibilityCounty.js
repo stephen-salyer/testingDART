@@ -1,66 +1,218 @@
 import React from 'react';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import {
-  Divider,
-  Box,
+  ListItemText,
   ListItemSecondaryAction,
   IconButton,
-  ListItemText,
+  Checkbox,
+  TextField,
+  Box,
+  ListItem,
+  Typography,
+  Collapse,
   List,
 } from '@material-ui/core';
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import {
+  RemoveCircle,
+  CheckBox,
+  CheckBoxOutlineBlank,
+  ExpandLess,
+  ExpandMore,
+} from '@material-ui/icons';
 
-export default function GeographyEligibilityState() {
+const icon = <CheckBoxOutlineBlank fontSize="small" />;
+const checkedIcon = <CheckBox fontSize="small" />;
+
+export default function GitHubLabel() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [value, setValue] = React.useState([
+    geographyInformation[1],
+    geographyInformation[11],
+  ]);
+  const [pendingValue, setPendingValue] = React.useState([]);
+
+  const handleClick = (event) => {
+    setPendingValue(value);
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'toggleInput') {
+      return;
+    }
+    setValue(pendingValue);
+    if (anchorEl) {
+      anchorEl.focus();
+    }
+    setAnchorEl(null);
+  };
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick1 = () => {
+    setOpen(!open);
+  };
+
+  const open1 = Boolean(anchorEl);
+  const id = open1 ? 'github-label' : undefined;
+
   return (
-    <>
-      <Box style={{height: '255px', overflow: 'scroll'}}>
-        {[
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-          13,
-          14,
-          15,
-          16,
-          17,
-          18,
-          19,
-          20,
-          21,
-          22,
-          23,
-          24,
-          25,
-          26,
-          27,
-          28,
-          29,
-          30,
-        ].map((n) => (
+    <React.Fragment>
+      <Autocomplete
+        open={open1}
+        id={id}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        multiple
+        disableClearable
+        value={pendingValue}
+        onChange={(event, newValue) => {
+          setPendingValue(newValue);
+        }}
+        disableCloseOnSelect
+        renderTags={() => null}
+        noOptionsText="No labels"
+        renderOption={(option, {selected}) => (
+          <React.Fragment>
+            <Checkbox
+              icon={icon}
+              checkedIcon={checkedIcon}
+              style={{marginRight: 8}}
+              checked={selected}
+            />
+            <ListItemText
+              primary={option.county}
+              secondary={
+                <>
+                  <Typography color="textSecondary">
+                    {option.country} • {option.state}
+                  </Typography>
+                </>
+              }
+            />
+          </React.Fragment>
+        )}
+        options={[...geographyInformation].sort((a, b) => {
+          let ai = value.indexOf(a);
+          ai = ai === -1 ? value.length + geographyInformation.indexOf(a) : ai;
+          let bi = value.indexOf(b);
+          bi = bi === -1 ? value.length + geographyInformation.indexOf(b) : bi;
+          return ai - bi;
+        })}
+        getOptionLabel={(option) => option.state}
+        renderInput={(params) => (
           <>
-            <List key={n}>
-              <ListItemText
-                primary="County Name Here"
-                secondary="Country Name Here • State Name Here"
-              />
-              <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
-                  <RemoveCircleIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </List>
-            <Divider />
+            <TextField
+              onClick={handleClick}
+              ref={params.InputProps.ref}
+              inputProps={params.inputProps}
+              {...params}
+              variant="outlined"
+              label="Counties / Districts / Ect."
+              placeholder="Search"
+            />
           </>
-        ))}
+        )}
+      />
+      <Box style={{maxHeight: '255px', overflow: 'scroll'}}>
+        <ListItem button onClick={handleClick1}>
+          <ListItemText
+            primary={
+              <>
+                <Typography>US • Alabama</Typography>
+                <Typography variant="caption" color="TextSecondary">
+                  2/50 selected
+                </Typography>
+              </>
+            }
+          />
+          {open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            {value.map((label) => (
+              <>
+                <ListItem key={label.county} divider style={{padding: 16}}>
+                  <ListItemText primary={label.county} />
+                  <ListItemSecondaryAction>
+                    <IconButton edge="end" aria-label="delete">
+                      <RemoveCircle />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                </ListItem>
+              </>
+            ))}
+          </List>
+        </Collapse>
       </Box>
-    </>
+    </React.Fragment>
   );
 }
+
+const geographyInformation = [
+  {
+    county: 'Elmore',
+    state: 'Alabama',
+    country: 'US',
+  },
+  {
+    county: 'B',
+    state: 'Arkansas',
+    country: 'US',
+  },
+  {
+    county: 'C',
+    state: 'California',
+    country: 'US',
+  },
+  {
+    county: 'D',
+    state: 'Conneticut',
+    country: 'US',
+  },
+  {
+    county: 'E',
+    state: 'Colorado',
+    country: 'US',
+  },
+  {
+    county: 'F',
+    state: 'Delaware',
+    country: 'US',
+  },
+  {
+    county: 'G',
+    state: 'Georgia',
+    country: 'US',
+  },
+  {
+    county: 'H',
+    state: 'Indiana',
+    country: 'US',
+  },
+  {
+    county: 'I',
+    state: 'Illinois',
+    country: 'US',
+  },
+  {
+    county: 'J',
+    state: 'Montana',
+    country: 'US',
+  },
+  {
+    county: 'K',
+    state: 'North Carolina',
+    country: 'US',
+  },
+  {
+    county: 'L',
+    state: 'South Carolina',
+    country: 'US',
+  },
+  {
+    county: 'M',
+    state: 'Texas',
+    country: 'US',
+  },
+];

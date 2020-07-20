@@ -4,10 +4,8 @@ import {WarningOutlined} from '@material-ui/icons';
 import {Tooltip, withStyles} from '@material-ui/core';
 import {amber} from '@material-ui/core/colors';
 
-const LightTooltip = withStyles((theme) => ({
+const DarkTooltip = withStyles((theme) => ({
   tooltip: {
-    backgroundColor: theme.palette.common.white,
-    color: 'rgba(0, 0, 0, 0.87)',
     boxShadow: theme.shadows[1],
     fontSize: 11,
     padding: 16,
@@ -16,7 +14,7 @@ const LightTooltip = withStyles((theme) => ({
 
 export default function TowerReviewInfoPop() {
   return (
-    <LightTooltip
+    <DarkTooltip
       title={<Typography>You are not an approver on this program.</Typography>}
       placement="right"
     >
@@ -24,6 +22,6 @@ export default function TowerReviewInfoPop() {
         fontSize="large"
         style={{color: amber[500], paddingRight: 3, paddingLeft: 3}}
       />
-    </LightTooltip>
+    </DarkTooltip>
   );
 }

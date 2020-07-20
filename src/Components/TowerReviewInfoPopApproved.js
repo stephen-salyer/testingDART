@@ -4,10 +4,8 @@ import {CheckCircle} from '@material-ui/icons';
 import {Tooltip, withStyles} from '@material-ui/core';
 import {green} from '@material-ui/core/colors';
 
-const LightTooltip = withStyles((theme) => ({
+const DarkTooltip = withStyles((theme) => ({
   tooltip: {
-    backgroundColor: theme.palette.common.white,
-    color: 'rgba(0, 0, 0, 0.87)',
     boxShadow: theme.shadows[1],
     fontSize: 11,
     padding: 16,
@@ -18,12 +16,12 @@ const LightTooltip = withStyles((theme) => ({
 export default function TowerReviewInfoPopApproved() {
   return (
     <div>
-      <LightTooltip
+      <DarkTooltip
         title={<Typography>Approved 22/22/2222 by Bob Approverson</Typography>}
         placement="right"
       >
         <CheckCircle fontSize="large" style={{color: green[500]}} />
-      </LightTooltip>
+      </DarkTooltip>
     </div>
   );
 }
