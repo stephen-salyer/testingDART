@@ -125,7 +125,7 @@ const TowerReview = () => {
             </Tabs>
             <Divider />
             <TabPanel value={value} index={0}>
-              <Box pt={3} pl={3} pr={1}>
+              <Box>
                 <TowerReviewBody />
               </Box>
             </TabPanel>

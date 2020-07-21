@@ -57,7 +57,7 @@ export default function TowerReviewApproveProgramsModal() {
         onClick={() => setOpen(true)}
         className={classes.button}
       >
-        Approve Programs
+        Approve 2 Programs
       </Button>
       <Modal
         disableEnforceFocus

@@ -1,9 +1,9 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
+  Grid,
+  TextField,
   FormControl,
   InputLabel,
   Select,
@@ -20,7 +20,11 @@ import {
   Divider,
   Checkbox,
   FormHelperText,
+  ListItem,
+  ListItemSecondaryAction,
+  List,
 } from '@material-ui/core';
+import AttachmentMenu from './AttachmentMenu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -158,7 +162,7 @@ export default function Finance() {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} sm={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -180,7 +184,7 @@ export default function Finance() {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} sm={6}>
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
@@ -279,7 +283,7 @@ export default function Finance() {
           <TextField
             label="Key Accural Assumption Methods"
             multiline
-            rows="3"
+            rows="7"
             variant="outlined"
             fullWidth
           />
@@ -304,6 +308,37 @@ export default function Finance() {
               </Box>
             </RadioGroup>
           </FormControl>
+          <List>
+            <ListItem>
+              <Box display="flex" flexDirection="column">
+                <ListItemText
+                  style={{margin: 0}}
+                  primary={
+                    <Typography style={{lineHeight: 2}} variant="overline">
+                      Bill Attacher • 01/01/22
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography style={{paddingRight: 40}} variant="body1">
+                      This-File-Name-Could-Be-Very-Long-Possibly-Even-60-Characters.doc
+                    </Typography>
+                  }
+                />
+                <ListItemText
+                  style={{lineHeight: 1}}
+                  primary={
+                    <Typography variant="caption">
+                      I uploaded this file so that it can be seen by others
+                    </Typography>
+                  }
+                />
+                <ListItemSecondaryAction>
+                  <AttachmentMenu />
+                </ListItemSecondaryAction>
+              </Box>
+            </ListItem>
+            <Divider />
+          </List>
         </Grid>
         <Grid item xs={12} style={{padding: '0'}}>
           <CardHeader
@@ -449,6 +484,7 @@ export default function Finance() {
           <FormControl
             component="fieldset"
             className={classes.formControlRadio}
+            style={{width: '100%'}}
           >
             <FormLabel>
               <Typography>Intigrated Acre?</Typography>

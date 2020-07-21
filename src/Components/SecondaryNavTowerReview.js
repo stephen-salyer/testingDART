@@ -8,7 +8,13 @@ import {Send, DoneAll, MoreVert, LocalOffer} from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TowerReviewFilter from './TowerReviewFilter';
-import {CircularProgress, Menu, MenuItem, IconButton} from '@material-ui/core';
+import {
+  CircularProgress,
+  Menu,
+  MenuItem,
+  IconButton,
+  Chip,
+} from '@material-ui/core';
 import {green} from '@material-ui/core/colors';
 import {Link} from 'react-router-dom';
 
@@ -127,6 +133,10 @@ const SecondaryNavTowerReview = () => {
     setAnchorEl(null);
   };
 
+  const handleDelete = () => {
+    console.info('You clicked the delete icon.');
+  };
+
   return (
     <Container
       maxWidth="lg"
@@ -145,63 +155,77 @@ const SecondaryNavTowerReview = () => {
           </Box>
         </Grid>
         <Grid item={true} xs={12} sm={7} md={6}>
-          <Box className={classes.flexPositioning}>
-            <div className={classes.wrapper}>
-              <Button
-                variant="contained"
-                color="primary"
-                className={buttonClassname}
-                disabled={loading}
-                onClick={handleButtonClick}
-                endIcon={success ? <DoneAll /> : <Send />}
+          <Box display="flex" flexDirection="column">
+            <Box className={classes.flexPositioning}>
+              <div className={classes.wrapper}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={buttonClassname}
+                  disabled={loading}
+                  onClick={handleButtonClick}
+                  endIcon={success ? <DoneAll /> : <Send />}
+                >
+                  Approve Tower
+                </Button>
+                {loading && (
+                  <CircularProgress
+                    size={24}
+                    className={classes.buttonProgress}
+                  />
+                )}
+              </div>
+              <TowerReviewFilter />
+              <IconButton
+                onClick={handleClick}
+                aria-label="More"
+                component="span"
               >
-                Approve Tower
-              </Button>
-              {loading && (
-                <CircularProgress
-                  size={24}
-                  className={classes.buttonProgress}
-                />
-              )}
-            </div>
-            <TowerReviewFilter />
-            <IconButton
-              onClick={handleClick}
-              aria-label="More"
-              component="span"
-            >
-              <MoreVert />
-            </IconButton>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose}>
-                <Typography variant="inherit">
-                  <Box
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="space-between"
-                  >
-                    <Send style={{paddingRight: 8}} /> Send Manual Notifications
-                  </Box>
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleClose} component={Link} to="/price-plan">
-                <Typography variant="inherit">
-                  <Box
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="space-between"
-                  >
-                    <LocalOffer style={{paddingRight: 8}} /> View Price Plan
-                  </Box>
-                </Typography>
-              </MenuItem>
-            </Menu>
+                <MoreVert />
+              </IconButton>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>
+                  <Typography variant="inherit">
+                    <Box
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="space-between"
+                    >
+                      <Send style={{paddingRight: 8}} /> Send Manual
+                      Notifications
+                    </Box>
+                  </Typography>
+                </MenuItem>
+                <MenuItem
+                  onClick={handleClose}
+                  component={Link}
+                  to="/price-plan"
+                >
+                  <Typography variant="inherit">
+                    <Box
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="space-between"
+                    >
+                      <LocalOffer style={{paddingRight: 8}} /> View Price Plan
+                    </Box>
+                  </Typography>
+                </MenuItem>
+              </Menu>
+            </Box>
+            <Box display="flex" justifyContent="flex-end" pt={1}>
+              <Chip
+                variant="outline"
+                label="All Program Types"
+                onDelete={handleDelete}
+              />
+            </Box>
           </Box>
         </Grid>
       </Grid>

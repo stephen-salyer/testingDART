@@ -5,7 +5,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import IconButton from '@material-ui/core/IconButton';
 import {Link, withRouter} from 'react-router-dom';
 import 'typeface-roboto';
 import {Typography} from '@material-ui/core';
@@ -190,9 +189,7 @@ const ProgramListItemsAll = () => {
                   }
                 />
                 <ListItemSecondaryAction>
-                  <IconButton edge="end" aria-label="morevert">
-                    <ProgramMenu />
-                  </IconButton>
+                  <ProgramMenu />
                 </ListItemSecondaryAction>
               </ListItem>
               <Divider />
