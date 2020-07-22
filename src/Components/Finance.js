@@ -25,6 +25,7 @@ import {
   List,
 } from '@material-ui/core';
 import AttachmentMenu from './AttachmentMenu';
+import InfoModal from './InfoModal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -411,10 +412,8 @@ export default function Finance() {
             </RadioGroup>
             <Divider />
             <FormHelperText>
-              Programs with any earning criteria reference to prior year data
-              (such as earn backs, purchases, prices or ending inventory) and/or
-              Programs offering future discount rights (next season/crop year)
-              based on current season purchases.
+              Programs with any earning criteria reference to prior/future year
+              data (such as earn backs, purchases, prices or ending inventory).
             </FormHelperText>
           </FormControl>
         </Grid>
@@ -440,12 +439,9 @@ export default function Finance() {
             </RadioGroup>
             <Divider />
             <FormHelperText>
-              Significant changes include, but are not limited to, fundamental
-              changes to program criteria. The addition of any multi-year
-              criteria, requirements to purchase a combination of products, or
-              where discount eliminates profit is considered significant.
-              Changes to price, volume, or the incentive percentage of sales are
-              not considered significant.
+              Fundamental changes to program criteria, the addition of any
+              multi-year criteria, requirements to purchase a combination of
+              products, or where discount eliminates profit.
             </FormHelperText>
           </FormControl>
         </Grid>
@@ -650,8 +646,8 @@ export default function Finance() {
             <Divider />
             <FormHelperText>
               Selling below cost can result in antitrust violations and has
-              potential accounting implications; therefore requires legal and
-              accounting review. Excludes replant and/or claims/PPI programs.
+              potential accounting implications; Excludes replant and/or
+              claims/PPI programs.
             </FormHelperText>
           </FormControl>
         </Grid>
@@ -686,11 +682,8 @@ export default function Finance() {
             <FormHelperText>
               Similarly situated should be evaluated in terms of product
               offerings, number of locations/acres, volume or other similar
-              comparative factors. For example, are two similarly situated
-              dealers who compete against each other provided different
-              opportunities or incentives under the program, or some similarly
-              situated dealers are covered by the program and others are not? If
-              so, Legal review required.
+              comparative factors.
+              <InfoModal />
             </FormHelperText>
           </FormControl>
         </Grid>

@@ -171,12 +171,12 @@ const ProgramListItemsAll = () => {
                   className={classes.listItemTextNoMargin}
                   primary={
                     <Typography variant="subtitle1" style={{fontWeight: 500}}>
-                      {title}
+                      {[id, title].join(' • ')}
                     </Typography>
                   }
                   secondary={
                     <Typography variant="body2">
-                      {[id, version, year].join(' • ')}
+                      {[ted, version, year].join(' • ')}
                     </Typography>
                   }
                 />
@@ -184,7 +184,7 @@ const ProgramListItemsAll = () => {
                   classes={{primary: classes.listItemTertiary}}
                   primary={
                     <Typography variant="body2" color="textSecondary">
-                      {[ted, type, payee, communicationDate].join(' • ')}
+                      {[type, payee, communicationDate].join(' • ')}
                     </Typography>
                   }
                 />

@@ -33,37 +33,37 @@ const useStyles = makeStyles({
 const kpi = [
   {
     title: 'Program Creation to Approval Submission (Weeks)',
-    count: '11.4 | 10.2',
+    count: '11.4 • 10.2',
     desktopSize: 12,
     tabletSize: 12,
   },
   {
     title: 'Total Approvers',
-    count: '8 | 7.2',
+    count: '8 • 7.2',
     desktopSize: 4,
     tabletSize: 12,
   },
   {
     title: 'Non-DOA',
-    count: '6 | 5.5',
+    count: '6 • 5.5',
     desktopSize: 4,
     tabletSize: 12,
   },
   {
     title: 'DOA',
-    count: '7 | 7.6',
+    count: '7 • 7.6',
     desktopSize: 4,
     tabletSize: 12,
   },
   {
     title: 'Initial Submission to Final Approval (Weeks)',
-    count: '5.3 | 3.8',
+    count: '5.3 • 3.8',
     desktopSize: 12,
     tabletSize: 12,
   },
   {
     title: 'DOA Approvers at / above TED by Department (Weeks)',
-    count: '5.3 | 3.8',
+    count: '5.3 • 3.8',
     desktopSize: 12,
     tabletSize: 12,
   },
@@ -129,7 +129,7 @@ const ApprovalStatus = () => {
           <Card style={{maxHeight: 360}}>
             <CardHeader
               title="Approver KPIs Avg."
-              subheader="2019 | 2020"
+              subheader="2019 • 2020"
             ></CardHeader>
             <Divider />
             <Box style={{maxHeight: 260, overflow: 'scroll'}}>

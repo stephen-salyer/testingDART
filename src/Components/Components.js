@@ -36,9 +36,6 @@ const useStyles = makeStyles((theme) => ({
   listItemTextNoMargin: {
     marginBottom: '0',
   },
-  tabs: {
-    minWidth: '280px',
-  },
   MuiTab: {
     wrapper: {
       alignItems: 'start',
@@ -76,13 +73,16 @@ function TabPanel(props) {
     <Typography
       component="div"
       role="tabpanel"
-      style={{width: '100%'}}
       hidden={value !== index}
       id={`vertical-tabpanel-${index}`}
       aria-labelledby={`vertical-tab-${index}`}
       {...other}
     >
-      {value === index && <Box pl={3}>{children}</Box>}
+      {value === index && (
+        <Box pl={3} pr={3}>
+          {children}
+        </Box>
+      )}
     </Typography>
   );
 }
@@ -108,118 +108,111 @@ export default function Components() {
   return (
     <>
       <Grid container>
-        <div className={classes.root}>
-          <Box
-            className={classes.tabs}
-            style={{borderRight: '1px solid rgba(0, 0, 0, 0.12)'}}
-          >
-            <Box display="flex" flexDirection="column">
-              <Tabs
-                orientation="vertical"
-                variant="scrollable"
-                value={value}
-                onChange={handleChange}
-                aria-label="Vertical tabs example"
-                indicatorColor="primary"
-                className={classes.tabs}
-              >
-                {componentsInfo.map(({comp, ted}, i) => (
-                  <Tab
-                    style={{textAlign: 'left'}}
-                    key={i}
-                    label={
-                      <List style={{width: '100%'}}>
-                        <ListItemText
-                          className={classes.listItemTextNoMargin}
-                          primary={
-                            <Tooltip
-                              title={
-                                <Typography variant="overline">
-                                  {comp}
-                                </Typography>
-                              }
-                            >
-                              <Typography
-                                noWrap
-                                variant="subtitle1"
-                                style={{fontWeight: 500}}
-                              >
-                                {comp}
-                              </Typography>
-                            </Tooltip>
-                          }
-                          secondary={
+        <Grid
+          item
+          xs={3}
+          style={{borderRight: '1px solid rgba(0, 0, 0, 0.12)'}}
+        >
+          <Box className={classes.tabs}>
+            <Tabs
+              orientation="vertical"
+              variant="scrollable"
+              value={value}
+              onChange={handleChange}
+              aria-label="Vertical tabs example"
+              indicatorColor="primary"
+              className={classes.tabs}
+            >
+              {componentsInfo.map(({comp, ted}, i) => (
+                <Tab
+                  style={{textAlign: 'left', paddingLeft: 16}}
+                  key={i}
+                  label={
+                    <List style={{width: '100%'}}>
+                      <ListItemText
+                        className={classes.listItemTextNoMargin}
+                        primary={
+                          <Tooltip
+                            title={
+                              <Typography variant="overline">{comp}</Typography>
+                            }
+                          >
                             <Typography
-                              style={{
-                                marginTop: '0',
-                                fontWeight: '400',
-                                color: 'rgba(0, 0, 0, 0.54)',
-                                fontSize: '0.875rem',
-                              }}
+                              noWrap
+                              variant="subtitle1"
+                              style={{fontWeight: 500}}
                             >
-                              TED: {ted}
+                              {comp}
                             </Typography>
-                          }
-                        />
-                      </List>
-                    }
-                  />
-                ))}
-                <Box display="flex" justifyContent="center">
-                  <Button endIcon={<Add />}>Add Component</Button>
-                </Box>
-              </Tabs>
-            </Box>
+                          </Tooltip>
+                        }
+                        secondary={
+                          <Typography
+                            style={{
+                              marginTop: '0',
+                              fontWeight: '400',
+                              color: 'rgba(0, 0, 0, 0.54)',
+                              fontSize: '0.875rem',
+                            }}
+                          >
+                            TED: {ted}
+                          </Typography>
+                        }
+                      />
+                    </List>
+                  }
+                />
+              ))}
+              <Box display="flex" justifyContent="center">
+                <Button endIcon={<Add />}>Add Component</Button>
+              </Box>
+            </Tabs>
           </Box>
+        </Grid>
+        <Grid item xs={9}>
           {componentsInfo.map(({comp}, i) => (
             <TabPanel value={value} key={comp} index={i}>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    alignItems="center"
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <CardHeader
+                  title={
+                    <>
+                      <Box display="flex" alignItems="center">
+                        <Typography variant="h5">Component - {comp}</Typography>
+                      </Box>
+                    </>
+                  }
+                />
+                <Box>
+                  <IconButton
+                    onClick={handleClick}
+                    aria-label="More"
+                    component="span"
                   >
-                    <CardHeader
-                      title={
-                        <>
-                          <Box display="flex" alignItems="center">
-                            <Typography variant="h5">
-                              Component - {comp}
-                            </Typography>
-                          </Box>
-                        </>
-                      }
-                    />
-                    <Box>
-                      <IconButton
-                        onClick={handleClick}
-                        aria-label="More"
-                        component="span"
-                      >
-                        <MoreVertIcon />
-                      </IconButton>
-                      <Menu
-                        id="simple-menu"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                      >
-                        <MenuItem onClick={handleClose}>Copy</MenuItem>
-                        <MenuItem onClick={handleClose}>
-                          <DeleteComponentModal />
-                        </MenuItem>
-                      </Menu>
-                    </Box>
-                  </Box>
-                  <Divider />
-                  <ComponentInformation />
-                </Grid>
-              </Grid>
+                    <MoreVertIcon />
+                  </IconButton>
+                  <Menu
+                    id="simple-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                  >
+                    <MenuItem onClick={handleClose}>Copy</MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      <DeleteComponentModal />
+                    </MenuItem>
+                  </Menu>
+                </Box>
+              </Box>
+              <Divider />
+              <ComponentInformation />
             </TabPanel>
           ))}
-        </div>
+        </Grid>
       </Grid>
     </>
   );

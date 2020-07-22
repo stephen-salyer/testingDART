@@ -75,7 +75,11 @@ const programs = [
     programId: 'CHSAIO',
     pulledBack: 'Date Routed: 01/01/2020 • Days Pending: 6 Days',
   },
-  {title: '2020 Action Pact-Canada', programId: 'R1712', pulledBack: '1 Time'},
+  {
+    title: '2020 Action Pact-Canada',
+    programId: 'R1712',
+    pulledBack: 'Date Routed: 01/01/2020 • Days Pending: 6 Days',
+  },
   {
     title: '2020 Crop Protection AMF-Canada',
     programId: 'D1707',

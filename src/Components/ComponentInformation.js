@@ -9,6 +9,7 @@ import Box from '@material-ui/core/Box';
 import ComponentInformationMarketing from './ComponentInformationMarketing';
 import ComponentInformationFinance from './ComponentInformationFinance';
 import ComponentInformationOperations from './ComponentInformationOperations';
+import {Hidden} from '@material-ui/core';
 
 function TabPanel(props) {
   const {children, value, index, ...other} = props;
@@ -63,17 +64,35 @@ export default function ComponentInformation() {
         elevation={0}
         style={{backgroundColor: '#ffffff'}}
       >
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          variant="fullWidth"
-          aria-label="full width tabs example"
-        >
-          <Tab label="Marketing" {...a11yProps(0)} />
-          <Tab label="Financials" {...a11yProps(1)} />
-          <Tab label="Operations" {...a11yProps(2)} />
-        </Tabs>
+        <Hidden smDown>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            aria-label="full width tabs example"
+          >
+            <Tab label="Marketing" {...a11yProps(0)} />
+            <Tab label="Financials" {...a11yProps(1)} />
+            <Tab label="Operations" {...a11yProps(2)} />
+          </Tabs>
+        </Hidden>
+        <Hidden only={['md', 'lg', 'xl']}>
+          <Tabs
+            className={classes.tabletBP}
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="scrollable"
+            aria-label="full width tabs example"
+          >
+            <Tab label="Marketing" {...a11yProps(0)} />
+            <Tab label="Financials" {...a11yProps(1)} />
+            <Tab label="Operations" {...a11yProps(2)} />
+          </Tabs>
+        </Hidden>
       </AppBar>
       <TabPanel value={value} index={0} dir={theme.direction}>
         <ComponentInformationMarketing />

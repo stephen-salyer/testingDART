@@ -122,6 +122,16 @@ const useStyles = makeStyles((theme) => ({
       width: '20ch',
     },
   },
+  readText: {
+    paddingLeft: 4,
+    transition: 'all 0.1s ease-in-out',
+    cursor: 'pointer',
+    color: 'rgba(2,100,196, 0.85)',
+    textDecoration: 'underline',
+    '&:hover': {
+      color: 'rgb(2,100,196)',
+    },
+  },
 }));
 
 export default function InfoModal() {
@@ -138,9 +148,14 @@ export default function InfoModal() {
 
   return (
     <>
-      <Box style={{width: '100%'}} onClick={handleOpen}>
-        <Typography>Help</Typography>
-      </Box>
+      <Typography
+        variant="caption"
+        onClick={handleOpen}
+        color="textSecondary"
+        className={classes.readText}
+      >
+        Read More.
+      </Typography>
       <Modal
         className={classes.modal}
         open={open}
@@ -155,8 +170,7 @@ export default function InfoModal() {
           <div className={classes.paper}>
             <Box display="flex" justifyContent="space-between">
               <h2 id="transition-modal-title" style={{margin: '10px 0'}}>
-                Something Something Information (holds all tooltip information
-                could sort with tabs)
+                Descriptions and Examples
               </h2>
               <IconButton
                 onClick={handleClose}

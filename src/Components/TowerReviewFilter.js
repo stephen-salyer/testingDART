@@ -129,16 +129,14 @@ export default function TowerReviewFilter() {
       </Box>
       <Box pb={2} pl={2} pr={2}>
         <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel id="demo-simple-select-outlined-label">
-            Program Types
-          </InputLabel>
+          <InputLabel id="demo-simple-select-outlined-label">Payees</InputLabel>
           <Select
             MenuProps={menuProps}
             defaultValue={10}
             id="demo-simple-select-outlined"
-            label="Program Types"
+            label="Payees"
           >
-            <MenuItem value={10}>All Program Types</MenuItem>
+            <MenuItem value={10}>All Payees</MenuItem>
             <MenuItem value={20}>Dealer</MenuItem>
             <MenuItem value={30}>Distributor</MenuItem>
             <MenuItem value={30}>Grower</MenuItem>

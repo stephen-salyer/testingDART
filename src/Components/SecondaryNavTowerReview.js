@@ -222,7 +222,7 @@ const SecondaryNavTowerReview = () => {
             <Box display="flex" justifyContent="flex-end" pt={1}>
               <Chip
                 variant="outline"
-                label="All Program Types"
+                label="All Payees"
                 onDelete={handleDelete}
               />
             </Box>

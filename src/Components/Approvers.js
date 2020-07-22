@@ -123,7 +123,7 @@ export default function Approvers() {
           >
             {approverCategories.map(({category, approverCount}, i) => (
               <Tab
-                style={{textAlign: 'left'}}
+                style={{textAlign: 'left', paddingLeft: 16}}
                 key={i}
                 label={
                   <List style={{width: '100%'}}>
