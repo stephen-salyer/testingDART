@@ -132,9 +132,10 @@ const SecondaryNavTowerReview = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const [payee, setPayee] = React.useState('All Payees');
 
   const handleDelete = () => {
-    console.info('You clicked the delete icon.');
+    setPayee();
   };
 
   return (
@@ -175,7 +176,7 @@ const SecondaryNavTowerReview = () => {
                   />
                 )}
               </div>
-              <TowerReviewFilter />
+              <TowerReviewFilter payee={payee} setPayee={setPayee} />
               <IconButton
                 onClick={handleClick}
                 aria-label="More"
@@ -220,11 +221,9 @@ const SecondaryNavTowerReview = () => {
               </Menu>
             </Box>
             <Box display="flex" justifyContent="flex-end" pt={1}>
-              <Chip
-                variant="outline"
-                label="All Payees"
-                onDelete={handleDelete}
-              />
+              {payee && (
+                <Chip variant="outline" label={payee} onDelete={handleDelete} />
+              )}
             </Box>
           </Box>
         </Grid>

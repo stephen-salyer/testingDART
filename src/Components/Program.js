@@ -9,7 +9,7 @@ import Tab from '@material-ui/core/Tab';
 import SecondaryNavProgram from './SecondaryNavProgram';
 import Overview from './Overview';
 import Comments from './Comments';
-import {Box, Badge, Hidden} from '@material-ui/core';
+import {Box, Badge, Hidden, Divider} from '@material-ui/core';
 import Scopes from './Scopes';
 import Marketing from './Marketing';
 import Operations from './Operations';
@@ -132,6 +132,7 @@ const Program = () => {
                 <Tab style={{minWidth: '12.1%'}} label="Components" />
                 <Tab style={{minWidth: '12.2%'}} label="Attached Files" />
               </Tabs>
+              <Divider />
             </Hidden>
             <Hidden only={['md', 'lg', 'xl']}>
               <Tabs
@@ -162,6 +163,7 @@ const Program = () => {
                 <Tab style={{minWidth: '12.1%'}} label="Components" />
                 <Tab style={{minWidth: '12.2%'}} label="Attached Files" />
               </Tabs>
+              <Divider />
             </Hidden>
             <TabPanel value={value} index={0}>
               <Box p={3}>

@@ -64,7 +64,7 @@ const menuProps = {
 
 const towers = [{title: '2020 / North America / US / Alfalfa / Channel'}];
 
-export default function TowerReviewFilter() {
+export default function TowerReviewFilter({payee, setPayee}) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
@@ -87,6 +87,10 @@ export default function TowerReviewFilter() {
     }
 
     setState({...state, [anchor]: open});
+  };
+
+  const handlePayeeChange = (event) => {
+    setPayee(event.target.value);
   };
 
   const list = (anchor) => (
@@ -132,15 +136,16 @@ export default function TowerReviewFilter() {
           <InputLabel id="demo-simple-select-outlined-label">Payees</InputLabel>
           <Select
             MenuProps={menuProps}
-            defaultValue={10}
             id="demo-simple-select-outlined"
             label="Payees"
+            value={payee}
+            onChange={handlePayeeChange}
           >
-            <MenuItem value={10}>All Payees</MenuItem>
-            <MenuItem value={20}>Dealer</MenuItem>
-            <MenuItem value={30}>Distributor</MenuItem>
-            <MenuItem value={30}>Grower</MenuItem>
-            <MenuItem value={30}>Multi/Other</MenuItem>
+            <MenuItem value="All Payees">All Payees</MenuItem>
+            <MenuItem value="Dealer">Dealer</MenuItem>
+            <MenuItem value="Distributor">Distributor</MenuItem>
+            <MenuItem value="Grower">Grower</MenuItem>
+            <MenuItem value="Multi/Other">Multi/Other</MenuItem>
           </Select>
         </FormControl>
       </Box>

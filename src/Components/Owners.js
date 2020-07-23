@@ -69,7 +69,7 @@ export default function CustomizedSelects() {
 
   return (
     <Container maxWidth="sm">
-      <Grid container spacing={3}>
+      <Grid container>
         <Grid xs={12}>
           <Box display="flex" justifyContent="flex-end">
             <Button variant="outlined" color="primary" endIcon={<Send />}>
@@ -77,7 +77,7 @@ export default function CustomizedSelects() {
             </Button>
           </Box>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} style={{paddingTop: 16}}>
           <React.Fragment>
             <Autocomplete
               open={openEl}

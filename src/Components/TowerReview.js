@@ -1,15 +1,3 @@
-// Must haves
-
-// Take out Icons of status --
-// make price plan its own page with a button in global leading to that page. --
-// price place will have two tabs. Summary, Attachments. Comments FAB --
-// Attachments tab can be take out entirely. --
-// Vertical tabs for Dealer, Grower, Distributor, and Other --
-// in those vertical tabs have more tabs under the title for their status. --
-// ability to multi select programs to mark Approved (only on pending programs that do not contain components outside their tower) --
-// why they can’t approve a program (wrong status, they aren’t an approver, the amount is too much, program is invalid, etc) --
-// add gross to net year-over-year --
-
 import Card from '@material-ui/core/Card';
 import React from 'react';
 import {makeStyles, fade} from '@material-ui/core/styles';
