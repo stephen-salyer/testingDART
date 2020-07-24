@@ -1,52 +1,57 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import {
-  Box,
   Divider,
-  IconButton,
   Typography,
   ListItemText,
   List,
   ListItemSecondaryAction,
-  Container,
   Checkbox,
+  ListItem,
 } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import {RemoveCircle, CheckBoxOutlineBlank, CheckBox} from '@material-ui/icons';
-import ApproverManualNotify from './ApproverManualNotify';
+import {CheckBoxOutlineBlank, CheckBox} from '@material-ui/icons';
+import ApproverMenu from './ApproverMenu';
 
 export const people = [
+  {name: 'all', type: 'Global Accounting'},
+  {name: 'all', type: 'Non-DOA'},
+  {name: 'all', type: 'DOA'},
   {
     name: 'Justice Madden',
-    category: 'Legal',
+    category: '',
     progress: 'Pending',
     wave: 'Wave 1',
     ted: '$1,000,000,000',
     year: '1 Year',
+    type: 'Global Accounting',
   },
   {
-    name: 'Alberto Shepard',
-    category: 'Legal',
+    name: 'Amberto Shepard',
+    category: '',
     progress: 'Not Started',
     wave: 'Wave 1',
     ted: '$1,789,000,000',
     year: '1 Year',
+    type: 'Global Accounting',
   },
   {
     name: 'Anahi Mayo',
-    category: 'Sales',
+    category: '',
     progress: 'Pending',
     wave: 'Wave 2',
     ted: '$1,456,000,000',
     year: '2 Year',
+    type: 'Global Accounting',
   },
   {
     name: 'Mohamed Ferrell',
-    category: 'Sales',
+    category: '',
     progress: 'Approved',
     wave: 'Wave 2',
     ted: '$1,000,387,000',
     year: '1 Year',
+    type: 'Global Accounting',
   },
   {
     name: 'Jaylin Mcneil',
@@ -55,6 +60,7 @@ export const people = [
     wave: 'Wave 2',
     ted: '$1,000,387,000',
     year: '1 Year',
+    type: 'Non-DOA',
   },
   {
     name: 'Caden Sosa',
@@ -63,6 +69,7 @@ export const people = [
     wave: 'Wave 2',
     ted: '$1,000,387,000',
     year: '1 Year',
+    type: 'Non-DOA',
   },
   {
     name: 'Monica Carroll',
@@ -71,6 +78,7 @@ export const people = [
     wave: 'Wave 2',
     ted: '$1,000,387,000',
     year: '1 Year',
+    type: 'Non-DOA',
   },
   {
     name: 'Leia Roach',
@@ -79,6 +87,7 @@ export const people = [
     wave: 'Wave 2',
     ted: '$1,000,387,000',
     year: '1 Year',
+    type: 'Non-DOA',
   },
   {
     name: 'Kayden Jordan',
@@ -87,6 +96,7 @@ export const people = [
     wave: 'Wave 2',
     ted: '$1,000,387,000',
     year: '1 Year',
+    type: 'DOA',
   },
   {
     name: 'Billy Lester',
@@ -95,6 +105,7 @@ export const people = [
     wave: 'Wave 2',
     ted: '$1,000,387,000',
     year: '1 Year',
+    type: 'DOA',
   },
   {
     name: 'Kinsley Christian',
@@ -103,6 +114,7 @@ export const people = [
     wave: 'Wave 2',
     ted: '$1,000,387,000',
     year: '1 Year',
+    type: 'DOA',
   },
 ];
 
@@ -110,146 +122,135 @@ const icon = <CheckBoxOutlineBlank fontSize="small" />;
 const checkedIcon = <CheckBox fontSize="small" />;
 
 export default function ApproverGlobalAccounting() {
-  const [openEl, setopenEl] = React.useState(null);
-  const [value, setValue] = React.useState({[people[0]]: people[0].names});
-  const [pendingValue, setPendingValue] = React.useState(value);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [value, setValue] = React.useState([]);
+  const [pendingValue, setPendingValue] = React.useState([]);
 
-  const handleClick1 = () => {
+  const handleClick = (event) => {
     setPendingValue(value);
-    setopenEl();
+    setAnchorEl(event.currentTarget);
   };
 
-  const handleClose1 = (event, reason) => {
+  const handleClose = (event, reason) => {
     if (reason === 'toggleInput') {
       return;
     }
     setValue(pendingValue);
-    setopenEl(null);
+    if (anchorEl) {
+      anchorEl.focus();
+    }
+    setAnchorEl(null);
   };
+
+  const open1 = Boolean(anchorEl);
+  const id = open1 ? 'github-label' : undefined;
+
+  const [selectedAll, setSelectedAll] = useState([]);
 
   return (
     <>
-      <Container maxWidth="sm">
-        <React.Fragment>
-          <Autocomplete
-            open={openEl}
-            onClose={handleClose1}
-            multiple
-            disableClearable
-            onChange={(event, newValue) => {
-              setPendingValue((state) => ({...state, newValue}));
-            }}
-            disableCloseOnSelect
-            renderTags={() => null}
-            noOptionsText="No labels"
-            renderOption={(option, {selected}) => (
-              <React.Fragment key={option.name}>
+      <React.Fragment>
+        <Autocomplete
+          open={open1}
+          id={id}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          multiple
+          disableClearable
+          value={pendingValue}
+          onChange={(e, event, newValue, all) => {
+            setPendingValue(newValue);
+            setSelectedAll(all);
+          }}
+          disableCloseOnSelect
+          renderTags={() => null}
+          noOptionsText="No labels"
+          renderOption={(option, state) => {
+            const selectedAllIndex = selectedAll.findIndex(
+              (people) => people.name.toLowerCase() === 'all'
+            );
+            selectedAllIndex > -1
+              ? (state.selected = true)
+              : (state.selected = false);
+            return (
+              <React.Fragment>
                 <Checkbox
                   icon={icon}
                   checkedIcon={checkedIcon}
                   style={{marginRight: 8}}
-                  checked={selected}
+                  checked={state.selected}
                 />
-                <ListItemText primary={option.name} />
+                <ListItemText
+                  primary={option.name}
+                  secondary={option.category}
+                />
               </React.Fragment>
-            )}
-            options={people.sort((a, b) => -b.name.localeCompare(a.name))}
-            groupBy={(people) => people.category}
-            getOptionLabel={(people) => people.category}
-            renderInput={(params) => (
+            );
+          }}
+          options={[...people].sort((a, b) => {
+            let ai = value.indexOf(a);
+            ai = ai === -1 ? value.length + people.indexOf(a) : ai;
+            let bi = value.indexOf(b);
+            bi = bi === -1 ? value.length + people.indexOf(b) : bi;
+            return ai - bi;
+          })}
+          groupBy={(people) => people.type}
+          getOptionLabel={(option) => option.name}
+          renderInput={(params) => (
+            <>
               <TextField
-                onClick={handleClick1}
+                onClick={handleClick}
                 ref={params.InputProps.ref}
                 inputProps={params.inputProps}
                 {...params}
                 variant="outlined"
-                label="Add Owners"
-                placeholder="Search Here"
+                label="State / Province / Ect."
+                placeholder="Search"
               />
-            )}
-          />
-          <Box style={{height: '400px', overflow: 'scroll'}}>
-            {people.map(({name, category, progress, wave, ted, year}) => (
-              <React.Fragment key={name}>
-                <List>
-                  <Box display="flex" flexDirection="row" alignItems="center">
-                    <ApproverManualNotify />
-                    <Box display="flex" flexDirection="column" pr={6}>
+            </>
+          )}
+        />
+        <List>
+          {value.map((people) => (
+            <>
+              <ListItem key={people.name} divider>
+                <ListItemText
+                  primary={
+                    <>
                       <Typography
                         style={{lineHeight: '1.7'}}
                         variant="overline"
+                        color="textSecondary"
                       >
-                        {category}
+                        {people.category
+                          ? [people.type, people.category].join(' • ')
+                          : people.type}
                       </Typography>
-                      <Typography variant="subtitle1">{name}</Typography>
+                      <Typography variant="subtitle1">{people.name}</Typography>
                       <Typography
+                        variant="body2"
                         color="textSecondary"
                         style={{paddingBottom: 4}}
                       >
-                        {[progress, wave, ted, year].join(' • ')}
+                        {[
+                          people.progress,
+                          people.wave,
+                          people.ted,
+                          people.year,
+                        ].join(' • ')}
                       </Typography>
-                    </Box>
-                  </Box>
-                  <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete">
-                      <RemoveCircle />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </List>
-                <Divider />
-              </React.Fragment>
-            ))}
-          </Box>
-        </React.Fragment>
-        {/* <Autocomplete
-          options={people}
-          MenuProps={MenuProps}
-          getOptionLabel={(option) => option.name}
-          renderInput={(params) => (
-            <TextField {...params} label="Searh Approvers" variant="outlined" />
-          )}
-        />
-        <Box style={{maxHeight: '365px', overflow: 'scroll'}}>
-          {approvers.map(({progress, name, wave, ted, year}, i) => (
-            <>
-              <List key={i}>
-                <Box display="flex" flexDirection="row" alignItems="center">
-                  <ApproverManualNotify />
-                  <Box display="flex" flexDirection="column" pr={6}>
-                    <ListItemText
-                      style={{margin: 0}}
-                      primary={
-                        <Typography variant="overline" style={{lineHeight: 0}}>
-                          {progress}
-                        </Typography>
-                      }
-                      secondary={
-                        <Typography variant="subname1">{name}</Typography>
-                      }
-                    />
-                    <ListItemText
-                      style={{margin: 0}}
-                      primary={[wave, ted, year].join(' • ')}
-                    />
-                  </Box>
-                  <ListItemSecondaryAction></ListItemSecondaryAction>
-                </Box>
-              </List>
-              <Divider />
+                    </>
+                  }
+                />
+                <ListItemSecondaryAction>
+                  <ApproverMenu />
+                </ListItemSecondaryAction>
+              </ListItem>
             </>
           ))}
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={handleClose}>Edit</MenuItem>
-            <MenuItem onClick={handleClose}>Remove Approver</MenuItem>
-          </Menu>
-        </Box> */}
-      </Container>
+        </List>
+        <Divider />
+      </React.Fragment>
     </>
   );
 }

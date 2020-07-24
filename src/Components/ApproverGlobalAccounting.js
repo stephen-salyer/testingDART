@@ -1,99 +1,135 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import {
-  MenuItem,
   Box,
   Divider,
   IconButton,
   Typography,
   List,
   ListItemSecondaryAction,
-  Menu,
   Container,
+  Checkbox,
+  ListItemText,
 } from '@material-ui/core';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import ApproverManualNotify from './ApproverManualNotify';
-import {Members, approvers} from './ApproverNonDOADetails';
-import {RemoveCircle} from '@material-ui/icons';
+import {people} from './ApproverNonDOA';
+import {RemoveCircle, CheckBoxOutlineBlank, CheckBox} from '@material-ui/icons';
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-  getContentAnchorEl: null,
-  anchorOrigin: {
-    vertical: 'bottom',
-    horizontal: 'left',
-  },
-};
+const icon = <CheckBoxOutlineBlank fontSize="small" />;
+const checkedIcon = <CheckBox fontSize="small" />;
 
 export default function ApproverGlobalAccounting() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [openEl, setopenEl] = React.useState(null);
+  const [value, setValue] = React.useState({[people[0]]: people[0].names});
+  const [pendingValue, setPendingValue] = React.useState(value);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick1 = () => {
+    setPendingValue(value);
+    setopenEl();
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleClose1 = (event, reason) => {
+    if (reason === 'toggleInput') {
+      return;
+    }
+    setValue(pendingValue);
+    setopenEl(null);
   };
 
   return (
     <>
       <Container maxWidth="sm">
-        <Autocomplete
-          options={Members}
-          MenuProps={MenuProps}
-          getOptionLabel={(option) => option.title}
-          renderInput={(params) => (
-            <TextField {...params} label="Search Members" variant="outlined" />
-          )}
-        />
-        <Box style={{maxHeight: '400px', overflow: 'scroll'}}>
-          {approvers.map(({progress, name, wave, ted, year}, i) => (
-            <>
-              <List key={i}>
-                <Box display="flex" flexDirection="row" alignItems="center">
-                  <ApproverManualNotify />
-                  <Box display="flex" flexDirection="column" pr={6}>
-                    <Typography variant="overline" style={{lineHeight: '1.7'}}>
-                      {progress}
-                    </Typography>
-                    <Typography variant="subtitle1">{name}</Typography>
+        <React.Fragment>
+          <Autocomplete
+            open={openEl}
+            onClose={handleClose1}
+            multiple
+            disableClearable
+            onChange={(event, newValue) => {
+              setPendingValue((state) => ({...state, newValue}));
+            }}
+            disableCloseOnSelect
+            renderTags={() => null}
+            noOptionsText="No labels"
+            renderOption={(option, {selected}) => (
+              <React.Fragment key={option.name}>
+                <Checkbox
+                  icon={icon}
+                  checkedIcon={checkedIcon}
+                  style={{marginRight: 8}}
+                  checked={selected}
+                />
+                <ListItemText
+                  primary={
                     <Typography
-                      style={{paddingBottom: 4}}
+                      variant="overline"
                       color="textSecondary"
+                      style={{lineHeight: 0.5}}
                     >
-                      {[wave, ted, year].join(' • ')}
+                      {option.category}
                     </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      variant="body1"
+                      color="textPrimary"
+                      style={{lineHeight: 1.4}}
+                    >
+                      {option.name}
+                    </Typography>
+                  }
+                />
+              </React.Fragment>
+            )}
+            options={people.sort((a, b) => -b.name.localeCompare(a.name))}
+            groupBy={(people) => people.type}
+            getOptionLabel={(people) => people.type}
+            renderInput={(params) => (
+              <TextField
+                onClick={handleClick1}
+                ref={params.InputProps.ref}
+                inputProps={params.inputProps}
+                {...params}
+                variant="outlined"
+                label="Add Owners"
+                placeholder="Search Here"
+              />
+            )}
+          />
+          <Box style={{height: '400px', overflow: 'scroll'}}>
+            {people.map(({name, category, progress, wave, ted, year, type}) => (
+              <React.Fragment key={name}>
+                <List>
+                  <Box display="flex" flexDirection="row" alignItems="center">
+                    <ApproverManualNotify />
+                    <Box display="flex" flexDirection="column" pr={6}>
+                      <Typography
+                        style={{lineHeight: '1.7'}}
+                        variant="overline"
+                      >
+                        {type} {category}
+                      </Typography>
+                      <Typography variant="subtitle1">{name}</Typography>
+                      <Typography
+                        color="textSecondary"
+                        style={{paddingBottom: 4}}
+                      >
+                        {[progress, wave, ted, year].join(' • ')}
+                      </Typography>
+                    </Box>
                   </Box>
                   <ListItemSecondaryAction>
                     <IconButton edge="end" aria-label="delete">
                       <RemoveCircle />
                     </IconButton>
                   </ListItemSecondaryAction>
-                </Box>
-              </List>
-              <Divider />
-            </>
-          ))}
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={handleClose}>Edit</MenuItem>
-            <MenuItem onClick={handleClose}>Remove Approver</MenuItem>
-          </Menu>
-        </Box>
+                </List>
+                <Divider />
+              </React.Fragment>
+            ))}
+          </Box>
+        </React.Fragment>
       </Container>
     </>
   );

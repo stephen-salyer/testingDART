@@ -1,7 +1,6 @@
 import React from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import {Typography} from '@material-ui/core';
 
 class ApproverManualNotify extends React.Component {
   state = {
@@ -15,7 +14,7 @@ class ApproverManualNotify extends React.Component {
   render() {
     return (
       <FormControlLabel
-        style={{width: '100px', textAlign: 'center'}}
+        style={{paddingLeft: 16}}
         control={
           <Switch
             classes={this.props.classes}
@@ -25,14 +24,8 @@ class ApproverManualNotify extends React.Component {
             color="secondary"
           />
         }
-        labelPlacement="top"
-        label={
-          this.state.checked ? (
-            <Typography variant="caption">Manually Notify</Typography>
-          ) : (
-            <Typography variant="caption">Notify With Wave</Typography>
-          )
-        }
+        labelPlacement="right"
+        label="Notify With Wave"
       />
     );
   }
