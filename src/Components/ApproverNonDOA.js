@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import {
   Divider,
@@ -14,9 +14,6 @@ import {CheckBoxOutlineBlank, CheckBox} from '@material-ui/icons';
 import ApproverMenu from './ApproverMenu';
 
 export const people = [
-  {name: 'all', type: 'Global Accounting'},
-  {name: 'all', type: 'Non-DOA'},
-  {name: 'all', type: 'DOA'},
   {
     name: 'Justice Madden',
     category: '',
@@ -123,7 +120,7 @@ const checkedIcon = <CheckBox fontSize="small" />;
 
 export default function ApproverGlobalAccounting() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [value, setValue] = React.useState([]);
+  const [value, setValue] = React.useState([people[1], people[2]]);
   const [pendingValue, setPendingValue] = React.useState([]);
 
   const handleClick = (event) => {
@@ -145,8 +142,6 @@ export default function ApproverGlobalAccounting() {
   const open1 = Boolean(anchorEl);
   const id = open1 ? 'github-label' : undefined;
 
-  const [selectedAll, setSelectedAll] = useState([]);
-
   return (
     <>
       <React.Fragment>
@@ -158,35 +153,23 @@ export default function ApproverGlobalAccounting() {
           multiple
           disableClearable
           value={pendingValue}
-          onChange={(e, event, newValue, all) => {
+          onChange={(event, newValue) => {
             setPendingValue(newValue);
-            setSelectedAll(all);
           }}
           disableCloseOnSelect
           renderTags={() => null}
           noOptionsText="No labels"
-          renderOption={(option, state) => {
-            const selectedAllIndex = selectedAll.findIndex(
-              (people) => people.name.toLowerCase() === 'all'
-            );
-            selectedAllIndex > -1
-              ? (state.selected = true)
-              : (state.selected = false);
-            return (
-              <React.Fragment>
-                <Checkbox
-                  icon={icon}
-                  checkedIcon={checkedIcon}
-                  style={{marginRight: 8}}
-                  checked={state.selected}
-                />
-                <ListItemText
-                  primary={option.name}
-                  secondary={option.category}
-                />
-              </React.Fragment>
-            );
-          }}
+          renderOption={(option, {selected}) => (
+            <React.Fragment>
+              <Checkbox
+                icon={icon}
+                checkedIcon={checkedIcon}
+                style={{marginRight: 8}}
+                checked={selected}
+              />
+              <ListItemText primary={option.name} secondary={option.category} />
+            </React.Fragment>
+          )}
           options={[...people].sort((a, b) => {
             let ai = value.indexOf(a);
             ai = ai === -1 ? value.length + people.indexOf(a) : ai;
@@ -226,7 +209,9 @@ export default function ApproverGlobalAccounting() {
                           ? [people.type, people.category].join(' • ')
                           : people.type}
                       </Typography>
-                      <Typography variant="subtitle1">{people.name}</Typography>
+                      <Typography variant="subtitle1" style={{marginTop: -2}}>
+                        {people.name}
+                      </Typography>
                       <Typography
                         variant="body2"
                         color="textSecondary"
