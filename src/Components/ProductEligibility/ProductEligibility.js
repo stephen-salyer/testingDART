@@ -60,7 +60,7 @@ export default function ProductEligibility() {
       <Grid item sm={12}>
         <CardHeader
           titleTypographyProps={{variant: 'h6'}}
-          title="Product Eligibility"
+          title="Commercial Product Eligibility"
         />
         <Divider />
       </Grid>
@@ -72,8 +72,8 @@ export default function ProductEligibility() {
             MenuProps={MenuProps}
             label="Which Products"
           >
-            <MenuItem value={10}>All Products</MenuItem>
-            <MenuItem value={20}>Some Products</MenuItem>
+            <MenuItem value={10}>All Commercial Products</MenuItem>
+            <MenuItem value={20}>Some Commerical Products</MenuItem>
             <MenuItem value={30}>Other</MenuItem>
           </Select>
         </FormControl>
@@ -82,8 +82,8 @@ export default function ProductEligibility() {
         <>
           <Grid item sm={12} md={6}>
             <FormControl multiple fullWidth variant="outlined">
-              <InputLabel>Products</InputLabel>
-              <Select MenuProps={MenuProps} label="Products">
+              <InputLabel>Commercial Products</InputLabel>
+              <Select MenuProps={MenuProps} label="Commercial Products">
                 <Box
                   pt={8}
                   pb={8}

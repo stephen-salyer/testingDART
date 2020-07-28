@@ -1,16 +1,22 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import {
-  Divider,
   Typography,
   ListItemText,
   List,
   ListItemSecondaryAction,
   Checkbox,
   ListItem,
+  Collapse,
+  Divider,
 } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import {CheckBoxOutlineBlank, CheckBox} from '@material-ui/icons';
+import {
+  CheckBoxOutlineBlank,
+  CheckBox,
+  ExpandLess,
+  ExpandMore,
+} from '@material-ui/icons';
 import ApproverMenu from './ApproverMenu';
 
 export const people = [
@@ -139,15 +145,16 @@ export default function ApproverGlobalAccounting() {
     setAnchorEl(null);
   };
 
-  const open1 = Boolean(anchorEl);
-  const id = open1 ? 'github-label' : undefined;
+  const [open, setOpen] = React.useState(true);
+
+  const handleClickCollapse = () => {
+    setOpen(!open);
+  };
 
   return (
     <>
       <React.Fragment>
         <Autocomplete
-          open={open1}
-          id={id}
           anchorEl={anchorEl}
           onClose={handleClose}
           multiple
@@ -158,7 +165,7 @@ export default function ApproverGlobalAccounting() {
           }}
           disableCloseOnSelect
           renderTags={() => null}
-          noOptionsText="No labels"
+          noOptionsText="No Options"
           renderOption={(option, {selected}) => (
             <React.Fragment>
               <Checkbox
@@ -167,7 +174,22 @@ export default function ApproverGlobalAccounting() {
                 style={{marginRight: 8}}
                 checked={selected}
               />
-              <ListItemText primary={option.name} secondary={option.category} />
+              <ListItemText
+                primary={
+                  <>
+                    <Typography
+                      style={{lineHeight: '1.7'}}
+                      variant="overline"
+                      color="textSecondary"
+                    >
+                      {option.category}
+                    </Typography>
+                    <Typography variant="subtitle1" style={{marginTop: -2}}>
+                      {option.name}
+                    </Typography>
+                  </>
+                }
+              />
             </React.Fragment>
           )}
           options={[...people].sort((a, b) => {
@@ -193,48 +215,52 @@ export default function ApproverGlobalAccounting() {
             </>
           )}
         />
-        <List>
+        <List style={{padding: 0}}>
+          <ListItem button onClick={handleClickCollapse}>
+            <ListItemText primary="Global Accounting" secondary="2 Selected" />
+            {open ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          {open ? <Divider /> : <></>}
           {value.map((people) => (
             <>
-              <ListItem key={people.name} divider>
-                <ListItemText
-                  primary={
-                    <>
-                      <Typography
-                        style={{lineHeight: '1.7'}}
-                        variant="overline"
-                        color="textSecondary"
-                      >
-                        {people.category
-                          ? [people.type, people.category].join(' • ')
-                          : people.type}
-                      </Typography>
-                      <Typography variant="subtitle1" style={{marginTop: -2}}>
-                        {people.name}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        style={{paddingBottom: 4}}
-                      >
-                        {[
-                          people.progress,
-                          people.wave,
-                          people.ted,
-                          people.year,
-                        ].join(' • ')}
-                      </Typography>
-                    </>
-                  }
-                />
-                <ListItemSecondaryAction>
-                  <ApproverMenu />
-                </ListItemSecondaryAction>
-              </ListItem>
+              <Collapse in={open} timeout="auto" unmountOnExit>
+                <ListItem key={people.name} divider>
+                  <ListItemText
+                    primary={
+                      <>
+                        <Typography
+                          style={{lineHeight: '1.7'}}
+                          variant="overline"
+                          color="textSecondary"
+                        >
+                          {people.category}
+                        </Typography>
+                        <Typography variant="subtitle1" style={{marginTop: -2}}>
+                          {people.name}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="textSecondary"
+                          style={{paddingBottom: 4}}
+                        >
+                          {[
+                            people.progress,
+                            people.wave,
+                            people.ted,
+                            people.year,
+                          ].join(' • ')}
+                        </Typography>
+                      </>
+                    }
+                  />
+                  <ListItemSecondaryAction>
+                    <ApproverMenu />
+                  </ListItemSecondaryAction>
+                </ListItem>
+              </Collapse>
             </>
           ))}
         </List>
-        <Divider />
       </React.Fragment>
     </>
   );

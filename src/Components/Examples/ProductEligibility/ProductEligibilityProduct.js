@@ -15,7 +15,7 @@ export default function ProductEligibilityProduct() {
       <Box style={{maxHeight: '255px', overflow: 'scroll'}} pl={2}>
         <List>
           <Box p={1}>
-            <ListItemText primary="Product" />
+            <ListItemText primary="Commercial Product" />
             <ListItemSecondaryAction>
               <IconButton edge="end" aria-label="delete">
                 <RemoveCircleIcon />

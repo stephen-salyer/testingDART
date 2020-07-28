@@ -9,7 +9,7 @@ import Box from '@material-ui/core/Box';
 import ComponentInformationMarketing from './ComponentInformationMarketing';
 import ComponentInformationFinance from './ComponentInformationFinance';
 import ComponentInformationOperations from './ComponentInformationOperations';
-import {Hidden} from '@material-ui/core';
+import {Hidden, Divider, Button} from '@material-ui/core';
 
 function TabPanel(props) {
   const {children, value, index, ...other} = props;
@@ -77,6 +77,7 @@ export default function ComponentInformation() {
             <Tab label="Financials" {...a11yProps(1)} />
             <Tab label="Operations" {...a11yProps(2)} />
           </Tabs>
+          <Divider />
         </Hidden>
         <Hidden only={['md', 'lg', 'xl']}>
           <Tabs
@@ -92,17 +93,20 @@ export default function ComponentInformation() {
             <Tab label="Financials" {...a11yProps(1)} />
             <Tab label="Operations" {...a11yProps(2)} />
           </Tabs>
+          <Divider />
         </Hidden>
       </AppBar>
-      <TabPanel value={value} index={0} dir={theme.direction}>
-        <ComponentInformationMarketing />
-      </TabPanel>
-      <TabPanel value={value} index={1} dir={theme.direction}>
-        <ComponentInformationFinance />
-      </TabPanel>
-      <TabPanel value={value} index={2} dir={theme.direction}>
-        <ComponentInformationOperations />
-      </TabPanel>
+      <Box pl={3} pr={3} pb={3}>
+        <TabPanel value={value} index={0} dir={theme.direction}>
+          <ComponentInformationMarketing />
+        </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction}>
+          <ComponentInformationFinance />
+        </TabPanel>
+        <TabPanel value={value} index={2} dir={theme.direction}>
+          <ComponentInformationOperations />
+        </TabPanel>
+      </Box>
     </div>
   );
 }

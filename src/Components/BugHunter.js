@@ -18,31 +18,34 @@ import {Add} from '@material-ui/icons';
 
 const people = [
   {
-    name: 'Amy M.',
+    name: 'TEC',
   },
   {
-    name: 'Andrew M.',
+    name: 'Amy',
   },
   {
-    name: 'Corey B.',
+    name: 'Andrew',
   },
   {
-    name: 'Deepthi P.',
+    name: 'Corey',
   },
   {
-    name: 'Evan K.',
+    name: 'Deepthi',
   },
   {
-    name: 'Jason T.',
+    name: 'Evan',
   },
   {
-    name: 'Richard J.',
+    name: 'Jason',
   },
   {
-    name: 'Srikanth B.',
+    name: 'Richard',
   },
   {
-    name: 'Stephen S.',
+    name: 'Srikanth',
+  },
+  {
+    name: 'Stephen',
   },
 ];
 
@@ -51,7 +54,7 @@ const BugHunter = () => (
     <Grid container style={{paddingTop: 124, paddingBottom: 24}}>
       <Grid item={true} xs={12} md={10}>
         <Typography variant="h3" color="primary">
-          Bug Hunter Chicken Stats
+          Bug Hunter Chicken Stonks
         </Typography>
       </Grid>
       <Grid item={true} xs={12} md={2}>
@@ -73,7 +76,9 @@ const BugHunter = () => (
                     control={<Switch checked style={{color: green[400]}} />}
                   />
                 }
-                title={<Typography variant="h6">{name}s Bucket</Typography>}
+                title={
+                  <Typography variant="h6">{name}&apos;s Bucket</Typography>
+                }
               />
               <Divider />
               <CardContent>

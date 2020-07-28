@@ -102,7 +102,7 @@ export default function ComponentInformationMarketing() {
           <Grid item xs={12} md={6}>
             <TextField
               label="Component Name"
-              defaultValue="Component Name"
+              defaultValue="Canola"
               variant="outlined"
               fullWidth
             />

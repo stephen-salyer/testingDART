@@ -106,7 +106,7 @@ export default function ProductEligibilityExample() {
           <Grid item xs={12}>
             <CardHeader
               titleTypographyProps={{variant: 'h6'}}
-              title="Product Eligibility"
+              title="Commercial Product Eligibility"
             />
           </Grid>
           <Grid item xs={12} md={some || someOther ? 6 : 12}>
@@ -218,10 +218,10 @@ export default function ProductEligibilityExample() {
               <TextField
                 fullWidth
                 id="outlined-multiline-static"
-                label="Undefined Products Here"
+                label="Undefined Commercial Products Here"
                 multiline
                 rows={4}
-                placeholder="Product format here (seperated by comma)"
+                placeholder="Commercial Product format here (seperated by comma)"
                 variant="outlined"
               />
             </Grid>
