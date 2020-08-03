@@ -97,7 +97,7 @@ export default function ComponentInformationMarketing() {
 
   return (
     <div className={classes.root}>
-      <Box pt={1} pb={3}>
+      <Box pt={1}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
             <TextField

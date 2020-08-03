@@ -185,7 +185,9 @@ export default function ApproverGlobalAccounting() {
                       {option.category}
                     </Typography>
                     <Typography variant="subtitle1" style={{marginTop: -2}}>
-                      {option.name}
+                      {option.type === 'DOA'
+                        ? [option.name, option.year, option.ted].join(' • ')
+                        : [option.name, option.year].join(' • ')}
                     </Typography>
                   </>
                 }

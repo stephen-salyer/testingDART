@@ -67,14 +67,14 @@ export default function CustomerEligibility() {
 
   return (
     <>
-      <Grid item sm={12}>
+      <Grid item xs={12}>
         <CardHeader
           titleTypographyProps={{variant: 'h6'}}
           title="Customer Eligibility"
         />
         <Divider />
       </Grid>
-      <Grid item md={12} lg={someAccounts ? 4 : 6}>
+      <Grid item xs={12} lg={someAccounts ? 4 : 6}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Which Customers</InputLabel>
           <Select
@@ -90,7 +90,7 @@ export default function CustomerEligibility() {
       </Grid>
       {someAccounts && (
         <>
-          <Grid item md={12} lg={4}>
+          <Grid item xs={12} lg={4}>
             <FormControl fullWidth variant="outlined">
               <InputLabel>Account Classification</InputLabel>
               <Select
@@ -104,7 +104,7 @@ export default function CustomerEligibility() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item md={12} lg={4}>
+          <Grid item xs={12} lg={4}>
             <FormControl fullWidth variant="outlined">
               <InputLabel>Segment</InputLabel>
               <Select MenuProps={MenuProps} label="Segment" defaultValue={20}>

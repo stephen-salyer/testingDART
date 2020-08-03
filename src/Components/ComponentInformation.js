@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {makeStyles, useTheme} from '@material-ui/core/styles';
+import {useTheme} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -9,7 +9,7 @@ import Box from '@material-ui/core/Box';
 import ComponentInformationMarketing from './ComponentInformationMarketing';
 import ComponentInformationFinance from './ComponentInformationFinance';
 import ComponentInformationOperations from './ComponentInformationOperations';
-import {Hidden, Divider, Button} from '@material-ui/core';
+import {Hidden, Divider} from '@material-ui/core';
 
 function TabPanel(props) {
   const {children, value, index, ...other} = props;
@@ -41,14 +41,7 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-  },
-});
-
 export default function ComponentInformation() {
-  const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -57,7 +50,7 @@ export default function ComponentInformation() {
   };
 
   return (
-    <div className={classes.root}>
+    <>
       <AppBar
         position="static"
         color="default"
@@ -81,7 +74,6 @@ export default function ComponentInformation() {
         </Hidden>
         <Hidden only={['md', 'lg', 'xl']}>
           <Tabs
-            className={classes.tabletBP}
             value={value}
             onChange={handleChange}
             indicatorColor="primary"
@@ -96,17 +88,15 @@ export default function ComponentInformation() {
           <Divider />
         </Hidden>
       </AppBar>
-      <Box pl={3} pr={3} pb={3}>
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          <ComponentInformationMarketing />
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          <ComponentInformationFinance />
-        </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-          <ComponentInformationOperations />
-        </TabPanel>
-      </Box>
-    </div>
+      <TabPanel value={value} index={0} dir={theme.direction}>
+        <ComponentInformationMarketing />
+      </TabPanel>
+      <TabPanel value={value} index={1} dir={theme.direction}>
+        <ComponentInformationFinance />
+      </TabPanel>
+      <TabPanel value={value} index={2} dir={theme.direction}>
+        <ComponentInformationOperations />
+      </TabPanel>
+    </>
   );
 }

@@ -1,78 +1,97 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import {Box, Chip, IconButton, Button} from '@material-ui/core';
+import {
+  Box,
+  TextField,
+  Divider,
+  Button,
+  Hidden,
+  IconButton,
+} from '@material-ui/core';
 import ComponentInformation from './ComponentInformation';
-import {Done, Add} from '@material-ui/icons';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import ComponentMenu from './ComponentMenu';
+import {Add} from '@material-ui/icons';
 
-const selectableChips = [
+const selectableComponents = [
   {
     label: 'Canola',
-    icon: <Done />,
   },
   {label: 'Corn'},
   {label: 'Soybean'},
-  {label: '2019 Pack 72-10 MGRR & 71-10 VT3P DK Arg'},
-  {label: '2019 Pack 72-10 MGRR & 71-10 VT3P DK Arg'},
-  {label: '2019 Pack 72-10 MGRR & 71-10 VT3P DK Arg'},
-  {label: '2019 Pack 72-10 MGRR & 71-10 VT3P DK Arg'},
-  {label: '2019 Pack 72-10 MGRR & 71-10 VT3P DK Arg'},
   {label: '2019 Pack 72-10 MGRR & 71-10 VT3P DK Arg'},
   {label: 'Crop Here'},
 ];
 
 export default function Components() {
-  const handleChipClick = () => {
-    console.info('You clicked the Chip.');
-  };
-
   return (
     <>
-      <Box
-        display="flex"
-        alignItems="flex-start"
-        p={2}
-        style={{overflow: 'scroll'}}
-      >
-        <Box pr={1}>
-          <Button size="medium" endIcon={<Add />} style={{minWidth: 165}}>
-            Add Component
-          </Button>
-        </Box>
-        {selectableChips.map(({label, icon}) => (
-          <Box key={label} pr={1}>
-            {label === 'Canola' ? (
-              <>
-                <Box display="flex" flexDirection="column" alignItems="center">
-                  <Chip
-                    clickable
-                    color="primary"
-                    onDelete="handleChipClick"
-                    onClick={handleChipClick}
-                    label={label}
-                    deleteIcon={icon}
-                  />
-                  <Box display="flex" pt={1}>
-                    <Button variant="outlined" color="secondary">
-                      Copy
-                    </Button>
-                    <Button color="primary">Delete</Button>
-                  </Box>
-                </Box>
-              </>
-            ) : (
-              <Chip
-                clickable
-                onClick={handleChipClick}
-                label={label}
-                deleteIcon={icon}
+      <Box p={3}>
+        <Grid container spacing={3}>
+          <Hidden smDown>
+            <Grid item xs={4}>
+              <Autocomplete
+                disableClearable
+                defaultValue={selectableComponents[0]}
+                options={selectableComponents}
+                getOptionLabel={(option) => option.label}
+                renderInput={(params) => (
+                  <TextField {...params} label="Components" variant="filled" />
+                )}
               />
-            )}
-          </Box>
-        ))}
+            </Grid>
+          </Hidden>
+          <Hidden mdUp>
+            <Grid item xs={9}>
+              <Autocomplete
+                disableClearable
+                defaultValue={selectableComponents[0]}
+                options={selectableComponents}
+                getOptionLabel={(option) => option.label}
+                renderInput={(params) => (
+                  <TextField {...params} label="Components" variant="filled" />
+                )}
+              />
+            </Grid>
+          </Hidden>
+          <Hidden smDown>
+            <Grid item xs={8}>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="flex-end"
+                style={{height: '100%'}}
+              >
+                <Button color="primary" variant="outlined" startIcon={<Add />}>
+                  Add Component
+                </Button>
+                <ComponentMenu />
+              </Box>
+            </Grid>
+          </Hidden>
+          <Hidden mdUp>
+            <Grid item xs={3}>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="flex-end"
+                style={{height: '100%'}}
+              >
+                <IconButton color="primary" component="span">
+                  <Add />
+                </IconButton>
+                <ComponentMenu />
+              </Box>
+            </Grid>
+          </Hidden>
+          <Grid item xs={12} style={{marginBottom: -8}}>
+            <Divider />
+          </Grid>
+          <Grid item xs={12}>
+            <ComponentInformation />
+          </Grid>
+        </Grid>
       </Box>
-      <Grid container>
-        <ComponentInformation />
-      </Grid>
     </>
   );
 }
