@@ -45,14 +45,14 @@ export default function GeographyEligibility() {
 
   return (
     <>
-      <Grid item sm={12}>
+      <Grid item xs={12}>
         <CardHeader
           titleTypographyProps={{variant: 'h6'}}
           title="Geography Eligibility"
         />
         <Divider />
       </Grid>
-      <Grid item sm={12} md={someGeographies || other ? 6 : 6}>
+      <Grid item xs={12} md={someGeographies || other ? 6 : 6}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Which Geographies</InputLabel>
           <Select
@@ -69,7 +69,7 @@ export default function GeographyEligibility() {
       </Grid>
       {someGeographies && (
         <>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <FormControl multiple fullWidth variant="outlined">
               <InputLabel>Country</InputLabel>
               <Select MenuProps={MenuProps} label="Country">
@@ -92,10 +92,10 @@ export default function GeographyEligibility() {
             </FormControl>
             <GeographyEligibilityCountry />
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <GeographyEligibilityState />
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <GeographyEligibilityCounty />
           </Grid>
         </>

@@ -65,7 +65,7 @@ export default function ComponentInformationFinance() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item sm={12}>
+        <Grid item xs={12}>
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="P&L">P&L</InputLabel>
             <Select
@@ -91,7 +91,7 @@ export default function ComponentInformationFinance() {
             </FormHelperText>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="Market Year">Market Year</InputLabel>
             <Select
@@ -107,7 +107,7 @@ export default function ComponentInformationFinance() {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             label="Expected Discount"
             defaultValue="$1,000,000"
@@ -117,7 +117,7 @@ export default function ComponentInformationFinance() {
         </Grid>
       </Grid>
       <Grid container spacing={3}>
-        <Grid item sm={12}>
+        <Grid item xs={12}>
           <Box pb={1} pt={1}>
             <Divider />
           </Box>
@@ -131,7 +131,7 @@ export default function ComponentInformationFinance() {
         wrap="nowrap"
       >
         <Grid container item spacing={3}>
-          <Grid item sm={12}>
+          <Grid item xs={12}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="P&L">P&L</InputLabel>
               <Select
@@ -153,7 +153,7 @@ export default function ComponentInformationFinance() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="Market Year">Market Year</InputLabel>
               <Select
@@ -169,7 +169,7 @@ export default function ComponentInformationFinance() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <TextField
               label="Expected Discount"
               defaultValue="$1,000,000"
@@ -190,7 +190,7 @@ export default function ComponentInformationFinance() {
             Add Financial P&L
           </Button>
         </Grid>
-        <Grid item sm={12} ms={6}>
+        <Grid item xs={12} ms={6}>
           <TextField
             label="Total Expected Discount"
             defaultValue="$2,100,000"

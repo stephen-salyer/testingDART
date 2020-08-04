@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   CardHeader,
-  Checkbox,
   CircularProgress,
   Grid,
   FormControl,
@@ -10,14 +9,12 @@ import {
   MenuItem,
   Box,
   Typography,
-  FormControlLabel,
   Divider,
   TextField,
 } from '@material-ui/core';
 import ProductEligibilityProduct from './ProductEligibilityProduct';
 import ProductEligibilityBrands from './ProductEligibilityBrands';
 import ProductEligibilityMaterials from './ProductEligibilityMaterials';
-import ProductSearchModal from '../ProductSearchModal';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -36,17 +33,6 @@ const MenuProps = {
 };
 
 export default function ProductEligibility() {
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
-    checkedF: true,
-    checkedG: true,
-  });
-
-  const handleChange = (event) => {
-    setState({...state, [event.target.name]: event.target.checked});
-  };
-
   const [products, setProducts] = React.useState(10);
   const someProducts = products === 20;
   const other = products === 30;
@@ -57,14 +43,14 @@ export default function ProductEligibility() {
 
   return (
     <>
-      <Grid item sm={12}>
+      <Grid item xs={12}>
         <CardHeader
           titleTypographyProps={{variant: 'h6'}}
           title="Product Eligibility"
         />
         <Divider />
       </Grid>
-      <Grid item sm={12} md={someProducts || other ? 6 : 6}>
+      <Grid item xs={12} md={someProducts || other ? 6 : 6}>
         <FormControl fullWidth variant="outlined">
           <InputLabel>Which Products</InputLabel>
           <Select
@@ -80,10 +66,10 @@ export default function ProductEligibility() {
       </Grid>
       {someProducts && (
         <>
-          <Grid item sm={12} md={6}>
+          <Grid item xs={12} md={6}>
             <FormControl multiple fullWidth variant="outlined">
               <InputLabel>DART Products</InputLabel>
-              <Select MenuProps={MenuProps} label="Commercial Products">
+              <Select MenuProps={MenuProps} label="DART Products">
                 <Box
                   pt={8}
                   pb={8}
@@ -94,41 +80,17 @@ export default function ProductEligibility() {
                 >
                   <CircularProgress color="secondary" />
                   <Box p={3}>
-                    <Typography>
-                      Grab some coffee. Its gonna be a minute...
-                    </Typography>
+                    <Typography>Your number in line is 3. Maybe 4.</Typography>
                   </Box>
                 </Box>
               </Select>
             </FormControl>
             <ProductEligibilityProduct />
           </Grid>
-          <Grid item sm={12} md={6}>
-            <FormControl multiple fullWidth variant="outlined">
-              <InputLabel>Brands</InputLabel>
-              <Select MenuProps={MenuProps} label="Brands">
-                {[1, 2, 3, 4, 5, 6].map((n) => (
-                  <Box pl={2} key={n}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={state.checkedB}
-                          onChange={handleChange}
-                          name="checkedB"
-                          color="primary"
-                          value={10}
-                        />
-                      }
-                      label="State Name Here"
-                    />
-                  </Box>
-                ))}
-              </Select>
-            </FormControl>
+          <Grid item xs={12} md={6}>
             <ProductEligibilityBrands />
           </Grid>
-          <Grid item sm={12} md={6}>
-            <ProductSearchModal />
+          <Grid item xs={12} md={6}>
             <ProductEligibilityMaterials />
           </Grid>
         </>

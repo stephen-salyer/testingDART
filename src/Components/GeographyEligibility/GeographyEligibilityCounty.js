@@ -84,9 +84,7 @@ export default function GitHubLabel() {
               primary={option.county}
               secondary={
                 <>
-                  <Typography color="textSecondary">
-                    {option.country} • {option.state}
-                  </Typography>
+                  <Typography color="textSecondary">{option.state}</Typography>
                 </>
               }
             />
@@ -99,6 +97,7 @@ export default function GitHubLabel() {
           bi = bi === -1 ? value.length + geographyInformation.indexOf(b) : bi;
           return ai - bi;
         })}
+        groupBy={(geographyInformation) => geographyInformation.country}
         getOptionLabel={(option) => option.state}
         renderInput={(params) => (
           <>
@@ -114,7 +113,7 @@ export default function GitHubLabel() {
           </>
         )}
       />
-      <Box style={{maxHeight: '255px', overflow: 'scroll'}}>
+      <Box style={{maxHeight: '550px', overflow: 'scroll'}}>
         <ListItem button onClick={handleClick1}>
           <ListItemText
             primary={
@@ -129,7 +128,11 @@ export default function GitHubLabel() {
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
+          <List
+            component="div"
+            disablePadding
+            style={{maxHeight: '228px', overflow: 'scroll'}}
+          >
             {value.map((label) => (
               <>
                 <ListItem key={label.county} divider style={{padding: 16}}>
@@ -156,62 +159,62 @@ const geographyInformation = [
     country: 'US',
   },
   {
-    county: 'B',
+    county: 'Batha',
     state: 'Arkansas',
     country: 'US',
   },
   {
-    county: 'C',
+    county: 'Crator',
     state: 'California',
     country: 'US',
   },
   {
-    county: 'D',
+    county: 'Denont',
     state: 'Conneticut',
     country: 'US',
   },
   {
-    county: 'E',
+    county: 'Emora',
     state: 'Colorado',
     country: 'US',
   },
   {
-    county: 'F',
+    county: 'Finaus',
     state: 'Delaware',
     country: 'US',
   },
   {
-    county: 'G',
+    county: 'Gimla',
     state: 'Georgia',
     country: 'US',
   },
   {
-    county: 'H',
+    county: 'Hoot',
     state: 'Indiana',
     country: 'US',
   },
   {
-    county: 'I',
+    county: 'Inorama',
     state: 'Illinois',
     country: 'US',
   },
   {
-    county: 'J',
+    county: 'Jintamor',
     state: 'Montana',
     country: 'US',
   },
   {
-    county: 'K',
+    county: 'Kamonin',
     state: 'North Carolina',
     country: 'US',
   },
   {
-    county: 'L',
+    county: 'Lintan',
     state: 'South Carolina',
     country: 'US',
   },
   {
-    county: 'M',
+    county: 'Meronia',
     state: 'Texas',
     country: 'US',
   },

@@ -65,7 +65,9 @@ export default function Components() {
                 <Button color="primary" variant="outlined" startIcon={<Add />}>
                   Add Component
                 </Button>
-                <ComponentMenu />
+                <Box pl={1}>
+                  <ComponentMenu />
+                </Box>
               </Box>
             </Grid>
           </Hidden>

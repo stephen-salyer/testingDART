@@ -80,7 +80,7 @@ export default function GitHubLabel() {
               style={{marginRight: 8}}
               checked={selected}
             />
-            <ListItemText primary={option.state} secondary={option.country} />
+            <ListItemText primary={option.state} />
           </React.Fragment>
         )}
         options={[...geographyInformation].sort((a, b) => {
@@ -90,6 +90,7 @@ export default function GitHubLabel() {
           bi = bi === -1 ? value.length + geographyInformation.indexOf(b) : bi;
           return ai - bi;
         })}
+        groupBy={(geographyInformation) => geographyInformation.country}
         getOptionLabel={(option) => option.state}
         renderInput={(params) => (
           <>
@@ -105,7 +106,7 @@ export default function GitHubLabel() {
           </>
         )}
       />
-      <Box style={{maxHeight: '255px', overflow: 'scroll'}}>
+      <Box style={{maxHeight: '550px', overflow: 'scroll'}}>
         <ListItem button onClick={handleClick1}>
           <ListItemText
             primary={
@@ -120,7 +121,11 @@ export default function GitHubLabel() {
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
+          <List
+            component="div"
+            disablePadding
+            style={{maxHeight: '228px', overflow: 'scroll'}}
+          >
             {value.map((label) => (
               <>
                 <ListItem key={label.state} divider style={{padding: 16}}>

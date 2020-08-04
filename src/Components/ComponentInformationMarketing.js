@@ -157,7 +157,7 @@ export default function ComponentInformationMarketing() {
             </FormControl>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography variant="subtitle1">Treatment</Typography>
+            <Typography variant="subtitle1">Target Split</Typography>
             <Box display="flex" pt={2}>
               <Box pr={1} width="100%">
                 <TextField
