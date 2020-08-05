@@ -14,7 +14,6 @@ import {
   TextField,
   ListItemText,
 } from '@material-ui/core';
-import ProductEligibilityProduct from './ProductEligibilityProduct';
 import ProductEligibilityBrands from './ProductEligibilityBrands';
 import ProductEligibilityMaterials from './ProductEligibilityMaterials';
 
@@ -146,7 +145,6 @@ export default function ProductEligibilityExample() {
                     </Box>
                   </Select>
                 </FormControl>
-                <ProductEligibilityProduct />
               </Grid>
               <Grid item xs={12} md={4}>
                 <FormControl variant="outlined" fullWidth={true}>

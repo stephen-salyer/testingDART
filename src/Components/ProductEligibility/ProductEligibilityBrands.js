@@ -77,7 +77,7 @@ export default function ProductEligibilityBrands() {
               style={{marginRight: 8}}
               checked={selected}
             />
-            <ListItemText primary={option.product} secondary={option.brand} />
+            <ListItemText primary={option.brand} />
           </React.Fragment>
         )}
         options={[...brands].sort((a, b) => {

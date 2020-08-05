@@ -12,6 +12,7 @@ import {
   Container,
   Typography,
   Button,
+  ListItem,
 } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {
@@ -50,13 +51,13 @@ const icon = <CheckBoxOutlineBlank fontSize="small" />;
 const checkedIcon = <CheckBox fontSize="small" />;
 
 export default function CustomizedSelects() {
-  const [openEl, setopenEl] = React.useState(null);
-  const [value, setValue] = React.useState({[people[0]]: people[0].names});
-  const [pendingValue, setPendingValue] = React.useState(value);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [value, setValue] = React.useState([people[1], people[2]]);
+  const [pendingValue, setPendingValue] = React.useState([]);
 
-  const handleClick = () => {
+  const handleClick = (event) => {
     setPendingValue(value);
-    setopenEl();
+    setAnchorEl(event.currentTarget);
   };
 
   const handleClose = (event, reason) => {
@@ -64,8 +65,14 @@ export default function CustomizedSelects() {
       return;
     }
     setValue(pendingValue);
-    setopenEl(null);
+    if (anchorEl) {
+      anchorEl.focus();
+    }
+    setAnchorEl(null);
   };
+
+  const open1 = Boolean(anchorEl);
+  const id = open1 ? 'github-label' : undefined;
 
   return (
     <Container maxWidth="sm">
@@ -80,18 +87,21 @@ export default function CustomizedSelects() {
         <Grid item xs={12} style={{paddingTop: 16}}>
           <React.Fragment>
             <Autocomplete
-              open={openEl}
+              open={open1}
+              id={id}
+              anchorEl={anchorEl}
               onClose={handleClose}
               multiple
               disableClearable
+              value={pendingValue}
               onChange={(event, newValue) => {
-                setPendingValue((state) => ({...state, newValue}));
+                setPendingValue(newValue);
               }}
               disableCloseOnSelect
               renderTags={() => null}
               noOptionsText="No labels"
               renderOption={(option, {selected}) => (
-                <React.Fragment key={option.name}>
+                <React.Fragment>
                   <Checkbox
                     icon={icon}
                     checkedIcon={checkedIcon}
@@ -101,35 +111,45 @@ export default function CustomizedSelects() {
                   <ListItemText primary={option.name} />
                 </React.Fragment>
               )}
-              options={people.sort((a, b) => -b.name.localeCompare(a.name))}
+              options={[...people].sort((a, b) => {
+                let ai = value.indexOf(a);
+                ai = ai === -1 ? value.length + people.indexOf(a) : ai;
+                let bi = value.indexOf(b);
+                bi = bi === -1 ? value.length + people.indexOf(b) : bi;
+                return ai - bi;
+              })}
               groupBy={(people) => people.category}
-              getOptionLabel={(people) => people.category}
+              getOptionLabel={(option) => option.name}
               renderInput={(params) => (
-                <TextField
-                  onClick={handleClick}
-                  ref={params.InputProps.ref}
-                  inputProps={params.inputProps}
-                  {...params}
-                  variant="outlined"
-                  label="Add Owners"
-                  placeholder="Search Here"
-                />
+                <>
+                  <TextField
+                    onClick={handleClick}
+                    ref={params.InputProps.ref}
+                    inputProps={params.inputProps}
+                    {...params}
+                    variant="outlined"
+                    label="Owners"
+                    placeholder="Search"
+                  />
+                </>
               )}
             />
-            <Box style={{height: '51vh', overflow: 'scroll'}}>
-              {people.map(({name, category}) => (
-                <React.Fragment key={name}>
-                  <List>
-                    <Box display="flex" alignItems="center">
-                      <OwnersToggle />
+            <Box style={{maxHeight: '550px', overflow: 'scroll'}}>
+              <List
+                component="div"
+                disablePadding
+                style={{maxHeight: '228px', overflow: 'scroll'}}
+              >
+                {value.map((label) => (
+                  <>
+                    <ListItem key={label.name} divider style={{padding: 8}}>
                       <ListItemText
-                        style={{paddingRight: 55}}
                         secondary={
-                          <Typography variant="body1">{name}</Typography>
+                          <Typography variant="body1">{label.name}</Typography>
                         }
                         primary={
                           <Typography variant="body2" color="textSecondary">
-                            {category}
+                            {label.category}
                           </Typography>
                         }
                       />
@@ -138,11 +158,10 @@ export default function CustomizedSelects() {
                           <RemoveCircle />
                         </IconButton>
                       </ListItemSecondaryAction>
-                    </Box>
-                  </List>
-                  <Divider />
-                </React.Fragment>
-              ))}
+                    </ListItem>
+                  </>
+                ))}
+              </List>
             </Box>
           </React.Fragment>
         </Grid>

@@ -77,16 +77,7 @@ export default function ProductEligibilityMateials() {
               style={{marginRight: 8}}
               checked={selected}
             />
-            <ListItemText
-              primary={option.material}
-              secondary={
-                <>
-                  <Typography color="textSecondary">
-                    {option.product} • {option.brand}
-                  </Typography>
-                </>
-              }
-            />
+            <ListItemText primary={option.material} secondary={option.brand} />
           </React.Fragment>
         )}
         options={[...materials].sort((a, b) => {
