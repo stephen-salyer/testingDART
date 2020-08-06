@@ -156,7 +156,7 @@ const inputs = [
 
 const scopeLabel = (scope) => inputs.map(({key}) => scope[key]).join(' • ');
 
-export default function CustomizedExpansionPanels() {
+export default function Scopes() {
   const [scopes, setScopes] = React.useState(scopeData);
   const [expanded, setExpanded] = React.useState('');
   const classes = useStyles();

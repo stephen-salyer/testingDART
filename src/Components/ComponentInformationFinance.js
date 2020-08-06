@@ -67,13 +67,13 @@ export default function ComponentInformationFinance() {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="P&L">P&L</InputLabel>
+            <InputLabel id="Profits and Loses">Profits and Loses</InputLabel>
             <Select
               MenuProps={MenuProps}
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               defaultValue={10}
-              label="P&L"
+              label="Profits and Loses"
             >
               <MenuItem value={10}>
                 Angola • Crop Protection • Glyphosate • Roundup
@@ -133,13 +133,13 @@ export default function ComponentInformationFinance() {
         <Grid container item spacing={3}>
           <Grid item xs={12}>
             <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel id="P&L">P&L</InputLabel>
+              <InputLabel id="Profits and Loses">Profits and Loses</InputLabel>
               <Select
                 MenuProps={MenuProps}
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
                 defaultValue={20}
-                label="P&L"
+                label="Profits and Loses"
               >
                 <MenuItem value={10}>
                   Angola • Crop Protection • Glyphosate • Roundup
@@ -187,7 +187,7 @@ export default function ComponentInformationFinance() {
       <Grid container spacing={3}>
         <Grid item sm={12}>
           <Button color="primary" variant="outlined" endIcon={<Add />}>
-            Add Financial P&L
+            Add Financial Profits and Loses
           </Button>
         </Grid>
         <Grid item xs={12} ms={6}>

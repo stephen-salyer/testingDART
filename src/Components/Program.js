@@ -10,7 +10,7 @@ import SecondaryNavProgram from './SecondaryNavProgram';
 import Overview from './Overview';
 import Comments from './Comments';
 import {Box, Badge, Hidden, Divider} from '@material-ui/core';
-import Scopes from './Scopes';
+// import Scopes from './Scopes';
 import Marketing from './Marketing';
 import Operations from './Operations';
 import Owners from './Owners';
@@ -123,7 +123,7 @@ const Program = () => {
                     </div>
                   }
                 />
-                <Tab style={{minWidth: '10.1%'}} label="Scopes" />
+                {/* <Tab style={{minWidth: '10.1%'}} label="Scopes" /> */}
                 <Tab style={{minWidth: '11.1%'}} label="Marketing" />
                 <Tab style={{minWidth: '11.1%'}} label="Operations" />
                 <Tab style={{minWidth: '10.1%'}} label="Owners" />
@@ -154,7 +154,7 @@ const Program = () => {
                     </div>
                   }
                 />
-                <Tab style={{minWidth: '10.1%'}} label="Scopes" />
+                {/* <Tab style={{minWidth: '10.1%'}} label="Scopes" /> */}
                 <Tab style={{minWidth: '11.1%'}} label="Marketing" />
                 <Tab style={{minWidth: '11.1%'}} label="Operations" />
                 <Tab style={{minWidth: '10.1%'}} label="Owners" />
@@ -171,35 +171,32 @@ const Program = () => {
               </Box>
             </TabPanel>
             <TabPanel value={value} index={1}>
-              <Scopes />
-            </TabPanel>
-            <TabPanel value={value} index={2}>
               <Box p={3}>
                 <Marketing />
               </Box>
             </TabPanel>
-            <TabPanel value={value} index={3}>
+            <TabPanel value={value} index={2}>
               <Box p={3}>
                 <Operations />
               </Box>
             </TabPanel>
-            <TabPanel value={value} index={4}>
+            <TabPanel value={value} index={3}>
               <Box p={3}>
                 <Owners />
               </Box>
             </TabPanel>
-            <TabPanel value={value} index={5}>
+            <TabPanel value={value} index={4}>
               <Box p={3}>
                 <Finance />
               </Box>
             </TabPanel>
-            <TabPanel value={value} index={6}>
+            <TabPanel value={value} index={5}>
               <Approvers />
             </TabPanel>
-            <TabPanel value={value} index={7}>
+            <TabPanel value={value} index={6}>
               <Components />
             </TabPanel>
-            <TabPanel value={value} index={8}>
+            <TabPanel value={value} index={7}>
               <Box>
                 <AttachedFiles />
               </Box>

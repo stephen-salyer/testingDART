@@ -470,14 +470,14 @@ const printables = [
     items: [
       {
         mediumBreak: 4,
-        title: 'P&L',
+        title: 'Profits and Loses',
         secondary: 'Agnola • Crop Protection • Glyphosate • RoundUp',
       },
       {mediumBreak: 4, title: 'Market Year', secondary: '2020'},
       {mediumBreak: 4, title: 'Expected Discount', secondary: '1,000,000 USD'},
       {
         mediumBreak: 4,
-        title: 'P&L',
+        title: 'Profits and Loses',
         secondary: 'Agnola • Crop Protection • Glyphosate • RoundUp2',
       },
       {mediumBreak: 4, title: 'Market Year', secondary: '2021'},

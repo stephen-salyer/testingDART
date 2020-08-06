@@ -6,13 +6,13 @@ import {
   IconButton,
   List,
   Box,
-  Divider,
   Grid,
   TextField,
   Container,
   Typography,
   Button,
   ListItem,
+  Collapse,
 } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {
@@ -20,8 +20,9 @@ import {
   CheckBox,
   RemoveCircle,
   Send,
+  ExpandLess,
+  ExpandMore,
 } from '@material-ui/icons';
-import OwnersToggle from './OwnersToggle';
 
 const people = [
   {name: 'Jaylin Mcneil', category: 'Financial'},
@@ -69,6 +70,12 @@ export default function CustomizedSelects() {
       anchorEl.focus();
     }
     setAnchorEl(null);
+  };
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick1 = () => {
+    setOpen(!open);
   };
 
   const open1 = Boolean(anchorEl);
@@ -135,33 +142,39 @@ export default function CustomizedSelects() {
               )}
             />
             <Box style={{maxHeight: '550px', overflow: 'scroll'}}>
-              <List
-                component="div"
-                disablePadding
-                style={{maxHeight: '228px', overflow: 'scroll'}}
-              >
-                {value.map((label) => (
-                  <>
-                    <ListItem key={label.name} divider style={{padding: 8}}>
-                      <ListItemText
-                        secondary={
-                          <Typography variant="body1">{label.name}</Typography>
-                        }
-                        primary={
-                          <Typography variant="body2" color="textSecondary">
-                            {label.category}
-                          </Typography>
-                        }
-                      />
-                      <ListItemSecondaryAction>
-                        <IconButton edge="end" aria-label="delete">
-                          <RemoveCircle />
-                        </IconButton>
-                      </ListItemSecondaryAction>
-                    </ListItem>
-                  </>
-                ))}
-              </List>
+              <ListItem button onClick={handleClick1}>
+                <ListItemText
+                  primary={
+                    <>
+                      <Typography>Finance</Typography>
+                      <Typography variant="caption" color="TextSecondary">
+                        2/50 selected
+                      </Typography>
+                    </>
+                  }
+                />
+                {open ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Collapse in={open} timeout="auto" unmountOnExit>
+                <List
+                  component="div"
+                  disablePadding
+                  style={{maxHeight: '228px', overflow: 'scroll'}}
+                >
+                  {value.map((label) => (
+                    <>
+                      <ListItem key={label.name} divider style={{padding: 16}}>
+                        <ListItemText primary={label.name} />
+                        <ListItemSecondaryAction>
+                          <IconButton edge="end" aria-label="delete">
+                            <RemoveCircle />
+                          </IconButton>
+                        </ListItemSecondaryAction>
+                      </ListItem>
+                    </>
+                  ))}
+                </List>
+              </Collapse>
             </Box>
           </React.Fragment>
         </Grid>

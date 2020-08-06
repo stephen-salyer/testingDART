@@ -119,7 +119,7 @@ export default function ComponentInformationOperations() {
       <Grid container spacing={3}>
         <Grid item sm={12}>
           <Button color="primary" variant="outlined" endIcon={<Add />}>
-            Add Financial P&L
+            Add Financial Profits and Loses
           </Button>
         </Grid>
       </Grid>

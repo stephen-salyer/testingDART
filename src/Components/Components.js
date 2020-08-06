@@ -62,7 +62,7 @@ export default function Components() {
                 justifyContent="flex-end"
                 style={{height: '100%'}}
               >
-                <Button color="primary" variant="outlined" startIcon={<Add />}>
+                <Button color="primary" variant="outlined" endIcon={<Add />}>
                   Add Component
                 </Button>
                 <Box pl={1}>

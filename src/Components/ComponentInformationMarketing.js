@@ -28,7 +28,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import ComponentScopeSelector from './ComponentScopeSelector';
+import Scopes from './Scopes';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -109,9 +109,6 @@ export default function ComponentInformationMarketing() {
             />
           </Grid>
           <Grid item xs={12} md={6}>
-            <ComponentScopeSelector />
-          </Grid>
-          <Grid item xs={12} md={4}>
             <TextField
               label="Minimum Volume to Qualify"
               defaultValue="2"
@@ -119,7 +116,24 @@ export default function ComponentInformationMarketing() {
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12}>
+            <Box pb={2}>
+              <Box display="flex" justifyContent="space-between">
+                <Typography style={{padding: 16}} variant="h6">
+                  Scopes
+                </Typography>
+                <Box display="flex" alignItems="center">
+                  <Button variant="outlined" color="primary" endIcon={<Add />}>
+                    Add Scope
+                  </Button>
+                </Box>
+              </Box>
+              <Divider />
+              <Scopes />
+            </Box>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Component Incentive Type
@@ -138,7 +152,7 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={6}>
             <FormControl
               component="fieldset"
               className={classes.formControlRadio}
