@@ -55,7 +55,7 @@ const customers = [
   {name: 'Maisha Parson', sapId: '00012354'},
 ];
 
-export default function ProductSearchModal() {
+export default function CustomerSearchModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [state, setState] = React.useState({

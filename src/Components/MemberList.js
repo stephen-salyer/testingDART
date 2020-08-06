@@ -28,6 +28,8 @@ import {
   ListItemText,
   ListItemSecondaryAction,
   IconButton,
+  FormGroup,
+  Switch,
 } from '@material-ui/core';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -262,6 +264,14 @@ const MemberList = () => {
     setExpanded(newExpanded ? panel : false);
   };
 
+  const [state, setState] = React.useState({
+    opt: true,
+  });
+
+  const handleChangeToggle = (event) => {
+    setState({...state, [event.target.name]: event.target.checked});
+  };
+
   return (
     <Container maxWidth="lg" className={classes.containerPadding}>
       <Grid container spacing={1} direction="row">
@@ -337,58 +347,75 @@ const MemberList = () => {
                 title="User Details"
               ></CardHeader>
               <Divider />
-              <Box pt={2} pr={2} pl={2}>
-                <TextField
-                  label="DOA"
-                  defaultValue="222,222,255"
-                  variant="outlined"
-                  fullWidth={true}
-                />
-              </Box>
-              <Box pt={2} pr={2} pl={2}>
-                <TextField
-                  label="DOA Length in Years"
-                  defaultValue="1"
-                  variant="outlined"
-                  fullWidth={true}
-                />
-              </Box>
-              <Box pt={2} pr={2} pl={2}>
-                <FormControl
-                  component="fieldset"
-                  className={classes.formControlRadio}
-                >
-                  <FormLabel component="legend">
-                    Program Classification Access
-                  </FormLabel>
-                  <RadioGroup aria-label="quiz" name="quiz">
+              <Box styles={{overflow: 'scroll', height: '30vh'}}>
+                <Box pt={2} pr={2} pl={2}>
+                  <FormGroup>
                     <FormControlLabel
-                      value="best"
-                      control={<Radio />}
-                      label="All Agreements"
+                      control={
+                        <Switch
+                          checked={state.opt}
+                          onChange={handleChangeToggle}
+                          name="opt"
+                        />
+                      }
+                      label="Receives Notifications"
                     />
-                    <FormControlLabel
-                      value="worst"
-                      control={<Radio />}
-                      label="Non-Strategic Agreement"
-                    />
-                  </RadioGroup>
-                </FormControl>
-              </Box>
-              <Box p={2}>
-                <Autocomplete
-                  freeSolo
-                  options={Department}
-                  getOptionLabel={(option) => option.title}
-                  style={{width: '100%'}}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Department"
-                      variant="outlined"
-                    />
-                  )}
-                />
+                  </FormGroup>
+                </Box>
+                <Box pt={2} pr={2} pl={2}>
+                  <TextField
+                    label="DOA"
+                    defaultValue="222,222,255"
+                    variant="outlined"
+                    fullWidth={true}
+                  />
+                </Box>
+                <Box pt={2} pr={2} pl={2}>
+                  <TextField
+                    label="DOA Length in Years"
+                    defaultValue="1"
+                    variant="outlined"
+                    fullWidth={true}
+                  />
+                </Box>
+                <Box pt={2} pr={2} pl={2}>
+                  <FormControl
+                    component="fieldset"
+                    className={classes.formControlRadio}
+                  >
+                    <FormLabel component="legend">
+                      Program Classification Access
+                    </FormLabel>
+                    <RadioGroup aria-label="quiz" name="quiz">
+                      <FormControlLabel
+                        value="best"
+                        control={<Radio />}
+                        label="All Agreements"
+                      />
+                      <FormControlLabel
+                        value="worst"
+                        control={<Radio />}
+                        label="Non-Strategic Agreement"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </Box>
+
+                <Box p={2}>
+                  <Autocomplete
+                    freeSolo
+                    options={Department}
+                    getOptionLabel={(option) => option.title}
+                    style={{width: '100%'}}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="Department"
+                        variant="outlined"
+                      />
+                    )}
+                  />
+                </Box>
               </Box>
             </Card>
           </Grid>

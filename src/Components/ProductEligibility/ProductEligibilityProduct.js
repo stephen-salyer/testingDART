@@ -8,6 +8,7 @@ import {
   List,
 } from '@material-ui/core';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import ProductSearchModal from '../ProductSearchModal';
 
 export default function ProductEligibilityProduct() {
   return (
@@ -24,6 +25,7 @@ export default function ProductEligibilityProduct() {
           </Box>
         </List>
         <Divider />
+        <ProductSearchModal />
       </Box>
     </>
   );

@@ -12,7 +12,7 @@ import {
   Divider,
   Grid,
 } from '@material-ui/core';
-import ProductEligibilityMaterialModalTabs from './ProductEligibility/ProductEligibilityMaterialModalTabs';
+import ProductEligibilityMaterialModal from './ProductEligibility/ProductEligibilityMaterialModal';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     outline: 0,
     minWidth: '800px',
-    maxHeight: '93vh',
+    maxHeight: '70vh',
   },
   modalButton: {
     marginTop: '8px',
@@ -58,7 +58,6 @@ export default function ProductSearchModal() {
         <Add style={{color: 'rgba(0, 0, 0, 0.54)'}} />
       </Button>
       <Modal
-        disableBackdropClick
         disableEnforceFocus
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -83,25 +82,7 @@ export default function ProductSearchModal() {
               }
             />
             <Divider />
-            <ProductEligibilityMaterialModalTabs />
-
-            <Grid container>
-              <Grid item xs={12}>
-                <Divider />
-              </Grid>
-              <Grid item xs={12} style={{padding: '8px 16px'}}>
-                <Box display="flex" justifyContent="flex-end">
-                  <Button color="primary">Cancel</Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => setOpen(false)}
-                  >
-                    Done
-                  </Button>
-                </Box>
-              </Grid>
-            </Grid>
+            <ProductEligibilityMaterialModal />
           </div>
         </Fade>
       </Modal>
