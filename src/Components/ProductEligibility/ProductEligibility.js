@@ -1,19 +1,19 @@
 import React from 'react';
 import {
   CardHeader,
-  // CircularProgress,
+  CircularProgress,
   Grid,
   FormControl,
   InputLabel,
   Select,
   MenuItem,
-  // Box,
-  // Typography,
+  Box,
+  Typography,
   Divider,
   TextField,
 } from '@material-ui/core';
-// import ProductEligibilityProduct from './ProductEligibilityProduct';
-// import ProductEligibilityBrands from './ProductEligibilityBrands';
+import ProductEligibilityProduct from './ProductEligibilityProduct';
+import ProductEligibilityBrands from './ProductEligibilityBrands';
 import ProductEligibilityMaterials from './ProductEligibilityMaterials';
 
 const ITEM_HEIGHT = 48;
@@ -66,7 +66,7 @@ export default function ProductEligibility() {
       </Grid>
       {someProducts && (
         <>
-          {/* <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6}>
             <FormControl multiple fullWidth variant="outlined">
               <InputLabel>DART Products</InputLabel>
               <Select MenuProps={MenuProps} label="DART Products">
@@ -86,10 +86,10 @@ export default function ProductEligibility() {
               </Select>
             </FormControl>
             <ProductEligibilityProduct />
-          </Grid> */}
-          {/* <Grid item xs={12} md={6}>
+          </Grid>
+          <Grid item xs={12} md={6}>
             <ProductEligibilityBrands />
-          </Grid> */}
+          </Grid>
           <Grid item xs={12} md={6}>
             <ProductEligibilityMaterials />
           </Grid>

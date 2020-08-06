@@ -28,7 +28,6 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import Scopes from './Scopes';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -116,23 +115,6 @@ export default function ComponentInformationMarketing() {
               fullWidth
             />
           </Grid>
-          <Grid item xs={12}>
-            <Box pb={2}>
-              <Box display="flex" justifyContent="space-between">
-                <Typography style={{padding: 16}} variant="h6">
-                  Scopes
-                </Typography>
-                <Box display="flex" alignItems="center">
-                  <Button variant="outlined" color="primary" endIcon={<Add />}>
-                    Add Scope
-                  </Button>
-                </Box>
-              </Box>
-              <Divider />
-              <Scopes />
-            </Box>
-          </Grid>
-
           <Grid item xs={12} md={6}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">

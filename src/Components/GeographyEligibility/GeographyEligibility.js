@@ -1,18 +1,18 @@
 import React from 'react';
 import {
   CardHeader,
-  // CircularProgress,
   Grid,
   FormControl,
   InputLabel,
   Select,
   MenuItem,
-  // Box,
-  // Typography,
   Divider,
   TextField,
+  CircularProgress,
+  Box,
+  Typography,
 } from '@material-ui/core';
-// import GeographyEligibilityCountry from './GeographyEligibilityCountry';
+import GeographyEligibilityCountry from './GeographyEligibilityCountry';
 import GeographyEligibilityState from './GeographyEligibilityState';
 import GeographyEligibilityCounty from './GeographyEligibilityCounty';
 import GeographyEligibilitySalesRegion from './GeographyEligibilitySalesRegion';
@@ -70,7 +70,7 @@ export default function GeographyEligibility() {
       {someGeographies && (
         <>
           <Grid item xs={12} md={6}>
-            {/* <FormControl multiple fullWidth variant="outlined">
+            <FormControl multiple fullWidth variant="outlined">
               <InputLabel>Country</InputLabel>
               <Select MenuProps={MenuProps} label="Country">
                 <Box
@@ -90,7 +90,7 @@ export default function GeographyEligibility() {
                 </Box>
               </Select>
             </FormControl>
-            <GeographyEligibilityCountry /> */}
+            <GeographyEligibilityCountry />
           </Grid>
           <Grid item xs={12} md={6}>
             <GeographyEligibilityState />

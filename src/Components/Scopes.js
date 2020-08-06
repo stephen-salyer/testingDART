@@ -166,50 +166,55 @@ export default function Scopes() {
   };
 
   return scopes.map((scope) => (
-    <ExpansionPanel
-      key={scope.id}
-      square
-      expanded={expanded === 'panel' + scope.id}
-      onChange={handleChange('panel' + scope.id)}
-    >
-      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography>{scopeLabel(scope)}</Typography>
-      </ExpansionPanelSummary>
+    <>
+      <ExpansionPanel
+        key={scope.id}
+        square
+        expanded={expanded === 'panel' + scope.id}
+        onChange={handleChange('panel' + scope.id)}
+      >
+        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography>{scopeLabel(scope)}</Typography>
+        </ExpansionPanelSummary>
 
-      <ExpansionPanelDetails>
-        <div className={classes.root}>
-          <Grid container spacing={3}>
-            {inputs.map(({label, options, size, key}, i) => (
-              <Grid key={i} item xs={12} md={size}>
-                <FormControl variant="outlined" className={classes.formControl}>
-                  <InputLabel>{label}</InputLabel>
-                  <Select
-                    MenuProps={{
-                      getContentAnchorEl: null,
-                      anchorOrigin: {
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                      },
-                    }}
-                    defaultValue={scope[key]}
-                    label={label}
+        <ExpansionPanelDetails>
+          <div className={classes.root}>
+            <Grid container spacing={3}>
+              {inputs.map(({label, options, size, key}, i) => (
+                <Grid key={i} item xs={12} md={size}>
+                  <FormControl
+                    variant="outlined"
+                    className={classes.formControl}
                   >
-                    {makeMenuItems(options)}
-                  </Select>
-                </FormControl>
-              </Grid>
-            ))}
-          </Grid>
-        </div>
-      </ExpansionPanelDetails>
-      <Box p={'0 24px 8px 24px'} display="flex" justifyContent="flex-end">
-        <Box pr={1} pb={2}>
-          <DeleteScopeModal
-            onDelete={() => setScopes(scopes.filter((el) => el !== scope))}
-          />
+                    <InputLabel>{label}</InputLabel>
+                    <Select
+                      MenuProps={{
+                        getContentAnchorEl: null,
+                        anchorOrigin: {
+                          vertical: 'bottom',
+                          horizontal: 'left',
+                        },
+                      }}
+                      defaultValue={scope[key]}
+                      label={label}
+                    >
+                      {makeMenuItems(options)}
+                    </Select>
+                  </FormControl>
+                </Grid>
+              ))}
+            </Grid>
+          </div>
+        </ExpansionPanelDetails>
+        <Box p={'0 24px 8px 24px'} display="flex" justifyContent="flex-end">
+          <Box pr={1} pb={2}>
+            <DeleteScopeModal
+              onDelete={() => setScopes(scopes.filter((el) => el !== scope))}
+            />
+          </Box>
         </Box>
-      </Box>
-      <Divider />
-    </ExpansionPanel>
+        <Divider />
+      </ExpansionPanel>
+    </>
   ));
 }

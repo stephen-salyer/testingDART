@@ -9,8 +9,7 @@ import Tab from '@material-ui/core/Tab';
 import SecondaryNavProgram from './SecondaryNavProgram';
 import Overview from './Overview';
 import Comments from './Comments';
-import {Box, Badge, Hidden, Divider} from '@material-ui/core';
-// import Scopes from './Scopes';
+import {Box, Badge, Hidden, Divider, Button} from '@material-ui/core';
 import Marketing from './Marketing';
 import Operations from './Operations';
 import Owners from './Owners';
@@ -18,6 +17,8 @@ import Finance from './Finance';
 import Approvers from './Approvers';
 import Components from './Components';
 import AttachedFiles from './AttachedFiles';
+import Scopes from './Scopes';
+import {Add} from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -123,7 +124,7 @@ const Program = () => {
                     </div>
                   }
                 />
-                {/* <Tab style={{minWidth: '10.1%'}} label="Scopes" /> */}
+                <Tab style={{minWidth: '10.1%'}} label="Scopes" />
                 <Tab style={{minWidth: '11.1%'}} label="Marketing" />
                 <Tab style={{minWidth: '11.1%'}} label="Operations" />
                 <Tab style={{minWidth: '10.1%'}} label="Owners" />
@@ -154,7 +155,7 @@ const Program = () => {
                     </div>
                   }
                 />
-                {/* <Tab style={{minWidth: '10.1%'}} label="Scopes" /> */}
+                <Tab style={{minWidth: '10.1%'}} label="Scopes" />
                 <Tab style={{minWidth: '11.1%'}} label="Marketing" />
                 <Tab style={{minWidth: '11.1%'}} label="Operations" />
                 <Tab style={{minWidth: '10.1%'}} label="Owners" />
@@ -172,31 +173,47 @@ const Program = () => {
             </TabPanel>
             <TabPanel value={value} index={1}>
               <Box p={3}>
-                <Marketing />
+                <Box display="flex" justifyContent="flex-end">
+                  <Box display="flex" alignItems="center" pb={3}>
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      endIcon={<Add />}
+                    >
+                      Add Scope
+                    </Button>
+                  </Box>
+                </Box>
+                <Scopes />
               </Box>
             </TabPanel>
             <TabPanel value={value} index={2}>
               <Box p={3}>
-                <Operations />
+                <Marketing />
               </Box>
             </TabPanel>
             <TabPanel value={value} index={3}>
               <Box p={3}>
-                <Owners />
+                <Operations />
               </Box>
             </TabPanel>
             <TabPanel value={value} index={4}>
               <Box p={3}>
-                <Finance />
+                <Owners />
               </Box>
             </TabPanel>
             <TabPanel value={value} index={5}>
-              <Approvers />
+              <Box p={3}>
+                <Finance />
+              </Box>
             </TabPanel>
             <TabPanel value={value} index={6}>
-              <Components />
+              <Approvers />
             </TabPanel>
             <TabPanel value={value} index={7}>
+              <Components />
+            </TabPanel>
+            <TabPanel value={value} index={8}>
               <Box>
                 <AttachedFiles />
               </Box>
