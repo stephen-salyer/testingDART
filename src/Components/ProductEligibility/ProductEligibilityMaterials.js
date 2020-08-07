@@ -11,6 +11,7 @@ import {
   Typography,
   Collapse,
   List,
+  makeStyles,
 } from '@material-ui/core';
 import {
   RemoveCircle,
@@ -19,13 +20,35 @@ import {
   ExpandLess,
   ExpandMore,
 } from '@material-ui/icons';
+import ProductSearchModal from '../ProductSearchModal';
 
 const icon = <CheckBoxOutlineBlank fontSize="small" />;
 const checkedIcon = <CheckBox fontSize="small" />;
 
+const useStyles = makeStyles((theme) => ({
+  textField: {
+    [`& fieldset`]: {
+      borderRadius: '5px 0 0 5px',
+    },
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    display: 'flex',
+    flexDirection: 'column',
+    outline: 0,
+    minWidth: '800px',
+  },
+  modalButton: {
+    marginTop: '8px',
+    maxWidth: '98px',
+  },
+}));
+
 export default function ProductEligibilityMateials() {
+  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [value, setValue] = React.useState([materials[0], materials[1]]);
+  const [value, setValue] = React.useState([materials[0]]);
   const [pendingValue, setPendingValue] = React.useState([]);
 
   const handleClick = (event) => {
@@ -55,54 +78,69 @@ export default function ProductEligibilityMateials() {
 
   return (
     <React.Fragment>
-      <Autocomplete
-        open={open1}
-        id={id}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        multiple
-        disableClearable
-        value={pendingValue}
-        onChange={(event, newValue) => {
-          setPendingValue(newValue);
-        }}
-        disableCloseOnSelect
-        renderTags={() => null}
-        noOptionsText="No labels"
-        renderOption={(option, {selected}) => (
-          <React.Fragment>
-            <Checkbox
-              icon={icon}
-              checkedIcon={checkedIcon}
-              style={{marginRight: 8}}
-              checked={selected}
-            />
-            <ListItemText primary={option.material} secondary={option.brand} />
-          </React.Fragment>
-        )}
-        options={[...materials].sort((a, b) => {
-          let ai = value.indexOf(a);
-          ai = ai === -1 ? value.length + materials.indexOf(a) : ai;
-          let bi = value.indexOf(b);
-          bi = bi === -1 ? value.length + materials.indexOf(b) : bi;
-          return ai - bi;
-        })}
-        groupBy={(materials) => materials.product}
-        getOptionLabel={(option) => option.product}
-        renderInput={(params) => (
-          <>
-            <TextField
-              onClick={handleClick}
-              ref={params.InputProps.ref}
-              inputProps={params.inputProps}
-              {...params}
-              variant="outlined"
-              label="Materials"
-              placeholder="Search"
-            />
-          </>
-        )}
-      />
+      <Box display="flex">
+        <Box display="flex" flexDirection="column" style={{width: '120%'}}>
+          <Autocomplete
+            open={open1}
+            id={id}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            multiple
+            disableClearable
+            value={pendingValue}
+            onChange={(event, newValue) => {
+              setPendingValue(newValue);
+            }}
+            disableCloseOnSelect
+            renderTags={() => null}
+            noOptionsText="No labels"
+            renderOption={(option, {selected}) => (
+              <React.Fragment>
+                <Checkbox
+                  icon={icon}
+                  checkedIcon={checkedIcon}
+                  style={{marginRight: 8}}
+                  checked={selected}
+                />
+                <ListItemText
+                  primary={[option.productName, option.brand].join(' • ')}
+                  secondary={[
+                    option.traitCode,
+                    option.relativeMaturity,
+                    option.lifeCycle,
+                    option.launchYear,
+                  ].join(' • ')}
+                />
+              </React.Fragment>
+            )}
+            options={[...materials].sort((a, b) => {
+              let ai = value.indexOf(a);
+              ai = ai === -1 ? value.length + materials.indexOf(a) : ai;
+              let bi = value.indexOf(b);
+              bi = bi === -1 ? value.length + materials.indexOf(b) : bi;
+              return ai - bi;
+            })}
+            getOptionLabel={(option) => option.productName}
+            renderInput={(params) => (
+              <>
+                <TextField
+                  className={classes.textField}
+                  onClick={handleClick}
+                  ref={params.InputProps.ref}
+                  inputProps={params.inputProps}
+                  {...params}
+                  variant="outlined"
+                  label="Material Validation"
+                  placeholder="Search"
+                />
+              </>
+            )}
+          />
+        </Box>
+        <div>
+          <ProductSearchModal />
+        </div>
+      </Box>
       <Box style={{maxHeight: '550px', overflow: 'scroll'}}>
         <ListItem button onClick={handleClick1}>
           <ListItemText
@@ -125,8 +163,16 @@ export default function ProductEligibilityMateials() {
           >
             {value.map((label) => (
               <>
-                <ListItem key={label.material} divider style={{padding: 16}}>
-                  <ListItemText primary={label.material} />
+                <ListItem key={label.productName} divider style={{padding: 16}}>
+                  <ListItemText
+                    primary={[label.productName, label.brand].join(' • ')}
+                    secondary={[
+                      label.traitCode,
+                      label.relativeMaturity,
+                      label.lifeCycle,
+                      label.launchYear,
+                    ].join(' • ')}
+                  />
                   <ListItemSecondaryAction>
                     <IconButton edge="end" aria-label="delete">
                       <RemoveCircle />
@@ -144,23 +190,11 @@ export default function ProductEligibilityMateials() {
 
 const materials = [
   {
-    material: 'Material1',
-    brand: 'Brand1',
-    product: 'Product1',
-  },
-  {
-    material: 'Material2',
-    brand: 'Brand2',
-    product: 'Product2',
-  },
-  {
-    material: 'Material3',
-    brand: 'Brand3',
-    product: 'Product3',
-  },
-  {
-    material: 'Material4',
-    brand: 'Brand4',
-    product: 'Product4',
+    productName: 'DKB230PR13',
+    brand: 'DEKALB',
+    traitCode: 'NS5031MGKZ',
+    relativeMaturity: 'VT2P / DG',
+    lifeCycle: 'launch',
+    launchYear: '2021',
   },
 ];

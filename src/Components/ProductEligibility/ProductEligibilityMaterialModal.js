@@ -16,7 +16,6 @@ import {
   MenuItem,
   Typography,
 } from '@material-ui/core';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const products = [
   {
@@ -140,7 +139,6 @@ export default function ProductEligibilityMaterialModal() {
           <Box p={2}>
             <TextField
               fullWidth
-              disabled
               label="Search Materials Below"
               variant="outlined"
             />
@@ -255,9 +253,9 @@ export default function ProductEligibilityMaterialModal() {
             </Box>
             <Box display="flex" justifyContent="flex-end">
               <Box pr={2}>
-                <Button variant="outlined">Clear</Button>
+                <Button color="primary">Clear</Button>
               </Box>
-              <Button variant="contained" color="primary">
+              <Button variant="outlined" color="primary">
                 Filter
               </Button>
             </Box>

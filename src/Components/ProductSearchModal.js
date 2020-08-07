@@ -3,7 +3,6 @@ import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import {Add} from '@material-ui/icons';
 import {
   Button,
   Typography,
@@ -27,14 +26,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     outline: 0,
     minWidth: '800px',
-    maxHeight: '70vh',
   },
   modalButton: {
     marginTop: '8px',
     maxWidth: '98px',
-  },
-  materialButtonLabel: {
-    textTransform: 'none',
   },
 }));
 
@@ -43,19 +38,18 @@ export default function ProductSearchModal() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div>
+    <>
       <Button
-        fullWidth
-        className={classes.materialButtonLabel}
-        size="medium"
-        style={{height: 56, justifyContent: 'space-between'}}
         variant="outlined"
+        color="primary"
         onClick={() => setOpen(true)}
+        style={{
+          borderRadius: '0 5px 5px 0',
+          height: '56px',
+          marginLeft: '-1px',
+        }}
       >
-        <Typography variant="body1" style={{color: 'rgba(0, 0, 0, 0.54)'}}>
-          Add Materials
-        </Typography>
-        <Add style={{color: 'rgba(0, 0, 0, 0.54)'}} />
+        Search
       </Button>
       <Modal
         disableEnforceFocus
@@ -83,9 +77,32 @@ export default function ProductSearchModal() {
             />
             <Divider />
             <ProductEligibilityMaterialModal />
+            <Grid item xs={12}>
+              <Box display="flex" justifyContent="space-between" p={2}>
+                <Box display="flex" alignItems="center">
+                  <Typography variant="caption">
+                    2 Materials Selected
+                  </Typography>
+                </Box>
+                <Box display="flex" alignItems="center">
+                  <Box pr={1}>
+                    <Button color="primary" onClick={() => setOpen(false)}>
+                      Go Back
+                    </Button>
+                  </Box>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => setOpen(false)}
+                  >
+                    Done
+                  </Button>
+                </Box>
+              </Box>
+            </Grid>
           </div>
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }
