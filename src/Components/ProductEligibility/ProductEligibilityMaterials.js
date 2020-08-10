@@ -20,7 +20,7 @@ import {
   ExpandLess,
   ExpandMore,
 } from '@material-ui/icons';
-import ProductSearchModal from '../ProductSearchModal';
+import ProductEligibilityMaterialSearchModal from './ProductEligibilityMaterialSearchModal';
 
 const icon = <CheckBoxOutlineBlank fontSize="small" />;
 const checkedIcon = <CheckBox fontSize="small" />;
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     outline: 0,
-    minWidth: '800px',
+    minWidth: '1000px',
   },
   modalButton: {
     marginTop: '8px',
@@ -103,13 +103,8 @@ export default function ProductEligibilityMateials() {
                   checked={selected}
                 />
                 <ListItemText
-                  primary={[option.productName, option.brand].join(' • ')}
-                  secondary={[
-                    option.traitCode,
-                    option.relativeMaturity,
-                    option.lifeCycle,
-                    option.launchYear,
-                  ].join(' • ')}
+                  primary={[option.materialNumber].join(' • ')}
+                  secondary={[option.description].join(' • ')}
                 />
               </React.Fragment>
             )}
@@ -120,7 +115,7 @@ export default function ProductEligibilityMateials() {
               bi = bi === -1 ? value.length + materials.indexOf(b) : bi;
               return ai - bi;
             })}
-            getOptionLabel={(option) => option.productName}
+            getOptionLabel={(option) => option.materialNumber}
             renderInput={(params) => (
               <>
                 <TextField
@@ -138,7 +133,7 @@ export default function ProductEligibilityMateials() {
           />
         </Box>
         <div>
-          <ProductSearchModal />
+          <ProductEligibilityMaterialSearchModal />
         </div>
       </Box>
       <Box style={{maxHeight: '550px', overflow: 'scroll'}}>
@@ -163,15 +158,10 @@ export default function ProductEligibilityMateials() {
           >
             {value.map((label) => (
               <>
-                <ListItem key={label.productName} divider style={{padding: 16}}>
+                <ListItem key={label.description} divider style={{padding: 16}}>
                   <ListItemText
-                    primary={[label.productName, label.brand].join(' • ')}
-                    secondary={[
-                      label.traitCode,
-                      label.relativeMaturity,
-                      label.lifeCycle,
-                      label.launchYear,
-                    ].join(' • ')}
+                    primary={[label.materialNumber].join(' • ')}
+                    secondary={[label.description].join(' • ')}
                   />
                   <ListItemSecondaryAction>
                     <IconButton edge="end" aria-label="delete">
@@ -190,11 +180,11 @@ export default function ProductEligibilityMateials() {
 
 const materials = [
   {
-    productName: 'DKB230PR13',
+    materialNumber: '12997701',
     brand: 'DEKALB',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
+    description: 'C DK DKB230PRO3 SAF PR2 80MPLAN BR',
+    commercialName: 'DKB230PRO3',
+    traitCode: 'SAF',
+    crop: 'Corn',
   },
 ];

@@ -90,7 +90,7 @@ export default function CustomerEligibility() {
       </Grid>
       {someAccounts && (
         <>
-          <Grid item xs={12} lg={4}>
+          <Grid item xs={12} md={4}>
             <FormControl fullWidth variant="outlined">
               <InputLabel>Account Classification</InputLabel>
               <Select

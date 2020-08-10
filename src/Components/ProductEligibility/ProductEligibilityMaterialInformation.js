@@ -16,99 +16,100 @@ import {
   MenuItem,
   Typography,
 } from '@material-ui/core';
+// import ProductEligibilityNoFiltersSelected from './ProductEligibilityNoFiltersSelected';
 
 const products = [
   {
-    productName: 'DKB230PR03',
+    materialNumber: '12997701',
     brand: 'DEKALB',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
+    description: 'C DK DKB230PRO3 SAF PR2 80MPLAN BR',
+    commercialName: 'DKB230PRO3',
+    traitCode: 'SAF',
+    crop: 'Corn',
   },
   {
-    productName: 'DKB230PR04',
+    materialNumber: '12997701',
     brand: 'DEKALB',
-    traitCode: 'NS5031NFSF',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
+    description: 'C DK DKB230PRO3 SAF PR2 80MPLAN BR',
+    commercialName: 'DKB230PRO3',
+    traitCode: 'SAF',
+    crop: 'Corn',
   },
   {
-    productName: 'DKB230PR05',
+    materialNumber: '12997701',
     brand: 'DEKALB',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
+    description: 'C DK DKB230PRO3 SAF PR2 80MPLAN BR',
+    commercialName: 'DKB230PRO3',
+    traitCode: 'SAF',
+    crop: 'Corn',
   },
   {
-    productName: 'DKB230PR06',
+    materialNumber: '12997701',
     brand: 'DEKALB',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
+    description: 'C DK DKB230PRO3 SAF PR2 80MPLAN BR',
+    commercialName: 'DKB230PRO3',
+    traitCode: 'SAF',
+    crop: 'Corn',
   },
   {
-    productName: 'DKB230PR07',
+    materialNumber: '12997701',
     brand: 'DEKALB',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
+    description: 'C DK DKB230PRO3 SAF PR2 80MPLAN BR',
+    commercialName: 'DKB230PRO3',
+    traitCode: 'SAF',
+    crop: 'Corn',
   },
   {
-    productName: 'DKB230PR08',
+    materialNumber: '12997701',
     brand: 'DEKALB',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
+    description: 'C DK DKB230PRO3 SAF PR2 80MPLAN BR',
+    commercialName: 'DKB230PRO3',
+    traitCode: 'SAF',
+    crop: 'Corn',
   },
   {
-    productName: 'DKB230PR09',
+    materialNumber: '12997701',
     brand: 'DEKALB',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
+    description: 'C DK DKB230PRO3 SAF PR2 80MPLAN BR',
+    commercialName: 'DKB230PRO3',
+    traitCode: 'SAF',
+    crop: 'Corn',
   },
   {
-    productName: 'DKB230PR10',
+    materialNumber: '12997701',
     brand: 'DEKALB',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
+    description: 'C DK DKB230PRO3 SAF PR2 80MPLAN BR',
+    commercialName: 'DKB230PRO3',
+    traitCode: 'SAF',
+    crop: 'Corn',
   },
   {
-    productName: 'DKB230PR11',
+    materialNumber: '12997701',
     brand: 'DEKALB',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
+    description: 'C DK DKB230PRO3 SAF PR2 80MPLAN BR',
+    commercialName: 'DKB230PRO3',
+    traitCode: 'SAF',
+    crop: 'Corn',
   },
   {
-    productName: 'DKB230PR12',
+    materialNumber: '12997701',
     brand: 'DEKALB',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
+    description: 'C DK DKB230PRO3 SAF PR2 80MPLAN BR',
+    commercialName: 'DKB230PRO3',
+    traitCode: 'SAF',
+    crop: 'Corn',
   },
   {
-    productName: 'DKB230PR13',
+    materialNumber: '12997701',
     brand: 'DEKALB',
-    traitCode: 'NS5031MGKZ',
-    relativeMaturity: 'VT2P / DG',
-    lifeCycle: 'launch',
-    launchYear: '2021',
+    description: 'C DK DKB230PRO3 SAF PR2 80MPLAN BR',
+    commercialName: 'DKB230PRO3',
+    traitCode: 'SAF',
+    crop: 'Corn',
   },
 ];
 
-export default function ProductEligibilityMaterialModal() {
+export default function ProductEligibilityMaterialInformation() {
   const [state, setState] = React.useState({
     checkedA: false,
   });
@@ -136,6 +137,9 @@ export default function ProductEligibilityMaterialModal() {
           md={7}
           style={{borderRight: '1px solid rgba(0, 0, 0, 0.12)'}}
         >
+          {/* no filters selected start */}
+          {/* <ProductEligibilityNoFiltersSelected /> */}
+          {/* no filters selected end */}
           <Box p={2}>
             <TextField
               fullWidth
@@ -158,22 +162,10 @@ export default function ProductEligibilityMaterialModal() {
             />
           </Box>
           <Divider />
-          <List style={{maxHeight: '50vh', overflow: 'scroll', padding: 0}}>
+          <List style={{height: '50vh', overflow: 'scroll', padding: 0}}>
             {products.map(
-              (
-                {
-                  productName,
-                  brand,
-                  relativeMaturity,
-                  lifeCycle,
-                  launchYear,
-                  traitCode,
-                },
-                i
-              ) => (
-                relativeMaturity,
-                lifeCycle,
-                launchYear,
+              ({materialNumber, description}, i) => (
+                description,
                 (
                   <Box key={i}>
                     <ListItem>
@@ -185,13 +177,8 @@ export default function ProductEligibilityMaterialModal() {
                         }
                         label={
                           <ListItemText
-                            primary={[productName, brand].join(' • ')}
-                            secondary={[
-                              traitCode,
-                              relativeMaturity,
-                              lifeCycle,
-                              launchYear,
-                            ].join(' • ')}
+                            primary={[materialNumber].join(' • ')}
+                            secondary={[description].join(' • ')}
                           />
                         }
                       />
@@ -245,9 +232,52 @@ export default function ProductEligibilityMaterialModal() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={10}>Crop 1</MenuItem>
-                  <MenuItem value={20}>Crop 2</MenuItem>
-                  <MenuItem value={30}>Crop 3</MenuItem>
+                  <MenuItem value={10}>Corn</MenuItem>
+                  <MenuItem value={20}>Cotton</MenuItem>
+                  <MenuItem value={30}>Sorghum</MenuItem>
+                  <MenuItem value={40}>Soybean</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+            <Box pb={2}>
+              <FormControl variant="outlined" fullWidth>
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Trait Code
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={crop}
+                  onChange={handleChangeCrop}
+                  label="Trait Code"
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={10}>Trait Code 1</MenuItem>
+                  <MenuItem value={20}>Trait Code 2</MenuItem>
+                  <MenuItem value={30}>Trait Code 3</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+            <Box pb={2}>
+              <FormControl variant="outlined" fullWidth>
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Commercial Name
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={crop}
+                  onChange={handleChangeCrop}
+                  label="Commercial Name"
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={10}>Commercial Name 1</MenuItem>
+                  <MenuItem value={20}>Commercial Name 2</MenuItem>
+                  <MenuItem value={30}>Commercial Name 3</MenuItem>
                 </Select>
               </FormControl>
             </Box>

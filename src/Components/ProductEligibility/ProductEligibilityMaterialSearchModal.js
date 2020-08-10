@@ -11,7 +11,7 @@ import {
   Divider,
   Grid,
 } from '@material-ui/core';
-import ProductEligibilityMaterialModal from './ProductEligibility/ProductEligibilityMaterialModal';
+import ProductEligibilityMaterialInformation from './ProductEligibilityMaterialInformation';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProductSearchModal() {
+export default function ProductEligibilityMaterialSearchModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -76,8 +76,9 @@ export default function ProductSearchModal() {
               }
             />
             <Divider />
-            <ProductEligibilityMaterialModal />
+            <ProductEligibilityMaterialInformation />
             <Grid item xs={12}>
+              <Divider />
               <Box display="flex" justifyContent="space-between" p={2}>
                 <Box display="flex" alignItems="center">
                   <Typography variant="caption">
