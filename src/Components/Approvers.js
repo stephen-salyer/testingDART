@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import {FormControlLabel, Switch, Box, Container} from '@material-ui/core';
-import ApproverNonDOA from './ApproverNonDOA';
+import ApproverAutoComplete from './ApproverAutoComplete';
 
 export default function Approvers() {
   const [state, setState] = React.useState({
@@ -40,7 +40,7 @@ export default function Approvers() {
             </Box>
           </Grid>
           <Grid item xs={12}>
-            <ApproverNonDOA />
+            <ApproverAutoComplete />
           </Grid>
         </Grid>
       </Container>

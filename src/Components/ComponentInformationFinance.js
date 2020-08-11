@@ -13,7 +13,7 @@ export default function ComponentInformationFinance() {
           <Box display="flex" justifyContent="space-between" p={2}>
             <Typography variant="h6">Profits and Loses</Typography>
             <Button color="primary" endIcon={<Add />}>
-              Add
+              Add P&L
             </Button>
           </Box>
           <Divider />

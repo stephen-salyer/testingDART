@@ -211,7 +211,7 @@ export default function ApproverGlobalAccounting() {
                 inputProps={params.inputProps}
                 {...params}
                 variant="outlined"
-                label="State / Province / Ect."
+                label="Approvers"
                 placeholder="Search"
               />
             </>
