@@ -80,14 +80,7 @@ export default function GitHubLabel() {
               style={{marginRight: 8}}
               checked={selected}
             />
-            <ListItemText
-              primary={option.county}
-              secondary={
-                <>
-                  <Typography color="textSecondary">{option.state}</Typography>
-                </>
-              }
-            />
+            <ListItemText primary={option.county} />
           </React.Fragment>
         )}
         options={[...geographyInformation].sort((a, b) => {
@@ -97,7 +90,7 @@ export default function GitHubLabel() {
           bi = bi === -1 ? value.length + geographyInformation.indexOf(b) : bi;
           return ai - bi;
         })}
-        groupBy={(geographyInformation) => geographyInformation.country}
+        groupBy={(geographyInformation) => geographyInformation.state}
         getOptionLabel={(option) => option.state}
         renderInput={(params) => (
           <>
@@ -120,7 +113,7 @@ export default function GitHubLabel() {
               <>
                 <Typography>US • Alabama</Typography>
                 <Typography variant="caption" color="TextSecondary">
-                  2/50 selected
+                  2/200 selected
                 </Typography>
               </>
             }
@@ -160,22 +153,22 @@ const geographyInformation = [
   },
   {
     county: 'Batha',
-    state: 'Arkansas',
+    state: 'Alabama',
     country: 'US',
   },
   {
     county: 'Crator',
-    state: 'California',
+    state: 'Alabama',
     country: 'US',
   },
   {
     county: 'Denont',
-    state: 'Conneticut',
+    state: 'Alabama',
     country: 'US',
   },
   {
     county: 'Emora',
-    state: 'Colorado',
+    state: 'Alabama',
     country: 'US',
   },
   {
