@@ -2,11 +2,11 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import {FormControlLabel, Switch, Box, Container} from '@material-ui/core';
 import ApproverAutoComplete from './ApproverAutoComplete';
+import ApproverAutoCompleteWave from './ApproverAutoCompleteWave';
 
 export default function Approvers() {
   const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
+    checked: true,
   });
 
   const handleChangeSwitch = (event) => {
@@ -18,20 +18,13 @@ export default function Approvers() {
       <Container maxWidth="sm">
         <Grid container>
           <Grid item xs={12}>
-            <Box
-              display="flex"
-              justifyContent="flex-end"
-              pl={3}
-              pr={3}
-              pt={1}
-              pb={1}
-            >
+            <Box display="flex" justifyContent="flex-end" p={1}>
               <FormControlLabel
                 control={
                   <Switch
-                    checked={state.checkedB}
+                    checked={state.checked}
                     onChange={handleChangeSwitch}
-                    name="checkedB"
+                    name="checked"
                     color="primary"
                   />
                 }
@@ -39,9 +32,15 @@ export default function Approvers() {
               />
             </Box>
           </Grid>
-          <Grid item xs={12}>
-            <ApproverAutoComplete />
-          </Grid>
+          {state.checked === false ? (
+            <Grid item xs={12}>
+              <ApproverAutoComplete />
+            </Grid>
+          ) : (
+            <Grid item xs={12}>
+              <ApproverAutoCompleteWave />
+            </Grid>
+          )}
         </Grid>
       </Container>
     </>

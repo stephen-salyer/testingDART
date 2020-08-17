@@ -23,6 +23,7 @@ import {
   ExpandLess,
   ExpandMore,
 } from '@material-ui/icons';
+import OwnersToggle from './OwnersToggle';
 
 const people = [
   {name: 'Jaylin Mcneil', category: 'Financial'},
@@ -164,6 +165,7 @@ export default function CustomizedSelects() {
                   {value.map((label) => (
                     <>
                       <ListItem key={label.name} divider style={{padding: 16}}>
+                        <OwnersToggle />
                         <ListItemText primary={label.name} />
                         <ListItemSecondaryAction>
                           <IconButton edge="end" aria-label="delete">
