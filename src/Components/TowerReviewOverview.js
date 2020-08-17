@@ -35,7 +35,7 @@ const inputs = [
     id: 2,
     key: 'country',
     label: 'Country',
-    options: ['United States of America', 'Canada', 'Canada'],
+    options: ['US', 'Canada', 'Canada'],
     size: 6,
   },
   {

@@ -59,7 +59,7 @@ export default function CustomerEligibility() {
 
   const [customer, setAccounts] = React.useState(10);
   const someAccounts = customer === 20;
-  const other = customer === 30;
+  const other = customer === 40;
 
   const handleChange1 = (event) => {
     setAccounts(event.target.value);
@@ -83,8 +83,10 @@ export default function CustomerEligibility() {
             label="Which Customers"
           >
             <MenuItem value={10}>All Customer</MenuItem>
-            <MenuItem value={20}>Some Account Classification</MenuItem>
-            <MenuItem value={30}>Other</MenuItem>
+            <MenuItem value={20}>Some Customer Groups</MenuItem>
+            <MenuItem value={30}>Specific Customers</MenuItem>
+            {/* display classification that goes with customer */}
+            <MenuItem value={40}>Other</MenuItem>
           </Select>
         </FormControl>
       </Grid>

@@ -14,20 +14,16 @@ import {CheckBoxOutlineBlank, CheckBox, RemoveCircle} from '@material-ui/icons';
 
 const scopes = [
   {
-    name:
-      'North America • United States of America • Crop Protection • Glyphosate • All',
+    name: 'North America • US • Crop Protection • Glyphosate • All',
   },
   {
-    name:
-      'North America • United States of America • Crop Protection • Glyphosate • Roundup',
+    name: 'North America • US • Crop Protection • Glyphosate • Roundup',
   },
   {
-    name:
-      'North America • United States of America • Crop Protection • Glyphosate • Degree Xtra',
+    name: 'North America • US • Crop Protection • Glyphosate • Degree Xtra',
   },
   {
-    name:
-      'North America • United States of America • Crop Protection • Dicamba • Roundup Xtra',
+    name: 'North America • US • Crop Protection • Dicamba • Roundup Xtra',
   },
 ];
 

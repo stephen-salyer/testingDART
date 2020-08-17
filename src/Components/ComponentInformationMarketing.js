@@ -15,19 +15,17 @@ import {
   Typography,
   CardHeader,
   Divider,
-  IconButton,
   Button,
 } from '@material-ui/core';
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import GeographyEligibility from './GeographyEligibility/GeographyEligibility';
 import CustomerEligibility from './CustomerEligibility/CustomerEligibility';
 import ProductEligibility from './ProductEligibility/ProductEligibility';
 import {Add} from '@material-ui/icons';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
+
+import TierRatesDate from './TierRatesDate';
+import TierRatesSalesTarget from './TierRatesSalesTarget';
+import TierRatesVolume from './TierRatesVolume';
+import TierRatesFOC from './TierRatesFOC';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,24 +73,15 @@ const MenuProps = {
 export default function ComponentInformationMarketing() {
   const classes = useStyles();
 
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date('2020-01-01T03:24:00')
-  );
+  const [componentTierRate, setComponentTierRate] = React.useState(10);
+  const date = componentTierRate === 10;
+  const foc = componentTierRate === 20;
+  const none = componentTierRate === 30;
+  const salesTarget = componentTierRate === 40;
+  const volume = componentTierRate === 50;
 
-  const [selectedDate2] = React.useState(new Date('2020-02-01T03:24:00'));
-
-  const [selectedDate3] = React.useState(new Date('2020-02-01T03:24:00'));
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
-
-  const handleDateChange2 = (date2) => {
-    setSelectedDate(date2);
-  };
-
-  const handleDateChange3 = (date3) => {
-    setSelectedDate(date3);
+  const handleChange1 = (event) => {
+    setComponentTierRate(event.target.value);
   };
 
   return (
@@ -251,6 +240,7 @@ export default function ComponentInformationMarketing() {
               <Select
                 MenuProps={MenuProps}
                 label="Component Tier Rate"
+                onChange={handleChange1}
                 defaultValue={10}
               >
                 <MenuItem value={10}>Date</MenuItem>
@@ -258,7 +248,6 @@ export default function ComponentInformationMarketing() {
                 <MenuItem value={30}>None</MenuItem>
                 <MenuItem value={40}>Sales Target</MenuItem>
                 <MenuItem value={50}>Volume</MenuItem>
-                <MenuItem value={60}>Flat Rate</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -302,145 +291,95 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12}>
-            <Typography variant="subtitle1">Tier Rates</Typography>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <TextField
-              label="Incentive"
-              defaultValue="25"
-              variant="outlined"
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                disableToolbar
-                fullWidth={true}
-                inputVariant="outlined"
-                format="YYY/MM/dd"
-                label="Start Date"
-                value={selectedDate}
-                onChange={handleDateChange}
-              />
-            </MuiPickersUtilsProvider>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                disableToolbar
-                fullWidth={true}
-                inputVariant="outlined"
-                format="YYY/MM/dd"
-                label="External End Date"
-                value={selectedDate2}
-                onChange={handleDateChange2}
-              />
-            </MuiPickersUtilsProvider>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                disableToolbar
-                fullWidth={true}
-                inputVariant="outlined"
-                format="YYY/MM/dd"
-                label="internal End Date"
-                value={selectedDate3}
-                onChange={handleDateChange3}
-              />
-            </MuiPickersUtilsProvider>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              label="Estimated % Volume Impacted"
-              defaultValue=""
-              variant="outlined"
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Box pb={1}>
-              <Divider />
-            </Box>
-          </Grid>
-        </Grid>
-        <Grid container spacing={3} display="flex" wrap="nowrap">
-          <Grid container item spacing={3}>
-            <Grid item xs={12} md={4}>
-              <TextField
-                label="Incentive"
-                defaultValue="25"
-                variant="outlined"
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                  disableToolbar
-                  fullWidth={true}
-                  inputVariant="outlined"
-                  format="YYY/MM/dd"
-                  label="Start Date"
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                />
-              </MuiPickersUtilsProvider>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                  disableToolbar
-                  fullWidth={true}
-                  inputVariant="outlined"
-                  format="YYY/MM/dd"
-                  label="External End Date"
-                  value={selectedDate2}
-                  onChange={handleDateChange2}
-                />
-              </MuiPickersUtilsProvider>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                  disableToolbar
-                  fullWidth={true}
-                  inputVariant="outlined"
-                  format="YYY/MM/dd"
-                  label="internal End Date"
-                  value={selectedDate3}
-                  onChange={handleDateChange3}
-                />
-              </MuiPickersUtilsProvider>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
-                label="Estimated % Volume Impacted"
-                defaultValue=""
-                variant="outlined"
-                fullWidth
-              />
-            </Grid>
-          </Grid>
-          <Grid container item xs={1} alignItems="center">
-            <IconButton>
-              <RemoveCircleIcon />
-            </IconButton>
-          </Grid>
-        </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Button
-              variant="outlined"
-              color="primary"
-              className={classes.button}
-              endIcon={<Add />}
-            >
-              Add Additional Tier Rates
-            </Button>
-          </Grid>
+          {date && (
+            <>
+              <Grid item xs={12}>
+                <Box display="flex" justifyContent="space-between" p={2}>
+                  <Typography variant="h6">Tier Rates</Typography>
+                  <Button
+                    color="primary"
+                    className={classes.button}
+                    endIcon={<Add />}
+                  >
+                    Add Additional Tier Rate
+                  </Button>
+                </Box>
+                <Divider />
+              </Grid>
+              <Grid container>
+                <Grid item xs={12}>
+                  <TierRatesDate />
+                </Grid>
+              </Grid>
+            </>
+          )}
+          {foc && (
+            <>
+              <Grid item xs={12}>
+                <Box display="flex" justifyContent="space-between" p={2}>
+                  <Typography variant="h6">Tier Rates</Typography>
+                  <Button
+                    color="primary"
+                    className={classes.button}
+                    endIcon={<Add />}
+                  >
+                    Add Additional Tier Rate
+                  </Button>
+                </Box>
+                <Divider />
+              </Grid>
+              <Grid container>
+                <Grid item xs={12}>
+                  <TierRatesFOC />
+                </Grid>
+              </Grid>
+            </>
+          )}
+          {none && <></>}
+          {salesTarget && (
+            <>
+              <Grid item xs={12}>
+                <Box display="flex" justifyContent="space-between" p={2}>
+                  <Typography variant="h6">Tier Rates</Typography>
+                  <Button
+                    color="primary"
+                    className={classes.button}
+                    endIcon={<Add />}
+                  >
+                    Add Additional Tier Rate
+                  </Button>
+                </Box>
+                <Divider />
+              </Grid>
+              <Grid container>
+                <Grid item xs={12}>
+                  <TierRatesSalesTarget />
+                </Grid>
+              </Grid>
+            </>
+          )}
+          {volume && (
+            <>
+              <Grid item xs={12}>
+                <Box display="flex" justifyContent="space-between" p={2}>
+                  <Typography variant="h6">Tier Rates</Typography>
+                  <Button
+                    color="primary"
+                    className={classes.button}
+                    endIcon={<Add />}
+                  >
+                    Add Additional Tier Rate
+                  </Button>
+                </Box>
+                <Divider />
+              </Grid>
+              <Grid container>
+                <Grid item xs={12}>
+                  <TierRatesVolume />
+                </Grid>
+              </Grid>
+            </>
+          )}
         </Grid>
       </Box>
     </div>

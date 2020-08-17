@@ -73,7 +73,7 @@ const scopeData = [
   {
     id: 1,
     region: 'North America',
-    country: 'United States of America',
+    country: 'US',
     businessCategory: 'Crop Protection',
     product: 'Glyphosate',
     brand: 'All',
@@ -81,7 +81,7 @@ const scopeData = [
   {
     id: 2,
     region: 'North America',
-    country: 'United States of America',
+    country: 'US',
     businessCategory: 'Crop Protection',
     product: 'Glyphosate',
     brand: 'Roundup',
@@ -89,7 +89,7 @@ const scopeData = [
   {
     id: 3,
     region: 'North America',
-    country: 'United States of America',
+    country: 'US',
     businessCategory: 'Crop Protection',
     product: 'Glyphosate',
     brand: 'Degree Xtra',
@@ -97,7 +97,7 @@ const scopeData = [
   {
     id: 4,
     region: 'North America',
-    country: 'United States of America',
+    country: 'US',
     businessCategory: 'Crop Protection',
     product: 'Dicamba',
     brand: 'Roundup Xtra',
@@ -128,7 +128,7 @@ const inputs = [
     id: 2,
     key: 'country',
     label: 'Country',
-    options: ['United States of America', 'Canada', 'Brazil'],
+    options: ['US', 'Canada', 'Brazil'],
     size: 6,
   },
   {

@@ -229,7 +229,7 @@ const inputs = [
       'Belarus',
       'Canada',
       'Brazil',
-      'United States of America',
+      'US',
     ],
     size: 6,
   },
