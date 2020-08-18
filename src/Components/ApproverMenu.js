@@ -25,7 +25,7 @@ const ApproverMenu = () => {
     setAnchorEl(null);
   };
 
-  const [age, setAge] = React.useState('');
+  const [age, setAge] = React.useState('10');
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -79,7 +79,7 @@ const ApproverMenu = () => {
                 id="demo-simple-select-outlined"
                 value={age}
                 onChange={handleChange}
-                defaultValue={10}
+                DefaultValue={10}
                 label="Wave"
                 MenuProps={menuProps}
               >

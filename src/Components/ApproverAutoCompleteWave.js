@@ -219,7 +219,10 @@ export default function ApproverAutoCompleteWave() {
         />
         <List style={{padding: 0}}>
           <ListItem button onClick={handleClickCollapse}>
-            <ListItemText primary="Wave 1" secondary="2 Selected" />
+            <ListItemText
+              primary="Wave 1"
+              secondary={<>{value.length} / 12 selected</>}
+            />
             {open ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           {open ? <Divider /> : <></>}
@@ -245,12 +248,9 @@ export default function ApproverAutoCompleteWave() {
                           color="textSecondary"
                           style={{paddingBottom: 4}}
                         >
-                          {[
-                            people.progress,
-                            people.type,
-                            people.ted,
-                            people.year,
-                          ].join(' • ')}
+                          {[people.progress, people.ted, people.year].join(
+                            ' • '
+                          )}
                         </Typography>
                       </>
                     }

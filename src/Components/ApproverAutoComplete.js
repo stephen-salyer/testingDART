@@ -219,7 +219,10 @@ export default function ApproverGlobalAccounting() {
         />
         <List style={{padding: 0}}>
           <ListItem button onClick={handleClickCollapse}>
-            <ListItemText primary="Global Accounting" secondary="2 Selected" />
+            <ListItemText
+              primary="Global Accounting"
+              secondary={<>{value.length} / 12 selected</>}
+            />
             {open ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           {open ? <Divider /> : <></>}

@@ -9,10 +9,10 @@ import {
   Grid,
   TextField,
   Container,
-  Typography,
   Button,
   ListItem,
   Collapse,
+  Divider,
 } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {
@@ -145,17 +145,12 @@ export default function CustomizedSelects() {
             <Box style={{maxHeight: '550px', overflow: 'scroll'}}>
               <ListItem button onClick={handleClick1}>
                 <ListItemText
-                  primary={
-                    <>
-                      <Typography>Finance</Typography>
-                      <Typography variant="caption" color="TextSecondary">
-                        2/50 selected
-                      </Typography>
-                    </>
-                  }
+                  primary="Finance"
+                  secondary={<>{value.length} / 12 selected</>}
                 />
                 {open ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
+              {open ? <Divider /> : <></>}
               <Collapse in={open} timeout="auto" unmountOnExit>
                 <List
                   component="div"

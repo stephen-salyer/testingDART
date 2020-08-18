@@ -49,7 +49,7 @@ export default function ProductEligibilityMaterialSearchModal() {
           marginLeft: '-1px',
         }}
       >
-        Search
+        Add
       </Button>
       <Modal
         disableEnforceFocus

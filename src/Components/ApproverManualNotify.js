@@ -4,7 +4,7 @@ import Switch from '@material-ui/core/Switch';
 
 class ApproverManualNotify extends React.Component {
   state = {
-    checked: false,
+    checked: true,
   };
 
   handleChange = (event) => {
