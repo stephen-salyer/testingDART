@@ -104,27 +104,9 @@ export default function GeographyEligibility() {
         <>
           <Grid item xs={0} md={6}></Grid>
           <Grid item xs={12} md={6}>
-            <FormControl fullWidth variant="outlined">
-              <InputLabel>Regions</InputLabel>
-              <Select MenuProps={MenuProps} label="Regions">
-                <MenuItem value={10}>OH / Northeast</MenuItem>
-                <MenuItem value={20}>OH / Northwest</MenuItem>
-                <MenuItem value={30}>OH / Northsouth</MenuItem>
-                <MenuItem value={40}>OH / Northnorth</MenuItem>
-              </Select>
-            </FormControl>
             <GeographyEligibilitySalesRegion />
           </Grid>
           <Grid item xs={12} md={6}>
-            <FormControl fullWidth variant="outlined">
-              <InputLabel>Teams</InputLabel>
-              <Select MenuProps={MenuProps} label="Teams">
-                <MenuItem value={10}>OH / Northeast ∙ N201</MenuItem>
-                <MenuItem value={20}>OH / Northeast ∙ N202</MenuItem>
-                <MenuItem value={30}>OH / Northeast ∙ N203</MenuItem>
-                <MenuItem value={40}>OH / Northeast ∙ N204</MenuItem>
-              </Select>
-            </FormControl>
             <GeographyEligibilitySalesTeams />
           </Grid>
         </>

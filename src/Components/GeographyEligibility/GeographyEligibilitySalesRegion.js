@@ -25,10 +25,7 @@ const checkedIcon = <CheckBox fontSize="small" />;
 
 export default function GeographyEligibilitySalesRegion() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [value, setValue] = React.useState([
-    salesInformation[1],
-    salesInformation[11],
-  ]);
+  const [value, setValue] = React.useState([salesInformation[0]]);
   const [pendingValue, setPendingValue] = React.useState([]);
 
   const handleClick = (event) => {
@@ -81,12 +78,8 @@ export default function GeographyEligibilitySalesRegion() {
               checked={selected}
             />
             <ListItemText
-              primary={option.county}
-              secondary={
-                <>
-                  <Typography color="textSecondary">{option.state}</Typography>
-                </>
-              }
+              primary={[option.county].join(' • ')}
+              secondary={[option.state].join(' • ')}
             />
           </React.Fragment>
         )}
@@ -98,7 +91,7 @@ export default function GeographyEligibilitySalesRegion() {
           return ai - bi;
         })}
         groupBy={(salesInformation) => salesInformation.country}
-        getOptionLabel={(option) => option.state}
+        getOptionLabel={(option) => option.county}
         renderInput={(params) => (
           <>
             <TextField
@@ -107,7 +100,7 @@ export default function GeographyEligibilitySalesRegion() {
               inputProps={params.inputProps}
               {...params}
               variant="outlined"
-              label="Counties / Districts / Ect."
+              label="Region"
               placeholder="Search"
             />
           </>
@@ -118,10 +111,9 @@ export default function GeographyEligibilitySalesRegion() {
           <ListItemText
             primary={
               <>
-                <Typography>US • Alabama</Typography>
-                <Typography variant="caption" color="TextSecondary">
-                  2/50 selected
-                </Typography>
+                <Box pt={1} pb={1}>
+                  <Typography>US</Typography>
+                </Box>
               </>
             }
           />
@@ -135,8 +127,11 @@ export default function GeographyEligibilitySalesRegion() {
           >
             {value.map((label) => (
               <>
-                <ListItem key={label.county} divider style={{padding: 16}}>
-                  <ListItemText primary={label.county} />
+                <ListItem key={label.county} divider style={{padding: 8}}>
+                  <ListItemText
+                    primary={[label.county].join(' • ')}
+                    secondary={[label.state].join(' • ')}
+                  />
                   <ListItemSecondaryAction>
                     <IconButton edge="end" aria-label="delete">
                       <RemoveCircle />
@@ -154,68 +149,23 @@ export default function GeographyEligibilitySalesRegion() {
 
 const salesInformation = [
   {
-    county: 'Elmore',
-    state: 'Alabama',
+    county: 'NorthWest',
+    state: 'Ohio',
     country: 'US',
   },
   {
-    county: 'Batha',
-    state: 'Arkansas',
+    county: 'SouthWest',
+    state: 'Ohio',
     country: 'US',
   },
   {
-    county: 'Crator',
-    state: 'California',
+    county: 'EastWest',
+    state: 'Ohio',
     country: 'US',
   },
   {
-    county: 'Denont',
-    state: 'Conneticut',
-    country: 'US',
-  },
-  {
-    county: 'Emora',
-    state: 'Colorado',
-    country: 'US',
-  },
-  {
-    county: 'Finaus',
-    state: 'Delaware',
-    country: 'US',
-  },
-  {
-    county: 'Gimla',
-    state: 'Georgia',
-    country: 'US',
-  },
-  {
-    county: 'Hoot',
-    state: 'Indiana',
-    country: 'US',
-  },
-  {
-    county: 'Inorama',
-    state: 'Illinois',
-    country: 'US',
-  },
-  {
-    county: 'Jintamor',
-    state: 'Montana',
-    country: 'US',
-  },
-  {
-    county: 'Kamonin',
-    state: 'North Carolina',
-    country: 'US',
-  },
-  {
-    county: 'Lintan',
-    state: 'South Carolina',
-    country: 'US',
-  },
-  {
-    county: 'Meronia',
-    state: 'Texas',
+    county: 'WestWest',
+    state: 'Ohio',
     country: 'US',
   },
 ];

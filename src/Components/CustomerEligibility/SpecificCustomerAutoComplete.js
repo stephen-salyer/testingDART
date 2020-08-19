@@ -108,11 +108,11 @@ export default function SpecificCustomerAutoComplete() {
       <List
         component="div"
         disablePadding
-        style={{maxHeight: '260px', overflow: 'scroll'}}
+        style={{maxHeight: '294px', overflow: 'scroll'}}
       >
         {value.map((label) => (
           <>
-            <ListItem key={label.selection} divider style={{padding: 8}}>
+            <ListItem key={label.selection} divider style={{padding: 16}}>
               <ListItemText primary={label.selection} />
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">

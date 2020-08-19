@@ -55,7 +55,7 @@ export default function CustomerEligibility() {
             label="Which Customers"
           >
             <MenuItem value={10}>All Customer</MenuItem>
-            <MenuItem value={20}>Some Customer Groups</MenuItem>
+            <MenuItem value={20}>Some Customers</MenuItem>
             <MenuItem value={30}>Other</MenuItem>
           </Select>
         </FormControl>
