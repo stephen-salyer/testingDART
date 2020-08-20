@@ -137,11 +137,11 @@ export default function ProductEligibilityMateials() {
         </div>
       </Box>
       <Box style={{maxHeight: '550px', overflow: 'scroll'}}>
-        <ListItem button onClick={handleClick1}>
+        <ListItem button onClick={handleClick1} divider>
           <ListItemText
             primary={
               <>
-                <Typography>Product1 • Brand1</Typography>
+                <Typography>Material Category</Typography>
                 <Typography variant="caption" color="TextSecondary">
                   2/21 selected
                 </Typography>
@@ -163,6 +163,42 @@ export default function ProductEligibilityMateials() {
                     primary={[label.materialNumber].join(' • ')}
                     secondary={[label.description].join(' • ')}
                   />
+                  <ListItemSecondaryAction>
+                    <IconButton edge="end" aria-label="delete">
+                      <RemoveCircle />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                </ListItem>
+              </>
+            ))}
+          </List>
+        </Collapse>
+        <ListItem button onClick={handleClick1} divider>
+          <ListItemText
+            primary={
+              <>
+                <Box pt={1} pb={1}>
+                  <Typography>Missing From Data Source</Typography>
+                </Box>
+              </>
+            }
+          />
+          {open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <List
+            component="div"
+            disablePadding
+            style={{maxHeight: '228px', overflow: 'scroll'}}
+          >
+            {value.map((label) => (
+              <>
+                <ListItem
+                  key={label.materialNumber}
+                  divider
+                  style={{padding: 16}}
+                >
+                  <ListItemText primary={[label.materialNumber].join(' • ')} />
                   <ListItemSecondaryAction>
                     <IconButton edge="end" aria-label="delete">
                       <RemoveCircle />
