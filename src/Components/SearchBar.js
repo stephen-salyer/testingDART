@@ -2,6 +2,7 @@ import React from 'react';
 import InputBase from '@material-ui/core/InputBase';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import {Box, TextField} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,8 +36,8 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
   },
   inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    padding: '0 8px 0 0',
+    paddingLeft: '0px',
     width: '100%',
   },
 }));
@@ -45,18 +46,22 @@ export default function SearchBar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.search}>
-      <div className={classes.searchIcon}>
-        <SearchIcon />
-      </div>
-      <InputBase
-        placeholder="Search…"
-        classes={{
-          root: classes.inputRoot,
-          input: classes.inputInput,
-        }}
-        inputProps={{'aria-label': 'search'}}
-      />
-    </div>
+    // <div className={classes.search}>
+    //   <div className={classes.searchIcon}>
+    //     <SearchIcon />
+    //   </div>
+    //   <InputBase
+    //     placeholder="Search…"
+    //     classes={{
+    //       root: classes.inputRoot,
+    //       input: classes.inputInput,
+    //     }}
+    //     inputProps={{'aria-label': 'search'}}
+    //   />
+    // </div>
+    <Box display="flex" alignItems="center" pr={1}>
+      <SearchIcon />
+      <InputBase placeholder="Search…" inputProps={{'aria-label': 'search'}} />
+    </Box>
   );
 }

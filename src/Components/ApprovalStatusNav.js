@@ -48,14 +48,14 @@ const ApprovalStatusNav = () => {
       className={classes.containerPadding}
     >
       <Grid container>
-        <Grid item={true} sm={12} md={6}>
+        <Grid item={true} xs={12} md={6}>
           <Typography variant="h3" color="primary">
             Approval Status
           </Typography>
         </Grid>
         <Grid
           item={true}
-          sm={12}
+          xs={12}
           md={6}
           style={{
             display: 'flex',
@@ -67,7 +67,7 @@ const ApprovalStatusNav = () => {
             <ApprovalStatusFilter />
           </Box>
         </Grid>
-        <Grid item={true} sm={12} md={12}>
+        <Grid item={true} xs={12} md={12}>
           <Box display="flex" justifyContent="flex-end" flexWrap="wrap" my={2}>
             <div className={classes.chipPadding}>
               <Chip label="2020" onDelete={handleDelete} variant="outlined" />
