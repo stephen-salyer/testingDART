@@ -106,7 +106,7 @@ export default function OperationsPayeeAutoComplete() {
           </>
         )}
       />
-      <Box style={{height: '290px', overflow: 'scroll'}}>
+      <Box style={{maxHeight: '290px', overflow: 'scroll'}}>
         {value.map((label) => (
           <React.Fragment key={label.title}>
             <List>

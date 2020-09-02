@@ -163,31 +163,26 @@ export default function ProductEligibilityMaterialInformation() {
           </Box>
           <Divider />
           <List style={{height: '50vh', overflow: 'scroll', padding: 0}}>
-            {products.map(
-              ({materialNumber, description}, i) => (
-                description,
-                (
-                  <Box key={i}>
-                    <ListItem>
-                      <FormControlLabel
-                        control={
-                          <Box pl={1} pr={0} pt={0} pb={0}>
-                            <Checkbox color="primary" name="checkedC" />
-                          </Box>
-                        }
-                        label={
-                          <ListItemText
-                            primary={[materialNumber].join(' • ')}
-                            secondary={[description].join(' • ')}
-                          />
-                        }
+            {products.map(({materialNumber, description}, i) => (
+              <Box key={i}>
+                <ListItem>
+                  <FormControlLabel
+                    control={
+                      <Box pl={1} pr={0} pt={0} pb={0}>
+                        <Checkbox color="primary" name="checkedC" />
+                      </Box>
+                    }
+                    label={
+                      <ListItemText
+                        primary={[materialNumber].join(' • ')}
+                        secondary={[description].join(' • ')}
                       />
-                    </ListItem>
-                    <Divider />
-                  </Box>
-                )
-              )
-            )}
+                    }
+                  />
+                </ListItem>
+                <Divider />
+              </Box>
+            ))}
           </List>
         </Grid>
         <Grid item md={5}>

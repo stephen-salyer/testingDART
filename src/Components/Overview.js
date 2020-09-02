@@ -8,7 +8,6 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-// import Skeleton from '@material-ui/lab/Skeleton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -137,6 +136,39 @@ export default function FullWidthGrid() {
             />
           </MuiPickersUtilsProvider>
         </Grid>
+        {/* <Grid item xs={12} md={4}>
+          <Box display="flex" alignItems="center">
+            <Box
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+              style={{height: '100%'}}
+            >
+              <WarningOutlined
+                fontSize="large"
+                style={{color: amber[500], paddingRight: 24, paddingLeft: 24}}
+              />
+              <Typography variant="caption" color="textSecondary">
+                Attention
+              </Typography>
+            </Box>
+            <Box
+              display="flex"
+              justifyContent="center"
+              flexDirection="column"
+              style={{height: '100%'}}
+            >
+              <Typography color="textSecondary">
+                Net Price Analyzer Fields
+              </Typography>
+              <Box pt={1} pb={2}>
+                <NetPriceAnalyzerModal />
+              </Box>
+            </Box>
+          </Box>
+          <Divider />
+        </Grid> */}
       </Grid>
     </div>
   );
