@@ -75,11 +75,11 @@ const Nav = () => {
                   onClick={() => setOpen(false)}
                   component={Link}
                   rel="noopener noreferrer"
-                  to={'/product-eligibility-example'}
+                  to={'/geography-eligibility-v2'}
                   button
                   className={classes.nested}
                 >
-                  <ListItemText primary="Product Eligibility" />
+                  <ListItemText primary="Geography Eligibility V2" />
                 </ListItem>
                 <ListItem
                   onClick={() => setOpen(false)}

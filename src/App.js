@@ -11,13 +11,13 @@ import ProgramListBody from './Components/ProgramListBody';
 import NavBar from './Components/NavBar';
 import MemberList from './Components/MemberList';
 import ApprovalStatus from './Components/ApprovalStatus';
-import ProductEligibilityExample from './Components/Examples/ProductEligibility/ProductEligibilityExample';
 import TowerReview from './Components/TowerReview';
 import ProgramPrintable from './Components/ProgramPrintable';
 import ProgramChanges from './Components/ProgramChanges';
 import TowerReviewPricePlan from './Components/TowerReviewPricePlan';
 import UnitSelect from './Components/Examples/UnitSelect';
 import BugHunter from './Components/BugHunter';
+import GeographyEligibilityV2 from './Components/Examples/GeographyEligibilityV2';
 
 const theme = createMuiTheme({
   palette: {
@@ -40,8 +40,8 @@ const App = () => (
             <ProgramListBody />
           </Route>
           {/* Below is temporary */}
-          <Route path="/product-eligibility-example">
-            <ProductEligibilityExample />
+          <Route path="/geography-eligibility-v2">
+            <GeographyEligibilityV2 />
           </Route>
           {/* Above is temporary */}
           <Route path="/program/:id">
