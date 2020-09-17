@@ -106,12 +106,10 @@ export default function ProductEligibilityBrands() {
       <Box style={{maxHeight: '550px', overflow: 'scroll'}}>
         <ListItem button onClick={handleClick1}>
           <ListItemText
+            style={{paddingTop: 8, paddingBottom: 8}}
             primary={
               <>
                 <Typography>Product1</Typography>
-                <Typography variant="caption" color="TextSecondary">
-                  2/36 selected
-                </Typography>
               </>
             }
           />

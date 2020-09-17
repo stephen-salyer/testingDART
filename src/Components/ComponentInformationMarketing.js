@@ -26,6 +26,7 @@ import TierRatesDate from './TierRatesDate';
 import TierRatesSalesTarget from './TierRatesSalesTarget';
 import TierRatesVolume from './TierRatesVolume';
 import TierRatesFOC from './TierRatesFOC';
+import TierRatesGraph from './TierRatesGraph';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -232,14 +233,14 @@ export default function ComponentInformationMarketing() {
             />
             <Divider />
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={4}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">
-                Component Tier Rate
+                Tier Measure
               </InputLabel>
               <Select
                 MenuProps={MenuProps}
-                label="Component Tier Rate"
+                label="Tier Measure"
                 onChange={handleChange1}
                 defaultValue={10}
               >
@@ -251,17 +252,7 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel id="demo-simple-select-outlined-label">
-                Rate
-              </InputLabel>
-              <Select MenuProps={MenuProps} label="Rate" defaultValue={10}>
-                <MenuItem value={10}>FOC Discount</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={4}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel>Calculation Base</InputLabel>
               <Select
@@ -274,7 +265,7 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={4}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel>Calculation On</InputLabel>
               <Select
@@ -291,6 +282,56 @@ export default function ComponentInformationMarketing() {
               </Select>
             </FormControl>
           </Grid>
+          <Grid item xs={12} md={6}>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel id="demo-simple-select-outlined-label">
+                Incentive Value
+              </InputLabel>
+              <Select
+                MenuProps={MenuProps}
+                label="Incentive Value"
+                defaultValue={10}
+              >
+                <MenuItem value={10}>FOC Discount</MenuItem>
+                <MenuItem value={20}>FOC Product</MenuItem>
+                <MenuItem value={30}>Percentage</MenuItem>
+                <MenuItem value={40}>Program Currency</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel>Estimated Volume Impacted by...</InputLabel>
+              <Select
+                MenuProps={MenuProps}
+                label="Estimated Volume Impacted by..."
+                defaultValue={10}
+              >
+                <MenuItem value={10}>Percentage</MenuItem>
+                <MenuItem value={20}>Number of Units</MenuItem>
+              </Select>
+            </FormControl>
+            {/* <FormControl
+              component="fieldset"
+              className={classes.formControlRadio}
+            >
+              <FormLabel component="legend">Volume Impacted By...</FormLabel>
+              <RadioGroup aria-label="quiz" name="quiz">
+                <Box display="flex">
+                  <FormControlLabel
+                    value="best"
+                    control={<Radio />}
+                    label="Percentage"
+                  />
+                  <FormControlLabel
+                    value="worst"
+                    control={<Radio />}
+                    label="Number of Units"
+                  />
+                </Box>
+              </RadioGroup>
+            </FormControl> */}
+          </Grid>
           {date && (
             <>
               <Grid item xs={12}>
@@ -306,10 +347,22 @@ export default function ComponentInformationMarketing() {
                 </Box>
                 <Divider />
               </Grid>
-              <Grid container>
-                <Grid item xs={12}>
-                  <TierRatesDate />
-                </Grid>
+              <Grid item xs={8}>
+                <TierRatesDate />
+              </Grid>
+              <Grid item xs={4}>
+                <Typography variant="subtitle1" style={{padding: '16px'}}>
+                  Estimated Volume
+                </Typography>
+                <Divider />
+                <Box
+                  p={3}
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <TierRatesGraph />
+                </Box>
               </Grid>
             </>
           )}

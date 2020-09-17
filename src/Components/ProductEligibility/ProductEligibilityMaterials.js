@@ -19,8 +19,10 @@ import {
   CheckBoxOutlineBlank,
   ExpandLess,
   ExpandMore,
+  WarningOutlined,
 } from '@material-ui/icons';
 import ProductEligibilityMaterialSearchModal from './ProductEligibilityMaterialSearchModal';
+import {amber} from '@material-ui/core/colors';
 
 const icon = <CheckBoxOutlineBlank fontSize="small" />;
 const checkedIcon = <CheckBox fontSize="small" />;
@@ -139,12 +141,10 @@ export default function ProductEligibilityMateials() {
       <Box style={{maxHeight: '550px', overflow: 'scroll'}}>
         <ListItem button onClick={handleClick1} divider>
           <ListItemText
+            style={{paddingTop: 8, paddingBottom: 8}}
             primary={
               <>
                 <Typography>Material Category</Typography>
-                <Typography variant="caption" color="TextSecondary">
-                  2/21 selected
-                </Typography>
               </>
             }
           />
@@ -177,8 +177,23 @@ export default function ProductEligibilityMateials() {
           <ListItemText
             primary={
               <>
-                <Box pt={1} pb={1}>
-                  <Typography>Missing From Data Source</Typography>
+                <Box display="flex" alignItems="center">
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="center"
+                    justifyContent="center"
+                    pr={1}
+                    style={{width: 40}}
+                  >
+                    <WarningOutlined
+                      fontSize="large"
+                      style={{
+                        color: amber[500],
+                      }}
+                    />
+                  </Box>
+                  <Typography>No Defined Category</Typography>
                 </Box>
               </>
             }

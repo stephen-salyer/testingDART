@@ -64,7 +64,7 @@ const scopeData = [
     startDate: '01/01/2022',
     externalEndDate: '01/01/2022',
     internalEndDate: '01/01/2023',
-    estimatedVolumeImpacted: '88',
+    estimatedVolumeImpacted: '2',
   },
   {
     id: 3,
@@ -72,7 +72,7 @@ const scopeData = [
     startDate: '01/01/2022',
     externalEndDate: '01/01/2022',
     internalEndDate: '01/01/2023',
-    estimatedVolumeImpacted: '88',
+    estimatedVolumeImpacted: '1',
   },
   {
     id: 4,
@@ -80,7 +80,15 @@ const scopeData = [
     startDate: '01/01/2022',
     externalEndDate: '01/01/2022',
     internalEndDate: '01/01/2023',
-    estimatedVolumeImpacted: '88',
+    estimatedVolumeImpacted: '1',
+  },
+  {
+    id: 5,
+    incentive: '1234567',
+    startDate: '01/01/2022',
+    externalEndDate: '01/01/2022',
+    internalEndDate: '01/01/2023',
+    estimatedVolumeImpacted: '0',
   },
 ];
 
