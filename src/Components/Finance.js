@@ -25,7 +25,6 @@ import {
   List,
 } from '@material-ui/core';
 import AttachmentMenu from './AttachmentMenu';
-import InfoModal from './InfoModal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -683,7 +682,6 @@ export default function Finance() {
               Similarly situated should be evaluated in terms of product
               offerings, number of locations/acres, volume or other similar
               comparative factors.
-              <InfoModal />
             </FormHelperText>
           </FormControl>
         </Grid>

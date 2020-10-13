@@ -1,14 +1,20 @@
 import {
+  Box,
   CardHeader,
   Divider,
   FormControl,
   Grid,
+  IconButton,
+  InputAdornment,
   InputLabel,
   MenuItem,
   Select,
+  TextField,
 } from '@material-ui/core';
 import React from 'react';
-import MaterialTable from 'material-table';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import {Add, Remove} from '@material-ui/icons';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -27,20 +33,16 @@ const MenuProps = {
 };
 
 export default function SelectThings() {
-  const [state, setState] = React.useState({
-    columns: [
-      {title: 'Incentive', field: 'incentive'},
-      {title: 'Minimum Sales Target %', field: 'minimumSalesTargetPercent'},
-      {title: 'Maximum Sales Target %', field: 'maximumSalesTargetPercent'},
-    ],
-    data: [
-      {
-        incentive: 'blank',
-        minimumSalesTargetPercent: 'blank',
-        maximumSalesTargetPercent: 'blank',
-      },
-    ],
-  });
+  const [alignment, setAlignment] = React.useState('left');
+  const [alignment1, setAlignment1] = React.useState('left');
+
+  const handleAlignment = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
+
+  const handleAlignment1 = (event, newAlignment) => {
+    setAlignment1(newAlignment);
+  };
 
   return (
     <Grid container spacing={3}>
@@ -51,35 +53,22 @@ export default function SelectThings() {
         />
         <Divider />
       </Grid>
-      <Grid item xs={12} md={4}>
-        <FormControl variant="outlined" fullWidth>
+      <Grid item xs={12} md={6}>
+        <FormControl fullWidth>
           <InputLabel id="demo-simple-select-outlined-label">
             Tier Measure
           </InputLabel>
-          <Select MenuProps={MenuProps} label="Tier Measure" defaultValue={10}>
+          <Select MenuProps={MenuProps} label="Tier Measure" defaultValue={40}>
             <MenuItem value={10}>Date</MenuItem>
-            <MenuItem value={20}>FOC</MenuItem>
-            <MenuItem value={30}>None</MenuItem>
-            <MenuItem value={40}>Sales Target</MenuItem>
-            <MenuItem value={50}>Volume</MenuItem>
+            <MenuItem value={20}>None</MenuItem>
+            <MenuItem value={30}>Sales Target</MenuItem>
+            <MenuItem value={40}>Volume</MenuItem>
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={12} md={4}>
-        <FormControl variant="outlined" fullWidth>
-          <InputLabel>Calculation Base</InputLabel>
-          <Select
-            MenuProps={MenuProps}
-            label="Calculation Base"
-            defaultValue={10}
-          >
-            <MenuItem value={10}>Gross Sell Price (List Price)</MenuItem>
-            <MenuItem value={20}>Net Invoice Price</MenuItem>
-          </Select>
-        </FormControl>
-      </Grid>
-      <Grid item xs={12} md={4}>
-        <FormControl variant="outlined" fullWidth>
+      <Grid item xs={12} md={6}></Grid>
+      {/* <Grid item xs={12} md={4}>
+        <FormControl fullWidth>
           <InputLabel>Calculation On</InputLabel>
           <Select
             MenuProps={MenuProps}
@@ -94,9 +83,9 @@ export default function SelectThings() {
             <MenuItem value={60}>Whole Bag</MenuItem>
           </Select>
         </FormControl>
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <FormControl variant="outlined" fullWidth>
+      </Grid> */}
+      {/* <Grid item xs={12} md={6}>
+        <FormControl fullWidth>
           <InputLabel id="demo-simple-select-outlined-label">
             Incentive Value
           </InputLabel>
@@ -105,72 +94,222 @@ export default function SelectThings() {
             label="Incentive Value"
             defaultValue={10}
           >
-            <MenuItem value={10}>FOC Discount</MenuItem>
-            <MenuItem value={20}>FOC Product</MenuItem>
-            <MenuItem value={30}>Percentage</MenuItem>
-            <MenuItem value={40}>Program Currency</MenuItem>
+            <MenuItem value={10}>Percentage</MenuItem>
+            <MenuItem value={20}>Program Currency</MenuItem>
           </Select>
         </FormControl>
       </Grid>
       <Grid item xs={12} md={6}>
-        <FormControl variant="outlined" fullWidth>
-          <InputLabel>Estimated Volume Impacted by...</InputLabel>
+        <FormControl fullWidth>
+          <InputLabel>Estimated Volume Value</InputLabel>
           <Select
             MenuProps={MenuProps}
-            label="Estimated Volume Impacted by..."
+            label="Estimated Volume Value"
             defaultValue={10}
           >
             <MenuItem value={10}>Percentage</MenuItem>
             <MenuItem value={20}>Number of Units</MenuItem>
           </Select>
         </FormControl>
-      </Grid>
+      </Grid> */}
       <Grid item xs={12}>
-        <MaterialTable
-          title="Tier Rates"
-          columns={state.columns}
-          data={state.data}
-          options={{
-            search: false,
-          }}
-          editable={{
-            onRowAdd: (newData) =>
-              new Promise((resolve) => {
-                setTimeout(() => {
-                  resolve();
-                  setState((prevState) => {
-                    const data = [...prevState.data];
-                    data.push(newData);
-                    return {...prevState, data};
-                  });
-                }, 600);
-              }),
-            onRowUpdate: (newData, oldData) =>
-              new Promise((resolve) => {
-                setTimeout(() => {
-                  resolve();
-                  if (oldData) {
-                    setState((prevState) => {
-                      const data = [...prevState.data];
-                      data[data.indexOf(oldData)] = newData;
-                      return {...prevState, data};
-                    });
-                  }
-                }, 600);
-              }),
-            onRowDelete: (oldData) =>
-              new Promise((resolve) => {
-                setTimeout(() => {
-                  resolve();
-                  setState((prevState) => {
-                    const data = [...prevState.data];
-                    data.splice(data.indexOf(oldData), 1);
-                    return {...prevState, data};
-                  });
-                }, 600);
-              }),
-          }}
-        />
+        <CardHeader title="Tier Rates" />
+        <Grid container spacing={1}>
+          <Grid item xs={1}>
+            <></>
+          </Grid>
+          <Grid item xs={2}>
+            <Box display="flex" justifyContent="flex-end">
+              <ToggleButtonGroup
+                value={alignment}
+                exclusive
+                onChange={handleAlignment}
+                aria-label="text alignment"
+              >
+                <ToggleButton
+                  value="left"
+                  aria-label="left aligned"
+                  style={{minWidth: 50}}
+                >
+                  %
+                </ToggleButton>
+                <ToggleButton
+                  value="justify"
+                  aria-label="justified"
+                  style={{minWidth: 50}}
+                >
+                  USD$
+                </ToggleButton>
+              </ToggleButtonGroup>
+            </Box>
+          </Grid>
+          <Grid item xs={3}>
+            <></>
+          </Grid>
+          <Grid item xs={3}>
+            <></>
+          </Grid>
+          <Grid item xs={2}>
+            <Box display="flex" justifyContent="flex-end">
+              <ToggleButtonGroup
+                value={alignment1}
+                exclusive
+                onChange={handleAlignment1}
+                aria-label="text alignment"
+              >
+                <ToggleButton
+                  value="left"
+                  aria-label="left aligned"
+                  style={{minWidth: 50}}
+                >
+                  %
+                </ToggleButton>
+                <ToggleButton
+                  value="justify"
+                  aria-label="justified"
+                  style={{minWidth: 50}}
+                >
+                  Unit
+                </ToggleButton>
+              </ToggleButtonGroup>
+            </Box>
+          </Grid>
+          <Grid item xs={1}>
+            <></>
+          </Grid>
+          <Grid item xs={1}>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              style={{height: '100%'}}
+            >
+              1.
+            </Box>
+          </Grid>
+          <Grid item xs={2}>
+            <Box display="flex">
+              <TextField
+                id="outlined-basic"
+                label="Incentive"
+                fullWidth
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">%</InputAdornment>
+                  ),
+                }}
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={3}>
+            <TextField id="outlined-basic" label="Minimum Volume" fullWidth />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField id="outlined-basic" label="Maximum Volume" fullWidth />
+          </Grid>
+          <Grid item xs={2}>
+            <Box display="flex">
+              <TextField
+                id="outlined-basic"
+                label="Volume Impacted"
+                fullWidth
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">%</InputAdornment>
+                  ),
+                }}
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={1}>
+            <Box display="flex">
+              <IconButton aria-label="delete">
+                <Add />
+              </IconButton>
+            </Box>
+          </Grid>
+        </Grid>
+        <Grid container spacing={1}>
+          <Grid item xs={1}>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              style={{height: '100%'}}
+            >
+              2.
+            </Box>
+          </Grid>
+          <Grid item xs={2}>
+            <Box display="flex">
+              <TextField
+                id="outlined-basic"
+                label="Incentive"
+                fullWidth
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">%</InputAdornment>
+                  ),
+                }}
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={3}>
+            <TextField id="outlined-basic" label="Minimum Volume" fullWidth />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField id="outlined-basic" label="Maximum Volume" fullWidth />
+          </Grid>
+          <Grid item xs={2}>
+            <Box display="flex">
+              <TextField
+                id="outlined-basic"
+                label="Volume Impacted"
+                fullWidth
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">%</InputAdornment>
+                  ),
+                }}
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={1}>
+            <Box display="flex">
+              <IconButton aria-label="delete">
+                <Add />
+              </IconButton>
+              <IconButton aria-label="delete">
+                <Remove />
+              </IconButton>
+            </Box>
+          </Grid>
+          <Grid item xs={9}></Grid>
+          <Grid item xs={2}>
+            <TextField
+              disabled
+              id="standard-disabled"
+              label="Unimpacted Volume"
+              InputProps={{
+                endAdornment: <InputAdornment position="end">%</InputAdornment>,
+              }}
+            />
+          </Grid>
+          <Grid item xs={1}></Grid>
+        </Grid>
+        <Grid item xs={6}>
+          <FormControl fullWidth>
+            <InputLabel>Calculation Base</InputLabel>
+            <Select
+              MenuProps={MenuProps}
+              label="Calculation Base"
+              defaultValue={10}
+            >
+              <MenuItem value={10}>Gross Sell Price (List Price)</MenuItem>
+              <MenuItem value={20}>Net Invoice Price</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
       </Grid>
     </Grid>
   );

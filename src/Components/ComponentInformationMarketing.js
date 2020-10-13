@@ -236,11 +236,11 @@ export default function ComponentInformationMarketing() {
           <Grid item xs={12} md={4}>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">
-                Tier Measure
+                Tier Measurement
               </InputLabel>
               <Select
                 MenuProps={MenuProps}
-                label="Tier Measure"
+                label="Tier Measurement"
                 onChange={handleChange1}
                 defaultValue={10}
               >
@@ -254,14 +254,23 @@ export default function ComponentInformationMarketing() {
           </Grid>
           <Grid item xs={12} md={4}>
             <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel>Calculation Base</InputLabel>
+              <InputLabel>Calculation Basis</InputLabel>
               <Select
                 MenuProps={MenuProps}
-                label="Calculation Base"
+                label="Calculation Basis"
                 defaultValue={10}
               >
-                <MenuItem value={10}>Gross Sell Price (List Price)</MenuItem>
-                <MenuItem value={20}>Net Invoice Price</MenuItem>
+                <MenuItem value={10}>Gross Sales</MenuItem>
+                <MenuItem value={20}>Gross Sales Minus Discount</MenuItem>
+                <MenuItem value={30}>
+                  Gross Sales Minus Discount / Returns
+                </MenuItem>
+                <MenuItem value={40}>
+                  Gross Sales Minus Discount / Returns / Replants
+                </MenuItem>
+                <MenuItem value={50}>
+                  Gross Sales Minus Returns / Replants
+                </MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -335,7 +344,14 @@ export default function ComponentInformationMarketing() {
           {date && (
             <>
               <Grid item xs={12}>
-                <Box display="flex" justifyContent="space-between" p={2}>
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  pt={2}
+                  pl={5}
+                  pb={2}
+                  pr={2}
+                >
                   <Typography variant="h6">Tier Rates</Typography>
                   <Button
                     color="primary"

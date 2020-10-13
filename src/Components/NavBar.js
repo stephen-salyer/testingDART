@@ -13,6 +13,7 @@ import Divider from '@material-ui/core/Divider';
 import Velocity from './Velocity-Logo.js';
 import Nav from './Nav';
 import {Hidden} from '@material-ui/core';
+import InfoModal from './InfoModal.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,7 +70,7 @@ const NavBar = () => {
             <EmailIcon />
           </IconButton>
           <IconButton color="inherit" aria-label="help">
-            <HelpIcon />
+            <InfoModal />
           </IconButton>
           <Avatar alt="Cindy Baker" src="Static/Images/Avatar/3.jpg" />
         </ToolBar>

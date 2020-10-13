@@ -67,24 +67,28 @@ const programs = [
   {
     title: '2020 APEX & RT MESA Herbicide Program USA',
     programId: 'APIRFP',
-    pulledBack: '3 Times',
+    pulledBack: 'Version: 1.1 • In Draft Since: 20/20/2020',
     // • Program Creation to Approval Submission: 3 weeks
   },
   {
     title: '2020 Acetanilide Dicamba Incentive Offer US',
     programId: 'CHSAIO',
-    pulledBack: '5 Times',
+    pulledBack: 'Version: 1.1 • In Draft Since: 20/20/2020',
   },
-  {title: '2020 Action Pact-Canada', programId: 'R1712', pulledBack: '1 Time'},
+  {
+    title: '2020 Action Pact-Canada',
+    programId: 'R1712',
+    pulledBack: 'Version: 1.1 • In Draft Since: 20/20/2020',
+  },
   {
     title: '2020 Crop Protection AMF-Canada',
     programId: 'D1707',
-    pulledBack: '7 Times',
+    pulledBack: 'Version: 1.1 • In Draft Since: 20/20/2020',
   },
   {
     title: '2020 Crop Protection Channel Development Resource US',
     programId: 'CHLCRC2',
-    pulledBack: '30 Times',
+    pulledBack: 'Version: 1.1 • In Draft Since: 20/20/2020',
   },
 ];
 
@@ -271,9 +275,7 @@ const ApprovalStatusDraft = () => {
                           </Typography>
                         }
                         secondary={
-                          <Typography variant="body2">
-                            Pulled Back: {pulledBack}
-                          </Typography>
+                          <Typography variant="body2">{pulledBack}</Typography>
                         }
                       />
                       <ListItemSecondaryAction>

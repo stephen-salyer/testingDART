@@ -33,37 +33,38 @@ const useStyles = makeStyles({
 const kpi = [
   {
     title: 'Program Creation to Approval Submission (Weeks)',
-    count: '11.4 • 10.2',
+    // include target
+    count: '11.4 | 10.2',
     desktopSize: 12,
     tabletSize: 12,
   },
   {
     title: 'Total Approvers',
-    count: '8 • 7.2',
+    count: '8 | 7.2',
     desktopSize: 4,
     tabletSize: 12,
   },
   {
     title: 'Non-DOA',
-    count: '6 • 5.5',
+    count: '6 | 5.5',
     desktopSize: 4,
     tabletSize: 12,
   },
   {
     title: 'DOA',
-    count: '7 • 7.6',
+    count: '7 | 7.6',
     desktopSize: 4,
     tabletSize: 12,
   },
   {
-    title: 'Initial Submission to Final Approval (Weeks)',
-    count: '5.3 • 3.8',
+    title: 'Approval Submission to Final Approval (Weeks)',
+    count: '5.3 | 3.8',
     desktopSize: 12,
     tabletSize: 12,
   },
   {
-    title: 'DOA Approvers at / above TED by Department (Weeks)',
-    count: '5.3 • 3.8',
+    title: 'DOA Approvers who meet or exceed Total Expected Discount (Days)',
+    count: '5.3 | 3.8',
     desktopSize: 12,
     tabletSize: 12,
   },
@@ -109,13 +110,14 @@ const ApprovalStatus = () => {
       <ApprovalStatusNav />
       <Grid container spacing={3}>
         <Grid item xs={12} md={6} lg={6}>
-          <Card style={{maxHeight: 360}}>
+          <Card>
             <CardHeader
               style={{padding: '28px 16px'}}
               title="Status of Programs"
             ></CardHeader>
             <Divider />
             <Box
+              style={{minHeight: 243}}
               p={3}
               display="flex"
               alignItems="center"
@@ -126,13 +128,13 @@ const ApprovalStatus = () => {
           </Card>
         </Grid>
         <Grid item xs={12} md={6} lg={6}>
-          <Card style={{maxHeight: 360}}>
+          <Card>
             <CardHeader
               title="Approver KPIs Avg."
-              subheader="2019 • 2020"
+              subheader="2019 | 2020 Comparison"
             ></CardHeader>
             <Divider />
-            <Box style={{maxHeight: 260, overflow: 'scroll'}}>
+            <Box mb={3}>
               <Grid container spacing={3}>
                 {kpi.map(({title, count, desktopSize, tabletSize}, i) => (
                   <>
@@ -173,7 +175,7 @@ const ApprovalStatus = () => {
                   aria-label="full width tabs example"
                 >
                   <Tab label="Draft (887)" {...a11yProps(0)} />
-                  <Tab label="Pulled Back (0)" {...a11yProps(1)} />
+                  <Tab label="None Example (0)" {...a11yProps(1)} />
                   <Tab label="Pending (98)" {...a11yProps(2)} />
                   <Tab label="Approved (4)" {...a11yProps(3)} />
                 </Tabs>
@@ -187,7 +189,7 @@ const ApprovalStatus = () => {
                   variant="scrollable"
                 >
                   <Tab label="Draft (887)" {...a11yProps(0)} />
-                  <Tab label="Pulled Back (0)" {...a11yProps(1)} />
+                  <Tab label="None Example (0)" {...a11yProps(1)} />
                   <Tab label="Pending (98)" {...a11yProps(2)} />
                   <Tab label="Approved (4)" {...a11yProps(3)} />
                 </Tabs>

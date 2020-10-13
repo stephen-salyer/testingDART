@@ -14,7 +14,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
-import {Search} from '@material-ui/icons';
+import {Help, Search} from '@material-ui/icons';
 
 const information = [
   {
@@ -122,16 +122,6 @@ const useStyles = makeStyles((theme) => ({
       width: '20ch',
     },
   },
-  readText: {
-    paddingLeft: 4,
-    transition: 'all 0.1s ease-in-out',
-    cursor: 'pointer',
-    color: 'rgba(2,100,196, 0.85)',
-    textDecoration: 'underline',
-    '&:hover': {
-      color: 'rgb(2,100,196)',
-    },
-  },
 }));
 
 export default function InfoModal() {
@@ -148,14 +138,7 @@ export default function InfoModal() {
 
   return (
     <>
-      <Typography
-        variant="caption"
-        onClick={handleOpen}
-        color="textSecondary"
-        className={classes.readText}
-      >
-        Read More.
-      </Typography>
+      <Help onClick={handleOpen} />
       <Modal
         className={classes.modal}
         open={open}

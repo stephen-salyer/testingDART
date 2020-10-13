@@ -283,7 +283,7 @@ export default function TemporaryDrawer() {
             <MenuItem value={20}>Total Approvers</MenuItem>
             <MenuItem value={30}>
               <Typography variant="inherit" noWrap>
-                Initial Submission to Final Approval
+                Approval Submission to Final Approval
               </Typography>
             </MenuItem>
             <MenuItem value={40}>
@@ -297,10 +297,10 @@ export default function TemporaryDrawer() {
       <Box display="flex" flexDirection="row" pb={2} pl={2} pr={2}>
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <TextField label="Min Week" variant="outlined" defaultValue="6" />
+            <TextField label="Min Weeks" variant="outlined" defaultValue="6" />
           </Grid>
           <Grid item xs={6}>
-            <TextField label="Max Week" variant="outlined" defaultValue="7" />
+            <TextField label="Max Weeks" variant="outlined" defaultValue="7" />
           </Grid>
         </Grid>
       </Box>
