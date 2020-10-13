@@ -11,7 +11,6 @@ import {
   Divider,
   InputBase,
   fade,
-  Typography,
 } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import {Help, Search} from '@material-ui/icons';

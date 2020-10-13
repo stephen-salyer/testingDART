@@ -7,7 +7,6 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import ListIcon from '@material-ui/icons/List';
 import EmailIcon from '@material-ui/icons/Email';
-import HelpIcon from '@material-ui/icons/Help';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import Velocity from './Velocity-Logo.js';
