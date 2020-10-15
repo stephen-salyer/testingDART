@@ -114,25 +114,7 @@ export default function TemporaryDrawer() {
           </IconButton>
         </Box>
       </Box>
-      <Box pb={2} pl={2} pr={2} pt={0}>
-        <Autocomplete
-          freeSolo
-          limitTags={1}
-          options={options.sort(
-            (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
-          )}
-          groupBy={(option) => option.firstLetter}
-          getOptionLabel={(option) => option.title}
-          style={{width: '100%'}}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="Search Owners and Approvers"
-              variant="outlined"
-            />
-          )}
-        />
-      </Box>
+
       <Box pb={2} pl={2} pr={2}>
         <Typography variant="subtitle1">Years</Typography>
         <Chip
@@ -261,6 +243,39 @@ export default function TemporaryDrawer() {
             <MenuItem value={30}>Absolute Maxx</MenuItem>
           </Select>
         </FormControl>
+      </Box>
+      <Divider />
+      <Box p={2}>
+        <Autocomplete
+          freeSolo
+          limitTags={1}
+          options={options.sort(
+            (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
+          )}
+          getOptionLabel={(option) => option.title}
+          style={{width: '100%'}}
+          renderInput={(params) => (
+            <TextField {...params} label="Search Owners" variant="outlined" />
+          )}
+        />
+      </Box>
+      <Box pb={2} pl={2} pr={2}>
+        <Autocomplete
+          freeSolo
+          limitTags={1}
+          options={options.sort(
+            (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
+          )}
+          getOptionLabel={(option) => option.title}
+          style={{width: '100%'}}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Search Approvers"
+              variant="outlined"
+            />
+          )}
+        />
       </Box>
       <Divider />
       <Box p={2}>

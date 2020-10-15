@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/testingDART/program-list/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/testingDART/program-list/static/js/main.5dd8bb78.chunk.js",
+    "main.js.map": "/testingDART/program-list/static/js/main.5dd8bb78.chunk.js.map",
+    "runtime-main.js": "/testingDART/program-list/static/js/runtime-main.fe402523.js",
+    "runtime-main.js.map": "/testingDART/program-list/static/js/runtime-main.fe402523.js.map",
+    "static/css/2.6da63a22.chunk.css": "/testingDART/program-list/static/css/2.6da63a22.chunk.css",
+    "static/js/2.0bbb392c.chunk.js": "/testingDART/program-list/static/js/2.0bbb392c.chunk.js",
+    "static/js/2.0bbb392c.chunk.js.map": "/testingDART/program-list/static/js/2.0bbb392c.chunk.js.map",
+    "index.html": "/testingDART/program-list/index.html",
+    "precache-manifest.5e5322303fa7682abc87544b5269b54c.js": "/testingDART/program-list/precache-manifest.5e5322303fa7682abc87544b5269b54c.js",
+    "service-worker.js": "/testingDART/program-list/service-worker.js",
+    "static/css/2.6da63a22.chunk.css.map": "/testingDART/program-list/static/css/2.6da63a22.chunk.css.map",
+    "static/css/main.5ecd60fb.chunk.css.map": "/testingDART/program-list/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.0bbb392c.chunk.js.LICENSE.txt": "/testingDART/program-list/static/js/2.0bbb392c.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/testingDART/program-list/static/media/roboto-latin-900italic.ebf6d164.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fe402523.js",
+    "static/css/2.6da63a22.chunk.css",
+    "static/js/2.0bbb392c.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.5dd8bb78.chunk.js"
+  ]
+}

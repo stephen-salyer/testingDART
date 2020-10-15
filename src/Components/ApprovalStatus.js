@@ -32,14 +32,14 @@ const useStyles = makeStyles({
 
 const kpi = [
   {
-    title: 'Program Creation to Approval Submission (Weeks)',
+    title: 'Program Creation to Approval Submission',
     // include target
-    count: '11.4 | 10.2',
+    count: '11 Weeks 4 Days | 10 Weeks 2 Days',
     desktopSize: 12,
     tabletSize: 12,
   },
   {
-    title: 'Total Approvers',
+    title: 'Num. of Approvers',
     count: '8 | 7.2',
     desktopSize: 4,
     tabletSize: 12,
@@ -57,13 +57,13 @@ const kpi = [
     tabletSize: 12,
   },
   {
-    title: 'Approval Submission to Final Approval (Weeks)',
-    count: '5.3 | 3.8',
+    title: 'Approval Submission to Final Approval',
+    count: '5 Weeks 3 Days | 3 Weeks 8 Days',
     desktopSize: 12,
     tabletSize: 12,
   },
   {
-    title: 'DOA Approvers who meet or exceed Total Expected Discount (Days)',
+    title: 'DOA Approvers who meet or exceed Total Expected Discount RENAME',
     count: '5.3 | 3.8',
     desktopSize: 12,
     tabletSize: 12,
@@ -130,7 +130,7 @@ const ApprovalStatus = () => {
         <Grid item xs={12} md={6} lg={6}>
           <Card>
             <CardHeader
-              title="Approver KPIs Avg."
+              title="Approver KPIs Average"
               subheader="2019 | 2020 Comparison"
             ></CardHeader>
             <Divider />
