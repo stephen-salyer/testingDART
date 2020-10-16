@@ -32,7 +32,7 @@ const theme = createMuiTheme({
 
 const App = () => (
   <ThemeProvider theme={theme}>
-    <Router>
+    <Router basename="/testingDART">
       <div>
         <NavBar />
         <Switch>
@@ -51,6 +51,9 @@ const App = () => (
             <MemberList />
           </Route>
           <Route exact path="/">
+            <Redirect to="/program-list" />
+          </Route>
+          <Route exact path="/testingDART/">
             <Redirect to="/program-list" />
           </Route>
           <Route exact path="/approval-status">
