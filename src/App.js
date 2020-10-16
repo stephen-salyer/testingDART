@@ -1,11 +1,6 @@
 import React from 'react';
 import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import {HashRouter, Switch, Route, Redirect} from 'react-router-dom';
 import Program from './Components/Program';
 import ProgramListBody from './Components/ProgramListBody';
 import NavBar from './Components/NavBar';
@@ -32,54 +27,49 @@ const theme = createMuiTheme({
 
 const App = () => (
   <ThemeProvider theme={theme}>
-    <Router basename="/testingDART">
-      <div>
-        <NavBar />
-        <Switch>
-          <Route path="/program-list">
-            <ProgramListBody />
-          </Route>
-          {/* Below is temporary */}
-          <Route path="/geography-eligibility-v2">
-            <GeographyEligibilityV2 />
-          </Route>
-          {/* Above is temporary */}
-          <Route path="/program/:id">
-            <Program />
-          </Route>
-          <Route path="/member-list">
-            <MemberList />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/program-list" />
-          </Route>
-          <Route exact path="/testingDART/">
-            <Redirect to="/program-list" />
-          </Route>
-          <Route exact path="/approval-status">
-            <ApprovalStatus />
-          </Route>
-          <Route exact path="/tower-review">
-            <TowerReview />
-          </Route>
-          <Route exact path="/program-printable">
-            <ProgramPrintable />
-          </Route>
-          <Route exact path="/program-Changes">
-            <ProgramChanges />
-          </Route>
-          <Route exact path="/price-plan">
-            <TowerReviewPricePlan />
-          </Route>
-          <Route exact path="/unit-select-example">
-            <UnitSelect />
-          </Route>
-          <Route exact path="/bug-hunter">
-            <BugHunter />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <HashRouter>
+      <NavBar />
+      <Switch>
+        <Route path="/program-list">
+          <ProgramListBody />
+        </Route>
+        {/* Below is temporary */}
+        <Route path="/geography-eligibility-v2">
+          <GeographyEligibilityV2 />
+        </Route>
+        {/* Above is temporary */}
+        <Route path="/program/:id">
+          <Program />
+        </Route>
+        <Route path="/member-list">
+          <MemberList />
+        </Route>
+        <Route exact path="/">
+          <Redirect to="/program-list" />
+        </Route>
+        <Route path="/approval-status">
+          <ApprovalStatus />
+        </Route>
+        <Route path="/tower-review">
+          <TowerReview />
+        </Route>
+        <Route path="/program-printable">
+          <ProgramPrintable />
+        </Route>
+        <Route path="/program-Changes">
+          <ProgramChanges />
+        </Route>
+        <Route path="/price-plan">
+          <TowerReviewPricePlan />
+        </Route>
+        <Route path="/unit-select-example">
+          <UnitSelect />
+        </Route>
+        <Route path="/bug-hunter">
+          <BugHunter />
+        </Route>
+      </Switch>
+    </HashRouter>
   </ThemeProvider>
 );
 

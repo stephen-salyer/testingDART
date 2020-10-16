@@ -75,7 +75,7 @@ const SecondaryNavProgramChanges = () => {
               <IconButton
                 aria-label="arrow-back"
                 color="default"
-                href="/program/:id"
+                href="#/program/:id"
               >
                 <ArrowBack />
               </IconButton>
