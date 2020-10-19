@@ -138,7 +138,7 @@ const SecondaryNavTowerReviewPricePlan = () => {
               <IconButton
                 aria-label="arrow-back"
                 color="default"
-                href="/tower-review"
+                href="testingDART/tower-review"
               >
                 <ArrowBack />
               </IconButton>
