@@ -7,8 +7,11 @@ import Divider from '@material-ui/core/Divider';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import {Link, withRouter} from 'react-router-dom';
 import 'typeface-roboto';
-import {Typography} from '@material-ui/core';
+import {Box, Typography} from '@material-ui/core';
 import ProgramMenu from './ProgramMenu';
+import ProgramListStatusApproved from './ProgramListStatusApproved';
+import ProgramListStatusDraft from './ProgramListStatusDraft';
+import ProgramListStatusPending from './ProgramListStatusPending';
 
 const useStyles = makeStyles({
   root: {
@@ -46,6 +49,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retailer',
     communicationDate: 'Communication Date: 06/01/2020',
     category: 'program',
+    action: <ProgramListStatusApproved />,
   },
   {
     title: '2020 Asgrow 2 You - 2018 - 2020',
@@ -57,6 +61,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retailer',
     communicationDate: 'Communication Date: 06/01/2020',
     category: 'program',
+    action: <ProgramListStatusPending />,
   },
   {
     title: '2020 Asgrow 2 You - 2019 - 2021',
@@ -68,6 +73,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retailer',
     communicationDate: 'Communication Date: 06/01/2020',
     category: 'program',
+    action: <ProgramListStatusApproved />,
   },
   {
     title: '2020 Asgrow-DEKALB-DeltaPine Subs and Cuts Program USA',
@@ -79,6 +85,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retailer',
     communicationDate: 'Communication Date: 08/01/2020',
     category: 'program',
+    action: <ProgramListStatusApproved />,
   },
   {
     title: '2020 Bayer Plus Portfolio Rewards',
@@ -90,6 +97,7 @@ export const Programs = [
     payee: 'Payee: Farmer/Grower',
     communicationDate: 'Communication Date: 06/01/2020',
     category: 'program',
+    action: <ProgramListStatusDraft />,
   },
   {
     title: '2020 Bayer Plus Portfolio Rewards v2',
@@ -101,6 +109,7 @@ export const Programs = [
     payee: 'Payee: Farmer/Grower',
     communicationDate: 'Communication Date: 06/01/2020',
     category: 'program',
+    action: <ProgramListStatusApproved />,
   },
   {
     title: '2020 Branded Seed DDR',
@@ -112,6 +121,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retailer',
     communicationDate: 'Communication Date: 06/01/2020',
     category: 'program',
+    action: <ProgramListStatusApproved />,
   },
   {
     title: '2020 Branded Seed LCR',
@@ -123,6 +133,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retail, Farmer/Grower',
     communicationDate: 'Communication Date: 05/01/2020',
     category: 'program',
+    action: <ProgramListStatusApproved />,
   },
   {
     title: '2020 Coastal Seed and Trait Crop Switch Replant',
@@ -134,6 +145,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retail',
     communicationDate: 'Communication Date: 09/01/2020',
     category: 'program',
+    action: <ProgramListStatusApproved />,
   },
   {
     title: '2020 DEKALB and Asgrow Production Grower Program',
@@ -145,6 +157,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retail',
     communicationDate: 'Communication Date: 06/01/2020',
     category: 'program',
+    action: <ProgramListStatusApproved />,
   },
 ];
 
@@ -156,42 +169,77 @@ const ProgramListItemsAll = () => {
       <List>
         {Programs.map(
           (
-            {title, id, version, year, ted, type, payee, communicationDate},
+            {
+              title,
+              id,
+              version,
+              year,
+              ted,
+              type,
+              payee,
+              communicationDate,
+              action,
+            },
             i
           ) => (
             <Fragment key={i}>
-              <ListItem
-                className={classes.linkNoDecorationAndCorrection}
-                button
-                component={Link}
-                to={'/program/' + i}
-                rel="noopener noreferrer"
-              >
-                <ListItemText
-                  className={classes.listItemTextNoMargin}
-                  primary={
-                    <Typography variant="subtitle1" style={{fontWeight: 500}}>
-                      {[id, title].join(' • ')}
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography variant="body2">
-                      {[ted, version, year].join(' • ')}
-                    </Typography>
-                  }
-                />
-                <ListItemText
-                  classes={{primary: classes.listItemTertiary}}
-                  primary={
-                    <Typography variant="body2" color="textSecondary">
-                      {[type, payee, communicationDate].join(' • ')}
-                    </Typography>
-                  }
-                />
-                <ListItemSecondaryAction>
-                  <ProgramMenu />
-                </ListItemSecondaryAction>
-              </ListItem>
+              <>
+                <Box style={{width: '100%'}}>
+                  <ListItem
+                    className={classes.linkNoDecorationAndCorrection}
+                    button
+                    component={Link}
+                    to={'/program/' + i}
+                    rel="noopener noreferrer"
+                  >
+                    <Box
+                      display="flex"
+                      alignItems="center"
+                      flexGrow="1"
+                      style={{height: '100%'}}
+                    >
+                      <Box
+                        pr={1}
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                        style={{minWidth: 40}}
+                      >
+                        {action}
+                      </Box>
+                      <Box display="flex" flexDirection="column">
+                        <ListItemText
+                          className={classes.listItemTextNoMargin}
+                          primary={
+                            <Typography
+                              variant="subtitle1"
+                              style={{fontWeight: 500}}
+                            >
+                              {[id, title].join(' • ')}
+                            </Typography>
+                          }
+                          secondary={
+                            <Typography variant="body2">
+                              {[ted, version, year].join(' • ')}
+                            </Typography>
+                          }
+                        />
+                        <ListItemText
+                          classes={{primary: classes.listItemTertiary}}
+                          primary={
+                            <Typography variant="body2" color="textSecondary">
+                              {[type, payee, communicationDate].join(' • ')}
+                            </Typography>
+                          }
+                        />
+                      </Box>
+                    </Box>
+                    <ListItemSecondaryAction>
+                      <ProgramMenu />
+                    </ListItemSecondaryAction>
+                  </ListItem>
+                </Box>
+              </>
               <Divider />
             </Fragment>
           )
