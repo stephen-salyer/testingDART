@@ -29,7 +29,7 @@ export default function ProgramListStatusDraft() {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            style={{borderRadius: 100, backgroundColor: grey[700]}}
+            style={{borderRadius: 100, backgroundColor: grey[500]}}
           >
             <Edit style={{padding: 5, fontSize: 20, color: '#FFF'}} />
           </Box>

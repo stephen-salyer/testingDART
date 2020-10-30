@@ -47,7 +47,7 @@ export default function Marketing() {
             variant="outlined"
             fullWidth
             multiline
-            rows={4}
+            rows={5}
             placeholder="Example:
             Farmers are challenged with weed control from resistant weeds; this program incentivizes them to take proactive step for residual herbicide use as a tool for weed management and protecting Bayer's herbicide tolerant trait technologies."
           />

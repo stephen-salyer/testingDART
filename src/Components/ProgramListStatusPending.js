@@ -29,7 +29,7 @@ export default function ProgramListStatusPending() {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            style={{borderRadius: 100, backgroundColor: amber[700]}}
+            style={{borderRadius: 100, backgroundColor: amber[600]}}
           >
             <AccessTime style={{padding: 3, fontSize: 25, color: '#FFF'}} />
           </Box>

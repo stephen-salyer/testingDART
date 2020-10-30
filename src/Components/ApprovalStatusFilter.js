@@ -338,11 +338,7 @@ export default function TemporaryDrawer() {
 
   return (
     <Box display="flex" alignItems="center">
-      <Button
-        color="secondary"
-        onClick={toggleDrawer('right', true)}
-        endIcon={<FilterList />}
-      >
+      <Button onClick={toggleDrawer('right', true)} endIcon={<FilterList />}>
         filter
       </Button>
       <Drawer

@@ -49,7 +49,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retailer',
     communicationDate: 'Communication Date: 06/01/2020',
     category: 'program',
-    action: <ProgramListStatusApproved />,
+    action: <ProgramListStatusDraft />,
   },
   {
     title: '2020 Asgrow 2 You - 2018 - 2020',
@@ -85,7 +85,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retailer',
     communicationDate: 'Communication Date: 08/01/2020',
     category: 'program',
-    action: <ProgramListStatusApproved />,
+    action: <ProgramListStatusPending />,
   },
   {
     title: '2020 Bayer Plus Portfolio Rewards',
@@ -121,7 +121,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retailer',
     communicationDate: 'Communication Date: 06/01/2020',
     category: 'program',
-    action: <ProgramListStatusApproved />,
+    action: <ProgramListStatusDraft />,
   },
   {
     title: '2020 Branded Seed LCR',
@@ -133,7 +133,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retail, Farmer/Grower',
     communicationDate: 'Communication Date: 05/01/2020',
     category: 'program',
-    action: <ProgramListStatusApproved />,
+    action: <ProgramListStatusDraft />,
   },
   {
     title: '2020 Coastal Seed and Trait Crop Switch Replant',
@@ -145,7 +145,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retail',
     communicationDate: 'Communication Date: 09/01/2020',
     category: 'program',
-    action: <ProgramListStatusApproved />,
+    action: <ProgramListStatusDraft />,
   },
   {
     title: '2020 DEKALB and Asgrow Production Grower Program',
@@ -157,7 +157,7 @@ export const Programs = [
     payee: 'Payee: Dealer/Retail',
     communicationDate: 'Communication Date: 06/01/2020',
     category: 'program',
-    action: <ProgramListStatusApproved />,
+    action: <ProgramListStatusDraft />,
   },
 ];
 

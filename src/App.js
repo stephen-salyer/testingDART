@@ -17,10 +17,10 @@ import GeographyEligibilityV2 from './Components/Examples/GeographyEligibilityV2
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#0164C4',
+      main: '#142357',
     },
     secondary: {
-      main: '#142357',
+      main: '#0164C4',
     },
   },
 });
