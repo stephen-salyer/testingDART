@@ -26,8 +26,12 @@ export default function ProgramListStatusApproved() {
           placement="right"
         >
           <CheckCircle
-            fontSize="large"
-            style={{color: green[500], paddingRight: 3, paddingLeft: 3}}
+            style={{
+              color: green[500],
+              paddingRight: 3,
+              paddingLeft: 3,
+              fontSize: 35,
+            }}
           />
         </DarkTooltip>
         <Typography variant="caption">Approved</Typography>

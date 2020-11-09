@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import {CheckCircle} from '@material-ui/icons';
-import {Tooltip, withStyles} from '@material-ui/core';
+import {Box, Tooltip, withStyles} from '@material-ui/core';
 import {green} from '@material-ui/core/colors';
 
 const DarkTooltip = withStyles((theme) => ({
@@ -15,13 +15,14 @@ const DarkTooltip = withStyles((theme) => ({
 
 export default function TowerReviewInfoPopApproved() {
   return (
-    <div>
+    <Box display="flex" flexDirection="column" alignItems="center">
       <DarkTooltip
         title={<Typography>Approved 22/22/2222 by Bob Approverson</Typography>}
         placement="right"
       >
         <CheckCircle fontSize="large" style={{color: green[500]}} />
       </DarkTooltip>
-    </div>
+      <Typography variant="caption">Approved</Typography>
+    </Box>
   );
 }

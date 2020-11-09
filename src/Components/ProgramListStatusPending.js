@@ -34,7 +34,9 @@ export default function ProgramListStatusPending() {
             <AccessTime style={{padding: 3, fontSize: 25, color: '#FFF'}} />
           </Box>
         </DarkTooltip>
-        <Typography variant="caption">Pending</Typography>
+        <Typography variant="caption" style={{paddingTop: 4}}>
+          Pending
+        </Typography>
       </Box>
     </>
   );

@@ -195,12 +195,12 @@ const TowerReviewProgramsAll = () => {
                       onFocus={(event) => event.stopPropagation()}
                       control={
                         <Box
-                          pl={3}
+                          pl={4}
                           mr={-2}
                           display="flex"
                           alignItems="center"
                           justifyContent="center"
-                          style={{minWidth: 40}}
+                          style={{minWidth: 60}}
                         >
                           {action}
                         </Box>

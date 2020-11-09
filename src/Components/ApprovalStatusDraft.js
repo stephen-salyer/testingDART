@@ -92,6 +92,12 @@ const programs = [
   },
 ];
 
+const category = [
+  {category: 'Global Accounting'},
+  {category: 'Non-DOA'},
+  {category: 'DOA'},
+];
+
 const people = [
   {
     name: 'Stefan Peters',
@@ -169,58 +175,58 @@ const people = [
       </Button>
     ),
   },
-  {
-    name: 'April Tucker',
-    department: 'Legal',
-    progress: (
-      <>
-        <ApprovalStatusProgressDone />
-        <Typography variant="caption">Done</Typography>
-      </>
-    ),
-  },
-  {
-    name: 'Ralph Hubbard',
-    department: 'Marketing',
-    progress: (
-      <>
-        <ApprovalStatusProgressDone />
-        <Typography variant="caption">Done</Typography>
-      </>
-    ),
-  },
-  {
-    name: 'Omar Alexander',
-    department: 'Marketing',
-    progress: (
-      <>
-        <ApprovalStatusProgressDone />
-        <Typography variant="caption">Done</Typography>
-      </>
-    ),
-  },
+  // {
+  //   name: 'April Tucker',
+  //   department: 'Legal',
+  //   progress: (
+  //     <>
+  //       <ApprovalStatusProgressDone />
+  //       <Typography variant="caption">Done</Typography>
+  //     </>
+  //   ),
+  // },
+  // {
+  //   name: 'Ralph Hubbard',
+  //   department: 'Marketing',
+  //   progress: (
+  //     <>
+  //       <ApprovalStatusProgressDone />
+  //       <Typography variant="caption">Done</Typography>
+  //     </>
+  //   ),
+  // },
+  // {
+  //   name: 'Omar Alexander',
+  //   department: 'Marketing',
+  //   progress: (
+  //     <>
+  //       <ApprovalStatusProgressDone />
+  //       <Typography variant="caption">Done</Typography>
+  //     </>
+  //   ),
+  // },
 
-  {
-    name: 'Nicolas Ezequiel Fernandez Zapiola',
-    department: 'Marketing',
-    progress: (
-      <>
-        <ApprovalStatusProgressDone />
-        <Typography variant="caption">Done</Typography>
-      </>
-    ),
-  },
+  // {
+  //   name: 'Nicolas Ezequiel Fernandez Zapiola',
+  //   department: 'Marketing',
+  //   progress: (
+  //     <>
+  //       <ApprovalStatusProgressDone />
+  //       <Typography variant="caption">Done</Typography>
+  //     </>
+  //   ),
+  // },
 
-  {
-    name: 'Prekki Srinivasa Sudhakar',
-    department: 'Marketing',
-    progress: (
-      <>
-        <ApprovalStatusProgressDone />
-        <Typography variant="caption">Done</Typography>
-      </>
-    ),
-  },
+  // {
+  //   name: 'Prekki Srinivasa Sudhakar',
+  //   department: 'Marketing',
+  //   progress: (
+  //     <>
+  //       <ApprovalStatusProgressDone />
+  //       <Typography variant="caption">Done</Typography>
+  //     </>
+  //   ),
+  // },
   {
     name: 'Wimonphan Tangmanvitayasak',
     department: 'Marketing',
@@ -299,43 +305,65 @@ const ApprovalStatusDraft = () => {
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails>
                     <Grid container spacing={3}>
-                      {people.map(({name, department, progress, email}, i) => (
+                      {category.map(({category}, i) => (
                         <>
-                          <Grid item key={i} xs={12} sm={6}>
-                            <Box
-                              display="flex"
-                              flexGrow="1"
-                              alignItems="center"
-                              justifyContent="space-between"
-                              style={{height: '100%'}}
+                          <Grid item xs={12} key={i}>
+                            <Typography
+                              variant="overline"
+                              style={{fontWeight: 'bold'}}
                             >
-                              <Box display="flex" alignItems="center" pb={1}>
-                                <Box
-                                  display="flex"
-                                  flexDirection="column"
-                                  alignItems="center"
-                                  justifyContent="center"
-                                  pr={2}
-                                  style={{minWidth: 70}}
-                                >
-                                  {progress}
-                                </Box>
-                                <Box display="flex" flexDirection="column">
-                                  <Typography
-                                    style={{lineHeight: '1.7'}}
-                                    variant="overline"
-                                  >
-                                    {department}
-                                  </Typography>
-                                  <Typography style={{paddingBottom: 4}}>
-                                    {name}
-                                  </Typography>
-                                </Box>
-                              </Box>
-                              <Box p={1}>{email}</Box>
-                            </Box>
-                            <Divider />
+                              {category}
+                            </Typography>
                           </Grid>
+
+                          {people.map(
+                            ({name, department, progress, email}, i) => (
+                              <>
+                                <Grid item key={i} xs={12} sm={6}>
+                                  <Box
+                                    display="flex"
+                                    flexGrow="1"
+                                    alignItems="center"
+                                    justifyContent="space-between"
+                                    style={{height: '100%'}}
+                                  >
+                                    <Box
+                                      display="flex"
+                                      alignItems="center"
+                                      pb={1}
+                                    >
+                                      <Box
+                                        display="flex"
+                                        flexDirection="column"
+                                        alignItems="center"
+                                        justifyContent="center"
+                                        pr={2}
+                                        style={{minWidth: 70}}
+                                      >
+                                        {progress}
+                                      </Box>
+                                      <Box
+                                        display="flex"
+                                        flexDirection="column"
+                                      >
+                                        <Typography
+                                          style={{lineHeight: '1.7'}}
+                                          variant="overline"
+                                        >
+                                          {department}
+                                        </Typography>
+                                        <Typography style={{paddingBottom: 4}}>
+                                          {name}
+                                        </Typography>
+                                      </Box>
+                                    </Box>
+                                    <Box p={1}>{email}</Box>
+                                  </Box>
+                                  <Divider />
+                                </Grid>
+                              </>
+                            )
+                          )}
                         </>
                       ))}
                     </Grid>

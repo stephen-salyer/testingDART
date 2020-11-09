@@ -34,7 +34,9 @@ export default function ProgramListStatusDraft() {
             <Edit style={{padding: 5, fontSize: 20, color: '#FFF'}} />
           </Box>
         </DarkTooltip>
-        <Typography variant="caption">Draft</Typography>
+        <Typography variant="caption" style={{paddingTop: 4}}>
+          Draft
+        </Typography>
       </Box>
     </>
   );
