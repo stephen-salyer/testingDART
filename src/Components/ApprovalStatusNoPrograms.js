@@ -22,7 +22,10 @@ const ApprovalStatusNoPrograms = () => {
       style={{height: '50vh'}}
     >
       <Warning className={classes.conState} />
-      <Typography variant="h6">No Programs in selected filters</Typography>
+      <Typography variant="h6">No Programs for selected filters</Typography>
+      <Typography variant="body1" color="textSecondary">
+        Please Try Again
+      </Typography>
     </Box>
   );
 };
