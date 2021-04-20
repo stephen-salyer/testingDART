@@ -13,6 +13,7 @@ import TowerReviewPricePlan from './Components/TowerReviewPricePlan';
 import UnitSelect from './Components/Examples/UnitSelect';
 import BugHunter from './Components/BugHunter';
 import GeographyEligibilityV2 from './Components/Examples/GeographyEligibilityV2';
+import TableExample from './Components/Examples/TableExample';
 
 const theme = createMuiTheme({
   palette: {
@@ -64,6 +65,9 @@ const App = () => (
         </Route>
         <Route path="/unit-select-example">
           <UnitSelect />
+        </Route>
+        <Route path="/table-example">
+          <TableExample />
         </Route>
         <Route path="/bug-hunter">
           <BugHunter />

@@ -91,6 +91,16 @@ const Nav = () => {
                 >
                   <ListItemText primary="Unit Select" />
                 </ListItem>
+                <ListItem
+                  onClick={() => setOpen(false)}
+                  component={Link}
+                  rel="noopener noreferrer"
+                  to={'/table-example'}
+                  button
+                  className={classes.nested}
+                >
+                  <ListItemText primary="Table Example" />
+                </ListItem>
               </List>
             </Collapse>
           </List>
