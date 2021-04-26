@@ -62,7 +62,7 @@ export default function TableExample() {
                     }}
                   >
                     <Typography
-                      style={{width: 120, paddingLeft: 8, paddingRight: 8}}
+                      style={{width: 125, paddingLeft: 8, paddingRight: 8}}
                       variant="subtitle1"
                       color="textSecondary"
                     >
@@ -80,7 +80,7 @@ export default function TableExample() {
               {tableData.map((data) => (
                 <>
                   <Box pt={5} pl={2} pr={2} pb={1}>
-                    <Typography style={{width: 120}} variant="subtitle2">
+                    <Typography style={{width: 125}} variant="subtitle2">
                       {data}
                     </Typography>
                   </Box>
@@ -94,7 +94,7 @@ export default function TableExample() {
               {tableData.map((data) => (
                 <>
                   <Box pt={1} pl={2} pr={2} pb={1}>
-                    <Typography style={{width: 120}} variant="subtitle2">
+                    <Typography style={{width: 125}} variant="subtitle2">
                       {data}
                     </Typography>
                   </Box>
