@@ -12,7 +12,7 @@ import {
   makeStyles,
 } from '@material-ui/core';
 import {RemoveCircle, ExpandLess, ExpandMore} from '@material-ui/icons';
-import ProductEligibilityMaterialSearchModal from '../ProductEligibility/ProductEligibilityMaterialSearchModal';
+import CustomerSearchModal from '../CustomerSearchModal';
 
 const useStyles = makeStyles((theme) => ({
   textField: {
@@ -58,7 +58,7 @@ export default function CustomerEligibilityGroupsAutoComplete() {
           />
         </Box>
         <div>
-          <ProductEligibilityMaterialSearchModal />
+          <CustomerSearchModal />
         </div>
       </Box>
       <Box style={{maxHeight: '550px', overflow: 'scroll'}}>
