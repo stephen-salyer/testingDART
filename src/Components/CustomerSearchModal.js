@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     outline: 0,
     minWidth: '800px',
+    height: 780,
   },
   modalButton: {
     marginTop: '8px',
@@ -42,14 +43,13 @@ export default function CustomerSearchModal() {
       <Button
         variant="outlined"
         color="primary"
+        fullWidth
         onClick={() => setOpen(true)}
         style={{
-          borderRadius: '0 5px 5px 0',
           height: '56px',
-          marginLeft: '-1px',
         }}
       >
-        Add
+        Search Customers
       </Button>
       <Modal
         disableEnforceFocus

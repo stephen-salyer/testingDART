@@ -3,40 +3,16 @@ import {
   ListItemText,
   ListItemSecondaryAction,
   IconButton,
-  TextField,
   Box,
   ListItem,
   Typography,
   Collapse,
   List,
-  makeStyles,
 } from '@material-ui/core';
 import {RemoveCircle, ExpandLess, ExpandMore} from '@material-ui/icons';
 import CustomerSearchModal from '../CustomerSearchModal';
 
-const useStyles = makeStyles((theme) => ({
-  textField: {
-    [`& fieldset`]: {
-      borderRadius: '5px 0 0 5px',
-    },
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    display: 'flex',
-    flexDirection: 'column',
-    outline: 0,
-    minWidth: '1000px',
-  },
-  modalButton: {
-    marginTop: '8px',
-    maxWidth: '98px',
-  },
-}));
-
 export default function CustomerEligibilityGroupsAutoComplete() {
-  const classes = useStyles();
-
   const [open, setOpen] = React.useState(false);
 
   const handleClick1 = () => {
@@ -46,20 +22,7 @@ export default function CustomerEligibilityGroupsAutoComplete() {
   return (
     <React.Fragment>
       <Box display="flex">
-        <Box display="flex" flexDirection="column" style={{width: '120%'}}>
-          <TextField
-            error
-            helperText="Customer Not Found."
-            className={classes.textField}
-            variant="outlined"
-            label="Customers"
-            defaultValue="0001234567"
-            placeholder="Search Name or SAPID"
-          />
-        </Box>
-        <div>
-          <CustomerSearchModal />
-        </div>
+        <CustomerSearchModal />
       </Box>
       <Box style={{maxHeight: '550px', overflow: 'scroll'}}>
         <ListItem button onClick={handleClick1}>
